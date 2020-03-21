@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controllers/principal.master.cs" Inherits="Views_principal" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+    
+    <title>HC-cauchos</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../archivos_index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom styles for this template -->
+  <link href="../archivos_index/css/modern-business.css" rel="stylesheet"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+ <!------------------------------------------------------------------------------------------------------------------->    
+        <!-- Navigation -->
+          <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="index.html">HC CAUCHOS</a>
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="home.aspx">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Servicios</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contacto.aspx">Contacto</a>
+                  </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="login.aspx">Ingresar</a>
+                  </li>
+                     <li class="nav-item">
+                    <a class="nav-link" href="registro.aspx">Registrate</a>
+                  </li>
+          
+                </ul>
+              </div>
+            </div>
+          </nav>
+<!------------------------------------------------------------------------------------------------------------------->   
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    <!------------------------------------------------------------------------------------------------------------------->   
+    <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+<!-------------------------------------------------------------------------------------------------------------------> 
+  <!-- Bootstrap core JavaScript -->
+  <script src="../archivos_index/vendor/jquery/jquery.min.js"></script>
+  <script src="../archivos_index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "hc_cauchos", "hc_cauchos\", "{F5FF28C8-0195-4E7E-9FB0-3393498661C7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57160"
+		Debug.AspNetCompiler.PhysicalPath = "hc_cauchos\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57160\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57160"
+		Release.AspNetCompiler.PhysicalPath = "hc_cauchos\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57160\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57160"
+		SlnRelativePath = "hc_cauchos\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5FF28C8-0195-4E7E-9FB0-3393498661C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FF28C8-0195-4E7E-9FB0-3393498661C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A75F1024-E763-4833-BECA-BAD23F6DE475}
+	EndGlobalSection
+EndGlobal
