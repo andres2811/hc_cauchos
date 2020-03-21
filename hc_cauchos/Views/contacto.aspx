@@ -11,7 +11,7 @@
             <div class="col-2">
                 <br />  <br />  <br />  <br />  <br /><br />  <br />  <br />  
                 <h1  class="text-center" ><strong>HC CAUCHOS</strong></h1>
-                <h3  class="text-center">Trabajamos por usted!</h3>
+                <h3  class="text-center">Trabajamos para usted!</h3>
             </div>
             <div class="col-8">
                 <h1>Nuesta Ubicacion</h1>
