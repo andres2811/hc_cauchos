@@ -1,9 +1,11 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controllers/administrador/admin.master.cs" Inherits="Views_administrador_admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controllers/usuario/usuario.master.cs" Inherits="Views_usuario_usuario" %>
+
 <!DOCTYPE html>
+
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Usuario</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -170,7 +172,7 @@
               </ul>
             </li>            
             <li>
-              <a href="#">
+              <a href="calendario_usuario.aspx">
                 <i class="fa fa-calendar"></i> <span>Calendario</span>
                 <small class="label pull-right bg-red">3</small>
               </a>
@@ -218,4 +220,3 @@
    </form>
   </body>
 </html>
-   
