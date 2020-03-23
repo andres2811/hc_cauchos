@@ -292,6 +292,7 @@
                         <br />
                                 <asp:TextBox ID="TB_Repetir" runat="server"  class="fadeIn third" placeholder="Repetir Contraseña" TextMode="Password"></asp:TextBox>                    
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Validar" ControlToValidate="TB_Repetir" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TB_Contraseña" ControlToValidate="TB_Repetir" ErrorMessage="Las Contraseñas no coinciden"></asp:CompareValidator>
                         <br />
                         <br />
                       
