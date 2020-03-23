@@ -1,8 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/principal.master" AutoEventWireup="true" CodeFile="~/Controllers/login.aspx.cs" Inherits="Views_login_login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controllers/administrador/ActualizarContraseña.aspx.cs" Inherits="Views_administrador_ActualizarContraseña" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
-    <style> 
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Validar Contraseña</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+         <style> 
         html {
   background-color: #56baed;
     }
@@ -262,13 +269,8 @@
     #icon {
       width:60%;
     }
-    </style>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-   
-    
-    <div class="container">
+             </style>
+        <div class="container">
         <div class="row">
 
             <div class="col-4">
@@ -282,23 +284,26 @@
                     <!-- Tabs Titles -->
                     <!-- Icon -->
                     <div class="fadeIn first">
-                      <img src="http://simpleicon.com/wp-content/uploads/account.png" id="icon" alt="User Icon" /><br />
+                     
                         <br />
-                      <asp:TextBox ID="TB_correo" runat="server"  class="fadeIn second" placeholder="Correo" TextMode="Email" ></asp:TextBox>
-                      &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Login" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_Contraseña" runat="server"  class="fadeIn third" placeholder="Contraseña" TextMode="Password"></asp:TextBox>                    
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Validar" ControlToValidate="TB_Contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
                         <br />
                         <br />
-                      <asp:TextBox ID="TB_contraseña" runat="server"  class="fadeIn third" placeholder="Contraseña" TextMode="Password"></asp:TextBox>                    
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Login" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_Repetir" runat="server"  class="fadeIn third" placeholder="Repetir Contraseña" TextMode="Password"></asp:TextBox>                    
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Validar" ControlToValidate="TB_Repetir" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <br />
+                        <br />
+                      
                     </div>
                     <!-- Login Form -->
-                    <div>                     
-                      <asp:Button ID="BTN_ingresar" runat="server" ValidationGroup="Login" Text="Ingresar" class="fadeIn fourth" OnClick="BTN_ingresar_Click"/>
-                    </div>
+                   <div>
+                           <asp:Button ID="BTN_Cambiar" runat="server" ValidationGroup="Validar" Text="Cambiar" class="fadeIn fourth" OnClick="BTN_Recuperar_Click" style="height: 52px"/>
+
+                   </div>
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
-                      &nbsp;<asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click" PostBackUrl="~/Views/administrador/RecuperarContraseña.aspx">Olvido Su Contraseña?</asp:LinkButton>
-                    </div>
+                      &nbsp;</div>
                   </div>
                 </div>
              </div>
@@ -312,5 +317,6 @@
     <br />
     <br />
     <br />   
-</asp:Content>
-
+    </form>
+</body>
+</html>
