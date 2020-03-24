@@ -297,7 +297,7 @@
                     </div>
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
-                      &nbsp;<asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click" PostBackUrl="~/Views/administrador/RecuperarContraseña.aspx">Olvido Su Contraseña?</asp:LinkButton>
+                      &nbsp;<asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click">Olvido Su Contraseña?</asp:LinkButton>
                     </div>
                   </div>
                 </div>

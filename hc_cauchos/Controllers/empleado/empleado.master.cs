@@ -9,6 +9,7 @@ public partial class Views_empleado_empleado : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        L_nombreAdmin.Text = ((EncapUsuario)Session["Valido"]).Nombre;
+        L_nombreAdmin0.Text = ((EncapUsuario)Session["Valido"]).Nombre;
     }
 }

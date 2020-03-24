@@ -37,15 +37,28 @@ public partial class Views_login_login : System.Web.UI.Page
             //1 -- Administrador
 
             Session["Nombre"] = ecUser.Nombre +" " +ecUser.Apellido;
+            //en esta session mando correctamente valores del encapsulado
+            Session["Valido"] = ecUser;
             ecUser.Sesion = (string)Session["Nombre"].ToString();
             new DAOAdmin().ActualizarUsuario(ecUser);
-            
-            if (ecUser.Rol_id == 1)
-             {
-                 Response.Redirect("administrador/index_admin.aspx");
-             }
-         
 
+
+        switch (ecUser.Rol_id)
+        {
+            case 1:
+                Response.Redirect("administrador/index_admin.aspx");
+                break;
+            case 2:
+                Response.Redirect("empleado/index_empleado.aspx");
+                break;
+            case 3:
+                Response.Redirect("domiciliario/index_domiciliario.aspx");
+                break;
+            case 4:
+                Response.Redirect("usuario/index_usuario.aspx");
+                break;
+        }
+     
     }
 
     protected void LButton_Recuperar_Click(object sender, EventArgs e)

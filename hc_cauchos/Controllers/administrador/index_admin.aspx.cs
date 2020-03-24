@@ -9,6 +9,13 @@ public partial class Views_administrador_index_admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Valido"] != null && ((EncapUsuario)Session["Valido"]).Rol_id ==1)
+        {
 
+        }
+        else
+        {
+            Response.Redirect("../login.aspx");
+        }
     }
 }
