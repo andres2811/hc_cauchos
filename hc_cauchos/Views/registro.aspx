@@ -285,10 +285,12 @@
                         <asp:TextBox ID="TB_apellidos" runat="server" class="form-control" placeholder="apellido"></asp:TextBox>
                         <asp:TextBox ID="TB_correo" runat="server" class="form-control" placeholder="correo" ></asp:TextBox>
                         <asp:TextBox ID="TB_contraseña" runat="server" class="form-control" placeholder="contraseña"></asp:TextBox> 
+                        <br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
                         <asp:TextBox ID="TB_confirmar_contra" runat="server" class="form-control" placeholder="confirmar contraseña"></asp:TextBox>
                         <asp:TextBox ID="TB_fecha_nacimiento" runat="server" class="form-control" placeholder="fecha nacimiento"></asp:TextBox>
                         <asp:TextBox ID="TB_identificacion" runat="server" class="form-control" placeholder="identificacion"></asp:TextBox>
-                        <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="fadeIn fourth"/>
+                        <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="fadeIn fourth" OnClick="BTN_registrar_Click"/>
                     </div>
                   </div>
                 </div>

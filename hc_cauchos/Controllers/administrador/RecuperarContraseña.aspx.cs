@@ -37,6 +37,7 @@ public partial class Views_administrador_RecuperarContraseña : System.Web.UI.Pa
 
             new Correo().enviarCorreo(user.Correo, user.Token, "");
             new DAOAdmin().ActualizarUsuario(user);
+            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Token enviado por favor verifique el correo');window.location=\" ../login.aspx\"</script>");
 
         }
 

@@ -11,4 +11,11 @@ public partial class Views_registro : System.Web.UI.Page
     {
 
     }
+
+    protected void BTN_registrar_Click(object sender, EventArgs e)
+    {
+       
+      
+      
+    }
 }
