@@ -92,7 +92,7 @@
                   <!-- FOOTER PARTE PARA CERRAR SESION-->
                   <li class="user-footer">
                     <div class="pull-right">
-                      <asp:Button ID="btn_cerrar" runat="server" Text="Cerrar Sesion" Class="btn btn-default btn-flat" OnClick="btn_cerrar_Click" />
+                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
