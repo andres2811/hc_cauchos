@@ -35,7 +35,9 @@ public partial class Views_administrador_ActualizarContraseña : System.Web.UI.P
 
     protected void BTN_Recuperar_Click(object sender, EventArgs e)
     {
+      
         EncapUsuario user = (EncapUsuario)Session["user_id"];
+
         user.Clave = TB_Repetir.Text;
         user.Estado_id = 1;
         user.Token = null;

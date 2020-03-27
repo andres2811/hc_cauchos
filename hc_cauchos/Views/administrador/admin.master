@@ -89,8 +89,8 @@
                   </li>
                   <!-- FOOTER PARTE PARA CERRAR SESION-->
                   <li class="user-footer">
-                    <div class="pull-right">              
-                       <asp:Button ID="btn_cerrar" runat="server" Text="Cerrar Sesion" Class="btn btn-default btn-flat" OnClick="btn_cerrar_Click" />
+                    <div class="pull-right">
+                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -132,8 +132,8 @@
                 <i class="fa fa-dashboard"></i> <span>Empleados</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="agregar_empleado.aspx"><i class="fa fa-circle-o"></i> Agregar </a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Ver - Editar -Inhabilitar</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -189,6 +189,7 @@
 <!---------------------------------AQUI VA NUESTRO CODIGO HEREDADO DESDE LAS VISTAS IVAN--------------------------------->
         <section class="content1">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
             </asp:ContentPlaceHolder>
         </section>
 <!---------------------------------AQUI TERMINA NUESTRO CODIGO HEREDADO DESDE LAS VISTAS IVAN--------------------------------->

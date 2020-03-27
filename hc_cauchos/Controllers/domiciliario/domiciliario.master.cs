@@ -12,9 +12,4 @@ public partial class Views_domiciliario_domiciliario : System.Web.UI.MasterPage
         L_nombreAdmin.Text = ((EncapUsuario)Session["Valido"]).Nombre;
         L_nombreAdmin0.Text = ((EncapUsuario)Session["Valido"]).Nombre;
     }
-    protected void btn_cerrar_Click(object sender, EventArgs e)
-    {
-        Session.Abandon();
-        Response.Redirect("../home.aspx");
-    }
 }
