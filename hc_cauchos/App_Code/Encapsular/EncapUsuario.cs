@@ -14,7 +14,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class EncapUsuario
 {
-    private int user_id;
+    private int user_id;  
     private string nombre;
     private string apellido;
     private string correo;
