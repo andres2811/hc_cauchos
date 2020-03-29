@@ -300,6 +300,7 @@
                    </div>
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
+                        <asp:Button ID="BTN_inicio" runat="server" Text="Inicio" OnClick="BTN_inicio_Click" class="fadeIn fourth" />
                       &nbsp;</div>
                   </div>
                 </div>

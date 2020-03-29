@@ -279,8 +279,6 @@
                     <br /> 
                     <div class="wrapper fadeInDown">
                     <div id="formContent">
-                    <!-- Tabs Titles -->
-                    <!-- Icon -->
                     <div class="fadeIn first">
                       <img src="http://simpleicon.com/wp-content/uploads/account.png" id="icon" alt="User Icon" /><br />
                         <br />

@@ -6,11 +6,11 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Descripción breve de EncapRol
+/// Descripción breve de EncapEstado
 /// </summary>
 [Serializable]
-[Table("rol_usuario", Schema = "usuario")]
-public class EncapRol
+[Table("estado_usuario", Schema = "usuario")]
+public class EncapEstado
 {
 
     private int id;

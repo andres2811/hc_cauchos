@@ -60,5 +60,67 @@ public class DAOAdmin
 
     }
 
+    //METODO PARA VERIFICAR SI EL CORREO ESTA AL MOMENTO DE REGISTRAR EMPLEADO
+    public EncapUsuario verificarCorreo(EncapUsuario emple)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.usuario.Where(x => x.Correo.Equals(emple.Correo)).FirstOrDefault();
+        }
+    }
+    
+    //METODO PARA INSERTAR UN EMPLEADO
+    public void InsertarEmpleado(EncapUsuario emple)
+    {
+        using (var db = new Mapeo())
+        {
+            db.usuario.Add(emple);
+            db.SaveChanges();
+        }
+    }
 
+    //METODO PARA TRAER USUARIO CON NOMBRE DE ROL Y ESTADO }
+
+    public List<EncapUsuario> ObtenerEmpleados()
+    {
+        using (var db = new Mapeo())
+        {
+            return (
+                    //join usuario - rol
+                    from usu in db.usuario
+                    join rol in db.rol
+                    on usu.Rol_id equals rol.Id
+                    //join usuario - estado 
+                    from usu2 in db.usuario
+                    join estado in db.estado
+                    on usu2.Estado_id equals estado.Id
+
+                    select new
+                    {
+                        usu,
+                        rol,
+                        usu2,
+                        estado
+
+                    }).ToList().Select(m => new EncapUsuario
+                    {
+                        User_id = m.usu.User_id,
+                        Nombre = m.usu.Nombre,
+                        Apellido = m.usu.Apellido,
+                        Correo = m.usu.Correo,
+                        Clave = m.usu.Clave,
+                        Fecha_nacimiento = m.usu.Fecha_nacimiento,
+                        Identificacion = m.usu.Identificacion,
+                        //
+                        Rol_id = m.usu.Rol_id,
+                        RolNombre = m.rol.Nombre,
+                        //
+                        Estado_id = m.usu2.Estado_id,
+                        EstadoNombre = m.estado.Nombre
+
+                    }).ToList();
+
+
+        }
+    }
 }

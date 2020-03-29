@@ -133,7 +133,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="insertarEmpleado.aspx"><i class="fa fa-circle-o"></i> Agregar Empleados</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li><a href="cambiosEmpleado.aspx"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -179,14 +179,9 @@
       <!-- =============================================== -->
       <div class="content-wrapper">
         <!-- PARTE PARA EL TITULO DE LA PAGINA Y DESCRIPCION -->
-        <section class="content-header">
-          <h1>
-            TITULO PAGINA
-            <small>aqui va una descripcion de la pagina</small>
-          </h1>
-        </section>
+       
           <!---------------------------------AQUI VA NUESTRO CODIGO HEREDADO DESDE LAS VISTAS IVAN--------------------------------->
-        <section class="content1">
+        <section class="content">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
             </asp:ContentPlaceHolder>

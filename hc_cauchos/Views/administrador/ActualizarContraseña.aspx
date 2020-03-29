@@ -284,27 +284,23 @@
                     <!-- Tabs Titles -->
                     <!-- Icon -->
                     <div class="fadeIn first">
-                     
+
+                        <h2>Recuperar contraseña</h2>
                         <br />
-                                <asp:TextBox ID="TB_Contraseña" runat="server"  class="form-control" placeholder="Contraseña" TextMode="Password" Height="23px" Width="144px"></asp:TextBox>                    
+                        <br />
+                        
+                                <asp:TextBox ID="TB_Contraseña" runat="server"  class="form-control" placeholder="Nueva Contraseña" TextMode="Password" Height="23px" Width="144px"></asp:TextBox>                    
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Validar" ControlToValidate="TB_Contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
-                                
-                        <br />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_Contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
-                                
-                        <br />
-                        <br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:TextBox ID="TB_Repetir" runat="server"  class="form-control" placeholder="Repetir Contraseña" TextMode="Password" Height="24px" Width="144px"></asp:TextBox>                    
+                                <asp:TextBox ID="TB_Repetir" runat="server"  class="form-control" placeholder="Confirmar Contraseña" TextMode="Password" Height="24px" Width="144px"></asp:TextBox>                    
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Validar" ControlToValidate="TB_Repetir" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TB_Contraseña" ControlToValidate="TB_Repetir" ErrorMessage="Las Contraseñas no coinciden"></asp:CompareValidator>
                         <br />
+                               <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TB_Contraseña" ControlToValidate="TB_Repetir" ErrorMessage="Las Contraseñas no coinciden"></asp:CompareValidator>      
                         <br />
-                      
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_Contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
                     </div>
                     <!-- Login Form -->
                    <div>
                            <asp:Button ID="BTN_Cambiar" runat="server" ValidationGroup="Validar" Text="Cambiar" class="fadeIn fourth" OnClick="BTN_Recuperar_Click" style="height: 52px"/>
-
                    </div>
                     <!-- Remind Passowrd -->
                     <div id="formFooter">

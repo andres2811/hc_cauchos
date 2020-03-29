@@ -20,9 +20,13 @@ public class Mapeo : DbContext
     {
 
     }
+
     // variables que apuntan a la tabla
     public DbSet<EncapUsuario> usuario { get; set; }
-    
+    public DbSet<EncapRol> rol { get; set; }
+    public DbSet<EncapEstado> estado { get; set; }
+
+
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(this.schema);

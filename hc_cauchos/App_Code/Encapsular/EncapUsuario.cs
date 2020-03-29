@@ -27,6 +27,8 @@ public class EncapUsuario
     private Nullable<DateTime> tiempo_token;
     private string sesion;
     private Nullable<DateTime> last_modify;
+    private string rolNombre;
+    private string estadoNombre;
 
     [Key]
     [Column("user_id")]
@@ -55,5 +57,8 @@ public class EncapUsuario
     public string Clave { get => clave; set => clave = value; }
     [Column("last_modify")]
     public DateTime? Last_modify { get => last_modify; set => last_modify = value; }
-    
+    [NotMapped]
+    public string RolNombre { get => rolNombre; set => rolNombre = value; }
+    [NotMapped]
+    public string EstadoNombre { get => estadoNombre; set => estadoNombre = value; }
 }
