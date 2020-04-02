@@ -19,7 +19,9 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
 
     protected void BTN_cerrar_Sesion_Click(object sender, EventArgs e)
     {
+
         Session.Abandon();
         Response.Redirect("../home.aspx");
+
     }
 }

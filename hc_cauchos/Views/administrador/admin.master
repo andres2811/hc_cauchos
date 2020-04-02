@@ -133,7 +133,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="insertarEmpleado.aspx"><i class="fa fa-circle-o"></i> Agregar Empleados</a></li>
-                <li><a href="cambiosEmpleado.aspx"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li><a href="cambiosEmpleado.aspx"><i class="fa fa-circle-o"></i> Ver-Editar-Inhabilitar Empleados</a></li>
               </ul>
             </li>
             <li class="treeview">

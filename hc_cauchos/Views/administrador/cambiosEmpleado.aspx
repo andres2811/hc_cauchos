@@ -3,15 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
+    <br />
+    <h1 class="text-center"><strong>Ver - Editar - Inhabilitar Empleados</strong></h1>
+    <br />
+    <br />
 
-            </div>
-            <div class="col-2">
-                   <div class="text-center">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" GridLines="None" Width="970px">
+         <div class="text-left">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" CssClass="table table-responsive table-striped" GridLines="None" DataKeyNames="User_id">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" />
@@ -19,10 +17,27 @@
                     <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
                     <asp:BoundField DataField="Fecha_nacimiento" HeaderText="Fecha nacimiento" SortExpression="Fecha_nacimiento" />
                     <asp:BoundField DataField="Identificacion" HeaderText="Identificacion" SortExpression="Identificacion" />
-                    <asp:BoundField DataField="RolNombre" HeaderText="Rol" SortExpression="RolNombre" />
-                    <asp:BoundField DataField="EstadoNombre" HeaderText="Estado" SortExpression="EstadoNombre" />
-                    <asp:CommandField ShowDeleteButton="True" />
-                    <asp:CommandField CancelText="" DeleteText="" ShowEditButton="True" />
+                    <asp:TemplateField HeaderText="Rol" SortExpression="RolNombre">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="DDL_roles" runat="server" DataSourceID="ODS_obtenerRoles" DataTextField="Nombre" DataValueField="Id">
+                            </asp:DropDownList>
+                            <asp:ObjectDataSource ID="ODS_obtenerRoles" runat="server" SelectMethod="ObtenerRoles" TypeName="DAOAdmin"></asp:ObjectDataSource>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("RolNombre") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Estado" SortExpression="EstadoNombre">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id">
+                            </asp:DropDownList>
+                            <asp:ObjectDataSource ID="ODS_obtenerEstados" runat="server" SelectMethod="ObtenerEstados" TypeName="DAOAdmin"></asp:ObjectDataSource>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("EstadoNombre") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -36,14 +51,7 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
-        <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin"></asp:ObjectDataSource>
-            </div>
-            <div class="col-4">
+        <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="actualizarEmpleado"></asp:ObjectDataSource>
 
-            </div>
-        </div>
-    </div>
-     
-    
 </asp:Content>
 
