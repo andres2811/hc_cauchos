@@ -150,10 +150,14 @@
               </ul>
             </li>
             <li>
-              <a href="#">
-                <i class="fa fa-th"></i> <span>Inventario</span> <small class="label pull-right bg-green">Hot</small>
+                <a href="#">
+                  <i class="fa fa-dashboard"></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-            </li>            
+              <ul class="treeview-menu">
+                <li><a href="AgregarInventario.aspx"><i class="fa fa-circle-o"></i> Agregar Item</a></li>
+                <li><a href="ConsultarInventario.aspx"><i class="fa fa-circle-o"></i> Consulatar Inventario</a></li>
+              </ul>
+            </li>         
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-pie-chart"></i>

@@ -170,4 +170,149 @@ public class DAOAdmin
             db.SaveChanges();
         }
     }
+    //METODO PARA INSERTAR UN ITEM INVENTARIO
+    public void InsertarItem(EncapInventario invent)
+    {
+        using (var db = new Mapeo())
+        {
+            db.inventario.Add(invent);
+            db.SaveChanges();
+        }
+    }
+
+    //METODO CONSULTAR INVENTARIO
+    public List<EncapInventario> ConsultarInventario()
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem
+                       
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual,
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+                        
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado =m.estadoitem.Estado_item
+                        
+                        
+                        
+
+
+                    }).ToList();
+
+
+        }
+    }
+    //METODO ACTUALIZAR TABLA
+    public void ActualizarInventario(EncapInventario invent )
+    {
+        using (var db = new Mapeo())
+        {
+            var resultado = db.inventario.SingleOrDefault(x => x.Id == invent.Id);
+            if (resultado != null)
+            {
+                resultado.Titulo = invent.Titulo;
+                
+                resultado.Referencia = invent.Referencia;
+                resultado.Precio = invent.Precio;
+                resultado.Ca_actual = invent.Ca_actual;
+                resultado.Ca_minima = invent.Ca_minima;
+                resultado.Id_marca = invent.Id_marca;
+                resultado.Id_estado = invent.Id_estado;
+                
+                db.SaveChanges();
+            }
+        }
+
+    }
+    //ACTUALIZAR CON IMAGEN
+    public void ActualizarReferencia(EncapInventario invent)
+    {
+        using (var db = new Mapeo())
+        {
+            var resultado = db.inventario.SingleOrDefault(x => x.Referencia == invent.Referencia);
+            if (resultado != null)
+            {
+                resultado.Titulo = invent.Titulo;
+
+                resultado.Referencia = invent.Referencia;
+                resultado.Precio = invent.Precio;
+                resultado.Ca_actual = resultado.Ca_actual + invent.Ca_actual;
+                resultado.Ca_minima = invent.Ca_minima;
+                resultado.Id_marca = invent.Id_marca;
+                resultado.Id_estado = invent.Id_estado;
+                resultado.Imagen = invent.Imagen;
+               
+                db.SaveChanges();
+            }
+        }
+
+    }
+    //METODO CONSULATR IMAGEN I++
+    public EncapInventario BuscarInventario(EncapInventario inventario,string a)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.inventario.Where(x => x.Referencia == a).FirstOrDefault();
+        }
+    }
+    
+    //METODO ELIMINAR ITEM DEL INVENTARIO
+    public void EliminarItem(EncapInventario invent)
+    {
+        using (var db = new Mapeo())
+        {
+            db.inventario.Attach(invent);
+
+            var entry = db.Entry(invent);
+            entry.State = EntityState.Deleted;
+            db.SaveChanges();
+        }
+    }
+    //METODO CONSULTAR MARCA
+    public List<EncapMarca> ColsultarMarca()
+    {
+        using(var db = new Mapeo())
+        {
+           return db.marca_carro.ToList();
+        }
+    }
+    //METODO CONSULTAR CATEGORIA
+    public List<EncapCategoria> ColsultarCategoria()
+    {
+        using (var db = new Mapeo())
+        {
+            return db.categoria.ToList();
+        }
+    }
+    //METODO CONSULTAR EStado
+    public List<EncapEstadoItem> ColsultarEstado()
+    {
+        using (var db = new Mapeo())
+        {
+            return db.estado_item.ToList();
+        }
+    }
 }

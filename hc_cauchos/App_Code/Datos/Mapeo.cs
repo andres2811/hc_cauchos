@@ -25,7 +25,10 @@ public class Mapeo : DbContext
     public DbSet<EncapUsuario> usuario { get; set; }
     public DbSet<EncapRol> rol { get; set; }
     public DbSet<EncapEstado> estado { get; set; }
-
+    public DbSet<EncapInventario> inventario { get; set; }
+    public DbSet<EncapMarca> marca_carro  { get; set; }
+    public DbSet<EncapCategoria> categoria { get; set; }
+    public DbSet<EncapEstadoItem> estado_item { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
