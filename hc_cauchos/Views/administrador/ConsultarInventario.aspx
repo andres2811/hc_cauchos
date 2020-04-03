@@ -13,10 +13,10 @@
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="ODS_Inventario" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="auto-style1"  >
+            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="ODS_Inventario" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="auto-style1" DataKeyNames="Id"  >
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
-                    <asp:TemplateField HeaderText="Imagen">
+                     <asp:TemplateField HeaderText="Imagen">
 
                         <ItemTemplate>
                           <asp:Image ID="IdInventario" runat="server" CssClass="img-responsive" Width="100" ImageUrl=""/>
@@ -26,6 +26,7 @@
 
                       </asp:TemplateField>
                     <asp:BoundField DataField="Referencia" HeaderText="Referencia" SortExpression="Referencia" />
+                   
                     <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
                     <asp:BoundField DataField="Ca_actual" HeaderText="Ca_actual" SortExpression="Ca_actual" />
                     <asp:BoundField DataField="Ca_minima" HeaderText="Ca_minima" SortExpression="Ca_minima" />
@@ -36,7 +37,7 @@
                             <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Nombre_marca") %>'></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Nombre_marca") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Nombre_categoria" SortExpression="Nombre_categoria">
@@ -56,7 +57,7 @@
                             <asp:ObjectDataSource ID="ODS_Estado" runat="server" SelectMethod="ColsultarEstado" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField HeaderText="Editar" ShowEditButton="True" />
