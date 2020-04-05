@@ -270,25 +270,27 @@
     #icon {
       width:60%;
     }
+        .auto-style1 {
+            text-align: center;
+        }
     </style>
+        <br />
+      <h1 class="auto-style1"><strong>RECUPERAR CONTRASEÑA</strong></h1>  
     <div class="container">
         <div class="row">
-
+            
             <div class="col-4">
             </div>
-
+            
             <div class="col-4"> 
                     <br />
-                    <br /> 
                     <div class="wrapper fadeInDown">
                     <div id="formContent">
                     <!-- Tabs Titles -->
                     <!-- Icon -->
-                    <div class="fadeIn first">
-                     
+                    <div class="fadeIn first">                  
                         <br />
-                      <asp:TextBox ID="TB_CorreoRecuperar" runat="server" class="fadeIn second" placeholder="Correo" TextMode="Email" ></asp:TextBox>
-                      &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_CorreoRecuperar" ErrorMessage="*"></asp:RequiredFieldValidator>
+                      <asp:TextBox ID="TB_CorreoRecuperar" runat="server" class="fadeIn second" placeholder="Correo" TextMode="Email" ></asp:TextBox>                     
                         <br />
                         <br />
                       

@@ -5,17 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1 class="text-aling-center">Agregar Empleados </h1>
-    <div class="container">
         <div class="row">
-            <div class="col-5">
-
-            </div>
-            <div class="col-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="form-group">
-                            <br /> <br />                       
-                             <asp:TextBox ID="TB_nombres" runat="server" class="form-control" placeholder="nombres"></asp:TextBox>
+            <div class="col-md-4 col-md-offset-4">
+                            <br /> <br />     
+                <div class="form-group">
+                     <asp:TextBox ID="TB_nombres" runat="server" class="form-control" placeholder="nombres"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nombres" ErrorMessage="*"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="TB_apellidos" runat="server" class="form-control" placeholder="apellido"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Registro" ControlToValidate="TB_apellidos" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -35,16 +29,9 @@
                             </asp:DropDownList>
                             <br />  
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
-                            <asp:Button ID="BTN_registrar_empleado" runat="server" Text="Registrar" class="btn btn-primary" ValidationGroup="Registro" OnClick="BTN_registrar_empleado_Click"/> 
-                        </div>                    
-                    </div>                 
-                    </div>             
-            </div>
-               
-            <div class="col-5">
-
-            </div>
-       </div>
-    </div>
+                            <asp:Button ID="BTN_registrar_empleado" runat="server" Text="Registrar" class="btn btn-primary" ValidationGroup="Registro" OnClick="BTN_registrar_empleado_Click"/>
+                </div>                        
+             </div>                                   
+       </div>       
 </asp:Content>
 
