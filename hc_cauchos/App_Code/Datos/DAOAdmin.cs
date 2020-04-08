@@ -54,6 +54,9 @@ public class DAOAdmin
                 resultado.Tiempo_token = user.Tiempo_token;
                 resultado.Sesion = user.Sesion;
                 resultado.Last_modify = DateTime.Now;
+                resultado.Ip_ = user.Ip_;
+                resultado.Mac_ = user.Mac_;
+
                 db.SaveChanges();
             }
 
@@ -313,6 +316,14 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
             return db.estado_item.ToList();
+        }
+    }
+    //METODO CONSULTAR USUARIO ACTIVO
+    public EncapUsuario UsuarioActivo(string sesion)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.usuario.Where(x => x.Sesion == sesion).FirstOrDefault();
         }
     }
 }

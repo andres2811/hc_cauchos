@@ -21,6 +21,12 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
     {
 
         Session.Abandon();
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        User.Ip_ = null;
+        User.Mac_ = null;
+        User.Sesion = null;
+        new DAOAdmin().ActualizarUsuario(User);
         Response.Redirect("../home.aspx");
 
     }

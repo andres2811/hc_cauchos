@@ -29,6 +29,8 @@ public class EncapUsuario
     private Nullable<DateTime> last_modify;
     private string rolNombre;
     private string estadoNombre;
+    private string ip_;
+    private string mac_;
 
     [Key]
     [Column("user_id")]
@@ -57,8 +59,16 @@ public class EncapUsuario
     public string Clave { get => clave; set => clave = value; }
     [Column("last_modify")]
     public DateTime? Last_modify { get => last_modify; set => last_modify = value; }
+    [Column("ip")]
+    public string Ip_ { get => ip_; set => ip_ = value; }
+    [Column("mac")]
+    public string Mac_ { get => mac_; set => mac_ = value; }
+
+
+
     [NotMapped]
     public string RolNombre { get => rolNombre; set => rolNombre = value; }
     [NotMapped]
     public string EstadoNombre { get => estadoNombre; set => estadoNombre = value; }
+    
 }

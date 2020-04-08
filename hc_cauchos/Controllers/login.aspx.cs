@@ -27,43 +27,64 @@ public partial class Views_login_login : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Usuario o Contraseña incorrecta' );</script>");
             return;
         }
-        if (ecUser.Estado_id == 1)
-        {
-            
-            Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
-            //en esta session mando correctamente valores del encapsulado
-            Session["Valido"] = ecUser;
-            ecUser.Sesion = (string)Session["Nombre"].ToString();
-            new DAOAdmin().ActualizarUsuario(ecUser);
+        //Validacion de la iP y la mac
+        string ip = new MAC_IP().ip();
+        string mac = new MAC_IP().mac();
 
-            //Dependiendo del rol se envia al Formulario correcto
-            switch (ecUser.Rol_id)
-            {
-                case 1:
-                    Response.Redirect("administrador/index_admin.aspx");
-                    break;
-                case 2:
-                    Response.Redirect("empleado/index_empleado.aspx");
-                    break;
-                case 3:
-                    Response.Redirect("domiciliario/index_domiciliario.aspx");
-                    break;
-                case 4:
-                    Response.Redirect("usuario/index_usuario.aspx");
-                    break;
-            }
-        }
-        if (ecUser.Estado_id == 2)
+        if(ecUser.Ip_ == null && ecUser.Mac_ == null)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Su cuenta esta en espera de recuperar contraseña' );</script>");
-            return;
+            ecUser.Ip_ = ip;
+            ecUser.Mac_ = mac;
+            new DAOAdmin().ActualizarUsuario(ecUser);
         }
-        if (ecUser.Estado_id == 3)
+        if (mac != ecUser.Mac_ && ip != ecUser.Ip_)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Su cuenta ha sido inhabilitada, comuniquese con el administrador' );</script>");
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Por favor verifica tus sessiones abierta para poder ingresar' );</script>");
             return;
         }
         
+
+
+            if (ecUser.Estado_id == 1)
+            {
+
+                Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
+                //en esta session mando correctamente valores del encapsulado
+                Session["Valido"] = ecUser;
+                ecUser.Sesion = (string)Session["Nombre"].ToString();
+
+                new DAOAdmin().ActualizarUsuario(ecUser);
+
+
+
+                //Dependiendo del rol se envia al Formulario correcto
+                switch (ecUser.Rol_id)
+                {
+                    case 1:
+                        Response.Redirect("administrador/index_admin.aspx");
+                        break;
+                    case 2:
+                        Response.Redirect("empleado/index_empleado.aspx");
+                        break;
+                    case 3:
+                        Response.Redirect("domiciliario/index_domiciliario.aspx");
+                        break;
+                    case 4:
+                        Response.Redirect("usuario/index_usuario.aspx");
+                        break;
+                }
+            }
+            if (ecUser.Estado_id == 2)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Su cuenta esta en espera de recuperar contraseña' );</script>");
+                return;
+            }
+            if (ecUser.Estado_id == 3)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Su cuenta ha sido inhabilitada, comuniquese con el administrador' );</script>");
+                return;
+            }
+       
     }
 
     protected void LButton_Recuperar_Click(object sender, EventArgs e)

@@ -13,13 +13,19 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     
     protected void Page_Load(object sender, EventArgs e)
     {
-       
 
+
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
 
     }
 
 
-   
+
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
