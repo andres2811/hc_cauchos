@@ -278,27 +278,31 @@
                     <br />
                     <br /> 
                     <div class="wrapper fadeInDown">
-                    <div id="formContent">
-                    <div class="fadeIn first">
-                      <img src="http://simpleicon.com/wp-content/uploads/account.png" id="icon" alt="User Icon" /><br />
-                        <br />
-                      <asp:TextBox ID="TB_correo" runat="server"  class="fadeIn second" placeholder="Correo" TextMode="Email" ></asp:TextBox>
-                      &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Login" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <br />
-                        <br />
-                      <asp:TextBox ID="TB_contraseña" runat="server"  class="fadeIn third" placeholder="Contraseña" TextMode="Password"></asp:TextBox>                    
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Login" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
-                    </div>
-                    <!-- Login Form -->
-                    <div>                     
-                      <asp:Button ID="BTN_ingresar" runat="server" ValidationGroup="Login" Text="Ingresar" class="fadeIn fourth" OnClick="BTN_ingresar_Click"/>
-                    </div>
-                    <!-- Remind Passowrd -->
-                    <div id="formFooter">
-                      &nbsp;<asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click">Olvido Su Contraseña?</asp:LinkButton>
-                    </div>
-                  </div>
-                </div>
+                        <div id="formContent">
+                            <div class="fadeIn first">
+                                <div class="form-group">
+                                    <img src="http://simpleicon.com/wp-content/uploads/account.png" id="icon" alt="User Icon" /><br />
+                                     <br />
+                                     <asp:TextBox ID="TB_correo" runat="server"  class="form-control d-inline text-center" placeholder="Correo" TextMode="Email" Width="85%" ></asp:TextBox>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Login" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                     <br />
+                                    <br />
+                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center" placeholder="Contraseña" TextMode="Password" Width="85%"></asp:TextBox>                    
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Login" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                </div>  
+                                 <div>                     
+                              <asp:Button ID="BTN_ingresar" runat="server" ValidationGroup="Login" Text="Ingresar" class="fadeIn fourth" OnClick="BTN_ingresar_Click"/>
+                            </div>
+                           
+                            <div id="formFooter">
+                                <asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click">Olvido Su Contraseña?</asp:LinkButton>
+                            </div>
+                                
+                            </div>
+                        
+                           
+                      </div>
+                     </div>
              </div>
              <div class="col-4">
              </div>                

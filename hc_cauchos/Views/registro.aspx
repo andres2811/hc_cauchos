@@ -265,49 +265,50 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
+
+     
+
+       
     <div class="container">
         <div class="row">
+
             <div class="col-4">
 
             </div>
 
-            <div class="col-4">
-                    <div class="wrapper fadeInDown">
+            <div class="col-4"> 
+                <div class="wrapper fadeInDown">
                     <div id="formContent">
-                    <!-- Tabs Titles -->
-                    <!-- Icon -->
-                    <div class="fadeIn first">
-                      <img src="http://simpleicon.com/wp-content/uploads/add-user.svg" id="icon" alt="User Icon" />
+                        <div class="fadeIn first">
+                            <img src="http://simpleicon.com/wp-content/uploads/add-user.svg" id="icon" alt="User Icon" />
+                            <div class="form-group">
+                                 <asp:TextBox ID="TB_nombres" runat="server" class="form-control" placeholder="nombres"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nombres" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_apellidos" runat="server" class="form-control" placeholder="apellido"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Registro" ControlToValidate="TB_apellidos" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_correo" runat="server" class="form-control d-inline text-center" placeholder="correo"  TextMode="Email" Width="85%" ></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Registro" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_contraseña" runat="server" class="form-control" placeholder="contraseña"></asp:TextBox>     
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="Registro" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_confirmar_contra" runat="server" class="form-control" placeholder="confirmar contraseña"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="Registro" ControlToValidate="TB_confirmar_contra" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_fecha_nacimiento" runat="server" class="form-control d-inline text-center" placeholder="fecha nacimiento" TextMode="Date" Width="85%"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="Registro" ControlToValidate="TB_fecha_nacimiento" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="TB_identificacion" runat="server" class="form-control" placeholder="identificacion"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="Registro" ControlToValidate="TB_identificacion" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                <br />  
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
+                                <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="fadeIn fourth" OnClick="BTN_registrar_Click" ValidationGroup="Registro"/> 
+                            </div>      
+                        </div>
                     </div>
-                    <!-- Login Form -->
-                    <div>      
-                        <asp:TextBox ID="TB_nombres" runat="server" class="" placeholder="nombres"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nombres" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_apellidos" runat="server" class="" placeholder="apellido"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Registro" ControlToValidate="TB_apellidos" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_correo" runat="server" class="" placeholder="correo"  TextMode="Email"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Registro" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_contraseña" runat="server" class="" placeholder="contraseña"></asp:TextBox>     
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="Registro" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_confirmar_contra" runat="server" class="" placeholder="confirmar contraseña"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="Registro" ControlToValidate="TB_confirmar_contra" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_fecha_nacimiento" runat="server" class="" placeholder="fecha nacimiento" TextMode="Date"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="Registro" ControlToValidate="TB_fecha_nacimiento" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_identificacion" runat="server" class="" placeholder="identificacion"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="Registro" ControlToValidate="TB_identificacion" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <br />  
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
-                        <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="fadeIn fourth" OnClick="BTN_registrar_Click" ValidationGroup="Registro"/>                       
-                    </div>
-                  </div>
                 </div>
             </div>
-           
-             <div class="col-4">
+
+            <div class="col-4">
 
             </div>
         </div>
     </div>
-    <br />
 </asp:Content>
 

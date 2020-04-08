@@ -9,6 +9,8 @@ using System.Web;
 /// </summary>
 public class DAOAdmin
 {
+
+    //METODO PARA VERIFICAR USUARIO EN LOGIN 
    public EncapUsuario loginEntity(EncapUsuario user)
     {
         using (var db = new Mapeo())
@@ -17,6 +19,7 @@ public class DAOAdmin
         }
 
     }
+    //METODO PARA BUSCAR CORREO EN LOGIN 
     public EncapUsuario BuscarCorreo(string correo)
     {
         using (var db = new Mapeo())
@@ -26,6 +29,7 @@ public class DAOAdmin
 
     }
 
+    //METODO PARA VERIFICAR TOKEN DE RECUPERACION EN LOGIN 
     public EncapUsuario BuscarToken(string token)
     {
         using (var db = new Mapeo())
@@ -35,6 +39,8 @@ public class DAOAdmin
 
     }
 
+
+    //METODO PARA ACTUALIZAR USUARIOS 
     public void ActualizarUsuario(EncapUsuario user)
     {
         using (var db = new Mapeo())
@@ -63,6 +69,7 @@ public class DAOAdmin
         }
 
     }
+    //###################################################################################################################//
 
     //METODO PARA VERIFICAR SI EL CORREO ESTA AL MOMENTO DE REGISTRAR EMPLEADO
     public EncapUsuario verificarCorreo(EncapUsuario emple)
@@ -83,7 +90,7 @@ public class DAOAdmin
         }
     }
 
-    //METODO PARA TRAER USUARIO CON NOMBRE DE ROL Y ESTADO }
+    //METODO PARA TRAER USUARIO CON NOMBRE DE ROL Y ESTADO 
 
     public List<EncapUsuario> ObtenerEmpleados()
     {
@@ -123,19 +130,7 @@ public class DAOAdmin
         }
     }
 
-    //METODO PARA ELIMINAR UN EMPLEADO
-    public void EliminarEmpleado(EncapUsuario emple)
-    {
-        using (var db = new Mapeo())
-        {
-            db.usuario.Attach(emple);
-            var entry = db.Entry(emple);
-            entry.State = System.Data.Entity.EntityState.Deleted;
-            db.SaveChanges();
-        }
-    }
-
-    //METODO PARA OBTENER LOS ROLES 
+    //METODO PARA OBTENER LOS ROLES DEL EMPLEADO
     public List<EncapRol> ObtenerRoles()
     {
         using (var db = new Mapeo())
@@ -144,7 +139,7 @@ public class DAOAdmin
         }
     }
 
-    //METODO PARA OBTENER LOS ESTADOS
+    //METODO PARA OBTENER LOS ESTADOS DE LOS USUARIOS 
     public List<EncapEstado> ObtenerEstados()
     {
         using (var db = new Mapeo())
@@ -166,6 +161,7 @@ public class DAOAdmin
             encapUsuario.Identificacion = empleado.Identificacion;
             encapUsuario.Rol_id = empleado.Rol_id;
             encapUsuario.Estado_id = empleado.Estado_id;
+            encapUsuario.Fecha_nacimiento = empleado.Fecha_nacimiento;
 
             db.usuario.Attach(encapUsuario);
             var entry = db.Entry(encapUsuario);
@@ -173,6 +169,8 @@ public class DAOAdmin
             db.SaveChanges();
         }
     }
+
+    //###################################################################################################################//
     //METODO PARA INSERTAR UN ITEM INVENTARIO
     public void InsertarItem(EncapInventario invent)
     {
@@ -228,7 +226,7 @@ public class DAOAdmin
 
         }
     }
-    //METODO ACTUALIZAR TABLA
+    //METODO ACTUALIZAR TABLA EN EL INVENTARIO
     public void ActualizarInventario(EncapInventario invent )
     {
         using (var db = new Mapeo())
@@ -250,7 +248,7 @@ public class DAOAdmin
         }
 
     }
-    //ACTUALIZAR CON IMAGEN
+    //ACTUALIZAR CON IMAGEN EN EL INVENTARIO 
     public void ActualizarReferencia(EncapInventario invent)
     {
         using (var db = new Mapeo())
@@ -273,7 +271,7 @@ public class DAOAdmin
         }
 
     }
-    //METODO CONSULATR IMAGEN I++
+    //METODO CONSULTAR IMAGEN I++
     public EncapInventario BuscarInventario(EncapInventario inventario,string a)
     {
         using (var db = new Mapeo())
@@ -294,7 +292,7 @@ public class DAOAdmin
             db.SaveChanges();
         }
     }
-    //METODO CONSULTAR MARCA
+    //METODO CONSULTAR MARCA DE INVENTARIO
     public List<EncapMarca> ColsultarMarca()
     {
         using(var db = new Mapeo())
@@ -302,7 +300,7 @@ public class DAOAdmin
            return db.marca_carro.ToList();
         }
     }
-    //METODO CONSULTAR CATEGORIA
+    //METODO CONSULTAR CATEGORIA DE INVENTARIO 
     public List<EncapCategoria> ColsultarCategoria()
     {
         using (var db = new Mapeo())
@@ -310,7 +308,7 @@ public class DAOAdmin
             return db.categoria.ToList();
         }
     }
-    //METODO CONSULTAR EStado
+    //METODO CONSULTAR ESTADO DE INVENTARIO 
     public List<EncapEstadoItem> ColsultarEstado()
     {
         using (var db = new Mapeo())
