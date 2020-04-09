@@ -271,6 +271,17 @@ public class DAOAdmin
         }
 
     }
+
+
+    //METODO CONSULATAR REFERENCIA
+    public List<EncapInventario> BuscarReferencia(string a)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.inventario.Where(x => x.Referencia.Equals(a)).ToList();
+                ;
+        }
+    }
     //METODO CONSULTAR IMAGEN I++
     public EncapInventario BuscarInventario(EncapInventario inventario,string a)
     {

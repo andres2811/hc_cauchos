@@ -10,7 +10,7 @@ using System.Web;
 /// </summary>
 /// 
 [Serializable]
-[Table("marca_carro", Schema = "usuario")]
+[Table("marca_carro", Schema = "administrador")]
 public class EncapMarca
 {
     private int id;

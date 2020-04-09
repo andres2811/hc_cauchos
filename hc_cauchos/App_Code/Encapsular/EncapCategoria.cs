@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 /// </summary>
 /// 
 [Serializable]
-[Table("categoria", Schema = "usuario")]
+[Table("categoria", Schema = "administrador")]
 public class EncapCategoria
 {
     private int id;

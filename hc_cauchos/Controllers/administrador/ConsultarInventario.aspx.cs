@@ -13,6 +13,7 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     
     protected void Page_Load(object sender, EventArgs e)
     {
+        GridView1.DataSourceID = "ODS_Inventario";
 
 
         EncapUsuario User = new EncapUsuario();
@@ -57,5 +58,15 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
 
 
 
-    
+
+
+    protected void BT_Buscar_Click(object sender, EventArgs e)
+    {
+
+
+        GridView1.DataSourceID = "ODS_Buscar";
+        
+
+
+    }
 }

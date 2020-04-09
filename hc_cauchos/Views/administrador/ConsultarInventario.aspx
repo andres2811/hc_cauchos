@@ -5,15 +5,24 @@
         .auto-style1 {
             margin-right: 0px;
         }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div class="row">
+
         <div class=" col-lg-12 col-md-offset-0.5">
+
+         
+                <br />
+                <br />
+                <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static"></asp:TextBox>
+                &nbsp;<asp:Button ID="BT_Buscar" runat="server" CssClass="form-control-static" Text="Buscar" OnClick="BT_Buscar_Click" />
+                <br />
+                <br />
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Inventario" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="auto-style1" DataKeyNames="Id" ForeColor="#333333" GridLines="None" Width="1322px"  >
+            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="auto-style1" DataKeyNames="Id" ForeColor="#333333" GridLines="None" Width="1322px"  >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
@@ -79,6 +88,18 @@
                  <asp:ObjectDataSource ID="ODS_Inventario" runat="server" DataObjectTypeName="EncapInventario" SelectMethod="ConsultarInventario" TypeName="DAOAdmin" UpdateMethod="ActualizarInventario"></asp:ObjectDataSource>
             </div>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOAdmin" DataObjectTypeName="EncapInventario" UpdateMethod="ActualizarInventario"></asp:ObjectDataSource>
+            
+               <asp:ObjectDataSource ID="ODS_Buscar" runat="server" SelectMethod="BuscarReferencia" TypeName="DAOAdmin">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="TB_Buscar" Name="a" PropertyName="Text" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            
+             <br />
+             <br />
+            
+            
+                
             
            </div>
         </div>
