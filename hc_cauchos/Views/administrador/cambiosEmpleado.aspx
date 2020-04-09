@@ -17,7 +17,23 @@
                     <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" />
                     <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" />
                     <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
-                    <asp:BoundField DataField="Fecha_nacimiento" HeaderText="Fecha nacimiento" SortExpression="Fecha_nacimiento" />
+                    <asp:TemplateField HeaderText="Fecha nacimiento" SortExpression="Fecha_nacimiento">
+                        <EditItemTemplate>
+                            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" SelectedDate='<%# Bind("Fecha_nacimiento") %>' Width="200px">
+                                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                                <NextPrevStyle VerticalAlign="Bottom" />
+                                <OtherMonthDayStyle ForeColor="#808080" />
+                                <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                                <SelectorStyle BackColor="#CCCCCC" />
+                                <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                                <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                <WeekendDayStyle BackColor="#FFFFCC" />
+                            </asp:Calendar>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha_nacimiento") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Identificacion" HeaderText="Identificacion" SortExpression="Identificacion" />
                     <asp:TemplateField HeaderText="Rol" SortExpression="RolNombre">
                         <EditItemTemplate>
@@ -32,7 +48,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Estado" SortExpression="EstadoNombre">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id">
+                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id" SelectedValue='<%# Bind("Estado_id") %>'>
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_obtenerEstados" runat="server" SelectMethod="ObtenerEstados" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
@@ -54,7 +70,7 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
-        <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="actualizarEmpleado"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario"></asp:ObjectDataSource>
      </div>
 </div>
 </asp:Content>
