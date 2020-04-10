@@ -278,8 +278,43 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            return db.inventario.Where(x => x.Referencia.Equals(a)).ToList();
-                ;
+            
+            return (from uu in db.inventario.Where(x=> x.Referencia==a)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem
+
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual,
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }).ToList();
         }
     }
     //METODO CONSULTAR IMAGEN I++

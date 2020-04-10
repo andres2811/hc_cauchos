@@ -17,16 +17,17 @@
                 <br />
                 <br />
                 <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static"></asp:TextBox>
-                &nbsp;<asp:Button ID="BT_Buscar" runat="server" CssClass="form-control-static" Text="Buscar" OnClick="BT_Buscar_Click" />
+                &nbsp;<asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" />
                 <br />
                 <br />
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="auto-style1" DataKeyNames="Id" ForeColor="#333333" GridLines="None" Width="1322px"  >
+            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id"  >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
-                     <asp:TemplateField HeaderText="Imagen">
+
+                    <asp:TemplateField HeaderText="Imagen">
 
                         <ItemTemplate>
                           <asp:Image ID="IdInventario" runat="server" CssClass="img-responsive" Width="100" ImageUrl=""/>
@@ -87,9 +88,8 @@
                
                  <asp:ObjectDataSource ID="ODS_Inventario" runat="server" DataObjectTypeName="EncapInventario" SelectMethod="ConsultarInventario" TypeName="DAOAdmin" UpdateMethod="ActualizarInventario"></asp:ObjectDataSource>
             </div>
-            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOAdmin" DataObjectTypeName="EncapInventario" UpdateMethod="ActualizarInventario"></asp:ObjectDataSource>
             
-               <asp:ObjectDataSource ID="ODS_Buscar" runat="server" SelectMethod="BuscarReferencia" TypeName="DAOAdmin">
+               <asp:ObjectDataSource ID="ODS_Buscar" runat="server" SelectMethod="BuscarReferencia" TypeName="DAOAdmin" DataObjectTypeName="EncapInventario" UpdateMethod="ActualizarInventario">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="TB_Buscar" Name="a" PropertyName="Text" Type="String" />
                     </SelectParameters>
