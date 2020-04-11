@@ -8,6 +8,8 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <br />
+    <h1 class="text-center"><strong>Ver - Editar - Inhabilitar Productos</strong></h1>
 
     <div class="row">
 
@@ -18,6 +20,7 @@
                 <br />
                 <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static"></asp:TextBox>
                 &nbsp;<asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Todos" CssClass="btn btn-primary" OnClick="Button1_Click" />
                 <br />
                 <br />
              <div style="overflow-x: auto;">  

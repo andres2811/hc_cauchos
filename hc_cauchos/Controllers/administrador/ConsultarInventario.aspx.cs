@@ -13,9 +13,6 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-
-
         EncapUsuario User = new EncapUsuario();
         User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
         if (User.Sesion == null)
@@ -62,11 +59,12 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
 
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
-
         GridView1.DataSourceID = "ODS_Buscar";
-        
-        
 
+    }
 
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        GridView1.DataSourceID = "ODS_Inventario";
     }
 }

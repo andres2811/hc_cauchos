@@ -4,7 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1 class="text-aling-center">Agregar Empleados </h1>
+    <br />
+    <h1 class="text-center"><strong>Agregar Empleados</strong></h1>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                             <br /> <br />     

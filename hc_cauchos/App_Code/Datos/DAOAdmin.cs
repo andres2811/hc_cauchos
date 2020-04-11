@@ -129,6 +129,46 @@ public class DAOAdmin
                     }).ToList();
         }
     }
+    //METODO PARA TRAER USUARIO CON NOMBRE DE ROL, ESTADO Y NOMBRE DE BUSQUEDA
+
+    public List<EncapUsuario> ObtenerEmpleadosNombre(string nombre)
+    {
+        using (var db = new Mapeo())
+        {
+            return (
+                    //apunto a tabla empleado donde usuario sea empleado/domiciliario 
+                    from usu in db.usuario
+                    where (usu.Rol_id == 2 || usu.Rol_id == 3)&&(usu.Nombre==nombre)
+                    //join usuario - rol
+                    join rol in db.rol on usu.Rol_id equals rol.Id
+                    //join usuario - estado 
+                    join estado in db.estado on usu.Estado_id equals estado.Id
+
+                    select new
+                    {
+                        usu,
+                        rol,
+                        estado
+
+                    }).ToList().Select(m => new EncapUsuario
+                    {
+                        User_id = m.usu.User_id,
+                        Nombre = m.usu.Nombre,
+                        Apellido = m.usu.Apellido,
+                        Correo = m.usu.Correo,
+                        Clave = m.usu.Clave,
+                        Fecha_nacimiento = m.usu.Fecha_nacimiento,
+                        Identificacion = m.usu.Identificacion,
+                        //
+                        Rol_id = m.usu.Rol_id,
+                        RolNombre = m.rol.Nombre,
+                        //
+                        Estado_id = m.usu.Estado_id,
+                        EstadoNombre = m.estado.Nombre
+
+                    }).ToList();
+        }
+    }
 
     //METODO PARA OBTENER LOS ROLES DEL EMPLEADO
     public List<EncapRol> ObtenerRoles()

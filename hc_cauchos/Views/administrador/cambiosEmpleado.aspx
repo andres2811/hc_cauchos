@@ -6,6 +6,9 @@
     <br />
     <h1 class="text-center"><strong>Ver - Editar - Inhabilitar Empleados</strong></h1>
     <br />
+    <asp:TextBox ID="TB_Buscar" runat="server" CssClass="form-control-static" placeholder="Nombre Empleado A Buscar"></asp:TextBox>
+    <asp:Button ID="BTN_buscarNombre" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BTN_buscarNombre_Click" />
+    <asp:Button ID="BTN_buscarTodos" runat="server" Text="Todos" CssClass="btn btn-primary" OnClick="BTN_buscarTodos_Click"/>
     <br />
 
       <div class="row">
@@ -48,7 +51,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Estado" SortExpression="EstadoNombre">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id" SelectedValue='<%# Bind("Estado_id") %>'>
+                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id">
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_obtenerEstados" runat="server" SelectMethod="ObtenerEstados" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
@@ -71,6 +74,11 @@
             </asp:GridView>
         </div>
         <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario"></asp:ObjectDataSource>
+             <asp:ObjectDataSource ID="ODS_mostrarEmpleNombre" runat="server" SelectMethod="ObtenerEmpleadosNombre" TypeName="DAOAdmin">
+                 <SelectParameters>
+                     <asp:ControlParameter ControlID="TB_Buscar" Name="nombre" PropertyName="Text" Type="String" />
+                 </SelectParameters>
+             </asp:ObjectDataSource>
      </div>
 </div>
 </asp:Content>

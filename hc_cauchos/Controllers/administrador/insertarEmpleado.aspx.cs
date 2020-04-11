@@ -9,7 +9,12 @@ public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
     }
 
     protected void BTN_registrar_empleado_Click(object sender, EventArgs e)

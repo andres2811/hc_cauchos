@@ -9,6 +9,7 @@ public partial class Views_administrador_ActualizarContraseña : System.Web.UI.P
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         ClientScriptManager cm = this.ClientScript;
         if (Request.QueryString.Count > 0)
         {
