@@ -57,6 +57,7 @@ public class DAOAdmin
                 resultado.Identificacion = user.Identificacion;
                 resultado.Token = user.Token;
                 resultado.Estado_id = user.Estado_id;
+                resultado.Rol_id = user.Rol_id;
                 resultado.Tiempo_token = user.Tiempo_token;
                 resultado.Sesion = user.Sesion;
                 resultado.Last_modify = DateTime.Now;

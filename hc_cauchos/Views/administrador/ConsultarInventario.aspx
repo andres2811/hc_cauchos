@@ -25,7 +25,7 @@
                 <br />
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id"  >
+            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id" OnRowUpdating="GridView1_RowUpdating"  >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
@@ -46,7 +46,7 @@
                     <asp:BoundField DataField="Ca_minima" HeaderText="Ca_minima" SortExpression="Ca_minima" />
                     <asp:TemplateField HeaderText="Nombre_marca" SortExpression="Nombre_marca">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id" SelectedValue='<%# Bind("Id_marca") %>'>
+                            <asp:DropDownList ID="DDL_marca" runat="server" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id" SelectedValue='<%# Bind("Id_marca") %>'>
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
@@ -56,7 +56,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Nombre_categoria" SortExpression="Nombre_categoria">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" SelectedValue='<%# Bind("Id_categoria") %>'>
+                            <asp:DropDownList ID="DDL_categoria" runat="server" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" SelectedValue='<%# Bind("Id_categoria") %>'>
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_Categoria" runat="server" SelectMethod="ColsultarCategoria" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
@@ -66,7 +66,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ODS_Estado" DataTextField="Estado_item" DataValueField="Id" SelectedValue='<%# Bind("Id_estado") %>'>
+                            <asp:DropDownList ID="DDL_estado" runat="server" DataSourceID="ODS_Estado" DataTextField="Estado_item" DataValueField="Id" SelectedValue='<%# Bind("Id_estado") %>'>
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_Estado" runat="server" SelectMethod="ColsultarEstado" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
