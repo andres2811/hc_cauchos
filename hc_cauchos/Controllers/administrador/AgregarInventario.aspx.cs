@@ -41,8 +41,9 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
       
         string nombreArchivo = System.IO.Path.GetFileName(FU_Archivo.PostedFile.FileName);
         string extension = System.IO.Path.GetExtension(FU_Archivo.PostedFile.FileName);
-
-        string saveLocationAdmin = Server.MapPath("~\\Archivos_Inventario") + "\\" + nombreArchivo;
+        
+        string saveLocationAdmin = HttpContext.Current.Server.MapPath("~\\Inventario\\") + nombreArchivo;
+        string Ruta = "~\\Inventario\\" +nombreArchivo;
 
         //validar Aechivo de tipo imagen
         if (!(extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png") || extension.Equals(".gif")))
@@ -60,32 +61,42 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
         if (consulta1 == 1)
         {
-            
-            
-            EncapInventario inven = new EncapInventario();
-           
-            byte[] ar = null;
-            using (BinaryReader reader = new
-                 BinaryReader(FU_Archivo.PostedFile.InputStream))
+            try
             {
-                ar = reader.ReadBytes(FU_Archivo.PostedFile.ContentLength);
-            }
+                FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
+                EncapInventario inven = new EncapInventario();
 
-           
-            inven.Imagen = ar;
-            inven.Titulo = TB_Titulo.Text;
-            inven.Referencia = TB_referencia.Text;
-            inven.Precio = int.Parse(TB_Precio.Text);
-            inven.Ca_actual = int.Parse(TB_Cantidad.Text);
-            inven.Ca_minima = int.Parse(TB_Minima.Text);
-            inven.Id_marca = int.Parse(DDL_Marca.Text);
-            inven.Id_categoria = int.Parse(DDL_Categoria.Text);
-            inven.Id_estado = 1;
-            new DAOAdmin().ActualizarReferencia(inven);
-            db.SaveChanges();
+                //byte[] ar = null;
+                //using (BinaryReader reader = new
+                //    BinaryReader(FU_Archivo.PostedFile.InputStream))
+                //{
+                //    ar = reader.ReadBytes(FU_Archivo.PostedFile.ContentLength);
+                //}
 
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('LA REFERENCIA es existente item actualizado' );</script>");
+                
+               
+
+
+                inven.Imagen = Ruta;
+                inven.Titulo = TB_Titulo.Text;
+                inven.Referencia = TB_referencia.Text;
+                inven.Precio = int.Parse(TB_Precio.Text);
+                inven.Ca_actual = int.Parse(TB_Cantidad.Text);
+                inven.Ca_minima = int.Parse(TB_Minima.Text);
+                inven.Id_marca = int.Parse(DDL_Marca.Text);
+                inven.Id_categoria = int.Parse(DDL_Categoria.Text);
+                inven.Id_estado = 1;
+                new DAOAdmin().ActualizarReferencia(inven);
+                db.SaveChanges();
             
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('LA REFERENCIA es existente item actualizado' );</script>");
+            }
+            catch (Exception exc)
+
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Error' );</script>");
+                return;
+            }
 
         }
 
@@ -98,7 +109,7 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
                 //Image1.ImageUrl = imgUrl64;
 
                 //Guardar Archivo local
-                //FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
+                FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
 
 
                 EncapInventario invent = new EncapInventario();
@@ -106,15 +117,15 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
                 //convertir a binario el archivo
 
 
-                byte[] ar = null;
-                using (BinaryReader reader = new
-                     BinaryReader(FU_Archivo.PostedFile.InputStream))
-                {
-                    ar = reader.ReadBytes(FU_Archivo.PostedFile.ContentLength);
-                }
+                //byte[] ar = null;
+                //using (BinaryReader reader = new
+                //    BinaryReader(FU_Archivo.PostedFile.InputStream))
+                //{
+                 //   ar = reader.ReadBytes(FU_Archivo.PostedFile.ContentLength);
+                //}
 
-                Session["rutaByte"] = ar;
-                invent.Imagen = ar;
+                //Session["rutaByte"] = ar;
+                invent.Imagen = Ruta;
                 invent.Titulo = TB_Titulo.Text;
                 invent.Referencia = TB_referencia.Text;
                 invent.Precio= int.Parse(TB_Precio.Text);

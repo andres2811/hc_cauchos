@@ -21,6 +21,18 @@
                 <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static"></asp:TextBox>
                 &nbsp;<asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" />
                 <asp:Button ID="Button1" runat="server" Text="Todos" CssClass="btn btn-primary" OnClick="Button1_Click" />
+               
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br />
+                <br />
+                
+                Precio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Categoria<br />
+                <asp:DropDownList ID="DDL_Precio" CssClass="form-control-static" runat="server"></asp:DropDownList>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:DropDownList ID="DDL_Marca" CssClass="form-control-static" runat="server"></asp:DropDownList>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <asp:DropDownList ID="DDL_Categoria" CssClass="form-control-static" runat="server"></asp:DropDownList>
                 <br />
                 <br />
              <div style="overflow-x: auto;">  
@@ -33,10 +45,10 @@
                     <asp:TemplateField HeaderText="Imagen">
 
                         <ItemTemplate>
-                          <asp:Image ID="IdInventario" runat="server" CssClass="img-responsive" Width="100" ImageUrl=""/>
-                    
+                          <asp:Image ID="IdInventario" runat="server" CssClass="img-responsive" ImageUrl="" Width="100px" />
+                            
                         </ItemTemplate>
-
+                        
 
                       </asp:TemplateField>
                     <asp:BoundField DataField="Referencia" HeaderText="Referencia" SortExpression="Referencia" />
@@ -74,6 +86,7 @@
                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                
                     <asp:CommandField HeaderText="Editar" ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
@@ -97,6 +110,8 @@
                         <asp:ControlParameter ControlID="TB_Buscar" Name="a" PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
+            
+                <asp:Image ID="Image1" runat="server" Height="31px" />
             
              <br />
              <br />

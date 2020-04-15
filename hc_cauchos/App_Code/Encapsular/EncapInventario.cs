@@ -13,7 +13,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class EncapInventario
 {
     private int id;
-    private byte[] imagen;
+    //private byte[] imagen;
+    private string imagen;
     private string titulo;
     private string referencia;
     private int precio;
@@ -31,7 +32,7 @@ public class EncapInventario
     [Column("id")]
     public int Id { get => id; set => id = value; }
     [Column("imagen")]
-    public byte[] Imagen { get => imagen; set => imagen = value; }
+    public string Imagen { get => imagen; set => imagen = value; }
     [Column("titulo")]
     public string Titulo { get => titulo; set => titulo = value; }
     [Column("referencia")]

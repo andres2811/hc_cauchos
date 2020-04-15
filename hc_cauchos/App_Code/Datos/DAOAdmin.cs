@@ -282,7 +282,7 @@ public class DAOAdmin
                 resultado.Ca_minima = invent.Ca_minima;
                 resultado.Id_marca = invent.Id_marca;
                 resultado.Id_estado = invent.Id_estado;
-                
+                resultado.Id_categoria = invent.Id_categoria;
                 db.SaveChanges();
             }
         }

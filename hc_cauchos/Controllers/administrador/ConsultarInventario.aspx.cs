@@ -20,6 +20,7 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
             Response.Redirect("../home.aspx");
         }
 
+        
     }
 
 
@@ -40,12 +41,12 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
             if (inventario != null)
             {
                 var image = e.Row.FindControl("IdInventario") as Image;
-                string imgUrl64 = "data:image/jpg;base64," + Convert.ToBase64String(inventario.Imagen);
 
+                String imgUrl64 = (inventario.Imagen);
                 image.ImageUrl = imgUrl64;
             }
-            
 
+            Image1.ImageUrl = "";
 
 
         }
