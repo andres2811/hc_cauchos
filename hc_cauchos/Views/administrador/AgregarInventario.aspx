@@ -12,10 +12,12 @@
   
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    
+    <br />
+    <h1 class="text-center"><strong>Agregar Producto</strong></h1>
          <div class="row">
                <div class="col-md-4 col-md-offset-4">
                    <div class="form-group">
+                       <br /> <br />
                        Imagen:
                        <asp:FileUpload id="FU_Archivo" runat="server" CssClass  ="form-control" ></asp:FileUpload>
                        <br />
@@ -29,12 +31,15 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="TB_Cantidad" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
                        <asp:TextBox ID="TB_Minima" runat="server" CssClass="form-control" TextMode="Number" placeholder="Cantidad Minima"></asp:TextBox>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="TB_Cantidad" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                       <br />
                        Marca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referencia<br />
                        <asp:DropDownList ID="DDL_Marca" runat="server" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id"  Width="106px"></asp:DropDownList>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        <asp:DropDownList ID="DDL_Categoria" runat="server" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" Width="106px"></asp:DropDownList>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
+                       <br />
+                       <br />
                        <br />
                        <asp:ObjectDataSource ID="ODS_Categoria" runat="server" SelectMethod="ColsultarCategoria" TypeName="DAOAdmin"></asp:ObjectDataSource>
                        <asp:Button ID ="BTN_subir" runat="server" Text="Almacenar" cssClass =" btn btn-primary" OnClick="BTN_subir_Click"  />                  
