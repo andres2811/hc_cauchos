@@ -53,6 +53,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
         }
        
         //Validaciones 
+
+       
         var db = new Mapeo();
 
         var consulta1 = (from x in db.inventario where x.Referencia.Equals(TB_referencia.Text) select x.Referencia ).Count();

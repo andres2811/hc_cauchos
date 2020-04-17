@@ -7,7 +7,7 @@
     <table class="w-100">
         <tr>
             <td>
-                <asp:DataList ID="DL_catalogo" runat="server" DataSourceID="ODS_catalogo" RepeatColumns="4" Width="839px" OnDataBinding="DL_catalogo_DataBinding">
+                <asp:DataList ID="DL_catalogo" runat="server" DataSourceID="ODS_catalogo" RepeatColumns="4" Width="839px" >
                     <ItemTemplate>
 
 

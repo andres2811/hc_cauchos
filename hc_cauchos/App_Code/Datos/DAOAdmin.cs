@@ -358,6 +358,92 @@ public class DAOAdmin
                     }).ToList();
         }
     }
+    //METODO DE CONSULTAR ITEM CON ID_MARCA
+    public List<EncapInventario> BuscarMarca (int marca)
+    {
+        using (var db = new Mapeo())
+        {
+            return( from uu in db.inventario.Where(x=> x.Id_marca == marca)
+                   join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem
+
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual,
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }).ToList();
+        }
+    }
+
+    //METODO DE CONSULTAR ITEM CON ID_Categoria
+    public List<EncapInventario> BuscarCategoria(int categ)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Id_categoria == categ)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem
+
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual,
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }).ToList();
+        }
+    }
+
     //METODO CONSULTAR IMAGEN I++
     public EncapInventario BuscarInventario(EncapInventario inventario,string a)
     {
@@ -384,7 +470,14 @@ public class DAOAdmin
     {
         using(var db = new Mapeo())
         {
-           return db.marca_carro.ToList();
+           return db.marca_carro.OrderBy(x=> x.Id).ToList();
+        }
+    }
+    public List<EncapMarca> ColsultarMarca2()
+    {
+        using (var db = new Mapeo())
+        {
+            return db.marca_carro.Where(x => x.Id >= 1).ToList();
         }
     }
     //METODO CONSULTAR CATEGORIA DE INVENTARIO 
@@ -392,7 +485,14 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            return db.categoria.ToList();
+            return db.categoria.OrderBy(x=> x.Id).ToList();
+        }
+    }
+    public List<EncapCategoria> ColsultarCategoria2()
+    {
+        using (var db = new Mapeo())
+        {
+            return db.categoria.OrderBy(x => x.Id >= 1).ToList();
         }
     }
     //METODO CONSULTAR ESTADO DE INVENTARIO 

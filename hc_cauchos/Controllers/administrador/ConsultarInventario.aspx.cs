@@ -19,8 +19,8 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
         {
             Response.Redirect("../home.aspx");
         }
-
         
+      
     }
 
 
@@ -28,23 +28,6 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-
-        EncapInventario ddlinventario = (EncapInventario)e.Row.DataItem;
-        if (e.Row.FindControl("DDL_marca") != null)
-        {
-            ((DropDownList)e.Row.FindControl("DDL_marca")).SelectedValue = ddlinventario.Id_marca.ToString();
-        }
-
-        if (e.Row.FindControl("DDL_categoria") != null)
-        {
-            ((DropDownList)e.Row.FindControl("DDL_categoria")).SelectedValue = ddlinventario.Id_categoria.ToString();
-        }
-
-        if (e.Row.FindControl("DDL_estado") != null)
-        {
-            ((DropDownList)e.Row.FindControl("DDL_estado")).SelectedValue = ddlinventario.Id_estado.ToString();
-        }
-
 
 
         if (e.Row.RowType == DataControlRowType.DataRow)
@@ -65,7 +48,7 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
                 image.ImageUrl = imgUrl64;
             }
 
-            Image1.ImageUrl = "";
+            
 
 
         }
@@ -73,7 +56,21 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
 
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
-        GV_inventario.DataSourceID = "ODS_Buscar";
+       
+        
+        if(TB_Buscar.Text != "")
+        {
+            GV_inventario.DataSourceID = "ODS_Buscar";
+        }else
+        if (DDL_Marca2.SelectedIndex != 0){
+            
+            GV_inventario.DataSourceID = "ODS_BuscarMarca";
+        }else
+        if (DDL_Categoria2.SelectedIndex != 0)
+        {
+            GV_inventario.DataSourceID = "ODS_BuscarCategoria";
+            
+        }
 
     }
 
@@ -82,11 +79,10 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
         GV_inventario.DataSourceID = "ODS_Inventario";
     }
 
-    protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
-        GridViewRow row = GV_inventario.Rows[e.RowIndex];
-        e.NewValues.Insert(2, "Id_marca", int.Parse(((DropDownList)row.FindControl("DDL_marca")).SelectedValue));
-        e.NewValues.Insert(4, "Id_categoria", int.Parse(((DropDownList)row.FindControl("DDL_categoria")).SelectedValue));
-        e.NewValues.Insert(6, "Id_estado", int.Parse(((DropDownList)row.FindControl("DDL_estado")).SelectedValue));
-    }
+
+
+
+
+
+    
 }

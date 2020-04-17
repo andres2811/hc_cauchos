@@ -17,27 +17,34 @@
 
          
                 <br />
-                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Categoria<br />
                 <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static"></asp:TextBox>
-                &nbsp;<asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" />
-                <asp:Button ID="Button1" runat="server" Text="Todos" CssClass="btn btn-primary" OnClick="Button1_Click" />
-               
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:DropDownList ID="DDL_Marca2" CssClass="form-control-static" runat="server" DataSourceID="ODS_ConsularMarca" DataTextField="Marca" DataValueField="Id" >
+                    <asp:ListItem Value="0">Marca</asp:ListItem>
+                </asp:DropDownList>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <br />
-                <br />
+                <asp:DropDownList ID="DDL_Categoria2" CssClass="form-control-static" runat="server" DataSourceID="ODS_ConsultarCategoria" DataTextField="Categoria" DataValueField="Id"></asp:DropDownList>
+                 &nbsp;&nbsp; <asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Todos" CssClass="btn btn-primary" OnClick="Button1_Click" />
+                <asp:ObjectDataSource ID="ODS_ConsultarCategoria" runat="server" SelectMethod="ColsultarCategoria" TypeName="DAOAdmin"></asp:ObjectDataSource>
+               
+               
+               
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 
-                Precio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Categoria<br />
-                <asp:DropDownList ID="DDL_Precio" CssClass="form-control-static" runat="server"></asp:DropDownList>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:DropDownList ID="DDL_Marca" CssClass="form-control-static" runat="server"></asp:DropDownList>
+                
+               
+                <asp:ObjectDataSource ID="ODS_ConsularMarca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
+            <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 
-                <asp:DropDownList ID="DDL_Categoria" CssClass="form-control-static" runat="server"></asp:DropDownList>
                 <br />
                 <br />
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id" OnRowUpdating="GridView1_RowUpdating"  >
+            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id"   >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
@@ -60,7 +67,7 @@
                         <EditItemTemplate>
                             <asp:DropDownList ID="DDL_marca" runat="server" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id" SelectedValue='<%# Bind("Id_marca") %>'>
                             </asp:DropDownList>
-                            <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
+                            <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca2" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("Nombre_marca") %>'></asp:Label>
@@ -70,7 +77,7 @@
                         <EditItemTemplate>
                             <asp:DropDownList ID="DDL_categoria" runat="server" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" SelectedValue='<%# Bind("Id_categoria") %>'>
                             </asp:DropDownList>
-                            <asp:ObjectDataSource ID="ODS_Categoria" runat="server" SelectMethod="ColsultarCategoria" TypeName="DAOAdmin"></asp:ObjectDataSource>
+                            <asp:ObjectDataSource ID="ODS_Categoria" runat="server" SelectMethod="ColsultarCategoria2" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Nombre_categoria") %>'></asp:Label>
@@ -111,9 +118,20 @@
                     </SelectParameters>
                 </asp:ObjectDataSource>
             
-                <asp:Image ID="Image1" runat="server" Height="31px" />
-            
              <br />
+            
+               <asp:ObjectDataSource ID="ODS_BuscarMarca" runat="server" SelectMethod="BuscarMarca" TypeName="DAOAdmin" DataObjectTypeName="EncapInventario" UpdateMethod="ActualizarInventario">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DDL_Marca2" Name="marca" PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            
+               <asp:ObjectDataSource ID="ODS_BuscarCategoria" runat="server" SelectMethod="BuscarCategoria" TypeName="DAOAdmin" DataObjectTypeName="EncapInventario" UpdateMethod="ActualizarInventario">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DDL_Categoria2" Name="categ" PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            
              <br />
             
             
