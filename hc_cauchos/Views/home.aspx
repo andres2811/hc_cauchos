@@ -3,6 +3,80 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
       <style type="text/css">
       
+          * p {
+              font-size:22px;
+          }
+      #galeria img{
+          vertical-align: top;
+	        width: 300px;
+	        height: 300px;
+	        margin: 20px;
+	        opacity: 0.6;
+	        border: 1px solid #484848;
+      }
+
+      #galeria img:hover{
+          border: 1px solid#fff;
+	      opacity: 1;
+          width: 325px;
+	      height: 325px;
+      }
+
+      #punto:hover{
+          border-color:black;
+      }
+      #punto1:hover{
+          border-color:black;
+      }
+      #punto2:hover{
+          border-color:black;
+      }
+      #punto3:hover{
+          border-color:black;
+      }
+      #punto4:hover{
+          border-color:black;
+      }
+      #punto5:hover{
+          border-color:black;
+      }
+
+      #princi img{
+          width:auto;
+          height:400px;
+      }
+      #princi img:hover {
+          border-color:black;
+          border:solid 9px;
+      }
+      #mision{
+          transition:all .6s ease;
+      }
+      #mision:hover{
+          background: #cc1919;
+          color:white;
+	      width:350px;
+	      transform: rotate(360deg);
+      }#mision1{
+          transition:all .6s ease;
+      }
+      #mision1:hover{
+          background: black;
+          color:white;
+	      width:350px;
+	      transform: rotate(360deg);
+      }#mision2{
+          transition:all .6s ease;
+      }
+      #mision2:hover{
+          background: #cc1919;
+          color:white;
+	      width:350px;
+	      transform: rotate(360deg);
+      }
+
+
+
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -64,7 +138,7 @@
               <li>topes</li>
             </ul>
           </div>
-          <div class="col-lg-6">
+          <div id="princi" class="col-lg-6">
             <img class="img-fluid rounded" src="../ima/local.png" alt="">
           </div>
         </div>
@@ -74,8 +148,8 @@
           <br />
         <div class="row">
           <div class="col-lg-4 mb-4">
-            <div class="card h-100 ">
-              <h4 class="card-header bg-dark text-danger"><strong>MISION</strong></h4>
+            <div id="mision" class="card h-100 ">
+              <h4  class="card-header bg-dark text-danger"><strong>MISION</strong></h4>
               <div class="card-body">
                 <p class="card-text">Somos una empresa dedicada a consolidar, preservar y acrecentar la <strong>confianza</strong>
                     que nuestros clientes depositan en nosotros brindando soluciones integrales mediante la produccion y comercializacion 
@@ -86,7 +160,7 @@
             </div>
           </div>
           <div class="col-lg-4 mb-4">
-            <div class="card h-100">
+            <div id="mision1" class="card h-100">
               <h4 class="card-header bg-danger"><strong>VISION</strong></h4>
               <div class="card-body">
                 <p class="card-text">Tener un crecimiento continuo basado en objetivos, ser una empresa referente en productos de plastico y caucho,
@@ -98,7 +172,7 @@
             </div>
           </div>
           <div class="col-lg-4 mb-4">
-            <div class="card h-100">
+            <div id="mision2" class="card h-100">
               <h4 class="card-header bg-dark text-danger"><strong>OBJETIVOS</strong></h4>
               <div class="card-body">
                 <p class="card-text">Nuestro objetivo es entregar productos con los estandares mas altos de calidad para
@@ -116,70 +190,69 @@
         <!-- Portfolio Section -->
           <br />
         <h2 class="text-danger"><strong>Algunos Productos</strong></h2>
-        <div class="row">
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-              <a ><img class="card-img-top" src="../ima/2.jpg" alt=""/></a>
+        <div id="galeria" class="row">
+          <div  class="col-lg-4 col-sm-6 portfolio-item">
+            <div id="punto"  class="card h-100">
+              <img class="card-img-top" src="../ima/2.jpg" alt=""/>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a class="text-dark">Empaque Para Puerta</a>
-                </h4>
+                <h3 class="card-title text-dark">
+                  Empaque Para Puerta
+                </h3>
                 <p class="card-text"></p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-              <a ><img class="card-img-top" src="../ima/3.jpg" alt=""/></a>
+            <div id="punto1" class="card h-100">
+              <img class="card-img-top" src="../ima/3.jpg" alt=""/>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a class="text-dark">Fundas Para Barra</a>
-                </h4>
+                <h3 class="card-title text-dark">
+                 Fundas Para Barra
+                </h3>
                 <p class="card-text"></p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-              <a ><img class="card-img-top" src="../ima/mangue.jpg" alt=""/></a>
+            <div id="punto2" class="card h-100">
+              <img class="card-img-top" src="../ima/mangue.jpg" alt=""/>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a class="text-dark">Manguera De Radiador</a>
-                </h4>
+                <h3 class="card-title text-dark">
+                  Manguera De Radiador
+                </h3>
                 <p class="card-text"></p>
               </div>
             </div>
           </div>
             <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="../ima/manguera.jpg" alt=""/></a>
+            <div id="punto3" class="card h-100">
+              <img class="card-img-top" src="../ima/manguera.jpg" alt=""/>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a class="text-dark">Empaque de puerta
-                  </a>
-                </h4>
+                <h3 class="card-title text-dark">
+                  Empaque de puerta
+                </h3>
                 <p class="card-text"></p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-              <a><img class="card-img-top" src="../ima/soporte5.jpg" alt=""/></a>
+            <div id="punto4" class="card h-100">
+              <img class="card-img-top" src="../ima/soporte5.jpg" alt=""/>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a class="text-dark">Soporte de motor</a>
-                </h4>
+                <h3 class="card-title text-dark">
+                  Soporte de motor
+                </h3>
                 <p class="card-text"></p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-              <a ><img class="card-img-top" src="../ima/bandas.jpg" alt=""/></a>
+            <div id="punto5" class="card h-100">
+              <img class="card-img-top" src="../ima/bandas.jpg" alt=""/>
               <div class="card-body">
-                <h4 class="card-title">
-                  <a class="text-dark">Manguera de presion</a>
-                </h4>
+                <h3 class="card-title text-dark" >
+                  Manguera de presion
+                </h3>
                 <p class="card-text"></p>
               </div>
             </div>
