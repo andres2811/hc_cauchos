@@ -15,5 +15,8 @@ public partial class Views_administrador_index_admin : System.Web.UI.Page
         {
             Response.Redirect("../home.aspx");
         }
+        
+           
+          
     }
 }

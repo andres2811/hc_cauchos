@@ -127,6 +127,11 @@
           <!-- AQUI VAN LOS ELEMENTOS QUE SE SELECIONAN PARA LAS VISTAS -->
           <ul class="sidebar-menu">
             <li class="header">Barra De Navegacion</li>
+             <li>
+              <a href="configurarAdmin.aspx">
+                <i class="fa fa-edit"></i> <span>Configuracion</span>
+              </a>
+            </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Empleados</span> <i class="fa fa-angle-left pull-right"></i>
