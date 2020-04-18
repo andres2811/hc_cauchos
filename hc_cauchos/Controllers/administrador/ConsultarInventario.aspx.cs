@@ -9,8 +9,10 @@ using System.IO;
 
 public partial class Views_administrador_ConsultarInventario : System.Web.UI.Page
 {
-    public int a=0;
+
     
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         EncapUsuario User = new EncapUsuario();
@@ -20,7 +22,12 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
             Response.Redirect("../home.aspx");
         }
         
-      
+
+        
+            BT_Inabilitar.Visible = false;
+            DDL_Marca2.Enabled = false;
+            DDL_Categoria2.Enabled = false;
+    
     }
 
 
@@ -57,19 +64,42 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
        
-        
-        if(TB_Buscar.Text != "")
+
+        if (TB_Buscar.Text != "")
         {
             GV_inventario.DataSourceID = "ODS_Buscar";
         }else
-        if (DDL_Marca2.SelectedIndex != 0){
-            
+        if (DDL_Categoria2.SelectedIndex != 0 && DDL_Marca2.SelectedIndex != 0)
+        {
+            GV_inventario.DataSourceID = "ODS_BuscarMarcaCategoria";
+        }else
+        if (DDL_Marca2.SelectedIndex != 0)
+        {
+
             GV_inventario.DataSourceID = "ODS_BuscarMarca";
         }else
         if (DDL_Categoria2.SelectedIndex != 0)
         {
             GV_inventario.DataSourceID = "ODS_BuscarCategoria";
-            
+
+        }
+
+        
+        if ((int)Session["Estado"] == 0)
+        {
+            BT_Inabilitar.Visible = false;
+            DDL_Marca2.Enabled = false;
+            DDL_Categoria2.Enabled = false;
+        }
+        else//estado 1 igual a busqueda con filtradi
+        if ((int)Session["Estado"] == 1)
+        {
+            HabilitarDDLS();
+        }
+        else//estado 2 igual a busqueda con referencia
+        if ((int)Session["Estado"] == 2)
+        {
+            InabilitarDDLS();
         }
 
     }
@@ -77,12 +107,57 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     protected void Button1_Click(object sender, EventArgs e)
     {
         GV_inventario.DataSourceID = "ODS_Inventario";
+
+        
+        if ((int)Session["Estado"] == 0)
+        {
+            BT_Inabilitar.Visible = false;
+            DDL_Marca2.Enabled = false;
+            DDL_Categoria2.Enabled = false;
+        }
+        else//estado 1 igual a busqueda con filtradi
+        if ((int)Session["Estado"] == 1)
+        {
+            HabilitarDDLS();
+        }
+        else//estado 2 igual a busqueda con referencia
+        if ((int)Session["Estado"] == 2)
+        {
+            InabilitarDDLS();
+        }
+
     }
 
 
+    protected void BT_Filtrar_Click(object sender, EventArgs e)
+    {
+        HabilitarDDLS();
+        Session["Estado"] = 1;
+        
+    }
 
-
-
-
-    
+    protected void BT_Inabilitar_Click(object sender, EventArgs e)
+    {
+        InabilitarDDLS();
+        BT_Inabilitar.Visible = false;
+        Session["Estado"] = 2;
+    }
+    private void HabilitarDDLS()
+    {
+        TB_Buscar.Text = "";
+        BT_Filtrar.Visible = false;
+        BT_Inabilitar.Visible = true;
+        TB_Buscar.Enabled = false;
+        DDL_Categoria2.Enabled = true;
+        DDL_Marca2.Enabled = true;
+    }
+    private void InabilitarDDLS()
+    {
+        DDL_Categoria2.SelectedIndex = 0;
+        DDL_Marca2.SelectedIndex= 0;
+        BT_Filtrar.Visible = true;
+        TB_Buscar.Enabled = true;
+        DDL_Categoria2.Enabled = false;
+        DDL_Marca2.Enabled = false;
+    }
 }

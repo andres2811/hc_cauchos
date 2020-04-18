@@ -6,27 +6,30 @@
             margin-right: 0px;
         }
         </style>
+    <
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <br />
+   
     <h1 class="text-center"><strong>Ver - Editar - Inhabilitar Productos</strong></h1>
+     <div class="row">
+        
 
-    <div class="row">
-
-        <div class=" col-lg-12 col-md-offset-0.5">
-
-         
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Categoria<br />
-                <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static"></asp:TextBox>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class=" col-lg-12 col-md-offset-0.3">
+              
+             <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
+                <asp:TextBox ID="TB_Buscar" runat="server" placeholder="Referencia a buscar" CssClass="form-control-static" Width="161px"  ></asp:TextBox>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="BT_Inabilitar" runat="server" CssClass="btn btn-primary" Text="Inabilitar" OnClick="BT_Inabilitar_Click" />
+                &nbsp;<asp:Button ID="BT_Filtrar" runat="server" CssClass="btn btn-primary" Text="Filtrar" OnClick="BT_Filtrar_Click" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:DropDownList ID="DDL_Marca2" CssClass="form-control-static" runat="server" DataSourceID="ODS_ConsularMarca" DataTextField="Marca" DataValueField="Id" >
                     <asp:ListItem Value="0">Marca</asp:ListItem>
                 </asp:DropDownList>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                 <asp:DropDownList ID="DDL_Categoria2" CssClass="form-control-static" runat="server" DataSourceID="ODS_ConsultarCategoria" DataTextField="Categoria" DataValueField="Id"></asp:DropDownList>
-                 &nbsp;&nbsp; <asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" />
+                 &nbsp;&nbsp;&nbsp;&nbsp; <asp:Button ID="BT_Buscar" runat="server" CssClass="btn btn-primary" Text="Buscar" OnClick="BT_Buscar_Click" OnClientClick="inabilitar()" />
                 <asp:Button ID="Button1" runat="server" Text="Todos" CssClass="btn btn-primary" OnClick="Button1_Click" />
                 <asp:ObjectDataSource ID="ODS_ConsultarCategoria" runat="server" SelectMethod="ColsultarCategoria" TypeName="DAOAdmin"></asp:ObjectDataSource>
                
@@ -37,9 +40,19 @@
                 
                
                 <asp:ObjectDataSource ID="ODS_ConsularMarca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
-            <br />
+           
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 
+        </div>
+    </div>
+
+
+    <div class="row">
+        
+        <div class=" col-lg-12 col-md-offset-0.5">
+
+               
+         
                 <br />
                 <br />
              <div style="overflow-x: auto;">  
@@ -131,6 +144,15 @@
                         <asp:ControlParameter ControlID="DDL_Categoria2" Name="categ" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
+            
+               <asp:ObjectDataSource ID="ODS_BuscarMarcaCategoria" runat="server" SelectMethod="BuscarMarcaCategoria" TypeName="DAOAdmin" DataObjectTypeName="EncapInventario" UpdateMethod="ActualizarInventario">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DDL_Marca2" Name="marca" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:ControlParameter ControlID="DDL_Categoria2" Name="categ" PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            
+                <br />
             
              <br />
             

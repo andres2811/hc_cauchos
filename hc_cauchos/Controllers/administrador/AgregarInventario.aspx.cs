@@ -68,14 +68,6 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
                 FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
                 EncapInventario inven = new EncapInventario();
 
-                //byte[] ar = null;
-                //using (BinaryReader reader = new
-                //    BinaryReader(FU_Archivo.PostedFile.InputStream))
-                //{
-                //    ar = reader.ReadBytes(FU_Archivo.PostedFile.ContentLength);
-                //}
-
-                
                
 
 
@@ -105,7 +97,7 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
         else { 
             try
             {
-                //String imgUrl64 = "data:image/jpg;base64," + Convert.ToBase64String(ar);
+                
 
 
                 //Image1.ImageUrl = imgUrl64;
