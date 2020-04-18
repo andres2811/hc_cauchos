@@ -70,9 +70,50 @@ public class DAOAdmin
         }
 
     }
-    //###################################################################################################################//
 
-    //METODO PARA VERIFICAR SI EL CORREO ESTA AL MOMENTO DE REGISTRAR EMPLEADO
+    //METODO PARA OBTENER USUARIO COMPLETO
+    public List<EncapUsuario> ObtenerUsuario(string correo)
+    {
+        using (var db = new Mapeo())
+        {
+            return (
+                    //apunto a tabla empleado donde usuario sea empleado/domiciliario 
+                    from usu in db.usuario
+                    where usu.Correo == correo
+                    //join usuario - rol
+                    join rol in db.rol on usu.Rol_id equals rol.Id
+                    //join usuario - estado 
+                    join estado in db.estado on usu.Estado_id equals estado.Id
+
+                    select new
+                    {
+                        usu,
+                        rol,
+                        estado
+
+                    }).ToList().Select(m => new EncapUsuario
+                    {
+                        User_id = m.usu.User_id,
+                        Nombre = m.usu.Nombre,
+                        Apellido = m.usu.Apellido,
+                        Correo = m.usu.Correo,
+                        Clave = m.usu.Clave,
+                        Fecha_nacimiento = m.usu.Fecha_nacimiento,
+                        Identificacion = m.usu.Identificacion,
+                        //
+                        Rol_id = m.usu.Rol_id,
+                        RolNombre = m.rol.Nombre,
+                        //
+                        Estado_id = m.usu.Estado_id,
+                        EstadoNombre = m.estado.Nombre
+
+                    }).ToList();
+        }
+    }
+
+        //###################################################################################################################//
+
+        //METODO PARA VERIFICAR SI EL CORREO ESTA AL MOMENTO DE REGISTRAR EMPLEADO
     public EncapUsuario verificarCorreo(EncapUsuario emple)
     {
         using (var db = new Mapeo())

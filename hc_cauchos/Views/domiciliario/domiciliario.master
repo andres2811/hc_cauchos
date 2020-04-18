@@ -129,6 +129,11 @@
           <!-- AQUI VAN LOS ELEMENTOS QUE SE SELECIONAN PARA LAS VISTAS -->
           <ul class="sidebar-menu">
             <li class="header">Barra De Navegacion</li>
+             <li>
+              <a href="configurarDomici.aspx">
+                <i class="fa fa-edit"></i> <span>Configuracion</span>
+              </a>
+            </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Empleados</span> <i class="fa fa-angle-left pull-right"></i>
@@ -181,20 +186,15 @@
       <!-- =============================================== -->
       <div class="content-wrapper">
         <!-- PARTE PARA EL TITULO DE LA PAGINA Y DESCRIPCION -->
-        <section class="content-header">
-          <h1>
-            TITULO PAGINA
-            <small>aqui va una descripcion de la pagina</small>
-          </h1>
-        </section>
-      </div>
-<!---------------------------------AQUI VA NUESTRO CODIGO HEREDADO DESDE LAS VISTAS IVAN--------------------------------->
-        <section class="content1">
+       
+          <!---------------------------------AQUI VA NUESTRO CODIGO HEREDADO DESDE LAS VISTAS IVAN--------------------------------->
+        <section class="content">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
             </asp:ContentPlaceHolder>
         </section>
 <!---------------------------------AQUI TERMINA NUESTRO CODIGO HEREDADO DESDE LAS VISTAS IVAN--------------------------------->
+      </div>
             <!-- AQUI VA EL FOOTER -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
