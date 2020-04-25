@@ -11,7 +11,7 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
 {
 
     
-
+  
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,13 +21,14 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
         {
             Response.Redirect("../home.aspx");
         }
-        
 
+
+        DDL_Categoria2.Enabled = false;
+        DDL_Marca2.Enabled = false;
+        BT_Inabilitar.Visible = false;
         
-            BT_Inabilitar.Visible = false;
-            DDL_Marca2.Enabled = false;
-            DDL_Categoria2.Enabled = false;
-    
+       
+       
     }
 
 
@@ -64,43 +65,34 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     protected void BT_Buscar_Click(object sender, EventArgs e)
     {
        
-
         if (TB_Buscar.Text != "")
         {
             GV_inventario.DataSourceID = "ODS_Buscar";
+            InabilitarDDLS();
         }else
         if (DDL_Categoria2.SelectedIndex != 0 && DDL_Marca2.SelectedIndex != 0)
         {
             GV_inventario.DataSourceID = "ODS_BuscarMarcaCategoria";
+            HabilitarDDLS();
         }else
         if (DDL_Marca2.SelectedIndex != 0)
         {
 
             GV_inventario.DataSourceID = "ODS_BuscarMarca";
-        }else
+            HabilitarDDLS();
+        }
+        else
         if (DDL_Categoria2.SelectedIndex != 0)
         {
             GV_inventario.DataSourceID = "ODS_BuscarCategoria";
+            HabilitarDDLS();
 
         }
 
         
-        if ((int)Session["Estado"] == 0)
-        {
-            BT_Inabilitar.Visible = false;
-            DDL_Marca2.Enabled = false;
-            DDL_Categoria2.Enabled = false;
-        }
-        else//estado 1 igual a busqueda con filtradi
-        if ((int)Session["Estado"] == 1)
-        {
-            HabilitarDDLS();
-        }
-        else//estado 2 igual a busqueda con referencia
-        if ((int)Session["Estado"] == 2)
-        {
-            InabilitarDDLS();
-        }
+       
+      
+        
 
     }
 
@@ -108,23 +100,24 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     {
         GV_inventario.DataSourceID = "ODS_Inventario";
 
-        
-        if ((int)Session["Estado"] == 0)
+        if (TB_Buscar.Text != "")
         {
-            BT_Inabilitar.Visible = false;
-            DDL_Marca2.Enabled = false;
-            DDL_Categoria2.Enabled = false;
-        }
-        else//estado 1 igual a busqueda con filtradi
-        if ((int)Session["Estado"] == 1)
-        {
-            HabilitarDDLS();
-        }
-        else//estado 2 igual a busqueda con referencia
-        if ((int)Session["Estado"] == 2)
-        {
+           
             InabilitarDDLS();
         }
+        else
+        if (DDL_Categoria2.SelectedIndex != 0 || DDL_Marca2.SelectedIndex != 0)
+        {
+            
+            HabilitarDDLS();
+        }
+        
+
+
+
+
+
+
 
     }
 
@@ -132,7 +125,6 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     protected void BT_Filtrar_Click(object sender, EventArgs e)
     {
         HabilitarDDLS();
-        Session["Estado"] = 1;
         
     }
 
@@ -140,7 +132,8 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     {
         InabilitarDDLS();
         BT_Inabilitar.Visible = false;
-        Session["Estado"] = 2;
+      
+
     }
     private void HabilitarDDLS()
     {
@@ -156,6 +149,7 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
         DDL_Categoria2.SelectedIndex = 0;
         DDL_Marca2.SelectedIndex= 0;
         BT_Filtrar.Visible = true;
+        BT_Inabilitar.Visible = false;
         TB_Buscar.Enabled = true;
         DDL_Categoria2.Enabled = false;
         DDL_Marca2.Enabled = false;
