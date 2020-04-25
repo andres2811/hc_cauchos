@@ -129,9 +129,14 @@
           <!-- AQUI VAN LOS ELEMENTOS QUE SE SELECIONAN PARA LAS VISTAS -->
           <ul class="sidebar-menu">
             <li class="header">Barra De Navegacion</li>
-              <li>
+             <li>
               <a href="configurarUsu.aspx">
                 <i class="fa fa-config"></i> <span>Configuracion</span>
+              </a>
+            </li>
+            <li>
+              <a href="catalogoUsuario.aspx">
+                <i class="fa fa-config"></i> <span>Catalogo</span>
               </a>
             </li>
             <li class="treeview">
