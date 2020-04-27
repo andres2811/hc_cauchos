@@ -16,12 +16,15 @@ public partial class Views_registro : System.Web.UI.Page
     {
         ClientScriptManager cm = this.ClientScript;
         //creo objeto para verificar correo 
-        EncapUsuario verificar = new EncapUsuario();
-        verificar.Correo = TB_correo.Text;
+        EncapUsuario verificarCorreo = new EncapUsuario();
+        verificarCorreo.Correo = TB_correo.Text;
+        EncapUsuario verificarIdentificacion = new EncapUsuario();
+        verificarIdentificacion.Identificacion = TB_identificacion.Text;
         //apunto a verificar el correo #si es null no existe#
-        verificar = new DAOUser().verificarCorreo(verificar);
+        verificarCorreo = new DAOUser().verificarCorreo(verificarCorreo);
+        verificarIdentificacion = new DAOUser().verificarIdentificacion(verificarIdentificacion);
 
-        if (verificar == null)
+        if (verificarCorreo == null && verificarIdentificacion == null)
         {
             //traigo valores de los texbox
             EncapUsuario User = new EncapUsuario();
@@ -38,11 +41,15 @@ public partial class Views_registro : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El usuario se ha registrado satisfactoriamente' );</script>");
             return;
         }
-        else
+        if(verificarCorreo != null)
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
             return;
         }
-
+        if(verificarIdentificacion != null)
+        {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'La identificacion ya se encuentra registrada' );</script>");
+            return;
+        }
     }
 }

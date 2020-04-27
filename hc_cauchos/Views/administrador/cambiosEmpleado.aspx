@@ -17,9 +17,31 @@
             <asp:GridView ID="GV_empleados" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" CssClass="table table-responsive table-striped" GridLines="None" DataKeyNames="User_id" HorizontalAlign="Justify" Width="104%" OnRowDataBound="GridView1_RowDataBound" OnRowUpdating="GV_empleados_RowUpdating">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" />
-                    <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" />
-                    <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
+                    <asp:TemplateField HeaderText="Nombres" SortExpression="Nombre">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TB_Nombre" runat="server" Text='<%# Bind("Nombre") %>' ClientIDMode="Predictable"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="text-danger" ErrorMessage="*" ControlToValidate="TB_Nombre"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="Apellidos" SortExpression="Apellido">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TB_Apellido" runat="server" Text='<%# Bind("Apellido") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="text-danger" ErrorMessage="*" ControlToValidate="TB_Apellido" SetFocusOnError="True"></asp:RequiredFieldValidator>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Apellido") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+
+                    <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" ReadOnly="true"/>
+
+
                     <asp:TemplateField HeaderText="Fecha nacimiento" SortExpression="Fecha_nacimiento">
                         <EditItemTemplate>
                             <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" SelectedDate='<%# Bind("Fecha_nacimiento") %>' Width="200px">
@@ -37,7 +59,11 @@
                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha_nacimiento") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Identificacion" HeaderText="Identificacion" SortExpression="Identificacion" />
+
+
+                    <asp:BoundField DataField="Identificacion" HeaderText="Identificacion" SortExpression="Identificacion" ReadOnly="true" />
+
+
                     <asp:TemplateField HeaderText="Rol" SortExpression="RolNombre">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DDL_roles" runat="server" DataSourceID="ODS_obtenerRoles" DataTextField="Nombre" DataValueField="Id">
@@ -49,6 +75,7 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("RolNombre") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+
                     <asp:TemplateField HeaderText="Estado" SortExpression="EstadoNombre">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id">
@@ -59,6 +86,7 @@
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("EstadoNombre") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+
                     <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
