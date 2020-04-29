@@ -57,26 +57,57 @@
                 <br />
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id"   >
+            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id"  OnRowUpdating="GV_inventario_RowUpdating" OnRowEditing="GV_inventario_RowEditing" AllowPaging="True" OnPageIndexChanging="GV_inventario_PageIndexChanging" PageSize="5" >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
 
                     <asp:TemplateField HeaderText="Imagen">
 
+                        <EditItemTemplate>
+                            <asp:FileUpload ID="fu_imagen" runat="server" />
+                            <br />
+                            <asp:Image ID="I_editar" runat="server" CssClass="img-responsive" ImageUrl='<%# Eval("Imagen") %>' Width="100px" />
+                        </EditItemTemplate>
+
                         <ItemTemplate>
-                          <asp:Image ID="IdInventario" runat="server" CssClass="img-responsive" ImageUrl="" Width="100px" />
+                          <asp:Image ID="IdInventario" runat="server" CssClass="img-responsive" ImageUrl='<%# Eval("Imagen") %>' Width="100px" />
                             
                         </ItemTemplate>
                         
 
                       </asp:TemplateField>
-                    <asp:BoundField DataField="Referencia" HeaderText="Referencia" SortExpression="Referencia" />
+                    <asp:TemplateField HeaderText="Referencia" SortExpression="Referencia">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="tb_referencia" runat="server" Text='<%# Bind("Referencia") %>'  ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tb_referencia" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <br />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lb_referencia" runat="server" Text='<%# Bind("Referencia") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                    
-                    <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
-                    <asp:BoundField DataField="Ca_actual" HeaderText="Ca_actual" SortExpression="Ca_actual" />
-                    <asp:BoundField DataField="Ca_minima" HeaderText="Ca_minima" SortExpression="Ca_minima" />
-                    <asp:TemplateField HeaderText="Nombre_marca" SortExpression="Nombre_marca">
+                    <asp:TemplateField HeaderText="Precio" SortExpression="Precio">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Precio") %>'></asp:TextBox>
+                            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="precio invalido" ForeColor="Red" MaximumValue="1000000" MinimumValue="100" Type="Integer"></asp:RangeValidator>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Precio") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Ca_actual" HeaderText="Cantidad Actual" SortExpression="Ca_actual" ReadOnly="true"/>
+                    <asp:TemplateField HeaderText="Cantidad Minima" SortExpression="Ca_minima">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Ca_minima") %>'></asp:TextBox>
+                            <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="Cantidad Invalida" MaximumValue="500000" MinimumValue="10" Type="Integer" ControlToValidate="TextBox2" ForeColor="Red"></asp:RangeValidator>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Ca_minima") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Marca" SortExpression="Nombre_marca">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DDL_marca" runat="server" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id" SelectedValue='<%# Bind("Id_marca") %>'>
                             </asp:DropDownList>
@@ -86,7 +117,7 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("Nombre_marca") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Nombre_categoria" SortExpression="Nombre_categoria">
+                    <asp:TemplateField HeaderText="Categoria" SortExpression="Nombre_categoria">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DDL_categoria" runat="server" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" SelectedValue='<%# Bind("Id_categoria") %>'>
                             </asp:DropDownList>
@@ -130,6 +161,11 @@
                         <asp:ControlParameter ControlID="TB_Buscar" Name="a" PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
+            
+                <asp:Label ID="Label4" runat="server" Text="Label" Visible="False"></asp:Label>
+            
+                <br />
+                <asp:Label ID="LB_ruta" runat="server" Text="LB_ruta" Visible="False"></asp:Label>
             
              <br />
             
