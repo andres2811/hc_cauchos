@@ -29,6 +29,9 @@ public class Mapeo : DbContext
     public DbSet<EncapMarca> marca_carro  { get; set; }
     public DbSet<EncapCategoria> categoria { get; set; }
     public DbSet<EncapEstadoItem> estado_item { get; set; }
+    public DbSet<EncapMision> mision { get; set; }
+    public DbSet<EncapVision> vision { get; set; }
+    public DbSet<EncapObjetivo> objetivo { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {

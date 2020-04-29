@@ -25,4 +25,15 @@ public class DAOUser
         }
     }
 
+    public EncapUsuario verificarIdentificacion(EncapUsuario verificar)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.usuario.Where(x => x.Correo.Equals(verificar.Correo) || x.Identificacion.Equals(verificar.Identificacion)).FirstOrDefault();
+        }
+    }
+
+
+
+
 }

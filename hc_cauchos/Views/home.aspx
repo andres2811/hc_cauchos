@@ -151,9 +151,7 @@
             <div id="mision" class="card h-100 ">
               <h4  class="card-header bg-dark text-danger"><strong>MISION</strong></h4>
               <div class="card-body">
-                <p class="card-text">Somos una empresa dedicada a consolidar, preservar y acrecentar la <strong>confianza</strong>
-                    que nuestros clientes depositan en nosotros brindando soluciones integrales mediante la produccion y comercializacion 
-                    de productos en caucho y plastico.</p>
+                <p class="card-text"><asp:Label ID="LB_mision" runat="server" Text="Label"></asp:Label></p>
               </div>
               <div class="card-footer bg-dark">
               </div>
@@ -163,9 +161,7 @@
             <div id="mision1" class="card h-100">
               <h4 class="card-header bg-danger"><strong>VISION</strong></h4>
               <div class="card-body">
-                <p class="card-text">Tener un crecimiento continuo basado en objetivos, ser una empresa referente en productos de plastico y caucho,
-                    expandir nuestro servicio a nivel nacional y lograr estar constituidos como una empresa fiel y correcta.
-                </p>
+                <p class="card-text"><asp:Label ID="LB_vision" runat="server" Text="Label"></asp:Label></p>
               </div>
               <div class="card-footer bg-danger">
               </div>
@@ -175,10 +171,7 @@
             <div id="mision2" class="card h-100">
               <h4 class="card-header bg-dark text-danger"><strong>OBJETIVOS</strong></h4>
               <div class="card-body">
-                <p class="card-text">Nuestro objetivo es entregar productos con los estandares mas altos de calidad para
-                    encontrar la satisfaccion total en nuestro clientes de recibir un producto 100% confiable y asi mismo 
-                    obtener reconocimiento por merito propio
-                </p>
+                <p class="card-text"><asp:Label ID="LB_objetivo" runat="server" Text="Label"></asp:Label></p>
               </div>
               <div class="card-footer bg-dark">
               </div>
