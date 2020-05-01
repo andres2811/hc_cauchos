@@ -182,9 +182,13 @@
               </ul>
             </li>            
             <li>
-              <a href="#">
-                <i class="fa fa-calendar"></i> <span>Calendario</span>
-                <small class="label pull-right bg-red">3</small>
+              <a href="Alertas.aspx">
+                <i  class="fa fa-envelope-o"> </i><span>Notificaciones </span> 
+                  
+                <small class="label pull-right bg-red">
+                    <asp:Label ID="LB_Alertas" runat="server" Text="3"></asp:Label>
+
+                </small>
               </a>
             </li>
           </ul>
