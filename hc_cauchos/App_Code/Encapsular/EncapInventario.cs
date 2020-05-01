@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 /// </summary>
 /// 
 [Serializable]
-[Table("inventario", Schema = "administrador")]
+[Table("inventario", Schema = "productos")]
 public class EncapInventario
 {
     private int id;

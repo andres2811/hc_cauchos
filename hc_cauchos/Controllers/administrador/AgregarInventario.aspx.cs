@@ -65,6 +65,7 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
         {
             try
             {
+                //guardar local
                 FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
                 EncapInventario inven = new EncapInventario();
 

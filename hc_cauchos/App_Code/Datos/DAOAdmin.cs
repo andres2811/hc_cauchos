@@ -318,7 +318,7 @@ public class DAOAdmin
             if (resultado != null)
             {
                 resultado.Titulo = invent.Titulo;
-                
+                resultado.Imagen = invent.Imagen;
                 resultado.Referencia = invent.Referencia;
                 resultado.Precio = invent.Precio;
                 resultado.Ca_actual = invent.Ca_actual;
@@ -537,7 +537,14 @@ public class DAOAdmin
             return db.inventario.Where(x => x.Referencia == a).FirstOrDefault();
         }
     }
-    
+    public EncapInventario BuscarId(EncapInventario inventario, int a)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.inventario.Where(x => x.Id == a).FirstOrDefault();
+        }
+    }
+
     //METODO ELIMINAR ITEM DEL INVENTARIO
     public void EliminarItem(EncapInventario invent)
     {
