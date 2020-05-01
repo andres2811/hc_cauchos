@@ -194,6 +194,7 @@ public class DAOAdmin
 
                     }).ToList().Select(m => new EncapUsuario
                     {
+                        
                         User_id = m.usu.User_id,
                         Nombre = m.usu.Nombre,
                         Apellido = m.usu.Apellido,
@@ -272,13 +273,15 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
 
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        estadoitem
+                        estadoitem,
+                        _cantCarrito
                        
 
                     }).ToList().Select(m => new EncapInventario
@@ -288,7 +291,7 @@ public class DAOAdmin
                         Titulo = m.uu.Titulo,
                         Precio = m.uu.Precio,
                         Referencia = m.uu.Referencia,
-                        Ca_actual = m.uu.Ca_actual,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
                         Ca_minima = m.uu.Ca_minima,
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
@@ -304,8 +307,6 @@ public class DAOAdmin
 
 
                     }).ToList();
-
-
         }
     }
     //METODO ACTUALIZAR TABLA EN EL INVENTARIO
