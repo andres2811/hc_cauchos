@@ -22,6 +22,10 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
         L_nombreAdmin.Text =((EncapUsuario)Session["Valido"]).Nombre;
         L_nombreAdmin0.Text= ((EncapUsuario)Session["Valido"]).Nombre;
 
+        Mapeo db = new Mapeo();
+
+        var alertas = (from x in db.inventario where x.Ca_actual <= x.Ca_minima select x.Ca_actual).Count();
+        LB_Alertas.Text = alertas.ToString();
 
     }
 
