@@ -32,6 +32,8 @@ public class Mapeo : DbContext
     public DbSet<EncapMision> mision { get; set; }
     public DbSet<EncapVision> vision { get; set; }
     public DbSet<EncapObjetivo> objetivo { get; set; }
+    public DbSet<EncapCarrito> carrito { get; set; }
+
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
