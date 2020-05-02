@@ -102,7 +102,7 @@
             </asp:GridView>
         </div>
         <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario"></asp:ObjectDataSource>
-             <asp:ObjectDataSource ID="ODS_mostrarEmpleNombre" runat="server" SelectMethod="ObtenerEmpleadosNombre" TypeName="DAOAdmin">
+             <asp:ObjectDataSource ID="ODS_mostrarEmpleNombre" runat="server" SelectMethod="ObtenerEmpleadosNombre" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario">
                  <SelectParameters>
                      <asp:ControlParameter ControlID="TB_Buscar" Name="nombre" PropertyName="Text" Type="String" />
                  </SelectParameters>

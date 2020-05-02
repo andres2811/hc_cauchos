@@ -5,28 +5,35 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1 class="text-center"><strong>Mi Carrito</strong></h1>
-    <div align="center">
-        <asp:Image ID="Image1" runat="server" ImageUrl="~/ima/configurar.png" align="center" />
-    </div>
+    <asp:Button ID="BTN_MasPro" runat="server" Text="Agregar mas productos" class="btn btn-primary" OnClick="BTN_MasPro_Click"/>
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
-                 <asp:gridview runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_carrito" ForeColor="#333333" GridLines="None" Width="649px">
+                 <asp:GridView ID="GV_carrito" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_Carrito" DataSourceID="ODS_carrito" OnRowEditing="GV_carrito_RowEditing" OnRowUpdating="GV_carrito_RowUpdating" OnRowUpdated="GV_carrito_RowUpdated" CellPadding="4" ForeColor="#333333" GridLines="None" Width="1083px">
                      <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                      <Columns>
-                         <asp:BoundField DataField="Nom_producto" HeaderText="nombre" SortExpression="Nom_producto" />
-                         <asp:TemplateField HeaderText="Cantidad" SortExpression="Cantidad">
+                         <asp:BoundField DataField="Nom_producto" HeaderText="Producto" SortExpression="Nom_producto" ReadOnly="true"/>
+                         <asp:TemplateField HeaderText="Stock" SortExpression="Cant_Actual" >
                              <EditItemTemplate>
-                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Cantidad") %>' TextMode="Number"></asp:TextBox>
+                                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Cant_Actual") %>' ReadOnly="true"></asp:TextBox>
                              </EditItemTemplate>
                              <ItemTemplate>
-                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Cantidad") %>'></asp:Label>
+                                 <asp:Label ID="Cant_Actual" runat="server" Text='<%# Bind("Cant_Actual") %>'></asp:Label>
                              </ItemTemplate>
                          </asp:TemplateField>
-                         <asp:BoundField DataField="Cant_Actual" HeaderText="stock" SortExpression="Cant_Actual" />
-                         <asp:BoundField DataField="Total" HeaderText="Total" SortExpression="Total"/>
-                         <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
-                         <asp:CommandField HeaderText="Editar" ShowEditButton="True" />
+                         <asp:TemplateField HeaderText="Cantidad Pedida" SortExpression="Cantidad">
+                             <EditItemTemplate>
+                                 <asp:TextBox ID="TB_Cantidad" runat="server" Text='<%# Bind("Cantidad") %>' TextMode="Number"></asp:TextBox>
+                                 <asp:RangeValidator ID="RV_cantidad" runat="server" ErrorMessage="valor invalido" ControlToValidate="TB_Cantidad" MaximumValue="1000" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                             </EditItemTemplate>
+                             <ItemTemplate>
+                                 <asp:Label ID="LB_Cantidad" runat="server" Text='<%# Bind("Cantidad") %>'></asp:Label>
+                             </ItemTemplate>
+                         </asp:TemplateField>
+                         <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" ReadOnly="true" />
+                         <asp:BoundField DataField="Total" HeaderText="Total" SortExpression="Total" ReadOnly="true"/>
+                         <asp:CommandField HeaderText="editar" ShowEditButton="True" />
+                         <asp:CommandField HeaderText="eliminar" ShowDeleteButton="True" />
                      </Columns>
                      <EditRowStyle BackColor="#999999" />
                      <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -38,10 +45,10 @@
                      <SortedAscendingHeaderStyle BackColor="#506C8C" />
                      <SortedDescendingCellStyle BackColor="#FFFDF8" />
                      <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                 </asp:gridview>
-                 <asp:ObjectDataSource ID="ODS_carrito" runat="server" DataObjectTypeName="EncapCarrito" DeleteMethod="EliminarItemCarrito" SelectMethod="ObtenerCarritoxUsuario" TypeName="DAOUser" UpdateMethod="ActualizarCarritoFactura">
+                 </asp:GridView>
+                 <asp:ObjectDataSource ID="ODS_carrito" runat="server" DataObjectTypeName="EncapCarrito" SelectMethod="ObtenerCarritoxUsuario" TypeName="DAOUser" UpdateMethod="ActualizarCarritoFactura" DeleteMethod="EliminarItemCarrito">
                      <SelectParameters>
-                         <asp:SessionParameter DefaultValue="0" Name="usu" SessionField="userid" Type="Int32" />
+                         <asp:SessionParameter Name="usu" SessionField="userid" Type="Int32" />
                      </SelectParameters>
                  </asp:ObjectDataSource>
             </div>

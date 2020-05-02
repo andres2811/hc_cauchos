@@ -638,14 +638,7 @@ public class DAOAdmin
                         Nombre_marca = m.marca_carro.Marca,
 
                         Estado = m.estadoitem.Estado_item
-
-
-
-
-
                     }).ToList();
-
-
         }
     }
 }
