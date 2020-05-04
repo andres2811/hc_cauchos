@@ -187,5 +187,52 @@ public class DAOUser
             db.SaveChanges();
         }
     }
-  
+
+    //CAMBIO TODOS LOS ESTADOS DEL PRODUCTO CUANDO DAN FACTURAR EN EL CARRITO
+    public void ActualizarCarritoEstado(EncapCarrito carrito)
+    {
+        using (var db = new Mapeo())
+        {
+            
+            var carritoedit = db.carrito.Where(x => x.User_id == carrito.User_id).ToList();
+            foreach (var car in carritoedit)
+            {
+                car.Estadocar = carrito.Estadocar;
+            }
+
+            db.SaveChanges();
+
+            
+        }
+    }
+
+
+    //METODO PARA INSERTAR PEDIDO
+    public int InsertarPedido(EncapPedido pedido)
+    {
+        using (var db = new Mapeo())
+        {
+            db.pedidos.Add(pedido);
+            db.SaveChanges();
+        }
+        return pedido.Id;
+    }
+    
+    //METODO PARA BORRAR EN CARRITO LUEGO DE HACER FACTURACION
+    public void limpiarCarrito(int userid) {
+        using (var db = new Mapeo())
+        {
+            List<EncapCarrito> productos = db.carrito.Where(x => x.User_id == userid).ToList();
+
+            foreach (var pro in productos)
+            {
+                db.Entry(pro).State=EntityState.Deleted;
+            }
+
+            db.SaveChanges();
+        }
+    }
+        
+
+
 }

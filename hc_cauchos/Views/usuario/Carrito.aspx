@@ -54,5 +54,7 @@
             </div>
         </div>
     </div>
+    <br />
+    <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" />
 </asp:Content>
 
