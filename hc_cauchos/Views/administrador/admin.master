@@ -190,6 +190,15 @@
                 </small>
               </a>
             </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-dashboard"></i> <span>Parametrizaciones</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="TiempoProductosCarrito.aspx"><i class="fa fa-circle-o"></i> Tiempo productos en carrito</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Consultar Inventario</a></li>
+              </ul>
+            </li> 
           </ul>
         </section>
         <!-- SIDEBAR -->

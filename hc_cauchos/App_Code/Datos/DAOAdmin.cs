@@ -649,15 +649,25 @@ public class DAOAdmin
                         Nombre_marca = m.marca_carro.Marca,
                         Nombre_proveedor = m.provee.Nombre_pro,
                         Estado = m.estadoitem.Estado_item
-
-
-
-
-
                     }).ToList();
+        }
+    }
 
+    //METODO PARAMETRO DE TIMEPO CARRITO
+
+    public void ActualizarTiempoCarrito(EncapParametros tiempocarrito)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapParametros resultado = db.parametros.Where(x => x.Id == tiempocarrito.Id ).First();
+            if (resultado != null)
+            {
+                resultado.Valor = tiempocarrito.Valor;
+                db.SaveChanges();
+            }
 
         }
+
     }
     //METODO CONSULTAR PROVEEDOR
     public List<EncapProveedor> ColsultarProveedor()

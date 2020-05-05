@@ -19,9 +19,10 @@ public class EncapCarrito
     private DateTime fecha;
     private int precio;
     private int total;
+    private int estadocar;
     private string nom_producto;
     private int cant_Actual;
-
+   
     [Key]
     [Column("id_carrito")]
     public int Id_Carrito { get => id_Carrito; set => id_Carrito = value; }
@@ -37,10 +38,14 @@ public class EncapCarrito
     public int Precio { get => precio; set => precio = value; }
     [Column("total")]
     public int Total { get => total; set => total = value; }
+    [Column("estadocar")]
+    public int Estadocar { get => estadocar; set => estadocar = value; }
+
 
 
     [NotMapped]
     public string Nom_producto { get => nom_producto; set => nom_producto = value; }
     [NotMapped]
     public int Cant_Actual { get => cant_Actual; set => cant_Actual = value; }
+   
 }

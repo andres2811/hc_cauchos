@@ -69,6 +69,7 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
                 carrito.Fecha = DateTime.Now;
                 carrito.Precio = precio;
                 carrito.Total = precio * cantidadSolicitada;
+                carrito.Estadocar = 1;
                 new DAOUser().InsertarCarrito(carrito);        
             }
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Producto agregado a carrito');</script>");

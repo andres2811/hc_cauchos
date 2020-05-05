@@ -67,6 +67,36 @@ public class DAOUser
         }
     }
 
+    //METODO PARA VERIFICAR SI EL ITEM SELECCIONADO YA ESTA EN LA LISTA 
+    public EncapCarrito verificarArticuloEnCarrito(EncapCarrito verificar)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.carrito.Where(x => x.Producto_id.Equals(verificar.Producto_id) && x.User_id.Equals(verificar.User_id)).FirstOrDefault();
+        }
+    }
+
+    //METODO ACTUALIZAR + ITEMS EN CARRITO 
+    public void ActualizarCarritoItems(EncapCarrito carrito)
+    {
+        using (var db = new Mapeo())
+        {
+            var resultado = db.carrito.FirstOrDefault(x => x.Producto_id == carrito.Producto_id && x.User_id == carrito.User_id);
+            if (resultado != null)
+            {
+                resultado.Id_Carrito = resultado.Id_Carrito;
+                resultado.User_id = resultado.User_id;
+                resultado.Producto_id = resultado.Producto_id;
+                resultado.Cantidad = resultado.Cantidad + carrito.Cantidad;
+                resultado.Fecha = resultado.Fecha;
+                resultado.Precio = resultado.Precio;
+                resultado.Total = resultado.Total + (carrito.Cantidad * resultado.Precio).Value;
+
+                db.SaveChanges();
+            }
+        }
+
+    }
     //METODO CONSULTAR INVENTARIO MENOS LA CANTIDAD DEL CARRITO 
     public List<EncapInventario> ConsultarInventario()
     {
@@ -99,44 +129,12 @@ public class DAOUser
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-
                         Estado = m.estadoitem.Estado_item
 
                     }).ToList();
         }
-    }
-    //METODO PARA VERIFICAR SI EL ITEM SELECCIONADO YA ESTA EN LA LISTA 
-    public EncapCarrito verificarArticuloEnCarrito(EncapCarrito verificar)
-    {
-        using (var db = new Mapeo())
-        {
-            return db.carrito.Where(x => x.Producto_id.Equals(verificar.Producto_id) && x.User_id.Equals(verificar.User_id)).FirstOrDefault();
-        }
-    }
-
-    //METODO ACTUALIZAR + ITEMS EN CARRITO 
-    public void ActualizarCarritoItems(EncapCarrito carrito)
-    {
-        using (var db = new Mapeo())
-        {
-            var resultado = db.carrito.FirstOrDefault(x => x.Producto_id == carrito.Producto_id && x.User_id == carrito.User_id);
-            if (resultado != null)
-            {
-                resultado.Id_Carrito = resultado.Id_Carrito;
-                resultado.User_id = resultado.User_id;
-                resultado.Producto_id = resultado.Producto_id;
-                resultado.Cantidad = resultado.Cantidad + carrito.Cantidad;
-                resultado.Fecha = resultado.Fecha;
-                resultado.Precio = resultado.Precio;
-                resultado.Total = resultado.Total + (carrito.Cantidad * resultado.Precio).Value;
-
-                db.SaveChanges();
-            }
-        }
-
     }
 
     //METODO PARA OBTENER TODOS LOS ELEMENTOS DEL CARRITO 
@@ -150,7 +148,6 @@ public class DAOUser
                     {
                         carrito,
                         iven
-
                     }).ToList().Select(m => new EncapCarrito
                     {
                         Id_Carrito = m.carrito.Id_Carrito,
@@ -161,8 +158,7 @@ public class DAOUser
                         Precio = m.carrito.Precio,
                         Total = m.carrito.Total,
                         Nom_producto=m.iven.Titulo,
-                        Cant_Actual = m.iven.Ca_actual
-                        
+                        Cant_Actual = (m.iven.Ca_actual - m.carrito.Cantidad).Value
                     }).ToList();
         }
     }
@@ -182,16 +178,61 @@ public class DAOUser
     {
         using (var db = new Mapeo())
         {
-            EncapCarrito carritoedit = db.carrito.Where(x => x.Id_Carrito == carrito.Id_Carrito).First();
-            carritoedit.Id_Carrito = carrito.Id_Carrito;
-            carritoedit.User_id = carrito.User_id;
-            carritoedit.Producto_id = carrito.Producto_id;
+            EncapCarrito carritoedit = db.carrito.Where(x => x.Id_Carrito == carrito.Id_Carrito).SingleOrDefault();
             carritoedit.Cantidad = carrito.Cantidad;
             carritoedit.Precio = carrito.Precio;
+            carritoedit.Cant_Actual = (carritoedit.Cant_Actual - carritoedit.Cantidad).Value;
             carritoedit.Total = (carritoedit.Cantidad * carritoedit.Precio).Value ;
 
             db.SaveChanges();
         }
     }
+
+    //CAMBIO TODOS LOS ESTADOS DEL PRODUCTO CUANDO DAN FACTURAR EN EL CARRITO
+    public void ActualizarCarritoEstado(EncapCarrito carrito)
+    {
+        using (var db = new Mapeo())
+        {
+            
+            var carritoedit = db.carrito.Where(x => x.User_id == carrito.User_id).ToList();
+            foreach (var car in carritoedit)
+            {
+                car.Estadocar = carrito.Estadocar;
+            }
+
+            db.SaveChanges();
+
+            
+        }
+    }
+
+
+    //METODO PARA INSERTAR PEDIDO
+    public int InsertarPedido(EncapPedido pedido)
+    {
+        using (var db = new Mapeo())
+        {
+            db.pedidos.Add(pedido);
+            db.SaveChanges();
+        }
+        return pedido.Id;
+    }
+    
+    //METODO PARA BORRAR EN CARRITO LUEGO DE HACER FACTURACION
+    public void limpiarCarrito(int userid) {
+        using (var db = new Mapeo())
+        {
+            List<EncapCarrito> productos = db.carrito.Where(x => x.User_id == userid).ToList();
+
+            foreach (var pro in productos)
+            {
+                db.Entry(pro).State=EntityState.Deleted;
+            }
+
+            db.SaveChanges();
+        }
+    }
+        
+
 
 }
