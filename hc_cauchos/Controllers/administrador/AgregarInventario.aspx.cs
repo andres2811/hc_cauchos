@@ -27,8 +27,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
         int auxprecio = int.Parse(TB_Precio.Text) ;
         int aux_minimo = int.Parse(TB_Minima.Text); 
-        int aux_actual= int.Parse(TB_Cantidad.Text);
-        if (auxprecio <=0 || aux_minimo<=0 || aux_actual <=0)
+        
+        if (auxprecio <=0 || aux_minimo<=0 )
         {
 
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('NO SE PERMITE DATOS NEGATIVOS' );</script>");
@@ -51,10 +51,15 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('tipo de archivo no valido ' );</script>");
             return;//Devolverse
         }
-       
-        //Validaciones 
 
-       
+        
+        //verificar existencia de un arhivo con el mismo nombre
+        if (System.IO.File.Exists(saveLocationAdmin))
+        {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Imagen Existente' );</script>");
+            return;
+        }
+        //Validaciones 
         var db = new Mapeo();
 
         var consulta1 = (from x in db.inventario where x.Referencia.Equals(TB_referencia.Text) select x.Referencia ).Count();
@@ -63,35 +68,10 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
         if (consulta1 == 1)
         {
-            try
-            {
-                //guardar local
-                FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
-                EncapInventario inven = new EncapInventario();
-
-               
-
-
-                inven.Imagen = Ruta;
-                inven.Titulo = TB_Titulo.Text;
-                inven.Referencia = TB_referencia.Text;
-                inven.Precio = int.Parse(TB_Precio.Text);
-                inven.Ca_actual = int.Parse(TB_Cantidad.Text);
-                inven.Ca_minima = int.Parse(TB_Minima.Text);
-                inven.Id_marca = int.Parse(DDL_Marca.Text);
-                inven.Id_categoria = int.Parse(DDL_Categoria.Text);
-                inven.Id_estado = 1;
-                new DAOAdmin().ActualizarReferencia(inven);
-                db.SaveChanges();
-            
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('LA REFERENCIA es existente item actualizado' );</script>");
-            }
-            catch (Exception exc)
-
-            {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Error' );</script>");
+          
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('La Referencia Ya Existe' );</script>");
                 return;
-            }
+            
 
         }
 
@@ -101,7 +81,7 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
                 
 
 
-                //Image1.ImageUrl = imgUrl64;
+                
 
                 //Guardar Archivo local
                 FU_Archivo.PostedFile.SaveAs(saveLocationAdmin);
@@ -109,26 +89,17 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
                 EncapInventario invent = new EncapInventario();
 
-                //convertir a binario el archivo
-
-
-                //byte[] ar = null;
-                //using (BinaryReader reader = new
-                //    BinaryReader(FU_Archivo.PostedFile.InputStream))
-                //{
-                 //   ar = reader.ReadBytes(FU_Archivo.PostedFile.ContentLength);
-                //}
-
-                //Session["rutaByte"] = ar;
+              
                 invent.Imagen = Ruta;
                 invent.Titulo = TB_Titulo.Text;
                 invent.Referencia = TB_referencia.Text;
                 invent.Precio= int.Parse(TB_Precio.Text);
-                invent.Ca_actual = int.Parse(TB_Cantidad.Text);
+                invent.Provedor_id = DDL_Proveedor.SelectedIndex;
                 invent.Ca_minima = int.Parse(TB_Minima.Text);
                 invent.Id_marca = int.Parse(DDL_Marca.Text);
                 invent.Id_categoria = int.Parse(DDL_Categoria.Text);
                 invent.Id_estado = 1;
+                invent.Ca_actual = 0;
          
 
                 new DAOAdmin().InsertarItem(invent);
@@ -144,7 +115,7 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
         TB_Titulo.Text = "";
         TB_referencia.Text = "";
-        TB_Cantidad.Text = "";
+      
         TB_Minima.Text = "";
         TB_Precio.Text = "";
         

@@ -24,15 +24,15 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
 
         LB_ruta.Visible = false;
         Label4.Visible = false;
+
+
         
-
-
         DDL_Categoria2.Enabled = false;
         DDL_Marca2.Enabled = false;
         BT_Inabilitar.Visible = false;
 
-
         ValidarControles();
+
     }
 
     

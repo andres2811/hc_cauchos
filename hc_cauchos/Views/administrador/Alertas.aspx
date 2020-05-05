@@ -32,7 +32,7 @@
      <div class=" container" >
                  <div class="row" >   
                      
-    <asp:Repeater ID="RepeaterAlerta" runat="server" DataSourceID="ODS_Alertas" OnItemDataBound="RepeaterAlerta_ItemDataBound"  >
+    <asp:Repeater ID="RepeaterAlerta" runat="server" DataSourceID="ODS_Alertas" OnItemDataBound="RepeaterAlerta_ItemDataBound" OnItemCommand="RepeaterAlerta_ItemCommand"  >
           
         <ItemTemplate>
             
@@ -45,9 +45,9 @@
                                 <%# Eval("Ca_actual") %> </h1>
                                 
                                    </> <asp:Label ID="Label1" runat="server" Text='<%# Eval("Titulo") %>' />
-                                  referencia :<asp:Label ID="Label2" runat="server" Text='<%# Eval("Referencia") %>' ForeColor="Red" ></asp:Label>
+                                  referencia :<asp:Label ID="LB_Referencia" runat="server" Text='<%# Eval("Referencia") %>' ForeColor="Red" ></asp:Label>
                                 <asp:Button ID="BT_Alerta" runat="server" Text="Abastecer" CssClass="btn btn-primary" />
-                               
+                                  <asp:Label ID="LB_id" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
                                 
                               </div>
                               <br />

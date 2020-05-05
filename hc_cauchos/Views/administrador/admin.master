@@ -176,9 +176,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                <li><a href="PedidosProveedor.aspx"><i class="fa fa-circle-o"></i>Pedidos Proveedor</></li>
+                
               </ul>
             </li>            
             <li>
