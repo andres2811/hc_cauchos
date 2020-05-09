@@ -57,7 +57,7 @@
                 <br />
              <div style="overflow-x: auto;">  
             
-            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1322px" DataSourceID="ODS_Inventario" DataKeyNames="Id"  OnRowUpdating="GV_inventario_RowUpdating" OnRowEditing="GV_inventario_RowEditing" AllowPaging="True" OnPageIndexChanging="GV_inventario_PageIndexChanging" PageSize="5" >
+            <asp:GridView ID="GV_inventario"  runat="server" AutoGenerateColumns="False" CellPadding="4"  OnRowDataBound="GridView1_RowDataBound" CssClass="auto-style1" ForeColor="#333333" GridLines="None" Width="1691px" DataSourceID="ODS_Inventario" DataKeyNames="Id"  OnRowUpdating="GV_inventario_RowUpdating" OnRowEditing="GV_inventario_RowEditing" AllowPaging="True" OnPageIndexChanging="GV_inventario_PageIndexChanging" PageSize="5" >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
