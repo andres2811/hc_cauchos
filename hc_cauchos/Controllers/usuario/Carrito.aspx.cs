@@ -10,16 +10,24 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
 
         EncapCarrito verificarPedido = new EncapCarrito();
         verificarPedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
         var verificar1 = new DAOUser().verificarUsuarioTienePedido(verificarPedido);
         if (verificar1 != null) {
             BTN_Facturar.Visible = false;
+            LB_facturar.Visible = false;
         }
         else
         {
             BTN_Facturar.Visible = true;
+            LB_facturar.Visible = true;
         }
     }
     protected void ODS_Carrito_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
@@ -51,10 +59,7 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
 
     }
 
-    protected void BTN_MasPro_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("catalogoUsuario.aspx");
-    }
+  
 
     protected void BTN_Facturar_Click(object sender, ImageClickEventArgs e)
     {
@@ -84,9 +89,19 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
         id_pedido.Id_pedido = pedido_Id;
         new DAOUser().ActualizarIdpedidoCarrito(id_pedido);
 
+        /*//obtengo tiempo de inventario
+        EncapParametros tiempo = new EncapParametros();
+        tiempo.Nombre = "tiempocarrito";
+        int time = new DAOUser().ObtenerTiempoCarrito(tiempo);*/
+
         ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero la factua No.00" + pedido_Id.ToString() + "');", true);
         Response.Redirect("Carrito.aspx");
     }
 
+
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("catalogoUsuario.aspx");
+    }
 }
  

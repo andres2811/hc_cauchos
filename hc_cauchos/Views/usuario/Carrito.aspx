@@ -5,11 +5,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1 class="text-center"><strong>Mi Carrito</strong></h1>
-    <asp:Button ID="BTN_MasPro" runat="server" Text="Agregar mas productos" class="btn btn-primary" OnClick="BTN_MasPro_Click"/>
+    <div align="center">
+        <asp:Image ID="Image1" runat="server" ImageUrl="~/ima/icon.png" align="center" />
+    </div>
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
-                 <asp:GridView ID="GV_carrito" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_Carrito" DataSourceID="ODS_carrito" OnRowEditing="GV_carrito_RowEditing" OnRowUpdating="GV_carrito_RowUpdating" OnRowUpdated="GV_carrito_RowUpdated" CellPadding="4" ForeColor="#333333" GridLines="None" Width="1083px">
+                 <asp:GridView ID="GV_carrito" runat="server" AutoGenerateColumns="False" DataKeyNames="Id_Carrito" DataSourceID="ODS_carrito" OnRowEditing="GV_carrito_RowEditing" OnRowUpdating="GV_carrito_RowUpdating" OnRowUpdated="GV_carrito_RowUpdated" CellPadding="4" ForeColor="#333333" GridLines="None" Width="1562px">
                      <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                      <Columns>
                          <asp:BoundField DataField="Nom_producto" HeaderText="Producto" SortExpression="Nom_producto" ReadOnly="true"/>
@@ -55,6 +57,16 @@
         </div>
     </div>
     <br />
-    <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" />
+    <div aling="center">
+        <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" />
+            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/ima/compras.png" OnClick="ImageButton1_Click" />
+        <br />
+            <asp:Label ID="LB_facturar" runat="server" Text="Facturar"></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="LB_mas" runat="server" Text="Mas Productos"></asp:Label>
+    </div>
+            
+
+ 
 </asp:Content>
 

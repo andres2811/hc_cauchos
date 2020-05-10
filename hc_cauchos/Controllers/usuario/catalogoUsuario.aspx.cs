@@ -9,6 +9,12 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
         //obtengo el usuario que esta en session en el momento 
         int iduser = ((EncapUsuario)Session["Valido"]).User_id;
         Session["userid"] = iduser;

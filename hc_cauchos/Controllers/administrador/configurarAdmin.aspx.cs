@@ -9,6 +9,14 @@ public partial class Views_administrador_configurar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        } 
+
         //inicio componentes de edit componentes como invisibles
         TB_editCorreo.Visible = false;
         BTN_editarCorreo.Visible = false;
@@ -26,6 +34,7 @@ public partial class Views_administrador_configurar : System.Web.UI.Page
         LB_apellido.Text = usuario.Apellido;
         LB_correo.Text = usuario.Correo;
         LB_contraseña.Text = usuario.Clave;
+
 
     }
 

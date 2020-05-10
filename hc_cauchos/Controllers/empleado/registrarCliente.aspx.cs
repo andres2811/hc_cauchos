@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
+public partial class Views_empleado_registrarCliente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -15,9 +15,10 @@ public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
         {
             Response.Redirect("../home.aspx");
         }
+
     }
 
-    protected void BTN_registrar_empleado_Click(object sender, EventArgs e)
+    protected void BTN_registrar_cliente_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
         //creo objeto para verificar correo 
@@ -29,37 +30,39 @@ public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
         verificarIdentificacion.Identificacion = TB_identificacion.Text;
         verificarIdentificacion = new DAOUser().verificarIdentificacion(verificarIdentificacion);
 
-        if (verificar == null && verificarIdentificacion==null)
+        if (verificar == null && verificarIdentificacion == null)
         {
             //traigo valores de los texbox
-            EncapUsuario Emple = new EncapUsuario();
-            Emple.Nombre = TB_nombres.Text;
-            Emple.Apellido = TB_apellidos.Text;
-            Emple.Correo = TB_correo.Text;
-            Emple.Clave = TB_contraseña.Text;
-            Emple.Fecha_nacimiento = DateTime.Parse(TB_fecha_nacimiento.Text);
-            Emple.Identificacion = TB_identificacion.Text;
-            Emple.Rol_id = int.Parse(DDL_tipo_empleado.SelectedValue);
-            Emple.Estado_id = 1;
+            EncapUsuario clien= new EncapUsuario();
+            clien.Nombre = TB_nombres.Text;
+            clien.Apellido = TB_apellidos.Text;
+            clien.Correo = TB_correo.Text;
+            clien.Fecha_nacimiento = DateTime.Parse(TB_fecha_nacimiento.Text);
+            clien.Identificacion = TB_identificacion.Text;
+            clien.Rol_id = 4;
+            clien.Estado_id = 2;
 
             //apunto a metodo de insert 
-            new DAOAdmin().InsertarEmpleado(Emple);
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El usuario se ha registrado satisfactoriamente' );</script>");
-          
+            new DAOEmpleado().InsertarCliente(clien);
+            new DAOAdmin().InsertarEmpleado(clien);
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El cliente se ha registrado satisfactoriamente' );</script>");
+
             //resect para componentes
             TB_nombres.Text = "";
             TB_apellidos.Text = "";
             TB_correo.Text = "";
-            TB_contraseña.Text = "";
             TB_fecha_nacimiento.Text = "";
             TB_identificacion.Text = "";
-            TB_confirmar_contra.Text = "";
         }
         else
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo o contraseña ya se encuentran registrados' );</script>");
             return;
         }
-                 
+    }
+
+    protected void BTN_Regresar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("facturar.aspx");
     }
 }

@@ -11,6 +11,13 @@ public partial class Views_administrador_Mision_Vision_Objetivo : System.Web.UI.
     
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
+
         EncapMision mision = new EncapMision();
         EncapVision vision = new EncapVision();
         EncapObjetivo objetivo = new EncapObjetivo();
@@ -34,6 +41,8 @@ public partial class Views_administrador_Mision_Vision_Objetivo : System.Web.UI.
         TB_EditObjetivo.Visible = false;
         BTN_ActializarO.Visible = false;
         BTN_CancelarO.Visible = false;
+
+
 
     }
 
