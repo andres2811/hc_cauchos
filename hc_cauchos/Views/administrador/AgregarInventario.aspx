@@ -21,13 +21,13 @@
                        Imagen:
                        <asp:FileUpload id="FU_Archivo" runat="server" CssClass  ="form-control" ></asp:FileUpload>
                        <br />
-                       <asp:TextBox ID="TB_referencia" runat="server" CssClass="form-control" placeholder="Referencia Item" ></asp:TextBox>
+                       <asp:TextBox ID="TB_referencia" runat="server" CssClass="form-control" placeholder="Referencia Item" MaxLength="25" ></asp:TextBox>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="TB_referencia" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
-                       <asp:TextBox ID="TB_Titulo" runat="server" CssClass="form-control" placeholder="Titulo Item" ></asp:TextBox>
+                       <asp:TextBox ID="TB_Titulo" runat="server" CssClass="form-control" placeholder="Titulo Item" MaxLength ="25" ></asp:TextBox>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_Titulo" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="TB_Precio" runat="server" CssClass="form-control" TextMode="Number" placeholder="Precio"></asp:TextBox>
+                        <asp:TextBox ID="TB_Precio" runat="server" CssClass="form-control" TextMode="Number" placeholder="Precio " MaxLength="6"></asp:TextBox>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="TB_Precio" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
-                       <asp:TextBox ID="TB_Minima" runat="server" CssClass="form-control" TextMode="Number" placeholder="Cantidad Minima"></asp:TextBox>
+                       <asp:TextBox ID="TB_Minima" runat="server" CssClass="form-control" TextMode="Number" placeholder="Cantidad Minima" MaxLength="5"></asp:TextBox>
                        <br />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
@@ -37,12 +37,8 @@
                        <asp:DropDownList ID="DDL_Categoria" runat="server"  DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" Width="129px"></asp:DropDownList>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" InitialValue= "0" ControlToValidate="DDL_Categoria" ErrorMessage="*"></asp:RequiredFieldValidator>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <asp:DropDownList ID="DDL_Proveedor" runat="server" DataSourceID="ODS_proveedor" DataTextField="Nombre_pro" DataValueField="Id">
-                       </asp:DropDownList>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" InitialValue= "0"  ControlToValidate="DDL_Proveedor">*</asp:RequiredFieldValidator>
-                       <asp:ObjectDataSource ID="ODS_proveedor" runat="server" SelectMethod="ColsultarProveedor" TypeName="DAOAdmin"></asp:ObjectDataSource>
-                       <br />
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       
+                    
 
                        <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
                        <br />

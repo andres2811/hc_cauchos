@@ -48,14 +48,18 @@ public partial class Views_login_login : System.Web.UI.Page
             if (ecUser.Estado_id == 1)
             {
 
-                Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
+                Session["Aux"] = "";
+                Session["Cont"] = 0;
+                List<producto> Elementos = new List<producto>();
+            Session["a"] = Elementos;
+    Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
                 //en esta session mando correctamente valores del encapsulado
                 Session["Valido"] = ecUser;
                 ecUser.Sesion = (string)Session["Nombre"].ToString();
 
                 new DAOAdmin().ActualizarUsuario(ecUser);
 
-
+                
 
                 //Dependiendo del rol se envia al Formulario correcto
                 switch (ecUser.Rol_id)

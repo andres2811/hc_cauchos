@@ -25,8 +25,7 @@ public class EncapInventario
     private int id_estado;
     private string nombre_marca;
     private string nombre_categoria;
-    private string nombre_proveedor;
-    private int provedor_id;
+    
     private string estado;
 
     [Key]
@@ -50,14 +49,12 @@ public class EncapInventario
     public int Id_categoria { get => id_categoria; set => id_categoria = value; }
     [Column("id_estado")]
     public int Id_estado { get => id_estado; set => id_estado = value; }
-    [Column("id_proveedor")]
-    public int Provedor_id { get => provedor_id; set => provedor_id = value; }
     [NotMapped]
     public string Nombre_marca { get => nombre_marca; set => nombre_marca = value; }
     [NotMapped]
     public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
     [NotMapped]
     public string Estado { get => estado; set => estado = value; }
-    [NotMapped]
-    public string Nombre_proveedor { get => nombre_proveedor; set => nombre_proveedor = value; }
+    
+
 }

@@ -26,7 +26,7 @@ public partial class Views_administrador_Alertas : System.Web.UI.Page
         var BTN = e.Item.FindControl("BT_Alerta") as Button;
         var db = new Mapeo();
         int aux = Convert.ToInt32(id_refe.Text);
-        var consulta1 = (from x in db.pedido_proveedor where x.Id_producto.Equals(aux) select x.Id_producto).Count();
+        /*var consulta1 = (from x in db.pedido_proveedor where x.Id_producto.Equals(aux) select x.Id_producto).Count();
 
         //si referencia ya existe
 
@@ -34,6 +34,7 @@ public partial class Views_administrador_Alertas : System.Web.UI.Page
         {
             BTN.Enabled = false;
         }
+        */
     }
 
     protected void RepeaterAlerta_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -44,7 +45,7 @@ public partial class Views_administrador_Alertas : System.Web.UI.Page
         
         Session["ReferenciaAlerta"] = refere.Text;
 
-        Response.Redirect("Proveedores.aspx");
+        Response.Redirect("CatalogoProveedor.aspx");
 
     }
 }

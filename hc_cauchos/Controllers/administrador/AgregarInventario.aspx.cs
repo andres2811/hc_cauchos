@@ -94,7 +94,7 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
                 invent.Titulo = TB_Titulo.Text;
                 invent.Referencia = TB_referencia.Text;
                 invent.Precio= int.Parse(TB_Precio.Text);
-                invent.Provedor_id = DDL_Proveedor.SelectedIndex;
+                
                 invent.Ca_minima = int.Parse(TB_Minima.Text);
                 invent.Id_marca = int.Parse(DDL_Marca.Text);
                 invent.Id_categoria = int.Parse(DDL_Categoria.Text);

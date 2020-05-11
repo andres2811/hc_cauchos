@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/administrador/admin.master" AutoEventWireup="true" CodeFile="~/Controllers/administrador/Alertas.aspx.cs" Inherits="Views_administrador_Alertas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    
+  
+     
  <style type="text/css">
           card-body {
             flex: 1 1 auto;
@@ -24,6 +24,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <br />
          <h1 class="text-center"><strong>Notificaciones</strong></h1>
         <br />
@@ -39,7 +40,7 @@
            
                           <div class="card mb-4 py-9 border-bottom-danger">
                             <br />
-                              <div class="card-body" >
+                              <div class="card-body">
                                   
                                <h1 aria-multiline="true" > Producto en catidad critica 
                                 <%# Eval("Ca_actual") %> </h1>

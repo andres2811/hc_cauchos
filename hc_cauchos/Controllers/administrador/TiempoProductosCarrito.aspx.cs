@@ -14,6 +14,7 @@ public partial class Views_administrador_TiempoProductosCarrito : System.Web.UI.
 
     protected void BTN_confirmar_T_Click(object sender, ImageClickEventArgs e)
     {
+        /*
         ClientScriptManager cm = this.ClientScript;
         EncapParametros tiempocarrito = new EncapParametros();
         tiempocarrito.Id = 1;
@@ -21,5 +22,6 @@ public partial class Views_administrador_TiempoProductosCarrito : System.Web.UI.
         tiempocarrito.Valor = TB_cantidad_T.Text;
         new DAOAdmin().ActualizarTiempoCarrito(tiempocarrito);
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Se ha cambiado el parametro correctamente.');</script>");
+        */
     }
 }

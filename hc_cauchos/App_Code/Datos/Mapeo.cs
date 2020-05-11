@@ -35,9 +35,11 @@ public class Mapeo : DbContext
     public DbSet<EncapCarrito> carrito { get; set; }
     public DbSet<EncapProveedor> proveedor { get; set; }
     public DbSet<EncapPedidoProveedor> pedido_proveedor { get; set; }
+    public DbSet<EncapProductoProveedor> producto_proveedor { get; set; }
     public DbSet<EncapEstadoPProveedor> estado_pedido_proveedor { get; set; }
-
-
+    public DbSet<EncapParametros> parametros { get; set; }
+    public DbSet<EncapPedido> pedidos { get; set; }
+    public DbSet<producto> aux { get; set; }
 
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
