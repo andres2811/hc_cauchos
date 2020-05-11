@@ -273,7 +273,7 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    join provee in db.proveedor on uu.Provedor_id equals provee.Id
+                    
                     let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
 
                     select new
@@ -282,7 +282,7 @@ public class DAOAdmin
                         marca_carro,
                         categoria,
                         estadoitem,
-                        provee,
+                       
                         _cantCarrito
 
 
@@ -297,12 +297,12 @@ public class DAOAdmin
                         Ca_minima = m.uu.Ca_minima,
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
-                        Provedor_id = m.uu.Provedor_id,
+                        
                         Id_estado = m.uu.Id_estado,
 
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        Nombre_proveedor = m.provee.Nombre_pro,
+                       
                         Estado = m.estadoitem.Estado_item
 
 
@@ -329,7 +329,7 @@ public class DAOAdmin
                 resultado.Id_marca = invent.Id_marca;
                 resultado.Id_estado = invent.Id_estado;
                 resultado.Id_categoria = invent.Id_categoria;
-                resultado.Provedor_id = invent.Provedor_id;
+               
                 db.SaveChanges();
             }
         }
@@ -370,13 +370,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    join provee in db.proveedor on uu.Provedor_id equals provee.Id
+                    
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        provee,
+                        
                         estadoitem
 
 
@@ -392,10 +392,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        Provedor_id = m.uu.Provedor_id,
+                       
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        Nombre_proveedor = m.provee.Nombre_pro,
+                       
                         Estado = m.estadoitem.Estado_item
 
 
@@ -413,13 +413,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    join provee in db.proveedor on uu.Provedor_id equals provee.Id
+                    
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        provee,
+                        
                         estadoitem
 
 
@@ -435,10 +435,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        Provedor_id = m.uu.Provedor_id,
+                        
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        Nombre_proveedor = m.provee.Nombre_pro,
+                        
                         Estado = m.estadoitem.Estado_item
 
 
@@ -458,13 +458,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    join provee in db.proveedor on uu.Provedor_id equals provee.Id
+                    
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        provee,
+                        
                         estadoitem
 
 
@@ -480,10 +480,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        Provedor_id = m.uu.Provedor_id,
+                        
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        Nombre_proveedor = m.provee.Nombre_pro,
+                        
                         Estado = m.estadoitem.Estado_item
 
 
@@ -502,13 +502,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    join provee in db.proveedor on uu.Provedor_id equals provee.Id
+                    
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        provee,
+                        
                         estadoitem
 
 
@@ -524,10 +524,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        Provedor_id = m.uu.Provedor_id,
+                       
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        Nombre_proveedor = m.provee.Nombre_pro,
+                        
                         Estado = m.estadoitem.Estado_item
 
 
@@ -621,13 +621,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    join provee in db.proveedor on uu.Provedor_id equals provee.Id
+                   
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        provee,
+                        
                         estadoitem
 
 
@@ -643,11 +643,11 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        Provedor_id = m.uu.Provedor_id,
+                        
 
                         Nombre_categoria = m.categoria.Categoria,
-                        Nombre_marca = m.marca_carro.Marca,
-                        Nombre_proveedor = m.provee.Nombre_pro,
+                        
+                        
                         Estado = m.estadoitem.Estado_item
                     }).ToList();
         }
@@ -659,7 +659,7 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            EncapParametros resultado = db.parametros.Where(x => x.Id == tiempocarrito.Id ).First();
+            EncapParametros resultado = db.parametros.Where(x => x.Id == tiempocarrito.Id).First();
             if (resultado != null)
             {
                 resultado.Valor = tiempocarrito.Valor;
@@ -682,6 +682,13 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
             return db.proveedor.OrderBy(x => x.Id >= 1).ToList();
+        }
+    }
+    public List<EncapProductoProveedor> ColsultarP(int pro)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.producto_proveedor.Where(x=> x.Producto_id== pro).ToList();
         }
     }
     public List<EncapPedidoProveedor> ColsultarPPedido()
@@ -707,13 +714,13 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
             return (from uu in db.pedido_proveedor
-                    join iven in db.inventario on uu.Id_producto equals iven.Id
+                    
                     join prov in db.proveedor on uu.Id_proveedor equals prov.Id
-                    join est in db.estado_pedido_proveedor on uu.Id_proveedor equals est.Id
+                    join est in db.estado_pedido_proveedor on uu.Id_estado equals est.Id
                     select new
                     {
                         uu,
-                        iven,
+                      
                         prov,
                         est
 
@@ -722,21 +729,104 @@ public class DAOAdmin
                     {
 
                         Id = m.uu.Id,
-                        Id_producto = m.uu.Id_producto,
+                        
                         Id_proveedor = m.uu.Id_proveedor,
-                        Cant = m.uu.Cant,
+                        
+
+                        Elementos = m.uu.Elementos,
                         T_entrega = m.uu.T_entrega,
                         Valor = m.uu.Valor,
                         Id_estado = m.uu.Id_estado,
                         Nombre_proveedor = m.prov.Nombre_pro,
-                        Referencia= m.iven.Referencia,
-                        Estado= m.est.Estado
                         
-                      
+                        Estado = m.est.Estado
+
+
 
 
                     }
                       ).ToList();
+        }
+    }
+    //METODO INSERTAR Proveedor
+    public void InsertarProveedor(EncapProveedor pro)
+    {
+        using (var db = new Mapeo())
+        {
+            db.proveedor.Add(pro);
+            db.SaveChanges();
+        }
+    }
+    //METODO INSERTAR PRODUCTO Proveedor
+    public void InsertarProductoProveedor(EncapProductoProveedor pp)
+    {
+        using (var db = new Mapeo())
+        {
+            db.producto_proveedor.Add(pp);
+            db.SaveChanges();
+        }
+    }
+    //METODO CONSULTAR PRODUCTOS VINCULADOS AL PROVEEDOR
+    public List<EncapProductoProveedor> ConsultarProductoProveedor( int pro)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.producto_proveedor where uu.Proveedor_id == pro
+                    join iven in db.inventario on uu.Producto_id equals iven.Id
+                    select new
+                    {
+                        uu,
+                        iven
+
+                    }).ToList().Select(m => new EncapProductoProveedor
+                    {
+
+                        Id = m.uu.Id,
+                        Producto_id = m.uu.Producto_id,
+                        Proveedor_id = m.uu.Producto_id,
+                        Cantidad = m.uu.Cantidad,
+                        Precio = m.uu.Precio,
+                        Last_modify = m.uu.Last_modify,
+                        Session = m.uu.Session,
+                        Referencia = m.iven.Referencia,
+                        Nombre_producto = m.iven.Titulo
+
+
+
+
+                    }
+                      ).ToList();
+        }
+    }
+    //METODO DE AGREGAR A AUX
+    public void InsertarAux(producto pp)
+    {
+        using (var db = new Mapeo())
+        {
+            db.aux.Add(pp);
+            db.SaveChanges();
+        }
+    }
+    //METODO ELIMINAR ITEM DEL INVENTARIO
+    public void LimpiarAux()
+    {
+        using (var db = new Mapeo())
+        {
+           
+
+            var entry = from c in db.aux select c;
+
+            db.aux.RemoveRange(entry);
+            db.SaveChanges();
+        }
+        
+        
+    }
+    public List<producto> ColsultarAux()
+    {
+        using (var db = new Mapeo())
+        {
+            return db.aux.ToList();
         }
     }
 

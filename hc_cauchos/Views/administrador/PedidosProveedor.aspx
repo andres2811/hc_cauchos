@@ -7,16 +7,32 @@
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;"> 
-                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Width="945px">
+
+                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Height="239px" Width="895px" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" PageSize="2">
                      <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                      <Columns>
-                         <asp:BoundField DataField="Referencia" HeaderText="Referencia" SortExpression="Referencia" />
-                         <asp:BoundField DataField="Valor" HeaderText="Valor" SortExpression="Valor" />
-                         <asp:BoundField DataField="Cant" HeaderText="Cant" SortExpression="Cant" />
-                         <asp:BoundField DataField="T_entrega" HeaderText="Realizado" SortExpression="T_entrega" />
+                         <asp:BoundField DataField="Nombre_proveedor" HeaderText="Nombre proveedor" SortExpression="Nombre_proveedor" />
+                         <asp:BoundField DataField="Valor" HeaderText="Valor Total" SortExpression="Valor" />
+                         <asp:BoundField DataField="T_entrega" HeaderText="Entrega" SortExpression="T_entrega" />
+                         <asp:TemplateField HeaderText="Elementos" SortExpression="Elementos">
+                             <EditItemTemplate>
+                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Elementos") %>'></asp:TextBox>
+                             </EditItemTemplate>
+                             <ItemTemplate>
+                                
+                                 <asp:Label ID="LB_elementos" runat="server" Text='<%# Eval("Elementos") %>' Visible="False"></asp:Label>
+                                 <br />
+                                 <br />
+                                 <asp:GridView ID="GV_Elementos" runat="server">
+                                 </asp:GridView>
+                                
+                             </ItemTemplate>
+                         </asp:TemplateField>
                          <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-                         <asp:BoundField DataField="Nombre_proveedor" HeaderText="Proveedor" SortExpression="Nombre_proveedor" />
-                     </Columns>
+                </Columns>
+                
+
+                     
                      <EditRowStyle BackColor="#999999" />
                      <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                      <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -32,5 +48,6 @@
              </div>
         </div>
     </div>
+  
 </asp:Content>
 

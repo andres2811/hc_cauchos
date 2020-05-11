@@ -138,17 +138,6 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 
-                    <asp:TemplateField HeaderText="Proveedor" SortExpression="Nombre_proveedor">
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ODS_Proveedor" DataTextField="Nombre_pro" DataValueField="Id" SelectedValue='<%# Bind("Provedor_id") %>'>
-                            </asp:DropDownList>
-                            <asp:ObjectDataSource ID="ODS_Proveedor" runat="server" SelectMethod="ColsultarProveedor2" TypeName="DAOAdmin"></asp:ObjectDataSource>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("Nombre_proveedor") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                
                     <asp:CommandField HeaderText="Editar" ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />

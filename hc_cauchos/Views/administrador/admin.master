@@ -172,14 +172,21 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-pie-chart"></i>
-                <span>Proveedores</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
+                <span>Proveedores</span>  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <<<<<<< HEAD
               <ul class="treeview-menu">
-                <li><a href="PedidosProveedor.aspx"><i class="fa fa-circle-o"></i>Pedidos Proveedor</a></li>           
+
+                <li><a href="AgregarProveedor.aspx"><i class="fa fa-circle-o"></i>Agregar Proveedor</a></></li>
+                <li><a href="VincularProveedor.aspx"><i class="fa fa-circle-o"></i>Vinvular Proveedor</a></></li>                
+                <li><a href="CatalogoProveedor.aspx"><i class="fa fa-circle-o"></i>Catalogo Proveedor</a></></li>
+                <li><a href="PedidosProveedor.aspx"><i class="fa fa-circle-o"></i>Pedidos Proveedor</a></></li>
+
               </ul>
+         
             </li>            
             <li>
+
               <a href="Alertas.aspx">
                 <i  class="fa fa-envelope-o"> </i><span>Notificaciones </span> 
                   
