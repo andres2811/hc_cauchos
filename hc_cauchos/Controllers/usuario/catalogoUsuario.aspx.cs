@@ -9,11 +9,18 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
         //obtengo el usuario que esta en session en el momento 
         int iduser = ((EncapUsuario)Session["Valido"]).User_id;
         Session["userid"] = iduser;
         //numero de cantidad en el carrito 
         LB_cantidad.Text = new DAOUser().ObtenerCantidadxProductoCarritoxUser(iduser).ToString();
+
     }
 
     protected void BTNI_carritoAdd_Click(object sender, ImageClickEventArgs e)
@@ -40,38 +47,83 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
                 return;
             }
 
-
-            EncapCarrito verificar = new EncapCarrito();
-            verificar.Producto_id= int.Parse(e.CommandArgument.ToString());
-            verificar.User_id = ((EncapUsuario)Session["Valido"]).User_id;
-            //verifico si el item agregado existe en el carrito 
-           var veri2= new DAOUser().verificarArticuloEnCarrito(verificar);
-            //si existe se suma  al item en el carrito 
-            if (veri2 != null)
+            EncapCarrito verificarPedido = new EncapCarrito();
+            verificarPedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+            var verificar1 = new DAOUser().verificarUsuarioTienePedido(verificarPedido);
+            
+            if(verificar1 != null)
             {
-                //actualizo cantidad de item existente en base de datos 
-                EncapCarrito carrito = new EncapCarrito();
-                carrito.Producto_id = int.Parse(e.CommandArgument.ToString());
-                carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
-                carrito.Cantidad = cantidadSolicitada;
-                carrito.Fecha = DateTime.Now;
-                carrito.Precio = precio;
-                carrito.Total = precio * cantidadSolicitada;
-                new DAOUser().ActualizarCarritoItems(carrito);
+                EncapCarrito verificarItem = new EncapCarrito();
+                verificarItem.Producto_id = int.Parse(e.CommandArgument.ToString());
+                verificarItem.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+                //verifico si el item agregado existe en el carrito 
+                var verificar2 = new DAOUser().verificarArticuloEnCarrito(verificarItem);
+                //si existe se suma  al item en el carrito 
+                if (verificar2 != null)
+                {
+                    //actualizo cantidad de item existente en base de datos 
+                    EncapCarrito carrito = new EncapCarrito();
+                    carrito.Producto_id = int.Parse(e.CommandArgument.ToString());
+                    carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+                    carrito.Cantidad = cantidadSolicitada;
+                    carrito.Fecha = DateTime.Now;
+                    carrito.Precio = precio;
+                    carrito.Total = precio * cantidadSolicitada;
+                    new DAOUser().ActualizarCarritoItems(carrito);
+                }
+                else
+                {
+                    //si no existe se agrega a la lista del carrito 
+                    EncapCarrito carrito = new EncapCarrito();
+                    carrito.Producto_id = int.Parse(e.CommandArgument.ToString());
+                    carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+                    carrito.Cantidad = cantidadSolicitada;
+                    carrito.Fecha = DateTime.Now;
+                    carrito.Precio = precio;
+                    carrito.Total = precio * cantidadSolicitada;
+                    carrito.Estadocar = 1;
+                    carrito.Id_pedido = verificar1.Id_pedido;
+                    new DAOUser().InsertarCarrito(carrito);
+                }
+
             }
+            //////////////////////////////////////////////////////////////////////////////////////////////////
             else
             {
-                //si no existe se agrega a la lista del carrito 
-                EncapCarrito carrito = new EncapCarrito();
-                carrito.Producto_id = int.Parse(e.CommandArgument.ToString());
-                carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
-                carrito.Cantidad = cantidadSolicitada;
-                carrito.Fecha = DateTime.Now;
-                carrito.Precio = precio;
-                carrito.Total = precio * cantidadSolicitada;
-                carrito.Estadocar = 1;
-                new DAOUser().InsertarCarrito(carrito);        
+                EncapCarrito verificarItem = new EncapCarrito();
+                verificarItem.Producto_id = int.Parse(e.CommandArgument.ToString());
+                verificarItem.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+                //verifico si el item agregado existe en el carrito 
+                var verificar2 = new DAOUser().verificarArticuloEnCarrito(verificarItem);
+                //si existe se suma  al item en el carrito 
+                if (verificar2 != null)
+                {
+                    //actualizo cantidad de item existente en base de datos 
+                    EncapCarrito carrito = new EncapCarrito();
+                    carrito.Producto_id = int.Parse(e.CommandArgument.ToString());
+                    carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+                    carrito.Cantidad = cantidadSolicitada;
+                    carrito.Fecha = DateTime.Now;
+                    carrito.Precio = precio;
+                    carrito.Total = precio * cantidadSolicitada;
+                    new DAOUser().ActualizarCarritoItems(carrito);
+                }
+                else
+                {
+                    //si no existe se agrega a la lista del carrito 
+                    EncapCarrito carrito = new EncapCarrito();
+                    carrito.Producto_id = int.Parse(e.CommandArgument.ToString());
+                    carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+                    carrito.Cantidad = cantidadSolicitada;
+                    carrito.Fecha = DateTime.Now;
+                    carrito.Precio = precio;
+                    carrito.Total = precio * cantidadSolicitada;
+                    carrito.Estadocar = 1;
+                    new DAOUser().InsertarCarrito(carrito);
+                }
+
             }
+           
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Producto agregado a carrito');</script>");
             Response.Redirect("catalogoUsuario.aspx");
             return;

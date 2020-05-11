@@ -76,6 +76,15 @@ public class DAOUser
         }
     }
 
+    //METODO PARA VERIFICAR SI EL USUARIO TIENE PEDIDO
+    public EncapCarrito verificarUsuarioTienePedido(EncapCarrito verificar)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.carrito.Where(x => x.User_id.Equals(verificar.User_id) && x.Estadocar.Equals(2)).FirstOrDefault();
+        }
+    }
+
     //METODO ACTUALIZAR + ITEMS EN CARRITO 
     public void ActualizarCarritoItems(EncapCarrito carrito)
     {
@@ -102,7 +111,7 @@ public class DAOUser
     {
         using (var db = new Mapeo())
         {
-            return (from uu in db.inventario
+            return (from uu in db.inventario.Where(x=> x.Ca_actual > 0)
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
@@ -158,7 +167,8 @@ public class DAOUser
                         Precio = m.carrito.Precio,
                         Total = m.carrito.Total,
                         Nom_producto=m.iven.Titulo,
-                        Cant_Actual = (m.iven.Ca_actual - m.carrito.Cantidad).Value
+                        Cant_Actual = (m.iven.Ca_actual - m.carrito.Cantidad).Value,
+                        Id_pedido = m.carrito.Id_pedido
                     }).ToList();
         }
     }
@@ -199,10 +209,7 @@ public class DAOUser
             {
                 car.Estadocar = carrito.Estadocar;
             }
-
             db.SaveChanges();
-
-            
         }
     }
 
@@ -217,7 +224,22 @@ public class DAOUser
         }
         return pedido.Id;
     }
-    
+
+    //MODIFICAR ID DEL PEDIDO EN CARRITO
+    public void ActualizarIdpedidoCarrito(EncapCarrito carrito)
+    {
+        using (var db = new Mapeo())
+        {
+
+            var carritoedit = db.carrito.Where(x => x.User_id == carrito.User_id).ToList();
+            foreach (var car in carritoedit)
+            {
+                car.Id_pedido = carrito.Id_pedido;
+            }
+            db.SaveChanges();
+        }
+    }
+
     //METODO PARA BORRAR EN CARRITO LUEGO DE HACER FACTURACION
     public void limpiarCarrito(int userid) {
         using (var db = new Mapeo())
@@ -232,7 +254,20 @@ public class DAOUser
             db.SaveChanges();
         }
     }
-        
+
+    //MODIFICAR VALOR EN PEDIDO SI MODIFICAN CARRITO
+    public void ActualizarValorpedido(EncapPedido pedido)
+    {
+        using (var db = new Mapeo())
+        {
+
+            EncapPedido pedidoedit = db.pedidos.Where(x => x.Id == pedido.Id).SingleOrDefault();
+            pedidoedit.Total = pedido.Total;
+
+            db.SaveChanges();
+        }
+    }
+
 
 
 }

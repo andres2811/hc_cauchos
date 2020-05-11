@@ -17,8 +17,8 @@ public class EncapPedido
     private int user_id;
     private int atendido_id;
     private int domiciliario_id;
-    private string productos;
-    private double valor_total;
+    private int estado_pedido;
+    private double total;
 
     [Key]
     [Column("id")]
@@ -31,8 +31,8 @@ public class EncapPedido
     public int Atendido_id { get => atendido_id; set => atendido_id = value; }
     [Column("domiciliario_id")]
     public int Domiciliario_id { get => domiciliario_id; set => domiciliario_id = value; }
-    [Column("productos")]
-    public string Productos { get => productos; set => productos = value; }
-    [Column("valor_total")]
-    public double Valor_total { get => valor_total; set => valor_total = value; }
+    [Column("estado_pedido")]
+    public int Estado_pedido { get => estado_pedido; set => estado_pedido = value; }
+    [Column("total")]
+    public Double Total { get => total; set => total = value; }
 }

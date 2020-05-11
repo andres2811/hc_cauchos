@@ -22,6 +22,7 @@ public class EncapCarrito
     private int estadocar;
     private string nom_producto;
     private int cant_Actual;
+    private int id_pedido;
    
     [Key]
     [Column("id_carrito")]
@@ -40,6 +41,8 @@ public class EncapCarrito
     public int Total { get => total; set => total = value; }
     [Column("estadocar")]
     public int Estadocar { get => estadocar; set => estadocar = value; }
+    [Column("id_pedido")]
+    public int Id_pedido { get => id_pedido; set => id_pedido = value; }
 
 
 
@@ -47,5 +50,5 @@ public class EncapCarrito
     public string Nom_producto { get => nom_producto; set => nom_producto = value; }
     [NotMapped]
     public int Cant_Actual { get => cant_Actual; set => cant_Actual = value; }
-   
+    
 }

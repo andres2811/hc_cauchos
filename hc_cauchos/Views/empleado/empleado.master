@@ -129,9 +129,14 @@
           <!-- AQUI VAN LOS ELEMENTOS QUE SE SELECIONAN PARA LAS VISTAS -->
           <ul class="sidebar-menu">
             <li class="header">Barra De Navegacion</li>
-               <li>
+            <li>
               <a href="configurarEmple.aspx">
                 <i class="fa fa-edit"></i> <span>Configuracion</span>
+              </a>
+            </li>
+              <li>
+              <a href="facturar.aspx">
+                <i class="fa fa-edit"></i> <span>Facturar</span>
               </a>
             </li>
             <li class="treeview">

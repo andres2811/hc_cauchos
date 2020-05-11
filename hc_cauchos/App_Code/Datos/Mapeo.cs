@@ -39,7 +39,14 @@ public class Mapeo : DbContext
     public DbSet<EncapEstadoPProveedor> estado_pedido_proveedor { get; set; }
     public DbSet<EncapParametros> parametros { get; set; }
     public DbSet<EncapPedido> pedidos { get; set; }
+
     public DbSet<producto> aux { get; set; }
+
+    
+
+
+
+
 
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)

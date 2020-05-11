@@ -7,6 +7,7 @@
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;"> 
+
                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Height="239px" Width="895px" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" PageSize="2">
                      <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                      <Columns>
@@ -28,7 +29,10 @@
                              </ItemTemplate>
                          </asp:TemplateField>
                          <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-                     </Columns>
+                </Columns>
+                
+
+                     
                      <EditRowStyle BackColor="#999999" />
                      <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                      <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -44,5 +48,6 @@
              </div>
         </div>
     </div>
+  
 </asp:Content>
 

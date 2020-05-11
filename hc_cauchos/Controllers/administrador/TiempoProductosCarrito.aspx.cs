@@ -9,6 +9,12 @@ public partial class Views_administrador_TiempoProductosCarrito : System.Web.UI.
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
 
     }
 

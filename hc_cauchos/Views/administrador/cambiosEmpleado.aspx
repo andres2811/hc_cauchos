@@ -14,7 +14,7 @@
       <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
-            <asp:GridView ID="GV_empleados" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" CssClass="table table-responsive table-striped" GridLines="None" DataKeyNames="User_id" HorizontalAlign="Justify" Width="104%" OnRowDataBound="GridView1_RowDataBound" OnRowUpdating="GV_empleados_RowUpdating">
+            <asp:GridView ID="GV_empleados" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" CssClass="table table-responsive table-striped" GridLines="None" DataKeyNames="User_id" HorizontalAlign="Justify" Width="104%" OnRowDataBound="GridView1_RowDataBound" OnRowUpdating="GV_empleados_RowUpdating" AllowPaging="True" PageSize="5">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:TemplateField HeaderText="Nombres" SortExpression="Nombre">
