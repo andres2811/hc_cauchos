@@ -63,6 +63,6 @@ public partial class Views_empleado_registrarCliente : System.Web.UI.Page
 
     protected void BTN_Regresar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("facturar.aspx");
+        Response.Redirect("ventas.aspx");
     }
 }

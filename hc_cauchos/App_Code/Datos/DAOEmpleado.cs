@@ -106,6 +106,15 @@ public class DAOEmpleado
         }
     }
 
+    //OBTENGO CANTIDAD DE PRODUCTOS DE VENDEDOR CARRITO
+    public int ObtenerCantidadxProductoCarritoxEmple(int user_id)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.carrito.Where(x => x.User_id == user_id).Count();
+        }
+    }
+
 
 
 }
