@@ -317,4 +317,12 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
         }
 
     }
+
+
+
+
+
+
+
+
 }

@@ -36,7 +36,11 @@
                         <asp:DropDownList ID="DDL_Proveedor" runat="server" Class="form-control" DataSourceID="ODS_Proveedor" DataTextField="Nombre_pro" DataValueField="Id" OnSelectedIndexChanged="DDL_Proveedor_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
                                 <td>
-                        <asp:Button ID="Button1" class="btn btn-default" runat="server"  OnClick="Button1_Click" Text="Ver" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" InitialValue="0" ControlToValidate="DDL_Proveedor"></asp:RequiredFieldValidator>
+                                </td>
+                                <td>
+                        
+                        <asp:Button ID="Button1" class="btn btn-default" runat="server"  OnClick="Button1_Click" Text="Ver" ValidationGroup="a" />
                                 </td>
                             </tr>
                         </table>
@@ -53,12 +57,14 @@
                  <table class="nav-justified">
                             <tr>
                                 <td class="auto-style1"> Referencia<asp:Label ID="Lb_Referencia"  class="form-control" runat="server" Text='<%# Eval("Referencia") %>' ></asp:Label> </td>
+                                <asp:Label ID="LB_id_producto" runat="server" Text='<%# Eval("Producto_id") %>' Visible="False"></asp:Label>
                                 <td> Nombre <asp:Label ID="Lb_Nombre"  class="form-control" runat="server" Text='<%# Eval("Nombre_producto") %>' ></asp:Label></td>
                                 <td> Precio <asp:Label ID="Lb_Precio" Class="form-control" runat="server"  Text='<%# Eval("Precio") %>' Width="100%" ></asp:Label></td>
+                               
                                 <td> 
                                    
                                     <br /><asp:TextBox ID="TB_Cantidad" class="form-control" runat="server" placeholder="Cantidad" Width="100px" MaxLength="4"  TextMode="Number"></asp:TextBox> </td>
-                                <td> <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="No se permite negativos" MaximumValue="9999" MinimumValue="1" ControlToValidate="TB_Cantidad" ValidationGroup="a"></asp:RangeValidator>
+                                <td> <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Cantidad no valida" MaximumValue='<%# Eval("Cantidad") %>' MinimumValue="1" ControlToValidate="TB_Cantidad" ValidationGroup="a" Type="Integer"></asp:RangeValidator>
                                     
                                 </td>
 
@@ -81,12 +87,12 @@
             <table class="auto-style4">
                 <tr>
                     <td class="auto-style5">Precio Total : </td>
-                    <td class="auto-style3"><asp:Label ID="Lb_total" runat="server" Class="form-control-static" Text=""></asp:Label>
+                    <td class="auto-style3"><asp:Label ID="Lb_total" runat="server" Class="form-control-static" Visible="False"></asp:Label>
                     </td>
                     <td>
-            <asp:Button ID="Btn_Enviar" class="btn btn-primary" runat="server" Text="Enviar Pedido" OnClick="Btn_Enviar_Click"  />
+            <asp:Button ID="Btn_Enviar" class="btn btn-primary" runat="server" Text="Enviar Pedido" OnClick="Btn_Enviar_Click" Visible="False"  />
                     </td>
-                    <td> <asp:Button ID="Btn_Cancelar" Class="btn btn-danger" runat="server" Text="Cancelar" OnClick="Btn_Cancelar_Click1" /></td>
+                    <td> <asp:Button ID="Btn_Cancelar" Class="btn btn-danger" runat="server" Text="Cancelar" OnClick="Btn_Cancelar_Click1" Visible="False" /></td>
                 </tr>
             </table>
         </div>

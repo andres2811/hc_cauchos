@@ -21,6 +21,13 @@
 
         }
                 
+        .auto-style1 {
+            margin-left: 248;
+        }
+        .auto-style2 {
+            width: 283px;
+        }
+                
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -33,6 +40,17 @@
     <br />
     <h1 class="text-center text-primary"><strong>Catalogo</strong><br />
         <small><strong>nuestros productos</strong></small></h1>
+    <asp:ObjectDataSource ID="ODS_Categoria" runat="server" SelectMethod="ColsultarCategoria2" TypeName="DAOAdmin"></asp:ObjectDataSource>
+    <table class="nav-justified">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style2">
+                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="auto-style1" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id">
+                </asp:DropDownList>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
     <br />
     <div class="row ">      
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo" OnItemCommand="Repeater1_ItemCommand">

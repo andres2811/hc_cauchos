@@ -24,6 +24,7 @@ public partial class Views_administrador_AgregarProveedor : System.Web.UI.Page
         EncapProveedor proveedor = new EncapProveedor();
         proveedor.Nombre_pro = TB_nombre.Text;
         proveedor.Contacto = TB_contacto.Text;
+
         proveedor.Correo = TB_correo.Text;
         proveedor.Nid = TB_nid.Text;
         proveedor.Session = (string)Session["Nombre"].ToString();

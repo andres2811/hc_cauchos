@@ -14,7 +14,7 @@
                 <div class="form-group">
                      <asp:TextBox ID="TB_nombre" runat="server" class="form-control" placeholder="nombre"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nombre" ErrorMessage="*"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="TB_contacto" runat="server" class="form-control" placeholder="contacto" TextMode="Number" ></asp:TextBox>
+                            <asp:TextBox ID="TB_contacto" runat="server" class="form-control" placeholder="contacto" TextMode="Number" MaxLength="10" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Registro" ControlToValidate="TB_contacto" ErrorMessage="*"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="TB_correo" runat="server" class="form-control" placeholder="correo"  TextMode="Email"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Registro" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -23,7 +23,7 @@
                             <asp:TextBox ID="TB_Fecha" runat="server" class="form-control" placeholder="tiempo de envio (Horas)" TextMode="Number" MaxLength="3"></asp:TextBox>    
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nid" ErrorMessage="*"></asp:RequiredFieldValidator>
                             <br />
-                     <asp:RangeValidator ID="RangeValidator1" runat="server" ValidationGroup="Registro"  ControlToValidate="TB_Fecha" ErrorMessage="Rango de hora invalido recuerde entre 1-200 Hrs" MaximumValue="200" MinimumValue="1"></asp:RangeValidator>
+                     <asp:RangeValidator ID="RangeValidator1" runat="server" ValidationGroup="Registro"  ControlToValidate="TB_Fecha" ErrorMessage="Rango de hora invalido recuerde entre 1-200 Hrs" MaximumValue="200" MinimumValue="1" Type="Integer"></asp:RangeValidator>
                             <br />
                             
                            

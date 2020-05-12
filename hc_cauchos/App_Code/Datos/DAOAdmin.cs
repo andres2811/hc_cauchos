@@ -681,8 +681,30 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            return db.proveedor.OrderBy(x => x.Id >= 1).ToList();
+            return db.proveedor.Where(x => x.Id > 0).OrderBy(x => x.Id >= 1).ToList();
         }
+    }
+    //METODO ACTUALIZAR Proveedor
+    public void ActualizarProveedor(EncapProveedor proveedor)
+    {
+        using (var db = new Mapeo())
+        {
+            var resultado = db.proveedor.SingleOrDefault(x => x.Id == proveedor.Id);
+            if (resultado != null)
+            {
+                resultado.Nombre_pro = proveedor.Nombre_pro;
+                resultado.Contacto = proveedor.Contacto;
+                resultado.Correo = proveedor.Correo;
+                resultado.Tiempo_envio = proveedor.Tiempo_envio;
+                resultado.Nid = proveedor.Nid;
+                resultado.Session = proveedor.Session;
+                resultado.Last_modify = proveedor.Last_modify;
+
+
+                db.SaveChanges();
+            }
+        }
+
     }
     public List<EncapProductoProveedor> ColsultarP(int pro)
     {
@@ -798,6 +820,28 @@ public class DAOAdmin
                       ).ToList();
         }
     }
+    //ACTUALIZAR PRODUCTO PROVEEDOR
+    public void ActualizarProductoProveedor(EncapProductoProveedor producto)
+    {
+        using (var db = new Mapeo())
+        {
+            var resultado = db.producto_proveedor.SingleOrDefault(x => x.Id == producto.Id);
+            if (resultado != null)
+            {
+                resultado.Nombre_producto = producto.Nombre_producto;
+                resultado.Cantidad = producto.Cantidad;
+                resultado.Precio = producto.Precio;
+                resultado.Producto_id = producto.Producto_id;
+                resultado.Proveedor_id = producto.Proveedor_id;
+                resultado.Session = producto.Session;
+                resultado.Last_modify = producto.Last_modify;
+
+
+                db.SaveChanges();
+            }
+        }
+
+    }
     //METODO DE AGREGAR A AUX
     public void InsertarAux(producto pp)
     {
@@ -828,6 +872,31 @@ public class DAOAdmin
         {
             return db.aux.ToList();
         }
+    }
+    //Metodo para eliminar el proveedor
+    public void EliminarProveedor(EncapProveedor proveedor)
+    {
+  
+                using (var db = new Mapeo())
+                {
+                    db.proveedor.Attach(proveedor);
+
+                //hacer borrado en
+                //lista de productos a eliminar
+                var producto_eliminar = db.producto_proveedor.Where(x => x.Proveedor_id == proveedor.Id);
+                    
+                    var entry = db.Entry(proveedor);
+                    entry.State = EntityState.Deleted;
+                    
+                    db.producto_proveedor.RemoveRange(producto_eliminar);
+                    
+                    db.SaveChanges();
+                }
+            
+
+        
+
+
     }
 
 }

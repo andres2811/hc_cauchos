@@ -27,7 +27,9 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
         }
 
         DDL_Proveedor.Attributes.Add("SelectedIndexChanged", "changes");
-
+       
+       
+        
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -36,11 +38,15 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
         {
             Repeater1.DataSourceID = "ODS_productos";
         }
+       
     }
 
     protected void DDL_Proveedor_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+        new DAOAdmin().LimpiarAux();//limpio la tabla si la persona tiene un producto pero no da click sobre enviar
+        Btn_Cancelar.Visible = true;
+        Btn_Enviar.Visible = true;
+        Lb_total.Visible = true;
     }
 
 
@@ -49,8 +55,10 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
     {
         var tb_cantidad = e.Item.FindControl("TB_Cantidad") as TextBox;
         var lb_precio = e.Item.FindControl("Lb_Precio") as Label;
+        var lb_producto_id = e.Item.FindControl("LB_id_producto") as Label;
         var lb_referencia = e.Item.FindControl("Lb_Referencia") as Label;
         var lb_precio_Producto = e.Item.FindControl("Lb_Total_Producto") as Label;
+        var lb_cantidad = e.Item.FindControl("Lb_Cantidad") as Label;
         var lb_aux = e.Item.FindControl("Lb_aux") as Label;
         var btn = e.Item.FindControl("Btn_Agregar") as Button;
         var btn_c = e.Item.FindControl("Btn_Cancelar") as Button;
@@ -60,6 +68,9 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
         if (tb_cantidad.Text != "")
         {
             int total = (Convert.ToInt32(tb_cantidad.Text)) * (Convert.ToInt32(lb_precio.Text));
+         
+            
+           
             lb_precio_Producto.Text = total.ToString();
 
             if ((int)Session["Cont"] == 0)
@@ -102,6 +113,8 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
 
 
             btn.Enabled = false;
+            tb_cantidad.Text = "";
+            
 
         }
 
@@ -117,37 +130,58 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
 
     protected void Btn_Enviar_Click(object sender, EventArgs e)
     {
-
         ClientScriptManager cm = this.ClientScript;
-        EncapPedidoProveedor pedidoProveedor = new EncapPedidoProveedor();
-        pedidoProveedor.Id_estado = 1;
-        pedidoProveedor.Id_proveedor = Convert.ToInt32(DDL_Proveedor.SelectedValue);
-        pedidoProveedor.Valor = Convert.ToInt32(Lb_total.Text);
-        pedidoProveedor.Session = (string)Session["Nombre"].ToString();
-        pedidoProveedor.Last_modify = DateTime.Now;
+        
         Mapeo db = new Mapeo();
-        var horas = (from x in db.proveedor.Where(x => x.Id == pedidoProveedor.Id_proveedor) select x.Tiempo_envio).FirstOrDefault();
-        pedidoProveedor.T_entrega = DateTime.Now.AddHours((horas));
+        var consulta = (from aa in db.aux select aa.Id).Count();
 
 
-        Elementos = new DAOAdmin().ColsultarAux();
+        //enviamos los datos
+        //valido que existan datos para hacer un pedido
 
-        pedidoProveedor.Elementos = JsonConvert.SerializeObject(Elementos, Formatting.Indented, new JsonSerializerSettings
+        if (consulta != 0) {
+            EncapPedidoProveedor pedidoProveedor = new EncapPedidoProveedor();
+            pedidoProveedor.Id_estado = 1;
+            pedidoProveedor.Id_proveedor = Convert.ToInt32(DDL_Proveedor.SelectedValue);
+            pedidoProveedor.Valor = Convert.ToDouble(Lb_total.Text);
+            pedidoProveedor.Session = (string)Session["Nombre"].ToString();
+            pedidoProveedor.Last_modify = DateTime.Now;
+            
+            //obtenemos tiempo que tarda el proveedor
+            var horas = (from x in db.proveedor.Where(x => x.Id == pedidoProveedor.Id_proveedor) select x.Tiempo_envio).FirstOrDefault();
+            pedidoProveedor.T_entrega = DateTime.Now.AddHours((horas));
+
+
+            Elementos = new DAOAdmin().ColsultarAux();
+
+
+
+
+            
+
+
+            pedidoProveedor.Elementos = JsonConvert.SerializeObject(Elementos, Formatting.Indented, new JsonSerializerSettings
+            {
+
+                NullValueHandling = NullValueHandling.Ignore
+            });
+
+
+            new DAOAdmin().InsertarPedidoProveedor(pedidoProveedor);
+            new DAOAdmin().LimpiarAux();
+
+
+            Session["Cont"] = 0;
+            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Pedido Enviado');window.location=\"CatalogoProveedor.aspx\"</script>");
+
+
+        }else
         {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('No hay productos para hacer un pedido ' );</script>");
+            return;
 
-            NullValueHandling = NullValueHandling.Ignore
-        });
+        }
 
-
-        new DAOAdmin().InsertarPedidoProveedor(pedidoProveedor);
-        new DAOAdmin().LimpiarAux();
-
-
-        Session["Cont"] = 0;
-        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Pedido Enviado');window.location=\"CatalogoProveedor.aspx\"</script>");
-
-
-        ;
 
 
 
@@ -171,9 +205,21 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
 
     protected void Btn_Cancelar_Click1(object sender, EventArgs e)
     {
+        //limpio y reinicio repeater 
         Repeater1.DataSourceID = "ODS_productos";
         Repeater1.DataBind();
-        Session["Cant"] = 0;
+        Session["Cont"] = 0;
         Lb_total.Text = "";
+        new DAOAdmin().LimpiarAux();
+    }
+    public void ActivarBotones()
+    {
+        Btn_Enviar.Visible = true;
+        Btn_Cancelar.Visible = false;
+    }
+    public void DesactivarBotones()
+    {
+        Btn_Enviar.Visible = true;
+        Btn_Cancelar.Visible = false;
     }
 }

@@ -30,6 +30,8 @@
                     <asp:TextBox ID="TB_precio" runat="server" class="form-control" placeholder="precio" MaxLength="5"></asp:TextBox>     
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TB_precio" ErrorMessage="*" ValidationGroup="a"></asp:RequiredFieldValidator>
                     <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Cantidad fuera del rango recuerde entre 1-99999" ControlToValidate="TB_precio" MaximumValue="999999" MinimumValue="1" Type="Integer" ValidationGroup="a"></asp:RangeValidator>
+                    <br />
+                    <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                     <asp:Button ID="BTN_vincular" runat="server" Text="Vincular" class="btn btn-primary" ValidationGroup="a" OnClick="BTN_vincular_Click" />
