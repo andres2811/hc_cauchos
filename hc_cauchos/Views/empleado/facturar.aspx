@@ -35,10 +35,10 @@
     <br />
     <asp:ObjectDataSource ID="ODS_catalogo" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
     <div class="row ">      
-    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo"  OnItemCommand="Repeater1_ItemCommand">
+    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo"  OnItemCommand="Repeater1_ItemCommand" >
         <ItemTemplate>            
             <div class="col-md-2 col-sm-6 col-xs-8 mb-3" >
-                 <div class="card shadow" style=" width:270px; height:600px;" id="productos">  
+                 <div class="card shadow" style=" width:270px; height:630px;" id="productos">  
                          <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen") %>' width="100%" Height="50%" class="card-img-top" ImageAlign="TextTop"  />                         
                             <div class="card-body text-capitalize text-center">
                                 <h4 class="card-title text-center" id="titulo">

@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/empleado/empleado.master" AutoEventWireup="true" CodeFile="~/Controllers/empleado/venta.aspx.cs" Inherits="Views_empleado_venta" %>
 
+<%@ Register Src="~/Views/empleado/SectionLevelTutorialListing.ascx" TagPrefix="uc1" TagName="SectionLevelTutorialListing" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -16,7 +19,7 @@
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
-                <asp:GridView ID="GV_Clientes" class="table table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="User_id" DataSourceID="ODS_Clientes" Width="100%" AllowPaging="True" PageSize="5" ForeColor="#333333" CellPadding="4" GridLines="None">
+                <asp:GridView ID="GV_Clientes" class="table table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="User_id" DataSourceID="ODS_Clientes" Width="100%" AllowPaging="True" PageSize="5" ForeColor="#333333" CellPadding="4" GridLines="None" OnRowUpdated="GV_Clientes_RowUpdated">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                    <Columns>
                         <asp:BoundField DataField="User_id" HeaderText="Identificador" SortExpression="User_id" />
@@ -46,14 +49,31 @@
             <asp:ControlParameter ControlID="TB_NomCliente" Name="cedula" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-
-    <h1 class="text-center"><strong>PRODUCTOS REGISTRADOS</strong></h1>
+    <hr/>
+    <h1 class="text-center"><strong>PRODUCTOS FACTURADOS</strong></h1>
     <asp:TextBox ID="TB_Iduser" runat="server" placeholder="Agrege el ID del usuario" CssClass="form-control-static"></asp:TextBox>
+    <br />
      <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
-                 <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" class="table table-hover" Width="100%">
+                 <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" class="table table-hover" Width="100%" AutoGenerateColumns="False" DataKeyNames="Id_Carrito" DataSourceID="ODS_Ventas">
                      <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                     <Columns>
+                         <asp:BoundField DataField="Nom_producto" HeaderText="Producto" SortExpression="Nom_producto"  ReadOnly="true" />
+                         <asp:BoundField DataField="Cant_Actual" HeaderText="Stock" SortExpression="Cant_Actual"  ReadOnly="true" />
+                         <asp:TemplateField HeaderText="Cantidad Pedida" SortExpression="Cantidad">
+                             <EditItemTemplate>
+                                 <asp:TextBox ID="TextBox1" runat="server" TextMode="Number" Text='<%# Bind("Cantidad") %>'></asp:TextBox>
+                             </EditItemTemplate>
+                             <ItemTemplate>
+                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Cantidad") %>'></asp:Label>
+                             </ItemTemplate>
+                         </asp:TemplateField>
+                         <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio"   ReadOnly="true"/>
+                         <asp:BoundField DataField="Total" HeaderText="Total" SortExpression="Total"   ReadOnly="true"/>
+                         <asp:CommandField HeaderText="Editar" ShowEditButton="True" />
+                         <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
+                     </Columns>
                      <EditRowStyle BackColor="#999999" />
                      <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                      <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -65,13 +85,23 @@
                      <SortedDescendingCellStyle BackColor="#FFFDF8" />
                      <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                  </asp:GridView>
+                 <asp:ObjectDataSource ID="ODS_Ventas" runat="server" SelectMethod="ObtenerCarritoxUsuario" TypeName="DAOUser" DataObjectTypeName="EncapCarrito" DeleteMethod="EliminarItemCarrito" UpdateMethod="ActualizarCarritoFactura">
+                     <SelectParameters>
+                         <asp:SessionParameter Name="usu" SessionField="userid" Type="Int32" />
+                     </SelectParameters>
+                 </asp:ObjectDataSource>
              </div>
         </div>
     </div>  
     
-    <asp:Button ID="BTN_ConfirmarVenta" runat="server" Text="Vender" Class="btn btn-primary" />
+        <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" />
+        <br />
+            &nbsp;&nbsp;&nbsp;
+            <asp:Label ID="LB_facturar" runat="server" Text="Facturar"></asp:Label>
 
-&nbsp;&nbsp;&nbsp; 
+
+    <uc1:SectionLevelTutorialListing runat="server" ID="SectionLevelTutorialListing" />
+
 
 </asp:Content>
 

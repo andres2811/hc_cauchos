@@ -120,7 +120,7 @@ public partial class Views_empleado_facturar : System.Web.UI.Page
             }
 
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Producto agregado a carrito');</script>");
-            Response.Redirect("catalogoUsuario.aspx");
+            Response.Redirect("facturar.aspx");
             return;
         }
     }
