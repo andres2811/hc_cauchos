@@ -50,8 +50,8 @@ public partial class Views_login_login : System.Web.UI.Page
 
                 Session["Aux"] = "";
                 Session["Cont"] = 0;
-                List<producto> Elementos = new List<producto>();
-            Session["a"] = Elementos;
+                
+            
     Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
                 //en esta session mando correctamente valores del encapsulado
                 Session["Valido"] = ecUser;
