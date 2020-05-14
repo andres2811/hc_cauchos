@@ -59,43 +59,50 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
 
     }
 
-  
-
     protected void BTN_Facturar_Click(object sender, ImageClickEventArgs e)
     {
-
         ClientScriptManager cm = this.ClientScript;
-        //creo objeto para cambiar el estado luego de facturar
-        EncapCarrito carrito = new EncapCarrito();
-        carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
-        carrito.Estadocar = 2;
-        new DAOUser().ActualizarCarritoEstado(carrito);
+
+        List<EncapCarrito> listCarritoC = new DAOUser().ObtenerCarritoxUsuario(((EncapUsuario)Session["Valido"]).User_id);
+        if (listCarritoC.Count == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Debe ingresar productos antes de realizar una compra');", true);
+        }
+        else
+        {
+            //creo objeto para cambiar el estado luego de facturar
+            EncapCarrito carrito = new EncapCarrito();
+            carrito.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+            carrito.Estadocar = 2;
+            new DAOUser().ActualizarCarritoEstado(carrito);
 
 
-        //agrego a la tabla pedido
-        EncapPedido pedido = new EncapPedido();
-        pedido.Fecha_pedido = DateTime.Now;
-        pedido.User_id= ((EncapUsuario)Session["Valido"]).User_id;
-        pedido.Atendido_id = 5;
-        pedido.Estado_pedido = 1;
-        List<EncapCarrito> listCarrito = new DAOUser().ObtenerCarritoxUsuario(pedido.User_id);
-        pedido.Total= listCarrito.Sum(x => x.Precio * x.Cantidad).Value;
-        int pedido_Id = new DAOUser().InsertarPedido(pedido);
+            //agrego a la tabla pedido
+            EncapPedido pedido = new EncapPedido();
+            pedido.Fecha_pedido = DateTime.Now;
+            pedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+            pedido.Atendido_id = 5;
+            pedido.Estado_pedido = 1;
+            List<EncapCarrito> listCarrito = new DAOUser().ObtenerCarritoxUsuario(pedido.User_id);
+            pedido.Total = listCarrito.Sum(x => x.Precio * x.Cantidad).Value;
+            int pedido_Id = new DAOUser().InsertarPedido(pedido);
 
 
-        //agrego a carrito el pedido
-        EncapCarrito id_pedido = new EncapCarrito();
-        id_pedido.User_id= ((EncapUsuario)Session["Valido"]).User_id;
-        id_pedido.Id_pedido = pedido_Id;
-        new DAOUser().ActualizarIdpedidoCarrito(id_pedido);
+            //agrego a carrito el pedido
+            EncapCarrito id_pedido = new EncapCarrito();
+            id_pedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
+            id_pedido.Id_pedido = pedido_Id;
+            new DAOUser().ActualizarIdpedidoCarrito(id_pedido);
 
-        /*//obtengo tiempo de inventario
-        EncapParametros tiempo = new EncapParametros();
-        tiempo.Nombre = "tiempocarrito";
-        int time = new DAOUser().ObtenerTiempoCarrito(tiempo);*/
+            //obtengo tiempo de inventario
+            EncapParametros tiempo = new EncapParametros();
+            tiempo.Nombre = "tiempocarrito";
+            var time = new DAOUser().ObtenerTiempo(tiempo);
+            int tiempoadmin =int.Parse (time.Valor);
 
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero la factua No.00" + pedido_Id.ToString() + "');", true);
-        Response.Redirect("Carrito.aspx");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00"+ pedido_Id.ToString()+" asdasd ');", true);
+            Response.Redirect("Carrito.aspx");
+        }
     }
 
 

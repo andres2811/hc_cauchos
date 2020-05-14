@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -112,6 +113,45 @@ public class DAOEmpleado
         using (var db = new Mapeo())
         {
             return db.carrito.Where(x => x.User_id == user_id).Count();
+        }
+    }
+
+
+    //METODO PARA INSERTAR PRODUCTOS AL MOMENTO DE VENTA
+    public void InsertarProductos(EncapProducto_pedido producto)
+    {
+        using (var db = new Mapeo())
+        {
+            db.productos.Add(producto);
+            db.SaveChanges();
+        }
+    }
+
+    //ACTUALIZAR  CANTIDAD DEL PRODUCTO EN EL INVENTARIO 
+    public void ActualizarCantidadInventario(EncapInventario producto)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapInventario inventarioedit = db.inventario.Where(x => x.Id == producto.Id).SingleOrDefault();
+            inventarioedit.Ca_actual = inventarioedit.Ca_actual - producto.Ca_actual;
+
+            db.SaveChanges();
+        }
+    }
+
+    //METODO PARA BORRAR EN CARRITO LUEGO DE HACER FACTURACION
+    public void limpiarCarrito(int userid)
+    {
+        using (var db = new Mapeo())
+        {
+            List<EncapCarrito> productos = db.carrito.Where(x => x.User_id == userid).ToList();
+
+            foreach (var pro in productos)
+            {
+                db.Entry(pro).State = EntityState.Deleted;
+            }
+
+            db.SaveChanges();
         }
     }
 
