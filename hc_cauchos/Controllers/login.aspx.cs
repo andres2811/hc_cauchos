@@ -52,7 +52,7 @@ public partial class Views_login_login : System.Web.UI.Page
                 Session["Cont"] = 0;
                 
             
-    Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
+                 Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
                 //en esta session mando correctamente valores del encapsulado
                 Session["Valido"] = ecUser;
                 ecUser.Sesion = (string)Session["Nombre"].ToString();
@@ -76,7 +76,8 @@ public partial class Views_login_login : System.Web.UI.Page
                     case 4:
                         Response.Redirect("usuario/index_usuario.aspx");
                         break;
-                }
+                 
+            }
             }
             if (ecUser.Estado_id == 2)
             {

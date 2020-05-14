@@ -614,16 +614,17 @@ public class DAOUser
 
         }
     }
-}
-
     //METODO PARA OBTENER TODOS LOS ELEMENTOS DEL CARRITO 
     public EncapParametros ObtenerTiempo(EncapParametros nombre)
     {
         using (var db = new Mapeo())
         {
-            return  db.parametros.Where(x => x.Nombre.Equals(nombre.Nombre)).FirstOrDefault();        
+            return db.parametros.Where(x => x.Nombre.Equals(nombre.Nombre)).FirstOrDefault();
         }
     }
+}
+
+    
 
 
 

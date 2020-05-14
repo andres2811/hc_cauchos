@@ -137,7 +137,15 @@
                 <li><a href="Mision_Vision_Objetivo.aspx"><i class="fa fa-circle-o"></i> Mision-Vision-Objetivo</a></li>
               </ul>
             </li>
-
+             <li class="treeview">
+              <a href="#">
+                <i class="fa fa-shopping-cart "></i> <span>Ventas</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="HistorialVentas.aspx"><i class="fa fa-circle-o"></i> Historial de Ventas</a></li>
+               
+              </ul>
+            </li> 
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Empleados</span> <i class="fa fa-angle-left pull-right"></i>

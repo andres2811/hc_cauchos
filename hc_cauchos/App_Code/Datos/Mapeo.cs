@@ -41,6 +41,7 @@ public class Mapeo : DbContext
     public DbSet<EncapPedido> pedidos { get; set; }
     public DbSet<producto> aux { get; set; }
     public DbSet<EncapProducto_pedido> productos { get; set; }
+    public DbSet<EncapEstadoPedido> estado_pedido { get; set; }
 
 
 

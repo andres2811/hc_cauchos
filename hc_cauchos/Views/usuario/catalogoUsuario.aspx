@@ -93,7 +93,7 @@
 
             <td>
                 <asp:DropDownList ID="DDL_Precio" runat="server" Class="form-control" Width="234px">
-                <asp:ListItem Value="">Ordenar Precio</asp:ListItem>
+                <asp:ListItem Value="0 , 0">Ordenar Precio</asp:ListItem>
                 <asp:ListItem Value="0 , 10000">Menores a 10000</asp:ListItem>
                 <asp:ListItem Value="10000 , 50000">10000 - 50000</asp:ListItem>
                 <asp:ListItem Value="50000 , 100000">50000 - 100000</asp:ListItem>

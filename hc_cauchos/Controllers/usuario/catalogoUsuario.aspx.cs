@@ -138,6 +138,7 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
         if (DD_Categoria.SelectedIndex != 0)
         {
             Repeater1.DataSourceID = "ODS_catalogoCategoria";
+
         }
         if (DD_Marca.SelectedIndex != 0)
         {
@@ -164,10 +165,15 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
         {
             Repeater1.DataSourceID = "ODS_catalogoPrecioCombinado";
         }
-
-
+        
     }
-
+    public void reiniciarFiltros()
+    {
+        //reinicio de filtros y repeater
+        DDL_Precio.SelectedIndex = 0;
+        DD_Marca.SelectedIndex = 0;
+        DD_Categoria.SelectedIndex = 0;
+    }
 
 
     protected void Btn_Todos_Click(object sender, EventArgs e)
@@ -178,4 +184,6 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
         DD_Marca.SelectedIndex = 0;
         DD_Categoria.SelectedIndex = 0;
     }
+
+
 }
