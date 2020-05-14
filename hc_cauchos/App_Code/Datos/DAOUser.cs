@@ -145,7 +145,123 @@ public class DAOUser
                     }).ToList();
         }
     }
+    //METODO CONSULTAR INVENTARIO CATEGORIA MENOS LA CANTIDAD DEL CARRITO 
+    public List<EncapInventario> ConsultarInventarioCategoria(int categ)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Ca_actual > 0 && x.Id_categoria == categ)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
 
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+                        _cantCarrito
+
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+                        Estado = m.estadoitem.Estado_item
+
+                    }).ToList();
+        }
+    }
+    //METODO CONSULTAR INVENTARIO MARCA MENOS LA CANTIDAD DEL CARRITO 
+    public List<EncapInventario> ConsultarInventariMarca(int marca)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Ca_actual > 0 && x.Id_marca == marca)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+                        _cantCarrito
+
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+                        Estado = m.estadoitem.Estado_item
+
+                    }).ToList();
+        }
+    }
+    //METODO CONSULTAR INVENTARIO CATEGORIA Y MARCA MENOS LA CANTIDAD DEL CARRITO 
+    public List<EncapInventario> ConsultarInventariCombinado(int marca, int categ)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Ca_actual > 0 && x.Id_marca == marca && x.Id_categoria == categ)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+                        _cantCarrito
+
+
+                    }).ToList().Select(m => new EncapInventario
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+                        Id_estado = m.uu.Id_estado,
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+                        Estado = m.estadoitem.Estado_item
+
+                    }).ToList();
+        }
+    }
     //METODO PARA OBTENER TODOS LOS ELEMENTOS DEL CARRITO 
     public List<EncapCarrito> ObtenerCarritoxUsuario(int usu)
     {
@@ -267,6 +383,238 @@ public class DAOUser
             db.SaveChanges();
         }
     }
+    //METODO CONSULTAR PRECIO ASCEDENE
+    public List<EncapInventario> ConsultarInventarioPrecio( string valores)
+    {
+        //Metodo de Slip
+        string[] split = valores.Split( ',');
+        int can1 = Convert.ToInt32(split[0]);
+        int can2 = Convert.ToInt32(split[1]);
+
+
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x=> x.Precio >= can1 && x.Precio <= can2 ) 
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+
+                        _cantCarrito
+
+                    }).ToList().Select(m => new EncapInventario
+                    
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }
+                        
+
+                    ).ToList() ;
+
+        }
+    }
+    //METODO CONSULTAR PRECIO ASCEDENE
+    public List<EncapInventario> ConsultarInventarioPrecioCategoria(string valores, int categ)
+    {
+        //Metodo de Slip
+        string[] split = valores.Split(',');
+        int can1 = Convert.ToInt32(split[0]);
+        int can2 = Convert.ToInt32(split[1]);
+
+
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Precio >= can1 && x.Precio <= can2 && x.Id_categoria == categ)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+
+                        _cantCarrito
+
+                    }).ToList().Select(m => new EncapInventario
+
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }
+
+
+                    ).ToList();
+
+        }
+    }
+    public List<EncapInventario> ConsultarInventarioPrecioMarca(string valores, int marca)
+    {
+        //Metodo de Slip
+        string[] split = valores.Split(',');
+        int can1 = Convert.ToInt32(split[0]);
+        int can2 = Convert.ToInt32(split[1]);
+
+
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Precio >= can1 && x.Precio <= can2 && x.Id_marca == marca)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+
+                        _cantCarrito
+
+                    }).ToList().Select(m => new EncapInventario
+
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }
+
+
+                    ).ToList();
+
+        }
+    }
+    public List<EncapInventario> ConsultarInventarioPrecioCombinado(string valores, int marca , int categor)
+    {
+        //Metodo de Slip
+        string[] split = valores.Split(',');
+        int can1 = Convert.ToInt32(split[0]);
+        int can2 = Convert.ToInt32(split[1]);
+
+
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.inventario.Where(x => x.Precio >= can1 && x.Precio <= can2 &&
+                    x.Id_marca == marca && x.Id_categoria == categor)
+                    join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
+                    join categoria in db.categoria on uu.Id_categoria equals categoria.Id
+                    join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
+
+                    let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
+
+                    select new
+                    {
+                        uu,
+                        marca_carro,
+                        categoria,
+                        estadoitem,
+
+                        _cantCarrito
+
+                    }).ToList().Select(m => new EncapInventario
+
+                    {
+                        Id = m.uu.Id,
+                        Imagen = m.uu.Imagen,
+                        Titulo = m.uu.Titulo,
+                        Precio = m.uu.Precio,
+                        Referencia = m.uu.Referencia,
+                        Ca_actual = m.uu.Ca_actual - (m._cantCarrito.HasValue ? m._cantCarrito.Value : 0),
+                        Ca_minima = m.uu.Ca_minima,
+                        Id_marca = m.uu.Id_marca,
+                        Id_categoria = m.uu.Id_categoria,
+
+                        Id_estado = m.uu.Id_estado,
+
+                        Nombre_categoria = m.categoria.Categoria,
+                        Nombre_marca = m.marca_carro.Marca,
+
+                        Estado = m.estadoitem.Estado_item
+
+
+
+
+
+                    }
+
+
+                    ).ToList();
+
+        }
+    }
+}
 
     //METODO PARA OBTENER TODOS LOS ELEMENTOS DEL CARRITO 
     public EncapParametros ObtenerTiempo(EncapParametros nombre)
@@ -279,4 +627,3 @@ public class DAOUser
 
 
 
-}

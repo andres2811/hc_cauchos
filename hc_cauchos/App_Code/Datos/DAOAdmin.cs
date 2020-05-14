@@ -498,7 +498,10 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            return (from uu in db.inventario.Where(x => x.Id_categoria == categ)
+            
+            
+                return (from uu in db.inventario.Where(x => x.Id_categoria == categ) 
+            
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
@@ -898,5 +901,40 @@ public class DAOAdmin
 
 
     }
+    //Metodo QUE BUSCA LA REFERENCIA EN producto_proveedor
+    public List<EncapProductoProveedor> ConsultarReferenciaProductoProveedor(int pro,string refe)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapInventario inve = new EncapInventario();
+            inve = new DAOAdmin().BuscarInventario(inve, refe);
+            return (from uu in db.producto_proveedor.Where(x=> x.Proveedor_id == pro && x.Producto_id== inve.Id )
+                    join iven in db.inventario on uu.Producto_id equals iven.Id
+                    select new
+                    {
+                        uu,
+                        iven
 
+                    }).ToList().Select(m => new EncapProductoProveedor
+                    {
+
+                        Id = m.uu.Id,
+                        Producto_id = m.uu.Producto_id,
+                        Proveedor_id = m.uu.Producto_id,
+                        Cantidad = m.uu.Cantidad,
+                        Precio = m.uu.Precio,
+                        Last_modify = m.uu.Last_modify,
+                        Session = m.uu.Session,
+                        Referencia = m.iven.Referencia,
+                        Nombre_producto = m.iven.Titulo
+
+
+
+
+                    }
+                      ).ToList();
+        }
+    }
+    //Buscar producto
+  
 }
