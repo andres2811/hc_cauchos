@@ -162,8 +162,8 @@
               </ul>
             </li>
             <li>
-              <a href="#">
-                <i class="fa fa-th"></i> <span>Inventario</span> <small class="label pull-right bg-green">Hot</small>
+              <a href="pedidos.aspx">
+                <i class="fa fa-th"></i> <span>Alistamiento</span> <small class="label pull-right bg-green">Hot</small>
               </a>
             </li>            
             <li class="treeview">
