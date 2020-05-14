@@ -33,11 +33,19 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
     }
 
     protected void Button1_Click(object sender, EventArgs e)
+
     {
+        TB_Buscar_Referencia.Visible = true;
+        Btn_Filtrar.Visible = true;
+        Btn_Todos.Visible = true;
+        Session["Cont"] = 0;
+        new DAOAdmin().LimpiarAux();
+        Lb_total.Text = "";
         if (DDL_Proveedor.SelectedIndex != 0)
         {
             Repeater1.DataSourceID = "ODS_productos";
         }
+       
        
     }
 
@@ -196,8 +204,15 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
         {
 
             var tb_ = e.Item.FindControl("TB_Cantidad") as TextBox;
-
-          
+            var lb_referenia = e.Item.FindControl("Lb_Referencia") as Label;
+            var btn = e.Item.FindControl("Btn_Agregar") as Button;
+            Mapeo db = new Mapeo();
+            var consulta = (from a in db.aux.Where(x => x.Referencia == lb_referenia.Text)select a ).Count();
+            
+            if (consulta == 1 )
+            {
+                btn.Enabled = false;
+            }
 
         }
 
@@ -209,6 +224,9 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
         Repeater1.DataSourceID = "ODS_productos";
         Repeater1.DataBind();
         Session["Cont"] = 0;
+        //TB_Buscar_Referencia.Visible = false;
+        //Btn_Filtrar.Visible = false;
+        //Btn_Todos.Visible = false;
         Lb_total.Text = "";
         new DAOAdmin().LimpiarAux();
     }
@@ -221,5 +239,27 @@ public partial class Views_administrador_CatalogoProveedor : System.Web.UI.Page
     {
         Btn_Enviar.Visible = true;
         Btn_Cancelar.Visible = false;
+    }
+
+
+
+
+
+    protected void Btn_Filtrar_Click(object sender, EventArgs e)
+    {
+       if (TB_Buscar_Referencia.Text != "")
+        {
+
+            Repeater1.DataSourceID = "ODS_BuscarReferencia";
+        }
+
+        
+    }
+
+
+
+    protected void Btn_Todos_Click(object sender, EventArgs e)
+    {
+        Repeater1.DataSourceID = "ODS_productos";
     }
 }
