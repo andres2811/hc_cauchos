@@ -155,6 +155,42 @@ public class DAOEmpleado
         }
     }
 
+    //METODO PARA OBTENER LOS PEDIDOS DEL EMPLEADO
+    public List<EncapPedido> ObtenerPedidos(int user)
+    {
+        using (var db = new Mapeo())
+        
+            return (from pedi in db.pedidos.Where(x=>x.Atendido_id== user && x.Estado_pedido == 2)
+                    join usu in db.usuario on pedi.User_id equals usu.User_id 
+                    join emple in db.usuario  on pedi.Atendido_id  equals emple.User_id
+                    join domi in db.usuario on pedi.Domiciliario_id equals domi.User_id
+
+                    select new
+                    {
+                        pedi,
+                        usu,
+                        emple,
+                        domi
+
+                    }).ToList().Select(m => new EncapPedido
+                    {           
+
+                        Id=m.pedi.Id,
+                        Fecha_pedido = m.pedi.Fecha_pedido,
+                        User_id = m.pedi.User_id,
+                        User_nombre = m.usu.Nombre,
+                        Atendido_id = m.pedi.Atendido_id,
+                        Empleado_nombre=m.emple.Nombre,
+                        Domiciliario_id=m.pedi.Domiciliario_id,
+                        Domiciliario_nombre=m.domi.Nombre,
+                        Estado_pedido = m.pedi.Estado_pedido,
+                        Total= m.pedi.Total
+
+
+                    }).ToList();
+        }
+    }
+
 
 
 }

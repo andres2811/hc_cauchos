@@ -45,14 +45,14 @@ public partial class Views_login_login : System.Web.UI.Page
         
 
 
-            if (ecUser.Estado_id == 1)
+            if (ecUser.Estado_id == 1 || ecUser.Estado_id == 4)
             {
 
                 Session["Aux"] = "";
                 Session["Cont"] = 0;
                 
             
-    Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
+                Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
                 //en esta session mando correctamente valores del encapsulado
                 Session["Valido"] = ecUser;
                 ecUser.Sesion = (string)Session["Nombre"].ToString();
