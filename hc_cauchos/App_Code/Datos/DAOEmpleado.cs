@@ -178,19 +178,18 @@ public class DAOEmpleado
                         Id=m.pedi.Id,
                         Fecha_pedido = m.pedi.Fecha_pedido,
                         User_id = m.pedi.User_id,
-                        User_nombre = m.usu.Nombre,
+                        Usuario = m.usu.Nombre,
                         Atendido_id = m.pedi.Atendido_id,
-                        Empleado_nombre=m.emple.Nombre,
+                        Empleado=m.emple.Nombre,
                         Domiciliario_id=m.pedi.Domiciliario_id,
-                        Domiciliario_nombre=m.domi.Nombre,
+                        Domiciliaro = m.domi.Nombre,
                         Estado_pedido = m.pedi.Estado_pedido,
                         Total= m.pedi.Total
 
 
                     }).ToList();
         }
-    }
+ }
 
 
 
-}

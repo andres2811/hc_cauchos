@@ -22,6 +22,7 @@ public class EncapPedido
     private string usuario;
     private string estado;
     private string empleado;
+    private string domiciliaro;
 
     [Key]
     [Column("id")]
@@ -44,4 +45,8 @@ public class EncapPedido
     public string Estado { get => estado; set => estado = value; }
     [NotMapped]
     public string Empleado { get => empleado; set => empleado = value; }
+    [NotMapped]
+    public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
+
+    
 }

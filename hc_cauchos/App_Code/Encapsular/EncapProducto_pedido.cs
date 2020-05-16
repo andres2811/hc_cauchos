@@ -16,8 +16,8 @@ public class EncapProducto_pedido
     private int pedido_id;
     private int producto_id;
     private int cantidad;
-    private float precio;
-    private float total;
+    private double precio;
+    private double total;
 
     [Key]
     [Column("id")]
@@ -29,7 +29,7 @@ public class EncapProducto_pedido
     [Column("cantidad")]
     public int Cantidad { get => cantidad; set => cantidad = value; }
     [Column("precio")]
-    public float Precio { get => precio; set => precio = value; }
+    public double Precio { get => precio; set => precio = value; }
     [Column("total")]
-    public float Total { get => total; set => total = value; }
+    public double Total { get => total; set => total = value; }
 }

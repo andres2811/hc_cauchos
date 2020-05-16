@@ -622,9 +622,78 @@ public class DAOUser
             return db.parametros.Where(x => x.Nombre.Equals(nombre.Nombre)).FirstOrDefault();
         }
     }
+    //METODO pARA OBTENER pRODUCTOS DEL pEDIDO
+    public List<EncapProducto_pedido> ObtenerProductos (int id)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.productos.Where(x => x.Pedido_id == id)
+
+
+                    select new
+                    {
+                        uu
+                    }).ToList().Select(x => new EncapProducto_pedido
+                    {
+                        Pedido_id = x.uu.Pedido_id,
+                        Producto_id = x.uu.Producto_id,
+                        Cantidad = x.uu.Cantidad,
+                        Precio = x.uu.Precio,
+                        Total = x.uu.Total
+                    }
+                    
+                    ).ToList();
+        }
+    }
+    public List<EncapEstadoPedido> ConsultarEstadoPedidos()
+    {
+        using (var db=new Mapeo())
+        {
+            return db.estado_pedido.ToList();
+        }
+    }
+    public List<EncapPedido> ConsultarPedidosEstado(int est)
+    {
+        using (var db = new Mapeo())
+        {
+
+
+
+            return (from uu in db.pedidos.Where(x=> x.Estado_pedido == est)
+                    join usuario in db.usuario on uu.User_id equals usuario.User_id
+                    join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
+                    join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
+
+                    select new
+                    {
+                        uu,
+                        usuario,
+                        estado,
+                        empleado,
+
+
+                    }).ToList().Select(m => new EncapPedido
+                    {
+
+                        Id = m.uu.Id,
+                        User_id = m.usuario.User_id,
+                        Atendido_id = m.uu.Atendido_id,
+                        Domiciliario_id = m.uu.Domiciliario_id,
+                        Fecha_pedido = m.uu.Fecha_pedido,
+                        Estado_pedido = m.uu.Estado_pedido,
+                        Total = m.uu.Total,
+
+                        Usuario = m.usuario.Nombre,
+                        Estado = m.estado.Estado,
+                        Empleado = m.empleado.Nombre,
+
+                    }
+                      ).ToList();
+        }
+    }
 }
 
-    
+
 
 
 
