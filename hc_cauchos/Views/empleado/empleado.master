@@ -162,7 +162,7 @@
               </ul>
             </li>
             <li>
-              <a href="pedidos.aspx">
+              <a href="pedidos_atender.aspx">
                 <i class="fa fa-th"></i> <span>Alistamiento</span> <small class="label pull-right bg-green">Hot</small>
               </a>
             </li>            

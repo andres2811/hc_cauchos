@@ -22,6 +22,8 @@ public class EncapPedido
     private string usuario;
     private string estado;
     private string empleado;
+    private string novedad;
+
 
     [Key]
     [Column("id")]
@@ -38,10 +40,13 @@ public class EncapPedido
     public int Estado_pedido { get => estado_pedido; set => estado_pedido = value; }
     [Column("total")]
     public Double Total { get => total; set => total = value; }
+    [Column("novedad")]
+    public string Novedad { get => novedad; set => novedad = value; }
     [NotMapped]
     public string Usuario { get => usuario; set => usuario = value; }
     [NotMapped]
     public string Estado { get => estado; set => estado = value; }
     [NotMapped]
     public string Empleado { get => empleado; set => empleado = value; }
+    
 }

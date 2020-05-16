@@ -159,38 +159,118 @@ public class DAOEmpleado
     public List<EncapPedido> ObtenerPedidos(int user)
     {
         using (var db = new Mapeo())
-        
-            return (from pedi in db.pedidos.Where(x=>x.Atendido_id== user && x.Estado_pedido == 2)
-                    join usu in db.usuario on pedi.User_id equals usu.User_id 
-                    join emple in db.usuario  on pedi.Atendido_id  equals emple.User_id
-                    join domi in db.usuario on pedi.Domiciliario_id equals domi.User_id
+
+            return (
+                    from pedi in db.pedidos.Where(x => x.Atendido_id == user && x.Estado_pedido == 1)
+                    join usu in db.usuario on pedi.User_id equals usu.User_id
 
                     select new
                     {
                         pedi,
-                        usu,
-                        emple,
-                        domi
+                        usu
 
                     }).ToList().Select(m => new EncapPedido
-                    {           
+                    {
 
-                        Id=m.pedi.Id,
+                        Id = m.pedi.Id,
                         Fecha_pedido = m.pedi.Fecha_pedido,
                         User_id = m.pedi.User_id,
-                        User_nombre = m.usu.Nombre,
+                        Usuario = m.usu.Nombre,
                         Atendido_id = m.pedi.Atendido_id,
-                        Empleado_nombre=m.emple.Nombre,
-                        Domiciliario_id=m.pedi.Domiciliario_id,
-                        Domiciliario_nombre=m.domi.Nombre,
+                        Empleado = m.usu.Nombre,
+                        Domiciliario_id = m.pedi.Domiciliario_id,
+                        // Domiciliario_nombre=m.domi.Nombre,
                         Estado_pedido = m.pedi.Estado_pedido,
-                        Total= m.pedi.Total
+                        Total = m.pedi.Total
 
 
                     }).ToList();
+    }
+
+    //METODO PARA OBTENER LOS PRODUCTOS DEL PEDIDO
+    public List<EncapProducto_pedido> ObtenerProductos(int pedido)
+    {
+        using (var db = new Mapeo())
+
+            return (
+                    from produc in db.productos.Where(x => x.Pedido_id == pedido)
+                    join inven in db.inventario on produc.Producto_id equals inven.Id
+
+                    select new
+                    {
+                        produc,
+                        inven
+
+                    }).ToList().Select(m => new EncapProducto_pedido
+                    {
+                        Id = m.produc.Id,
+                        Pedido_id=m.produc.Pedido_id,
+                        Producto_id=m.produc.Producto_id,
+                        Cantidad=m.produc.Cantidad,
+                        Precio=m.produc.Precio,
+                        Total=m.produc.Total,
+                        Nombre_producto=m.inven.Titulo,
+                        Referencia=m.inven.Referencia
+                                          
+                    }).ToList();
+    }
+
+
+    //METODO PARA ACTUALIZAR EL ESTADO DEL PEDIDO A ATENDIENDO
+    public void ActualizarEstadoPedido1(EncapPedido estado1)
+    {
+        using (var db = new Mapeo())
+        {
+
+            EncapPedido pedidoedit = db.pedidos.Where(x => x.Id == estado1.Id && x.Estado_pedido==1).SingleOrDefault();
+            pedidoedit.Estado_pedido =estado1.Estado_pedido;
+
+            db.SaveChanges();
+        }
+    }
+
+
+    //METODO PARA ACTUALIZAR NOVEDAD EN EL PEDIDO
+    public void ActualizarNovedadPedido(EncapPedido novedad)
+    {
+        using (var db = new Mapeo())
+        {
+
+            EncapPedido pedidoedit = db.pedidos.Where(x => x.Id == novedad.Id).SingleOrDefault();
+            pedidoedit.Novedad = novedad.Novedad;
+
+            db.SaveChanges();
+        }
+    }
+
+    //METODO PARA ACTUALIZAR EL ESTADO DEL PEDIDO A ENTREGANDO
+    public void ActualizarEstadoPedido2(EncapPedido estado)
+    {
+        using (var db = new Mapeo())
+        {
+
+            EncapPedido pedidoedit = db.pedidos.Where(x => x.Id == estado.Id && x.Estado_pedido == 2).SingleOrDefault();
+            pedidoedit.Estado_pedido = estado.Estado_pedido;
+
+            db.SaveChanges();
+        }
+    }
+
+
+    //METODO PARA ACTUALIZAR EL ESTADO DEL EMPLEADO A LIBRE
+    public void ActualizarEstadoEmpleado(EncapUsuario estado)
+    {
+        using (var db = new Mapeo())
+        {
+
+            EncapUsuario usuedit = db.usuario.Where(x => x.User_id == estado.User_id).SingleOrDefault();
+            usuedit.Estado_id = estado.Estado_id;
+
+            db.SaveChanges();
         }
     }
 
 
 
 }
+
