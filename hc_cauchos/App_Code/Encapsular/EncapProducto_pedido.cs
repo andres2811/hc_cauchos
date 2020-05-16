@@ -18,8 +18,6 @@ public class EncapProducto_pedido
     private int cantidad;
     private double precio;
     private double total;
-    private string nombre_producto;
-    private string referencia;
 
     [Key]
     [Column("id")]
@@ -31,11 +29,7 @@ public class EncapProducto_pedido
     [Column("cantidad")]
     public int Cantidad { get => cantidad; set => cantidad = value; }
     [Column("precio")]
-    public Double Precio { get => precio; set => precio = value; }
+    public double Precio { get => precio; set => precio = value; }
     [Column("total")]
-    public Double Total { get => total; set => total = value; }
-    [NotMapped]
-    public string Nombre_producto { get => nombre_producto; set => nombre_producto = value; }
-    [NotMapped]
-    public string Referencia { get => referencia; set => referencia = value; }
+    public double Total { get => total; set => total = value; }
 }

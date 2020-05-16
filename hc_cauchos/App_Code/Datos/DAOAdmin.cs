@@ -273,7 +273,7 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    
+
                     let _cantCarrito = (from ss in db.carrito where ss.Producto_id == uu.Id select ss.Cantidad).Sum()
 
                     select new
@@ -282,7 +282,7 @@ public class DAOAdmin
                         marca_carro,
                         categoria,
                         estadoitem,
-                       
+
                         _cantCarrito
 
 
@@ -297,12 +297,12 @@ public class DAOAdmin
                         Ca_minima = m.uu.Ca_minima,
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
-                        
+
                         Id_estado = m.uu.Id_estado,
 
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                       
+
                         Estado = m.estadoitem.Estado_item
 
 
@@ -329,7 +329,7 @@ public class DAOAdmin
                 resultado.Id_marca = invent.Id_marca;
                 resultado.Id_estado = invent.Id_estado;
                 resultado.Id_categoria = invent.Id_categoria;
-               
+
                 db.SaveChanges();
             }
         }
@@ -370,13 +370,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    
+
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        
+
                         estadoitem
 
 
@@ -392,10 +392,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                       
+
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                       
+
                         Estado = m.estadoitem.Estado_item
 
 
@@ -413,13 +413,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    
+
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        
+
                         estadoitem
 
 
@@ -435,10 +435,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        
+
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        
+
                         Estado = m.estadoitem.Estado_item
 
 
@@ -458,13 +458,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    
+
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        
+
                         estadoitem
 
 
@@ -480,10 +480,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        
+
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        
+
                         Estado = m.estadoitem.Estado_item
 
 
@@ -498,20 +498,20 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            
-            
-                return (from uu in db.inventario.Where(x => x.Id_categoria == categ) 
-            
+
+
+            return (from uu in db.inventario.Where(x => x.Id_categoria == categ)
+
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                    
+
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        
+
                         estadoitem
 
 
@@ -527,10 +527,10 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                       
+
                         Nombre_categoria = m.categoria.Categoria,
                         Nombre_marca = m.marca_carro.Marca,
-                        
+
                         Estado = m.estadoitem.Estado_item
 
 
@@ -624,13 +624,13 @@ public class DAOAdmin
                     join marca_carro in db.marca_carro on uu.Id_marca equals marca_carro.Id
                     join categoria in db.categoria on uu.Id_categoria equals categoria.Id
                     join estadoitem in db.estado_item on uu.Id_estado equals estadoitem.Id
-                   
+
                     select new
                     {
                         uu,
                         marca_carro,
                         categoria,
-                        
+
                         estadoitem
 
 
@@ -646,11 +646,11 @@ public class DAOAdmin
                         Id_marca = m.uu.Id_marca,
                         Id_categoria = m.uu.Id_categoria,
                         Id_estado = m.uu.Id_estado,
-                        
+
 
                         Nombre_categoria = m.categoria.Categoria,
-                        
-                        
+
+
                         Estado = m.estadoitem.Estado_item
                     }).ToList();
         }
@@ -713,7 +713,7 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            return db.producto_proveedor.Where(x=> x.Producto_id== pro).ToList();
+            return db.producto_proveedor.Where(x => x.Producto_id == pro).ToList();
         }
     }
     public List<EncapPedidoProveedor> ColsultarPPedido()
@@ -739,13 +739,13 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
             return (from uu in db.pedido_proveedor
-                    
+
                     join prov in db.proveedor on uu.Id_proveedor equals prov.Id
                     join est in db.estado_pedido_proveedor on uu.Id_estado equals est.Id
                     select new
                     {
                         uu,
-                      
+
                         prov,
                         est
 
@@ -754,16 +754,16 @@ public class DAOAdmin
                     {
 
                         Id = m.uu.Id,
-                        
+
                         Id_proveedor = m.uu.Id_proveedor,
-                        
+
 
                         Elementos = m.uu.Elementos,
                         T_entrega = m.uu.T_entrega,
                         Valor = m.uu.Valor,
                         Id_estado = m.uu.Id_estado,
                         Nombre_proveedor = m.prov.Nombre_pro,
-                        
+
                         Estado = m.est.Estado
 
 
@@ -792,7 +792,7 @@ public class DAOAdmin
         }
     }
     //METODO CONSULTAR PRODUCTOS VINCULADOS AL PROVEEDOR
-    public List<EncapProductoProveedor> ConsultarProductoProveedor( int pro)
+    public List<EncapProductoProveedor> ConsultarProductoProveedor(int pro)
     {
         using (var db = new Mapeo())
         {
@@ -859,15 +859,15 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-           
+
 
             var entry = from c in db.aux select c;
 
             db.aux.RemoveRange(entry);
             db.SaveChanges();
         }
-        
-        
+
+
     }
     public List<producto> ColsultarAux()
     {
@@ -879,36 +879,36 @@ public class DAOAdmin
     //Metodo para eliminar el proveedor
     public void EliminarProveedor(EncapProveedor proveedor)
     {
-  
-                using (var db = new Mapeo())
-                {
-                    db.proveedor.Attach(proveedor);
 
-                //hacer borrado en
-                //lista de productos a eliminar
-                var producto_eliminar = db.producto_proveedor.Where(x => x.Proveedor_id == proveedor.Id);
-                    
-                    var entry = db.Entry(proveedor);
-                    entry.State = EntityState.Deleted;
-                    
-                    db.producto_proveedor.RemoveRange(producto_eliminar);
-                    
-                    db.SaveChanges();
-                }
-            
+        using (var db = new Mapeo())
+        {
+            db.proveedor.Attach(proveedor);
 
-        
+            //hacer borrado en
+            //lista de productos a eliminar
+            var producto_eliminar = db.producto_proveedor.Where(x => x.Proveedor_id == proveedor.Id);
+
+            var entry = db.Entry(proveedor);
+            entry.State = EntityState.Deleted;
+
+            db.producto_proveedor.RemoveRange(producto_eliminar);
+
+            db.SaveChanges();
+        }
+
+
+
 
 
     }
     //Metodo QUE BUSCA LA REFERENCIA EN producto_proveedor
-    public List<EncapProductoProveedor> ConsultarReferenciaProductoProveedor(int pro,string refe)
+    public List<EncapProductoProveedor> ConsultarReferenciaProductoProveedor(int pro, string refe)
     {
         using (var db = new Mapeo())
         {
             EncapInventario inve = new EncapInventario();
             inve = new DAOAdmin().BuscarInventario(inve, refe);
-            return (from uu in db.producto_proveedor.Where(x=> x.Proveedor_id == pro && x.Producto_id== inve.Id )
+            return (from uu in db.producto_proveedor.Where(x => x.Proveedor_id == pro && x.Producto_id == inve.Id)
                     join iven in db.inventario on uu.Producto_id equals iven.Id
                     select new
                     {
@@ -940,8 +940,8 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-          
-            return (from uu in db.pedidos.Where(x=> x.Estado_pedido==4 && x.Fecha_pedido.Day == dia )
+
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Day == dia)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
@@ -975,7 +975,7 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x=> x.Estado_pedido == 4)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
@@ -1052,7 +1052,7 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Month == mes)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Month == mes && x.Fecha_pedido.Day == dia)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
@@ -1082,45 +1082,11 @@ public class DAOAdmin
     }
     //METODO DE BUSCAR EL HISTORIA DE VENTAS DEACUEDO A AÑO
     public List<EncapPedido> ConsultarVentasAno(int ano)
-        {
-            using (var db = new Mapeo())
-            {
-
-                return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano)
-                        join usuario in db.usuario on uu.User_id equals usuario.User_id
-                        join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
-                        join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
-                        select new
-                        {
-                            uu,
-                            usuario,
-                            estado,
-                            empleado
-                        }).ToList().Select(m => new EncapPedido
-                        {
-
-                            Id = m.uu.Id,
-                            User_id = m.usuario.User_id,
-                            Atendido_id = m.uu.Atendido_id,
-                            Domiciliario_id = m.uu.Domiciliario_id,
-                            Fecha_pedido = m.uu.Fecha_pedido,
-                            Estado_pedido = m.uu.Estado_pedido,
-                            Total = m.uu.Total,
-                            Empleado = m.empleado.Nombre,
-                            Usuario = m.usuario.Nombre,
-                            Estado = m.estado.Estado
-
-                        }
-                          ).ToList();
-            }
-        }
-    //METODO DE BUSCAR EL HISTORIA DE VENTAS DEACUEDO A AÑO Y MES
-    public List<EncapPedido> ConsultarVentasAnoMes(int ano, int mes)
     {
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano && x.Fecha_pedido.Month == mes)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
@@ -1148,7 +1114,7 @@ public class DAOAdmin
                       ).ToList();
         }
     }
-  
+
     //METODO DE BUSCAR EL HISTORIA DE VENTAS DEACUEDO A AÑO Y Dia
     public List<EncapPedido> ConsultarVentasAnoDia(int ano, int dia)
     {
@@ -1189,7 +1155,8 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano && x.Fecha_pedido.Month == mes && x.Fecha_pedido.Day == dia)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano &&
+                    x.Fecha_pedido.Month == mes && x.Fecha_pedido.Day == dia)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
@@ -1213,6 +1180,181 @@ public class DAOAdmin
                         Usuario = m.usuario.Nombre,
                         Estado = m.estado.Estado
 
+                    }
+                      ).ToList();
+        }
+    }
+    //METODO DE BUSCAR EL HISTORIA DE VENTAS DEACUEDO A AÑO,MES Y DIA 
+    public List<EncapPedido> ConsultarVentasAnoMesDiaEmpleado(int ano, int mes, int dia, int emp)
+
+
+    {
+        string Query = "";
+        //solo Empleado
+        if (ano == 0 && mes == 0 && dia == 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id = " + emp;
+        }
+        //empleado y Dia
+        if (ano == 0 && mes == 0 && dia != 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+                   " AND to_char(fecha_pedido, 'DD')::integer = " + dia;
+
+        }
+        //empleado dia y mes
+        if (ano == 0 && mes != 0 && dia != 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+                   " AND to_char(fecha_pedido, 'DD')::integer = " + dia +
+                   " AND  to_char(fecha_pedido, 'MM')::integer =" + mes;
+        }
+        //empleado y mes
+        if (ano == 0 && mes != 0 && dia == 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+
+                   " AND  to_char(fecha_pedido, 'MM')::integer =" + mes;
+        }
+        //empleado y año
+        if (ano != 0 && mes == 0 && dia == 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+
+                   " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
+        }
+
+        //empleado año y dia
+        if (ano != 0 && mes == 0 && dia != 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+                " AND to_char(fecha_pedido, 'DD')::integer = " + dia +
+                   " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
+        }
+        //empleado mes y ano
+        if (ano != 0 && mes != 0 && dia == 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+                " AND to_char(fecha_pedido, 'MM')::integer = " + mes +
+                   " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
+        }
+        //Combinado
+        if (ano != 0 && mes != 0 && dia != 0 && emp != 0)
+        {
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+                 " AND to_char(fecha_pedido, 'DD')::integer = " + dia +
+                " AND to_char(fecha_pedido, 'MM')::integer = " + mes +
+
+                   " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
+        }
+        using (var db = new Mapeo())
+        {
+
+            return (from uu in db.pedidos.SqlQuery(Query)
+
+                    join usuario in db.usuario on uu.User_id equals usuario.User_id
+                    join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
+                    join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
+                    select new
+                    {
+                        uu,
+                        usuario,
+                        estado,
+                        empleado
+                    }).ToList().Select(m => new EncapPedido
+                    {
+
+                        Id = m.uu.Id,
+                        User_id = m.usuario.User_id,
+                        Atendido_id = m.uu.Atendido_id,
+                        Domiciliario_id = m.uu.Domiciliario_id,
+                        Fecha_pedido = m.uu.Fecha_pedido,
+                        Estado_pedido = m.uu.Estado_pedido,
+                        Total = m.uu.Total,
+                        Empleado = m.empleado.Nombre,
+                        Usuario = m.usuario.Nombre,
+                        Estado = m.estado.Estado
+
+                    }
+                      ).ToList();
+        }
+    }
+    //METODO DE BUSCAR EL HISTORIA DE VENTAS DEACUEDO A AÑO Y Dia
+    public List<EncapPedido> ConsultarVentasAnMes(int ano, int mes)
+    {
+        using (var db = new Mapeo())
+        {
+            string Query = "";
+            //solo Empleado
+            if (ano != 0 && mes != 0 )
+            {
+                Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4"+
+                      " AND to_char(fecha_pedido, 'MM')::integer = " + mes +
+                       " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano; 
+            }
+            return (from uu in db.pedidos.SqlQuery(Query)
+                    join usuario in db.usuario on uu.User_id equals usuario.User_id
+                    join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
+                    join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
+                    select new
+                    {
+                        uu,
+                        usuario,
+                        estado,
+                        empleado
+                    }).ToList().Select(m => new EncapPedido
+                    {
+
+                        Id = m.uu.Id,
+                        User_id = m.usuario.User_id,
+                        Atendido_id = m.uu.Atendido_id,
+                        Domiciliario_id = m.uu.Domiciliario_id,
+                        Fecha_pedido = m.uu.Fecha_pedido,
+                        Estado_pedido = m.uu.Estado_pedido,
+                        Total = m.uu.Total,
+                        Empleado = m.empleado.Nombre,
+                        Usuario = m.usuario.Nombre,
+                        Estado = m.estado.Estado
+
+                    }
+                      ).ToList();
+        }
+    }
+    public List<EncapPedido> ConsultarPedidos()
+    {
+        using (var db = new Mapeo())
+        {
+
+           
+
+            return (from uu in db.pedidos
+                    join usuario in db.usuario on uu.User_id equals usuario.User_id
+                    join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
+                    join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
+                   
+                                        select new
+                    {
+                        uu,
+                        usuario,
+                        estado,
+                        empleado,
+                        
+
+                    }).ToList().Select(m => new EncapPedido
+                    {
+
+                        Id = m.uu.Id,
+                        User_id = m.usuario.User_id,
+                        Atendido_id = m.uu.Atendido_id,
+                        Domiciliario_id = m.uu.Domiciliario_id,
+                        Fecha_pedido = m.uu.Fecha_pedido,
+                        Estado_pedido = m.uu.Estado_pedido,
+                        Total = m.uu.Total,
+
+                        Usuario = m.usuario.Nombre,
+                        Estado = m.estado.Estado,
+                        Empleado = m.empleado.Nombre,
+                        
                     }
                       ).ToList();
         }
