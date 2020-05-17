@@ -157,7 +157,7 @@
             </ul>
           </div>
           <div id="princi" class="col-lg-6">
-            <img class="img-fluid rounded" src="../ima/local.png" alt="">
+            <img class="img-fluid rounded-left" src="../ima/local.png" alt="">
           </div>
         </div>
         <!-- /.row -->

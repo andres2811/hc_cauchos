@@ -255,12 +255,16 @@
     #icon {
       width:60%;
     }
+
+    #TB_correo{
+        border: 1px dotted #999
+    }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    
-    
+    <br />
     <div class="container">
         <div class="row">
 
@@ -273,13 +277,13 @@
                         <div id="formContent">
                             <div class="fadeIn first">
                                 <div class="form-group">
-                                    <img src="http://simpleicon.com/wp-content/uploads/account.png" id="icon" alt="User Icon" /><br />
+                                    <img src="../ima/cauchosicono.png" id="icon" alt="User Icon" /><br />
                                      <br />
-                                     <asp:TextBox ID="TB_correo" runat="server"  class="form-control d-inline text-center" placeholder="Correo" TextMode="Email" Width="85%" ></asp:TextBox>
+                                     <asp:TextBox ID="TB_correo" runat="server"  class="form-control d-inline text-center rounded-pill" placeholder="Correo" TextMode="Email" Width="85%" ></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Login" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
                                      <br />
                                     <br />
-                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center" placeholder="Contraseña" TextMode="Password" Width="85%"></asp:TextBox>                    
+                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center rounded-pill" placeholder="Contraseña" TextMode="Password" Width="85%"></asp:TextBox>                    
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Login" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 </div>  
                                  <div>                     
