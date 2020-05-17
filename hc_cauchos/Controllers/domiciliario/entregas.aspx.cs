@@ -9,6 +9,8 @@ public partial class Views_domiciliario_entregas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        //obtengo el id del domiciliario y lo almaceno en una session
         int iddomi = ((EncapUsuario)Session["Valido"]).User_id;
         Session["domiid"] = iddomi;
 
@@ -16,10 +18,14 @@ public partial class Views_domiciliario_entregas : System.Web.UI.Page
 
     protected void R_pedido_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
+
         ClientScriptManager cm = this.ClientScript;
-        int id_pedido = int.Parse(((Label)e.Item.FindControl("Id")).Text);
-        new DAODomiciliario().ActualizarNovedadPedido(id_pedido);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se ha realizado la entrega satisfactoria del pedido No.00" + id_pedido.ToString() + "');", true);
+        EncapPedido fin = new EncapPedido();
+        fin.Id = int.Parse(((Label)e.Item.FindControl("Id")).Text);
+        fin.Fecha_pedido_fin = DateTime.Now;
+        //otorgo a pedido fecha de finalizacion y update de estado
+        new DAODomiciliario().ActualizarNovedadPedido(fin);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se ha realizado la entrega satisfactoria del pedido No.00');", true);
         Response.Redirect("entregas.aspx");
 
 

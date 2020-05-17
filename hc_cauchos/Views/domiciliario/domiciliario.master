@@ -136,15 +136,6 @@
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Empleados</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
                 <i class="fa fa-files-o"></i>
                 <span>Reportes</span>
                 <span class="label label-primary pull-right">4</span>
@@ -160,25 +151,8 @@
               <a href="entregas.aspx">
                 <i class="fa fa-th"></i> <span>Pedidos para entregar</span> <small class="label pull-right bg-green">Hot</small>
               </a>
-            </li>            
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Proveedores</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-              </ul>
-            </li>            
-            <li>
-              <a href="#">
-                <i class="fa fa-calendar"></i> <span>Calendario</span>
-                <small class="label pull-right bg-red">3</small>
-              </a>
-            </li>
+            </li>                      
+
           </ul>
         </section>
         <!-- SIDEBAR -->
