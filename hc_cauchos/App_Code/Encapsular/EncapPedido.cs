@@ -27,6 +27,7 @@ public class EncapPedido
     private int ciu_dep_id;
     private string direccion;
     private int municipio_id;
+    private Nullable<DateTime> fecha_pedido_fin;
 
 
 
@@ -45,14 +46,6 @@ public class EncapPedido
     public int Estado_pedido { get => estado_pedido; set => estado_pedido = value; }
     [Column("total")]
     public Double Total { get => total; set => total = value; }
-    [NotMapped]
-    public string Usuario { get => usuario; set => usuario = value; }
-    [NotMapped]
-    public string Estado { get => estado; set => estado = value; }
-    [NotMapped]
-    public string Empleado { get => empleado; set => empleado = value; }
-    [NotMapped]
-    public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
     [Column("novedad")]
     public string Novedad { get => novedad; set => novedad = value; }
     [Column("ciu_dep_id")]
@@ -61,4 +54,15 @@ public class EncapPedido
     public string Direccion { get => direccion; set => direccion = value; }
     [Column("municipio_id")]
     public int Municipio_id { get => municipio_id; set => municipio_id = value; }
+    [Column("fecha_pedido_fin")]
+    public Nullable<DateTime> Fecha_pedido_fin { get => fecha_pedido_fin; set => fecha_pedido_fin = value; }
+    [NotMapped]
+    public string Usuario { get => usuario; set => usuario = value; }
+    [NotMapped]
+    public string Estado { get => estado; set => estado = value; }
+    [NotMapped]
+    public string Empleado { get => empleado; set => empleado = value; }
+    [NotMapped]
+    public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
+
 }

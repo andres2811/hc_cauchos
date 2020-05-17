@@ -270,6 +270,15 @@ public class DAOEmpleado
             db.SaveChanges();
         }
     }
+
+    //OBTENGO CANTIDAD DE PRODUCTOS DE USUARIO CARRITO
+    public int ObtenerCantidadPedidos(int user_id)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.pedidos.Where(x => x.Atendido_id == user_id).Count();
+        }
+    }
 }
 
 

@@ -131,59 +131,24 @@
             <li class="header">Barra De Navegacion</li>
              <li>
               <a href="configurarUsu.aspx">
-                <i class="fa fa-config"></i> <span>Configuracion</span>
+                <i class="fa fa-edit"></i> <span>Configuracion</span>
               </a>
             </li>
-            <li>
+            <li >
               <a href="catalogoUsuario.aspx">
-                <i class="fa fa-config"></i> <span>Catalogo</span>
+                <i class="fa fa-th"></i> <span>Catalogo</span>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>Empleados</span> <i class="fa fa-angle-left pull-right"></i>
+              <li >
+              <a href="Carrito.aspx">
+                <i class="fa fa-shopping-cart "></i> <span>Carrito</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Reportes</span>
-                <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-              </ul>
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-th"></i> <span>Inventario</span> <small class="label pull-right bg-green">Hot</small>
+                <i class="fa fa-th"></i> <span>Inventario</span> <small class="label pull-right bg-green"></small>
               </a>
-            </li>            
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Proveedores</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-              </ul>
-            </li>            
-            <li>
-              <a href="calendario_usuario.aspx">
-                <i class="fa fa-calendar"></i> <span>Calendario</span>
-                <small class="label pull-right bg-red">3</small>
-              </a>
-            </li>
+            </li>                        
           </ul>
         </section>
         <!-- SIDEBAR -->

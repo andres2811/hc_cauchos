@@ -6,22 +6,20 @@
           * p {
               font-size:22px;
           }
-      #galeria img{
-          vertical-align: top;
-	        width: 300px;
+          
+          #galeria img{
+	        vertical-align: top;
+	        width: 400px;
 	        height: 300px;
 	        margin: 20px;
 	        opacity: 0.6;
 	        border: 1px solid #484848;
-      }
-
-      #galeria img:hover{
-          border: 1px solid#fff;
-	      opacity: 1;
-          width: 325px;
-	      height: 325px;
-      }
-
+        }
+        #galeria img:hover{
+	        border: 1px solid#fff;
+	        opacity: 1;
+        }
+  
       #punto:hover{
           border-color:black;
       }
@@ -44,21 +42,26 @@
       #princi img{
           width:auto;
           height:400px;
+          box-shadow: 2px 2px 20px #484848;
       }
       #princi img:hover {
           border-color:black;
-          border:solid 9px;
+          border:solid 1px;
       }
       #mision{
           transition:all .6s ease;
+          background-color:rgba(0,0,0,0.2);
+          box-shadow: 2px 2px 20px #000000;
       }
       #mision:hover{
-          background: #cc1919;
+          background: black;
           color:white;
 	      width:350px;
 	      transform: rotate(360deg);
       }#mision1{
-          transition:all .6s ease;
+          transition:all .6s ease;         
+          background-color:rgba(249,81,81,0.1);
+          box-shadow: 2px 2px 20px #000000;
       }
       #mision1:hover{
           background: black;
@@ -67,13 +70,28 @@
 	      transform: rotate(360deg);
       }#mision2{
           transition:all .6s ease;
+          background-color:rgba(0,0,0,0.2);
+          box-shadow: 2px 2px 20px #000000;
       }
       #mision2:hover{
-          background: #cc1919;
+          background: black;
           color:white;
 	      width:350px;
 	      transform: rotate(360deg);
+      } 
+      #bla{
+          box-shadow: 2px 2px 20px #000000;
       }
+      #bla1{
+          box-shadow: 2px 2px 20px #000000;
+      }
+      #bla2{
+          box-shadow: 2px 2px 20px #000000;
+      }
+
+          .auto-style1 {
+              font-size: large;
+          }
 
 
 
@@ -117,7 +135,7 @@
       </header>
       <!-- Page Content -->
       <div class="container">
-        <h1 class="my-4 text-capitalize" ><strong>Bienvenido a HC cauchos</strong></h1>
+        <h1 id="hc"  ><strong>Bienvenido a HC cauchos</strong></h1>
           <hr />
           <!-- Features Section -->
           <br />
@@ -129,7 +147,7 @@
                 en nuestro productos puede encontrar:
             </p>
             <ul>
-              <li>Soportes para motor y caja</li>
+              <li class="auto-style1">Soportes para motor y caja</li>
               <li>Mangueras</li>
               <li>Bujes</li>
               <li>Empaques</li>
@@ -146,9 +164,10 @@
           <hr />
         <!-- Marketing Icons Section -->
           <br />
+          <br />
         <div class="row">
           <div class="col-lg-4 mb-4">
-            <div id="mision" class="card h-100 ">
+            <div id="mision" class="card h-80 ">
               <h4  class="card-header bg-dark text-danger"><strong>MISION</strong></h4>
               <div class="card-body">
                 <p class="card-text"><asp:Label ID="LB_mision" runat="server" Text="Label"></asp:Label></p>
@@ -178,78 +197,24 @@
             </div>
           </div>
         </div>
+          <br />
         <!-- /.row -->
           <hr />
-        <!-- Portfolio Section -->
-          <br />
+        <!-- Portfolio Section -->        
         <h2 class="text-danger"><strong>Algunos Productos</strong></h2>
-        <div id="galeria" class="row">
-          <div  class="col-lg-4 col-sm-6 portfolio-item">
-            <div id="punto"  class="card h-100">
-              <img class="card-img-top" src="../ima/2.jpg" alt=""/>
-              <div class="card-body">
-                <h3 class="card-title text-dark">
-                  Empaque Para Puerta
-                </h3>
-                <p class="card-text"></p>
-              </div>
+          <br />
+        <div id="galeria">
+            <div class="row"> 
+                 <img id="bla" src="../ima/bandas.jpg" alt="" class="rounded float-left col-xl-4">                                             
+		         <img id="bla1" src="../ima/soporte5.jpg" alt="" class="rounded mx-auto d-block col-md-3 ">
+		         <img id="bla2"src="../ima/2.jpg" alt="" class="rounded float-right col-lg-4">
             </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div id="punto1" class="card h-100">
-              <img class="card-img-top" src="../ima/3.jpg" alt=""/>
-              <div class="card-body">
-                <h3 class="card-title text-dark">
-                 Fundas Para Barra
-                </h3>
-                <p class="card-text"></p>
-              </div>
+
+            <div class="row">
+               <img id="bla" src="../ima/3.jpg" alt="" class="rounded float-left col-xl-4">                              
+		         <img id="bla1" src="../ima/mangue.jpg" alt="" class="rounded mx-auto d-block col-md-3 ">
+		         <img id="bla2"src="../ima/manguera.jpg" alt="" class="rounded float-right col-lg-4">
             </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div id="punto2" class="card h-100">
-              <img class="card-img-top" src="../ima/mangue.jpg" alt=""/>
-              <div class="card-body">
-                <h3 class="card-title text-dark">
-                  Manguera De Radiador
-                </h3>
-                <p class="card-text"></p>
-              </div>
-            </div>
-          </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div id="punto3" class="card h-100">
-              <img class="card-img-top" src="../ima/manguera.jpg" alt=""/>
-              <div class="card-body">
-                <h3 class="card-title text-dark">
-                  Empaque de puerta
-                </h3>
-                <p class="card-text"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div id="punto4" class="card h-100">
-              <img class="card-img-top" src="../ima/soporte5.jpg" alt=""/>
-              <div class="card-body">
-                <h3 class="card-title text-dark">
-                  Soporte de motor
-                </h3>
-                <p class="card-text"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div id="punto5" class="card h-100">
-              <img class="card-img-top" src="../ima/bandas.jpg" alt=""/>
-              <div class="card-body">
-                <h3 class="card-title text-dark" >
-                  Manguera de presion
-                </h3>
-                <p class="card-text"></p>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /.row -->
         <hr/>
@@ -262,9 +227,7 @@
             <a class="btn btn-lg btn-secondary btn-block text-danger" href="catalogo.aspx"><strong>Catalogo</strong></a>
           </div>
         </div>
-
       </div>
       <!-- /.container -->
-
 </asp:Content>
 

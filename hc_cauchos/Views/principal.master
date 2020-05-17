@@ -19,7 +19,12 @@
   <!-- Custom styles for this template -->
   <link href="../archivos_index/css/modern-business.css" rel="stylesheet"/>
     <asp:ContentPlaceHolder id="head" runat="server">
-
+       <style type="text/css">
+           #titulo{
+               box-shadow: 2px 2px 20px #ff0000;
+               color:#ff0000;
+           }
+       </style>
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -28,7 +33,7 @@
         <!-- Navigation -->
           <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-              <h2 class="navbar-header text-white" href="home.aspx">HC CAUCHOS</h2>    
+              <h2 id="titulo" class="navbar-header text-white" href="home.aspx">HC CAUCHOS</h2>    
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>

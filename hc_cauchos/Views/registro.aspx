@@ -3,12 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
             html {
-  background-color: #56baed;
+
     }
 
     body {
-      font-family: "Poppins", sans-serif;
-      height: 100vh;
+
     }
 
     a {
@@ -19,13 +18,7 @@
     }
 
     h2 {
-      text-align: center;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      display:inline-block;
-      margin: 40px 8px 10px 8px; 
-      color: #cccccc;
+
     }
 
 
@@ -47,7 +40,7 @@
       border-radius: 10px 10px 10px 10px;
       background: #fff;
       padding: 30px;
-      width: 130%;
+      /*width: 130%;*/
       max-width: 450px;
       position: relative;
       padding: 0px;
@@ -269,11 +262,11 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-4">
+            <div class="col-2">
 
             </div>
 
-            <div class="col-4"> 
+            <div class="col-8"> 
                 <div class="wrapper fadeInDown">
                     <div id="formContent">
                         <div class="fadeIn first">

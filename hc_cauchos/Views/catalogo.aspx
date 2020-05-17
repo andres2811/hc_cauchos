@@ -28,7 +28,7 @@
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo">
         <ItemTemplate>            
             <div class="col-md-2 col-sm-6 col-xs-8 mb-3" >
-                 <div class="card shadow" style=" width:300px; height:480px;" id="productos">  
+                 <div class="card shadow border-0" style=" width:100%; height:430px;" id="productos">  
                          <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen") %>' width="100%" Height="60%" class="card-img-top"  />                         
                             <div class="card-body text-capitalize">
                                 <h4 class="card-title text-center" id="titulo">

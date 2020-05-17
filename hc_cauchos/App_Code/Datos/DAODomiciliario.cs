@@ -47,19 +47,21 @@ public class DAODomiciliario
                         Total = m.pedi.Total,
                         Direccion=m.pedi.Direccion,
                         Ciu_dep_id=m.pedi.Ciu_dep_id,
-                        Municipio_id=m.pedi.Municipio_id
+                        Municipio_id=m.pedi.Municipio_id,
+                        Fecha_pedido_fin=m.pedi.Fecha_pedido_fin
 
 
                     }).ToList();
     }
 
     //ACTUALIZAR ESTADO EN EL PEDIDO POR DOMICILIARIO
-    public void ActualizarNovedadPedido(int estado5)
+    public void ActualizarNovedadPedido(EncapPedido estado5)
     {
         using (var db = new Mapeo())
         {
-            EncapPedido newnovedad = db.pedidos.Where(x => x.Id == estado5).SingleOrDefault();
+            EncapPedido newnovedad = db.pedidos.Where(x => x.Id == estado5.Id).SingleOrDefault();
             newnovedad.Estado_pedido = 5;
+            newnovedad.Fecha_pedido_fin = estado5.Fecha_pedido_fin;
 
             db.SaveChanges();
         }
