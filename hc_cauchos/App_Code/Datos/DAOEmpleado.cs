@@ -160,7 +160,7 @@ public class DAOEmpleado
     {
         using (var db = new Mapeo())
         
-            return (from pedi in db.pedidos.Where(x=>x.Atendido_id== user && x.Estado_pedido == 2)
+            return (from pedi in db.pedidos.Where(x=>x.Atendido_id== user && x.Estado_pedido == 1)
                     join usu in db.usuario on pedi.User_id equals usu.User_id 
                     join emple in db.usuario  on pedi.Atendido_id  equals emple.User_id
                     join domi in db.usuario on pedi.Domiciliario_id equals domi.User_id
@@ -189,7 +189,88 @@ public class DAOEmpleado
 
                     }).ToList();
         }
- }
+
+    //METODO PARA OBTENER LOS PRODUCTOS DEL PEDIDO
+    public List<EncapProducto_pedido> ObtenerProductos(int pedido)
+    {
+        using (var db = new Mapeo())
+
+            return (from produc in db.productos.Where(x => x.Pedido_id == pedido)
+                    join inventario in db.inventario on produc.Producto_id equals inventario.Id
+
+                    select new
+                    {
+                        produc,
+                        inventario
+
+
+                    }).ToList().Select(m => new EncapProducto_pedido
+                    {
+
+                        Id = m.produc.Id,
+                        Pedido_id=m.produc.Pedido_id,
+                        Producto_id=m.produc.Producto_id,
+                        Cantidad=m.produc.Cantidad,
+                        Precio=m.produc.Precio,
+                        Total=m.produc.Total,
+                        Nombre_producto=m.inventario.Titulo,
+                        Referencia=m.inventario.Referencia
+                        
+
+                    }).ToList();
+    }
+
+
+
+    //ACTUALIZAR ESTADO PEDIDO A 2
+    public void ActualizarEstadoPedido2(EncapPedido pedido2)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapPedido estado = db.pedidos.Where(x => x.Id == pedido2.Id).SingleOrDefault();
+            estado.Estado_pedido = pedido2.Estado_pedido;
+
+            db.SaveChanges();
+        }
+    }
+
+    //ACTUALIZAR ESTADO PEDIDO A 3
+    public void ActualizarEstadoPedido3(EncapPedido pedido3)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapPedido estado = db.pedidos.Where(x => x.Id == pedido3.Id).SingleOrDefault();
+            estado.Estado_pedido = pedido3.Estado_pedido;
+
+            db.SaveChanges();
+        }
+    }
+
+
+    //ACTUALIZAR NOVEDAD EN EL PEDIDO
+    public void ActualizarNovedadPedido(EncapPedido novedad)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapPedido newnovedad = db.pedidos.Where(x => x.Id == novedad.Id).SingleOrDefault();
+            newnovedad.Novedad = novedad.Novedad;
+
+            db.SaveChanges();
+        }
+    }
+
+    //ACTUALIZAR ESTADO EMPLEADO
+    public void ActualizarEstadoEmpleado(EncapUsuario empleado)
+    {
+        using (var db = new Mapeo())
+        {
+            EncapUsuario emple = db.usuario.Where(x => x.User_id == empleado.User_id ).SingleOrDefault();
+            emple.Estado_id = empleado.Estado_id;
+
+            db.SaveChanges();
+        }
+    }
+}
 
 
 
