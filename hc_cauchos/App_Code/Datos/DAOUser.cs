@@ -690,7 +690,44 @@ public class DAOUser
                     }
                       ).ToList();
         }
+
     }
+
+    //METODO DE BUSCAR EL HISTORIA DE VENTAS DEACUEDO A AÑO Y MES
+    public List<EncapPedido> ConsultarVentasAnoMes(int ano, int mes)
+    {
+        using (var db = new Mapeo())
+        {
+
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano && x.Fecha_pedido.Month == mes)
+                    join usuario in db.usuario on uu.User_id equals usuario.User_id
+                    join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
+                    join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
+                    select new
+                    {
+                        uu,
+                        usuario,
+                        estado,
+                        empleado
+                    }).ToList().Select(m => new EncapPedido
+                    {
+
+                        Id = m.uu.Id,
+                        User_id = m.usuario.User_id,
+                        Atendido_id = m.uu.Atendido_id,
+                        Domiciliario_id = m.uu.Domiciliario_id,
+                        Fecha_pedido = m.uu.Fecha_pedido,
+                        Estado_pedido = m.uu.Estado_pedido,
+                        Total = m.uu.Total,
+                        Empleado = m.empleado.Nombre,
+                        Usuario = m.usuario.Nombre,
+                        Estado = m.estado.Estado
+
+                    }
+                      ).ToList();
+        }
+    }
+
 }
 
 

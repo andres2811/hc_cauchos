@@ -2,9 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
-        .auto-style1 {
-            margin-left: 309;
-        }
         .auto-style2 {
             width: 389px;
         }
@@ -40,7 +37,7 @@
     <div class="row"> 
      <div class="col-md-2 col-md-offset-0.5">
       
-            <asp:GridView ID="GV_Pedidos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Pedidos" ForeColor="#333333" GridLines="None" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="4" Width="920px">
+            <asp:GridView ID="GV_Pedidos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Pedidos" ForeColor="#333333" GridLines="None" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="4" Width="988px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:TemplateField HeaderText="Id" SortExpression="Id" >
