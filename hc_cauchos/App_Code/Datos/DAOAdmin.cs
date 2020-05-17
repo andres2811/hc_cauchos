@@ -738,7 +738,7 @@ public class DAOAdmin
     {
         using (var db = new Mapeo())
         {
-            return (from uu in db.pedido_proveedor
+            return (from uu in db.pedido_proveedor.Where(x=> x.Id > 0)
 
                     join prov in db.proveedor on uu.Id_proveedor equals prov.Id
                     join est in db.estado_pedido_proveedor on uu.Id_estado equals est.Id
@@ -975,7 +975,7 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 5)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
@@ -996,7 +996,7 @@ public class DAOAdmin
                         Fecha_pedido = m.uu.Fecha_pedido,
                         Estado_pedido = m.uu.Estado_pedido,
                         Total = m.uu.Total,
-
+                        
                         Usuario = m.usuario.Nombre,
                         Estado = m.estado.Estado,
                         Empleado = m.empleado.Nombre,
@@ -1086,7 +1086,7 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 5 && x.Fecha_pedido.Year == ano)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
@@ -1121,7 +1121,7 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano && x.Fecha_pedido.Day == dia)
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 5 && x.Fecha_pedido.Year == ano && x.Fecha_pedido.Day == dia)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
@@ -1155,7 +1155,7 @@ public class DAOAdmin
         using (var db = new Mapeo())
         {
 
-            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 4 && x.Fecha_pedido.Year == ano &&
+            return (from uu in db.pedidos.Where(x => x.Estado_pedido == 5 && x.Fecha_pedido.Year == ano &&
                     x.Fecha_pedido.Month == mes && x.Fecha_pedido.Day == dia)
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
@@ -1193,33 +1193,33 @@ public class DAOAdmin
         //solo Empleado
         if (ano == 0 && mes == 0 && dia == 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id = " + emp;
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id = " + emp;
         }
         //empleado y Dia
         if (ano == 0 && mes == 0 && dia != 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
                    " AND to_char(fecha_pedido, 'DD')::integer = " + dia;
 
         }
         //empleado dia y mes
         if (ano == 0 && mes != 0 && dia != 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
                    " AND to_char(fecha_pedido, 'DD')::integer = " + dia +
                    " AND  to_char(fecha_pedido, 'MM')::integer =" + mes;
         }
         //empleado y mes
         if (ano == 0 && mes != 0 && dia == 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
 
                    " AND  to_char(fecha_pedido, 'MM')::integer =" + mes;
         }
         //empleado y año
         if (ano != 0 && mes == 0 && dia == 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
 
                    " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
         }
@@ -1227,21 +1227,21 @@ public class DAOAdmin
         //empleado año y dia
         if (ano != 0 && mes == 0 && dia != 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
                 " AND to_char(fecha_pedido, 'DD')::integer = " + dia +
                    " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
         }
         //empleado mes y ano
         if (ano != 0 && mes != 0 && dia == 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
                 " AND to_char(fecha_pedido, 'MM')::integer = " + mes +
                    " AND to_char(fecha_pedido, 'YYYY')::integer =" + ano;
         }
         //Combinado
         if (ano != 0 && mes != 0 && dia != 0 && emp != 0)
         {
-            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 4 AND atendido_id =" + emp +
+            Query = "SELECT * FROM pedidos.pedidos pp WHERE estado_pedido = 5 AND atendido_id =" + emp +
                  " AND to_char(fecha_pedido, 'DD')::integer = " + dia +
                 " AND to_char(fecha_pedido, 'MM')::integer = " + mes +
 
@@ -1292,14 +1292,14 @@ public class DAOAdmin
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
-                   
+                    join domi in db.usuario on uu.Domiciliario_id equals domi.User_id
                                         select new
                     {
                         uu,
                         usuario,
                         estado,
                         empleado,
-                        
+                        domi
 
                     }).ToList().Select(m => new EncapPedido
                     {
@@ -1311,7 +1311,7 @@ public class DAOAdmin
                         Fecha_pedido = m.uu.Fecha_pedido,
                         Estado_pedido = m.uu.Estado_pedido,
                         Total = m.uu.Total,
-
+                        Domiciliaro = m.domi.Nombre,
                         Usuario = m.usuario.Nombre,
                         Estado = m.estado.Estado,
                         Empleado = m.empleado.Nombre,

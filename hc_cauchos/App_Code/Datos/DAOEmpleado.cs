@@ -270,13 +270,18 @@ public class DAOEmpleado
             db.SaveChanges();
         }
     }
-
-    //OBTENGO CANTIDAD DE PRODUCTOS DE USUARIO CARRITO
-    public int ObtenerCantidadPedidos(int user_id)
+    public List<EncapCiudades_Dep> ConsultarDepartamento()
+    {
+        using (var db =new Mapeo())
+        {
+            return db.ciudades_departamentso.OrderBy(x => x.Id).ToList();
+        }
+    }
+    public List<EncapMunicipio> ConsultarMunicipio(int aux)
     {
         using (var db = new Mapeo())
         {
-            return db.pedidos.Where(x => x.Atendido_id == user_id).Count();
+            return db.municipios.Where(x=> x.Id_de == aux ).OrderBy(x=> x.Id).ToList();
         }
     }
 }

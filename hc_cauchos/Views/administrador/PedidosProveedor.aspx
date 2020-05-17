@@ -3,9 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+        <br />
+      <br />
+    <h1 class="text-center"><strong>Historial De Pedidos Proveedor</strong></h1>
     <div class="row">
-        <div class=" col-lg-12 col-md-offset-0.5">
+         <br />
+      <br />
+        <div class=" col-lg-12 col-md-offset-1">
              <div style="overflow-x: auto;"> 
 
                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Height="239px" Width="895px" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" PageSize="2">

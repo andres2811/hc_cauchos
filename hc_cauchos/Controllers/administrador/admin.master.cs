@@ -31,9 +31,7 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
 
     protected void BTN_cerrar_Sesion_Click(object sender, EventArgs e)
     {
-        Session["Valido"] = -1;
-        Session.Abandon();
-        Session.RemoveAll();
+
         EncapUsuario User = new EncapUsuario();
         User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
         User.Ip_ = null;
@@ -41,6 +39,10 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
         User.Sesion = null;
         new DAOAdmin().ActualizarUsuario(User);
         Response.Redirect("../home.aspx");
+        Session["Valido"] = -1;
+        Session.Abandon();
+        Session.RemoveAll();
+        
 
     }
 }

@@ -54,4 +54,9 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
         Response.Redirect("pedidos_atender.aspx");
 
     }
+
+    protected void DDL_Departamento_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DDL_Municipio.Visible = true;
+    }
 }

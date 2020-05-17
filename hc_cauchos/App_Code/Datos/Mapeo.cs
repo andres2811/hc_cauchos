@@ -42,8 +42,8 @@ public class Mapeo : DbContext
     public DbSet<producto> aux { get; set; }
     public DbSet<EncapProducto_pedido> productos { get; set; }
     public DbSet<EncapEstadoPedido> estado_pedido { get; set; }
-
-
+    public DbSet<EncapCiudades_Dep> ciudades_departamentso { get; set; }
+    public DbSet<EncapMunicipio> municipios { get; set; } 
 
 
 
