@@ -86,7 +86,7 @@
                       <asp:ListItem Value="0"></asp:ListItem>
                      
                    </asp:DropDownList>
-                  <asp:TextBox ID="TB_Aux" runat="server" TextMode="Number"></asp:TextBox>
+                  <asp:TextBox ID="TB_Aux" runat="server" TextMode="Number" Visible="False"></asp:TextBox>
                   <br />
               </td>
               <td>
@@ -181,12 +181,19 @@
               <asp:ControlParameter ControlID="DDL_Empleado" Name="emp" PropertyName="SelectedValue" Type="Int32" />
           </SelectParameters>
       </asp:ObjectDataSource>
-      <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ConsultarVentasAnMes" TypeName="DAOAdmin">
+      <asp:ObjectDataSource ID="ODS_HistorialAnoMesDia0" runat="server" SelectMethod="ConsultarVentasAnoMesDia" TypeName="DAOAdmin">
+          <SelectParameters>
+              <asp:ControlParameter ControlID="TB_Ano" Name="ano" PropertyName="Text" Type="Int32" />
+              <asp:ControlParameter ControlID="TB_Mes" Name="mes" PropertyName="Text" Type="Int32" />
+              <asp:ControlParameter ControlID="TB_Dia" Name="dia" PropertyName="Text" Type="Int32" />
+          </SelectParameters>
+      </asp:ObjectDataSource>
+      <asp:ObjectDataSource ID="ODS_HistorialAnoMes" runat="server" SelectMethod="ConsultarVentasAnoMes" TypeName="DAOUser">
           <SelectParameters>
               <asp:ControlParameter ControlID="TB_Ano" Name="ano" PropertyName="Text" Type="Int32" />
               <asp:ControlParameter ControlID="TB_Mes" Name="mes" PropertyName="Text" Type="Int32" />
           </SelectParameters>
-</asp:ObjectDataSource>
+      </asp:ObjectDataSource>
       <br />
 </asp:Content>
 

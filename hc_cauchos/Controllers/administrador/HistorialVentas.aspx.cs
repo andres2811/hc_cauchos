@@ -55,12 +55,13 @@ public partial class Views_administrador_HistorialVentas : System.Web.UI.Page
             GV_Historial.DataSourceID = "ODS_HistorialMesDia";
 
         }
-        if (TB_Mes.Text != "" && TB_Ano.Text != "")
+        if ( TB_Ano.Text != "" && TB_Mes.Text != "" )
         {
 
-            GV_Historial.DataSourceID = "ObjectDataSource1";
-
+            GV_Historial.DataSourceID = "ODS_HistorialAnoMes";
         }
+
+    
         if (TB_Ano.Text != "" && TB_Dia.Text != "")
         {
 
