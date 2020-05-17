@@ -23,6 +23,12 @@ public class EncapPedido
     private string estado;
     private string empleado;
     private string domiciliaro;
+    private string novedad;
+    private int ciu_dep_id;
+    private string direccion;
+    private int municipio_id;
+
+
 
     [Key]
     [Column("id")]
@@ -47,6 +53,12 @@ public class EncapPedido
     public string Empleado { get => empleado; set => empleado = value; }
     [NotMapped]
     public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
-
-    
+    [Column("novedad")]
+    public string Novedad { get => novedad; set => novedad = value; }
+    [Column("ciu_dep_id")]
+    public int Ciu_dep_id { get => ciu_dep_id; set => ciu_dep_id = value; }
+    [Column("direccion")]
+    public string Direccion { get => direccion; set => direccion = value; }
+    [Column("municipio_id")]
+    public int Municipio_id { get => municipio_id; set => municipio_id = value; }
 }

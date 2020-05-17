@@ -157,8 +157,8 @@
               </ul>
             </li>
             <li>
-              <a href="#">
-                <i class="fa fa-th"></i> <span>Inventario</span> <small class="label pull-right bg-green">Hot</small>
+              <a href="entregas.aspx">
+                <i class="fa fa-th"></i> <span>Pedidos para entregar</span> <small class="label pull-right bg-green">Hot</small>
               </a>
             </li>            
             <li class="treeview">

@@ -12,7 +12,7 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
     {
         int idemple = ((EncapUsuario)Session["Valido"]).User_id;
         Session["empleid"] = idemple;
-        R_productos.Visible = false;
+        R_pro.Visible = false;
         BTN_confirmar.Visible = false;
         TB_novedad.Visible = false;
 
@@ -23,12 +23,12 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         int id_pedido = int.Parse(((Label)e.Item.FindControl("Id")).Text);
         Session["idpedido"] = id_pedido;
-        R_productos.Visible = true;
-        R_productos.DataSourceID = "ODS_productos";
+        R_pro.Visible = true;
+        R_pro.DataSourceID = "ODS_Productos";
         EncapPedido estado2 = new EncapPedido();
         estado2.Id = id_pedido;
         estado2.Estado_pedido = 2;
-        new DAOEmpleado().ActualizarEstadoPedido1(estado2);
+        new DAOEmpleado().ActualizarEstadoPedido2(estado2);
         ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se ha comenzado el alistamiento del pedido No.00" + id_pedido.ToString() + "');", true);
         BTN_confirmar.Visible = true;
         TB_novedad.Visible = true;
@@ -43,7 +43,7 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
         novedad.Novedad = TB_novedad.Text;
         novedad.Estado_pedido = 3;
         new DAOEmpleado().ActualizarNovedadPedido(novedad);
-        new DAOEmpleado().ActualizarEstadoPedido2(novedad);
+        new DAOEmpleado().ActualizarEstadoPedido3(novedad);
 
         EncapUsuario estado = new EncapUsuario();
         estado.User_id= ((EncapUsuario)Session["Valido"]).User_id;
