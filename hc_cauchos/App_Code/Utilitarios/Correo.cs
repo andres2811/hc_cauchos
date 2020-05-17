@@ -38,7 +38,7 @@ public class Correo
             //Aquí ponemos el mensaje que incluirá el correo
             string link = "<a href=\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx? " + ">  </ a > ";
             // mail.Body = "Para recuperar su cuenta ingrese al siguiente link" + "<a href =\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx? "+ userToken +  ">LINK</a>";
-            mail.Body = "Para recuperar su cuenta ingrese al siguiente link" + "< a href =\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx?" " >CLIK AQUI   </a>";
+            mail.Body = "Para recuperar su cuenta ingrese al siguiente link" + "< a href =\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx?" +" >CLIK AQUI   </a>";
            //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
 
            mail.To.Add(correoDestino);

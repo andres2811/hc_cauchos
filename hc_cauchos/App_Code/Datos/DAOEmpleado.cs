@@ -284,6 +284,14 @@ public class DAOEmpleado
             return db.municipios.Where(x=> x.Id_de == aux ).OrderBy(x=> x.Id).ToList();
         }
     }
+    //OBTENGO CANTIDAD DE PRODUCTOS DE USUARIO CARRITO
+    public int ObtenerCantidadPedidos(int user_id)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.pedidos.Where(x => x.Atendido_id == user_id).Count();
+        }
+    }
 }
 
 

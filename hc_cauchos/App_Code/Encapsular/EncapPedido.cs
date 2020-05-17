@@ -27,6 +27,7 @@ public class EncapPedido
     private int ciu_dep_id;
     private string direccion;
     private int municipio_id;
+    private Nullable<DateTime> fecha_pedido_fin;
 
 
 
@@ -61,5 +62,6 @@ public class EncapPedido
     public string Empleado { get => empleado; set => empleado = value; }
     [NotMapped]
     public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
-   
+    [Column("fecha_pedido_fin")]
+    public Nullable<DateTime> Fecha_pedido_fin { get => fecha_pedido_fin; set => fecha_pedido_fin = value; }
 }
