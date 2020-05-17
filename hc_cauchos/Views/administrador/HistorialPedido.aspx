@@ -16,7 +16,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <br />
       <br />
-    <h1 class="text-center"><strong>Historial De Ventas</strong></h1>
+    <h1 class="text-center"><strong>Historial De Pedidos</strong></h1>
       <br />
      <br />
      <table class="auto-style4">
