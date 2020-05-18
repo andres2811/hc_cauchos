@@ -55,8 +55,5 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
 
     }
 
-    protected void DDL_Departamento_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        DDL_Municipio.Visible = true;
-    }
+    
 }

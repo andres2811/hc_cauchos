@@ -36,10 +36,9 @@ public class Correo
             //Aquí ponemos el asunto del correo
             mail.Subject = "Recuperación Contraseña";
             //Aquí ponemos el mensaje que incluirá el correo
-            string link = "<a href=\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx? " + ">  </ a > ";
-            // mail.Body = "Para recuperar su cuenta ingrese al siguiente link" + "<a href =\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx? "+ userToken +  ">LINK</a>";
-            mail.Body = "Para recuperar su cuenta ingrese al siguiente link" + "< a href =\"http://localhost:57160/Views/administrador/ActualizarContraseña.aspx?" +" >CLIK AQUI   </a>";
-           //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
+            string likserv = "proyectosisw12020.tk/CauchosHC/Views/administrador/ActualizarContraseña.aspx?";
+
+            mail.Body = "Para recuperar su cuenta ingrese al siguiente link  :<a href ='http://localhost:57160/Views/administrador/ActualizarContraseña.aspx? "+  userToken + "' > Actualizar </a> ";
 
            mail.To.Add(correoDestino);
             //Si queremos enviar archivos adjuntos tenemos que especificar la ruta en donde se encuentran

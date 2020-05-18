@@ -15,6 +15,12 @@ public partial class Views_usuario_usuario : System.Web.UI.MasterPage
 
     protected void BTN_cerrar_Sesion_Click(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        User.Ip_ = null;
+        User.Mac_ = null;
+        User.Sesion = null;
+        new DAOAdmin().ActualizarUsuario(User);
         Session.Abandon();
         Response.Redirect("../home.aspx");
     }

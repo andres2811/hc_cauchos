@@ -188,7 +188,7 @@
               <asp:ControlParameter ControlID="TB_Dia" Name="dia" PropertyName="Text" Type="Int32" />
           </SelectParameters>
       </asp:ObjectDataSource>
-      <asp:ObjectDataSource ID="ODS_HistorialAnoMes" runat="server" SelectMethod="ConsultarVentasAnoMes" TypeName="DAOUser">
+      <asp:ObjectDataSource ID="ODS_1" runat="server" SelectMethod="ConsultarVentasAnMes" TypeName="DAOAdmin">
           <SelectParameters>
               <asp:ControlParameter ControlID="TB_Ano" Name="ano" PropertyName="Text" Type="Int32" />
               <asp:ControlParameter ControlID="TB_Mes" Name="mes" PropertyName="Text" Type="Int32" />
