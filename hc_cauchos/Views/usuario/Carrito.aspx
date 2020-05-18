@@ -2,6 +2,21 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
+    <style type="text/css">
+        .auto-style4 {
+            width: 190px;
+        }
+        .auto-style5 {
+            width: 210px;
+        }
+        .auto-style6 {
+            width: 52px;
+        }
+        .auto-style7 {
+            width: 54px;
+        }
+        </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1 class="text-center"><strong>Mi Carrito</strong></h1>
@@ -56,9 +71,55 @@
             </div>
         </div>
     </div>
+    <table class="nav-justified">
+        <tr>
+            <td class="auto-style4">
+                <asp:ObjectDataSource ID="ODS_Municipio" runat="server" SelectMethod="ConsultarMunicipio" TypeName="DAOEmpleado">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DDL_Departamento" Name="aux" PropertyName="SelectedValue" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
+            <td class="auto-style5">
+                <br />
+                <asp:DropDownList ID="DDL_Departamento" CssClass="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_Departamento" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DDL_Departamento_SelectedIndexChanged" Visible="False">
+                </asp:DropDownList>
+               
+            
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" InitialValue="0" ControlToValidate="DDL_Departamento" ValidationGroup="dire"></asp:RequiredFieldValidator> 
+               
+            
+            </td>
+            <td class="auto-style6"> 
+               
+               
+            </td>
+            <td class="modal-sm">
+                 <asp:Label ID="Lb_municipio" runat="server" Text="Municipio " Visible="False"></asp:Label>
+                <asp:DropDownList ID="DDL_Municipio" CssClass="form-control" runat="server" DataSourceID="ODS_Municipio" DataTextField="Nombre" DataValueField="Id" Visible="False">
+                </asp:DropDownList>
+            </td>
+            <td>&nbsp;</td>
+           
+        </tr>
+        <tr>
+            <td class="auto-style4">
+                <asp:ObjectDataSource ID="ODS_Departamento" runat="server" SelectMethod="ConsultarDepartamento" TypeName="DAOEmpleado"></asp:ObjectDataSource>
+            </td>
+            <td class="auto-style5">
+                &nbsp;</td>
+            <td class="auto-style6">
+                <asp:TextBox ID="TB_Direccion" runat="server" CssClass="form-control" placeholder="Dirreccion" Visible="False" Width="202px" MaxLength="30"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TB_Direccion" ValidationGroup="dire"></asp:RequiredFieldValidator>
+            </td>
+            <td class="modal-sm">
+               </td>
+            
+        </tr>
+    </table>
     <br />
     <div aling="center">
-        <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" />
+        <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" ValidationGroup="dire" />
             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/ima/compras.png" OnClick="ImageButton1_Click" />
         <br />
             <asp:Label ID="LB_facturar" runat="server" Text="Facturar"></asp:Label>

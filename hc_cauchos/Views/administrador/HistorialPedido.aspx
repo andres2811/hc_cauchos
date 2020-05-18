@@ -111,7 +111,7 @@
 
 
      <br />
-            <asp:ObjectDataSource ID="ODS_PedidosEstado" runat="server" SelectMethod="ConsultarPedidosEstado" TypeName="DAOUser">
+            <asp:ObjectDataSource ID="ODS_PedidosEstado" runat="server" SelectMethod="ConsultarPedidosEstado" TypeName="DAOAdmin">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="DDL_Estado" Name="est" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>

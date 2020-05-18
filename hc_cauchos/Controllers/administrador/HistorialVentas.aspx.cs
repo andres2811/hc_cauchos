@@ -49,30 +49,29 @@ public partial class Views_administrador_HistorialVentas : System.Web.UI.Page
         }
 
 
-        if ( TB_Mes.Text != "" && TB_Dia.Text != "")
+        if (TB_Dia.Text != ""  && TB_Mes.Text != "")
         {
 
             GV_Historial.DataSourceID = "ODS_HistorialMesDia";
 
         }
-        if ( TB_Ano.Text != "" && TB_Mes.Text != "" )
-        {
 
-            GV_Historial.DataSourceID = "ODS_HistorialAnoMes";
-        }
-
-    
         if (TB_Ano.Text != "" && TB_Dia.Text != "")
         {
 
             GV_Historial.DataSourceID = "ODS_HistorialAnoDia";
         }
-        if (TB_Ano.Text != "" && TB_Mes.Text != "" && TB_Dia.Text != null)
+        if (TB_Ano.Text != "" && TB_Mes.Text != "")
         {
-            
+
+            GV_Historial.DataSourceID = "ODS_1";
+        }
+        if (TB_Ano.Text != "" && TB_Mes.Text != "" && TB_Dia.Text != "")
+        {
+
             GV_Historial.DataSourceID = "ODS_HistorialAnoMesDia";
         }
-
+      
         if (DDL_Empleado.Visible == true)
         {
 
