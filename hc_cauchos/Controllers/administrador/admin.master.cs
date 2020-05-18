@@ -31,7 +31,7 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
 
     protected void BTN_cerrar_Sesion_Click(object sender, EventArgs e)
     {
-
+        //Elimino ip y mac
         EncapUsuario User = new EncapUsuario();
         User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
         User.Ip_ = null;
