@@ -39,6 +39,13 @@ public partial class Views_registro : System.Web.UI.Page
             //apunto a metodo de insert 
             new DAOUser().InsertarUsuario(User);
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El usuario se ha registrado satisfactoriamente' );</script>");
+            TB_nombres.Text = "";
+            TB_apellidos.Text = "";
+            TB_correo.Text = "";
+            TB_contraseña.Text = "";
+            TB_confirmar_contra.Text = "";
+            TB_identificacion.Text = "";
+            TB_fecha_nacimiento.Text = "";
             return;
         }
         if(verificarCorreo != null)

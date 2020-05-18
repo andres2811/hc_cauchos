@@ -109,33 +109,33 @@
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo"  OnItemCommand="Repeater1_ItemCommand" >
         <ItemTemplate>            
             <div class="col-md-2 col-sm-6 col-xs-8 mb-3" >
-                 <div class="card shadow" style=" width:270px; height:630px;" id="productos">  
-                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen") %>' width="100%" Height="50%" class="card-img-top" ImageAlign="TextTop"  />                         
-                            <div class="card-body text-capitalize text-center">
+                 <div class="card shadow text-block" style=" width:165px; height:510px;" id="productos">  
+                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen") %>' width="100%" Height="30%" class="card-img-top" ImageAlign="TextTop"  />                         
+                            <div class="card-body">
                                 <h4 class="card-title text-center" id="titulo">
                                     <strong><asp:Label ID="TituloLabel" runat="server" Text='<%# Eval("Titulo") %>' /></strong>
                                 </h4>
-                                Referencia:
+                                <strong>Referencia:</strong>
                                 <asp:Label ID="ReferenciaLabel" runat="server" Text='<%# Eval("Referencia") %>' class="card-text" />
                                 <br />
-                                Precio:
+                                <strong>Precio:</strong>
                                 <asp:Label ID="PrecioLabel" runat="server" Text='<%# Eval("Precio") %>' class="card-text" />
                                 <br />
-                                Stock:
+                                <strong>Stock:</strong>
                                 <asp:Label ID="Ca_actualLabel" runat="server" Text='<%# Eval("Ca_actual") %>' class="card-text"/>
                                 <br />
-                                Marca:
+                                <strong>Marca:</strong>
                                 <asp:Label ID="NombremarcaLabel" runat="server" Text='<%# Eval("Nombre_marca") %>' class="card-text"/>
                                 <br />
-                                Categoria:
+                                <strong>Categoria:</strong>
                                 <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Nombre_categoria") %>' class="card-text"/>  
                                 <br />
-                                Cantidad:
+                                <strong>Cantidad:</strong>
                                 <asp:TextBox ID="TB_cantidad" runat="server" TextMode="Number" Class="card-text" Width="25%" CssClass="text-black" MaxLength="4"></asp:TextBox>                         
                                 <asp:RequiredFieldValidator ID="RFV_cantidad" runat="server" ErrorMessage="*" ControlToValidate="TB_cantidad" EnableClientScript="True" ValidationGroup='<%# Eval("Id") %>'></asp:RequiredFieldValidator>&nbsp;&nbsp;
                                 <asp:RangeValidator ID="RV_cantidad" runat="server" ErrorMessage="valor invalido" ControlToValidate="TB_cantidad" MaximumValue="1000" MinimumValue="1" Type="Integer"></asp:RangeValidator>
-                                <br />
-                                <asp:ImageButton ID="BTNI_carritoAdd" runat="server" ImageUrl="~/ima/newproduct.png" ImageAlign="AbsBottom" CommandArgument='<%# Eval("Id") %>' ValidationGroup='<%# Eval("Id") %>' />
+                 
+                                <asp:ImageButton class="center-block bottom-left" ID="BTNI_carritoAdd" runat="server" ImageUrl="~/ima/newproduct.png" CommandArgument='<%# Eval("Id") %>' ValidationGroup='<%# Eval("Id") %>' />
                                 
                             </div>
                </div>    
@@ -143,7 +143,9 @@
         </ItemTemplate>
     </asp:Repeater>
     </div>
-
+    <br />
+    <br />
+    <br />
 
 </asp:Content>
 

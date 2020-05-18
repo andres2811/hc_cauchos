@@ -130,11 +130,19 @@
           <!-- AQUI VAN LOS ELEMENTOS QUE SE SELECIONAN PARA LAS VISTAS -->
           <ul class="sidebar-menu">
             <li class="header">Barra De Navegacion</li>
-             <li>
-              <a href="configurarUsu.aspx">
-                <i class="fa fa-edit"></i> <span>Configuracion</span>
-              </a>
-            </li>
+
+                 <li class="treeview">
+                  <a href="#">
+                    <i class="fa fa-edit"></i>
+                    <span>Configuracion</span>
+                    <span class=""></span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="configurarUsu.aspx"><i class="fa fa-circle-o"></i>Configurar Cuenta</a></li>
+                    <li><a href="eliminarcuenta.aspx"><i class="fa fa-circle-o"></i>Eliminar cuenta</a></li>
+                  </ul>
+                </li>
+
             <li >
               <a href="catalogoUsuario.aspx">
                 <i class="fa fa-th"></i> <span>Catalogo</span>

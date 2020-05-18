@@ -895,11 +895,6 @@ public class DAOAdmin
 
             db.SaveChanges();
         }
-
-
-
-
-
     }
     //Metodo QUE BUSCA LA REFERENCIA EN producto_proveedor
     public List<EncapProductoProveedor> ConsultarReferenciaProductoProveedor(int pro, string refe)

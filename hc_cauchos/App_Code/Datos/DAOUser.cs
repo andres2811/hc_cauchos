@@ -728,6 +728,25 @@ public class DAOUser
         }
     }
 
+    //METODO ELIMINAR CUENTA DE USUARIO
+    public void EliminarCuenta(EncapUsuario usuario)
+    {
+
+        using (var db = new Mapeo())
+        {
+            db.usuario.Attach(usuario);
+
+            var usuario_eliminar = db.usuario.Where(x => x.User_id == usuario.User_id);
+
+            var entry = db.Entry(usuario);
+            entry.State = EntityState.Deleted;
+
+            db.usuario.RemoveRange(usuario_eliminar);
+
+            db.SaveChanges();
+        }
+    }
+
 }
 
 
