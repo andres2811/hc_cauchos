@@ -9,42 +9,25 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-   
- 
-    
-
-&nbsp;<asp:ObjectDataSource ID="ODS_Alertas" runat="server" SelectMethod="ConsultarAlertas" TypeName="DAOAdmin"></asp:ObjectDataSource>
+   <asp:ObjectDataSource ID="ODS_Alertas" runat="server" SelectMethod="ConsultarAlertas" TypeName="DAOAdmin"></asp:ObjectDataSource>
 
    <link href="../../bootstrap/css/Alertas.css" rel="stylesheet" type="text/css" />
-    
-    <div class="row" >
-        <div class="col-md-8 col-md-offset-2 ">
-        <asp:Repeater ID="RepeaterAlerta" runat="server" DataSourceID="ODS_Alertas" OnItemDataBound="RepeaterAlerta_ItemDataBound" OnItemCommand="RepeaterAlerta_ItemCommand"  >
-          
-                <ItemTemplate>
-            <div class="card mb-4 py-3 border-left-danger">
-             <div class="card">
-                <div class="card-header" >
-               CANTIDAD CRITICA 
-            </div>
-            <div class="card-body">
-            <h5 class="card-title"><%# Eval("Titulo") %></h5>
-            <p class="card-text">El producto con referencia <%# Eval("Referencia") %> se encunetra menor a su cantidad minima <%# Eval("Ca_minima") %> </p>
-            <p class="card-text">Cantidad Actual:<%# Eval("Ca_actual") %></p>
-              <asp:Button ID="BT_Alerta" runat="server" Text="Abastecer" CssClass="btn btn-primary" />
-                         
-             </div>
-            </div>
-                </div>
-                     <br />
-                    <br />
-                  
-                            
-                            
-                    </ItemTemplate>
-            
-                </asp:Repeater>
-        </div>
-    </div>
+    <h1 class="text-center">PRODUCTOS EN ESTADO CRITICO</h1>
+
+        <asp:Repeater ID="RepeaterAlerta" runat="server" DataSourceID="ODS_Alertas" OnItemDataBound="RepeaterAlerta_ItemDataBound" OnItemCommand="RepeaterAlerta_ItemCommand"  >          
+            <ItemTemplate>
+                 <div class="card text-center bg-primary fa-border border-dark mb-5 col-sm-6">
+                  <div class="card-header">
+                      <h2 class="text-center">Cantidad Critica</h2>  
+                  </div>
+                  <div class="card-body text-black">
+                         <h3 class="card-title"><%# Eval("Titulo") %></h3>
+                        <p class="card-text">El producto con referencia <%# Eval("Referencia") %> se encuentra menor a su cantidad minima <%# Eval("Ca_minima") %> </p>
+                        <p class="card-text">Cantidad Actual:<%# Eval("Ca_actual") %></p>
+                        <asp:Button ID="Button1" runat="server" Text="Abastecer" CssClass="btn btn-primary" />  
+                  </div>
+                </div>                   
+            </ItemTemplate>            
+       </asp:Repeater>
     </asp:Content>
 

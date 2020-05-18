@@ -23,13 +23,12 @@
     <br />
     <h1 class="text-center text-danger"><strong>Catalogo</strong><br /><small>nuestros productos</small></h1>
     <br />
-    <br />
     <div class="row ">      
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo">
         <ItemTemplate>            
             <div class="col-md-2 col-sm-6 col-xs-8 mb-3" >
-                 <div class="card shadow border-0" style=" width:100%; height:430px;" id="productos">  
-                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen") %>' width="100%" Height="60%" class="card-img-top"  />                         
+                 <div class="card shadow border-0" style=" width:100%; height:450px;" id="productos">  
+                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen") %>' width="100%" Height="50%" class="card-img-top"  />                         
                             <div class="card-body text-capitalize">
                                 <h4 class="card-title text-center" id="titulo">
                                     <strong><asp:Label ID="TituloLabel" runat="server" Text='<%# Eval("Titulo") %>' /></strong>

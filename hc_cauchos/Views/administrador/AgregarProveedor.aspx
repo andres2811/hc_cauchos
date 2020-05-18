@@ -22,12 +22,29 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nid" ErrorMessage="*"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="TB_Fecha" runat="server" class="form-control" placeholder="tiempo de envio (Horas)" TextMode="Number" MaxLength="3"></asp:TextBox>    
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nid" ErrorMessage="*"></asp:RequiredFieldValidator>
-                            <br />
-                     <asp:RangeValidator ID="RangeValidator1" runat="server" ValidationGroup="Registro"  ControlToValidate="TB_Fecha" ErrorMessage="Rango de hora invalido recuerde entre 1-200 Hrs" MaximumValue="200" MinimumValue="1" Type="Integer"></asp:RangeValidator>
-                            <br />
-                            
-                           
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="btn btn-primary" ValidationGroup="Registro" OnClick="BTN_registrar_Click"/>
+                            <asp:RangeValidator ID="RangeValidator1" runat="server" ValidationGroup="Registro"  ControlToValidate="TB_Fecha" ErrorMessage="Rango de hora invalido recuerde entre 1-200 Hrs" MaximumValue="200" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                      
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="btn btn-primary" ValidationGroup="Registro" OnClick="BTN_registrar_Click"/>
+                            <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+	                            <strong>
+	                            <asp:Label ID="LblMensaje" runat="server" />
+	                            </strong>
+	                            <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+                            </asp:Panel>
+
+                            <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	                            <strong>
+	                            <asp:Label ID="LblMensaje1" runat="server" />
+	                            </strong>
+	                            <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+                            </asp:Panel>
+
+                            <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	                            <strong>
+	                            <asp:Label ID="LblMensaje2" runat="server" />
+	                            </strong>
+	                            <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click" />
+                            </asp:Panel>
                 </div>                        
              </div>                                   
        </div>       

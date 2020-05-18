@@ -9,7 +9,8 @@ public partial class Views_login_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        PanelMensaje.Visible = false;
+        PanelMensaje1.Visible = false;
     }
 
     protected void BTN_ingresar_Click(object sender, EventArgs e)
@@ -24,8 +25,7 @@ public partial class Views_login_login : System.Web.UI.Page
         ecUser = new DAOAdmin().loginEntity(ecUser);
         if (ecUser == null)
          {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Usuario o Contraseña incorrecta' );</script>");
-            return;
+            MostrarMensaje($"Correo o Contraseña incorrecta");
         }
         //Validacion de la iP y la mac
         string ip = new MAC_IP().ip();
@@ -38,9 +38,8 @@ public partial class Views_login_login : System.Web.UI.Page
             new DAOAdmin().ActualizarUsuario(ecUser);
         }
         if (mac != ecUser.Mac_ && ip != ecUser.Ip_)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Por favor verifica tus sessiones abierta para poder ingresar' );</script>");
-            return;
+        {        
+            MostrarMensaje1($"Por favor verificar sus sessiones abiertas para poder ingresar");
         }
         
 
@@ -85,19 +84,40 @@ public partial class Views_login_login : System.Web.UI.Page
             }
             if (ecUser.Estado_id == 2)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Su cuenta esta en espera de recuperar contraseña' );</script>");
-                return;
+                MostrarMensaje1($"Su cuenta se encuentra en estado de recuperacion");
             }
             if (ecUser.Estado_id == 3)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Su cuenta ha sido inhabilitada, comuniquese con el administrador' );</script>");
+                MostrarMensaje($"Su cuenta ha sido inhabilitada, comuniquese el con el administrador");
                 return;
             }
        
     }
 
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
+
     protected void LButton_Recuperar_Click(object sender, EventArgs e)
     {
         Response.Redirect("administrador/RecuperarContraseña.aspx");
+    }
+
+    protected void B_cerrar_mensaje_Click(object sender, EventArgs e)
+    {
+        PanelMensaje.Visible = false;
+    }
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
     }
 }

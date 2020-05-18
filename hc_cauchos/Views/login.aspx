@@ -283,20 +283,31 @@
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Login" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
                                      <br />
                                     <br />
-                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center rounded-pill" placeholder="Contraseña" TextMode="Password" Width="85%"></asp:TextBox>                    
+                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center rounded-pill" placeholder="Contraseña" TextMode="Password" Width="85%" MaxLength="10"></asp:TextBox>                    
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Login" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 </div>  
                                  <div>                     
-                              <asp:Button ID="BTN_ingresar" runat="server" ValidationGroup="Login" Text="Ingresar" class="fadeIn fourth" OnClick="BTN_ingresar_Click"/>
-                            </div>
+                                      <asp:Button ID="BTN_ingresar" runat="server" ValidationGroup="Login" Text="Ingresar" class="fadeIn fourth" OnClick="BTN_ingresar_Click"/>
+                                        <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+                                              <strong>
+                                                  <asp:Label ID="LblMensaje" runat="server" />
+                                              </strong>
+                                              <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje" OnClick="B_cerrar_mensaje_Click" />
+                                        </asp:Panel>
+
+
+                                      <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+                                              <strong>
+                                                  <asp:Label ID="LblMensaje1" runat="server" />
+                                              </strong>
+                                              <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+                                        </asp:Panel>
+                                 </div>
                            
                             <div id="formFooter">
                                 <asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click">Olvido Su Contraseña?</asp:LinkButton>
-                            </div>
-                                
-                            </div>
-                        
-                           
+                            </div>                               
+                        </div>                           
                       </div>
                      </div>
              </div>
