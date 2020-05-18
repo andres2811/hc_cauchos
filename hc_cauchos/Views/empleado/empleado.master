@@ -93,7 +93,7 @@
                   <!-- FOOTER PARTE PARA CERRAR SESION-->
                   <li class="user-footer">
                     <div class="pull-right">
-                      <asp:Button ID="BTN_cerrar_Sesion" runat="server" Text="cerrar sesion" OnClick="BTN_cerrar_Sesion_Click" class="btn btn-default btn-flat" />
+                      <asp:Button ID="BTN_cerrar_Sesion" runat="server" Text="cerrar sesion" OnClick="BTN_cerrar_Sesion_Click" class="btn btn-primary" />
                     </div>
                   </li>
                 </ul>
@@ -140,6 +140,12 @@
                 <i class="fa fa-edit"></i> <span>Facturar</span>
               </a>
             </li>
+                <li>
+              <a href="venta.aspx">
+                <i class="fa fa-money"></i> <span>Venta</span>
+              </a>
+            </li>
+
 
             <li>
               <a href="pedidos_atender.aspx">

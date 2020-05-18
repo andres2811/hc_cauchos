@@ -40,6 +40,7 @@ public partial class Views_login_login : System.Web.UI.Page
         if (mac != ecUser.Mac_ && ip != ecUser.Ip_)
         {        
             MostrarMensaje1($"Por favor verificar sus sessiones abiertas para poder ingresar");
+            return;
         }
         
 

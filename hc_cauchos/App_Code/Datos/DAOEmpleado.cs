@@ -289,7 +289,7 @@ public class DAOEmpleado
     {
         using (var db = new Mapeo())
         {
-            return db.pedidos.Where(x => x.Atendido_id == user_id).Count();
+            return db.pedidos.Where(x => x.Atendido_id == user_id && x.Estado_pedido==1).Count();
         }
     }
 }
