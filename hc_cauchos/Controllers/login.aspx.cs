@@ -20,18 +20,18 @@ public partial class Views_login_login : System.Web.UI.Page
         EncapUsuario ecUser = new EncapUsuario();
         ecUser.Correo = TB_correo.Text;
         ecUser.Clave = TB_contraseña.Text;
-
-        //En estas condiciones se valida el estado del usuario
-        ecUser = new DAOAdmin().loginEntity(ecUser);
-        if (ecUser == null)
-         {
-            MostrarMensaje($"Correo o Contraseña incorrecta");
-        }
         //Validacion de la iP y la mac
         string ip = new MAC_IP().ip();
         string mac = new MAC_IP().mac();
-
-        if(ecUser.Ip_ == null && ecUser.Mac_ == null)
+        //En estas condiciones se valida el estado del usuario
+        ecUser = new DAOAdmin().loginEntity(ecUser);
+        if (ecUser == null)
+        {
+            MostrarMensaje($"Correo o Contraseña incorrecta");
+        }
+      
+        
+        if (ecUser.Ip_ == null && ecUser.Mac_ == null)
         {
             ecUser.Ip_ = ip;
             ecUser.Mac_ = mac;
