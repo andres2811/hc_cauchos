@@ -31,7 +31,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
         if (auxprecio <=0 || aux_minimo<=0 )
         {
 
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('NO SE PERMITE DATOS NEGATIVOS' );</script>");
+            MostrarMensaje($"No se permiten datos negativos");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('NO SE PERMITE DATOS NEGATIVOS' );</script>");
             return;//Devolverse
         }
 
@@ -48,7 +49,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
         //validar Aechivo de tipo imagen
         if (!(extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png") || extension.Equals(".gif")))
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('tipo de archivo no valido ' );</script>");
+            MostrarMensaje($"Tipo de archivo no valido");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('tipo de archivo no valido ' );</script>");
             return;//Devolverse
         }
 
@@ -56,7 +58,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
         //verificar existencia de un arhivo con el mismo nombre
         if (System.IO.File.Exists(saveLocationAdmin))
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Imagen Existente' );</script>");
+            MostrarMensaje1($"Imagen existente");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Imagen Existente' );</script>");
             return;
         }
         //Validaciones 
@@ -68,8 +71,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
         if (consulta1 == 1)
         {
-          
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('La Referencia Ya Existe' );</script>");
+            MostrarMensaje1($"La referencia ya existe");
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('La Referencia Ya Existe' );</script>");
                 return;
             
 
@@ -103,12 +106,14 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
          
 
                 new DAOAdmin().InsertarItem(invent);
-                
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Item registrado correctamente' );</script>");
+
+                MostrarMensaje2($"Item registrado correctamente");
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Item registrado correctamente' );</script>");
             }
             catch (Exception exc)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Error' );</script>");
+                MostrarMensaje($"Error");
+               //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Error' );</script>");
                 return;
             }
         }
@@ -124,9 +129,36 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
 
     }
 
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
 
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
 
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
+    }
 
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje.Visible = false;
+    }
 
-   
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        PanelMensaje2.Visible = false;
+    }
 }

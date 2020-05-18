@@ -74,7 +74,7 @@
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>' Visible="False"></asp:Label>
                             <br />
-                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_Elementos">
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="ODS_Elementos" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                                 <Columns>
                                     <asp:BoundField DataField="Pedido_id" HeaderText="Pedido_id" SortExpression="Pedido_id" />
                                     <asp:BoundField DataField="Producto_id" HeaderText="Producto_id" SortExpression="Producto_id" />
@@ -82,6 +82,14 @@
                                     <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
                                     <asp:BoundField DataField="Total" HeaderText="Total" SortExpression="Total" />
                                 </Columns>
+                                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                                <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                                <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                                <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                                <SortedDescendingHeaderStyle BackColor="#242121" />
                             </asp:GridView>
                             <asp:ObjectDataSource ID="ODS_Elementos" runat="server" SelectMethod="ObtenerProductos" TypeName="DAOUser">
                                 <SelectParameters>
@@ -105,21 +113,11 @@
           </div>
         </div>
             <asp:ObjectDataSource ID="ODS_Pedidos" runat="server" SelectMethod="ConsultarPedidos" TypeName="DAOAdmin"></asp:ObjectDataSource>
-       
-    
-
-
-
      <br />
             <asp:ObjectDataSource ID="ODS_PedidosEstado" runat="server" SelectMethod="ConsultarPedidosEstado" TypeName="DAOUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="DDL_Estado" Name="est" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
      </asp:ObjectDataSource>
-       
-    
-
-
-
 </asp:Content>
 

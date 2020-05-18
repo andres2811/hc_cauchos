@@ -36,11 +36,13 @@ public partial class Views_administrador_AgregarProveedor : System.Web.UI.Page
 
         if(consulta == 1)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('proveedor Existente' );</script>");
-            return;
+            MostrarMensaje1($"Proveedor existente");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('proveedor Existente' );</script>");
+
         }
 
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('proveedor registrado correctamente' );</script>");
+        MostrarMensaje2($"Proveedor registrado exitosamente");
+        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('proveedor registrado correctamente' );</script>");
         new DAOAdmin().InsertarProveedor(proveedor);
 
 
@@ -49,5 +51,37 @@ public partial class Views_administrador_AgregarProveedor : System.Web.UI.Page
         TB_Fecha.Text = "";
         TB_nid.Text = "";
         TB_correo.Text = "";
+    }
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje.Visible = false;
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
+
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
     }
 }
