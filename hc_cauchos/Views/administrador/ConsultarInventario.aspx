@@ -91,7 +91,7 @@
                     <asp:TemplateField HeaderText="Precio" SortExpression="Precio">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Precio") %>'></asp:TextBox>
-                            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="precio invalido" ForeColor="Red" MaximumValue="1000000" MinimumValue="100" Type="Integer"></asp:RangeValidator>
+                            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="precio invalido Rango 100-1000000" ForeColor="Red" MaximumValue="999999" MinimumValue="100" Type="Integer"></asp:RangeValidator>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("Precio") %>'></asp:Label>
@@ -101,7 +101,7 @@
                     <asp:TemplateField HeaderText="Cantidad Minima" SortExpression="Ca_minima">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Ca_minima") %>'></asp:TextBox>
-                            <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="Cantidad Invalida" MaximumValue="500000" MinimumValue="10" Type="Integer" ControlToValidate="TextBox2" ForeColor="Red"></asp:RangeValidator>
+                            <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="Cantidad Invalida Minimo 10 Maximo 500000" MaximumValue="500000" MinimumValue="10" Type="Integer" ControlToValidate="TextBox2" ForeColor="Red"></asp:RangeValidator>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("Ca_minima") %>'></asp:Label>
