@@ -36,30 +36,38 @@
     <br />  
     <h1 class="text-center"><strong>TABLA DE PRODUCTOS</strong></h1>
     <br />
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col"><h3>Nombre Producto</h3></th>
-                  <th scope="col"><h3>Referencia</h3></th>
-                  <th scope="col"><h3>Cantidad solicitada</h3></th>
-                  <th scope="col"><h3>Total</h3></th>
-                </tr>
-              </thead>
-              <tbody>
-                  <asp:Repeater ID="R_pro" runat="server" DataSourceID="ODS_pro">
-                    <ItemTemplate>
+
+    <div class="row">
+        <div class=" col-lg-12 col-md-offset-0.5">
+             <div style="overflow-x: auto;">  
+                  <table class="table table-striped">
+                      <thead>
                         <tr>
-                          <th scope="row">1</th>
-                          <td><asp:Label ID="Nom_produc" runat="server" Text='<%# Eval("Nombre_producto") %>' class="card-text" /></td>
-                          <td><asp:Label ID="Referencia" runat="server" Text='<%# Eval("Referencia") %>' class="card-text" /></td>
-                          <td><asp:Label ID="Cantidad" runat="server" Text='<%# Eval("Cantidad") %>' class="card-text" /></td>
-                          <td><asp:Label ID="Total" runat="server" Text='<%# Eval("Total") %>' class="card-text" /></td>
-                        </tr> 
-                    </ItemTemplate>
-                </asp:Repeater>             
-              </tbody>
-            </table>
+                          <th scope="col">#</th>
+                          <th scope="col"><h3>Nombre Producto</h3></th>
+                          <th scope="col"><h3>Referencia</h3></th>
+                          <th scope="col"><h3>Cantidad solicitada</h3></th>
+                          <th scope="col"><h3>Total</h3></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <asp:Repeater ID="R_pro" runat="server" DataSourceID="ODS_pro">
+                            <ItemTemplate>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td><asp:Label ID="Nom_produc" runat="server" Text='<%# Eval("Nombre_producto") %>' class="card-text" /></td>
+                                  <td><asp:Label ID="Referencia" runat="server" Text='<%# Eval("Referencia") %>' class="card-text" /></td>
+                                  <td><asp:Label ID="Cantidad" runat="server" Text='<%# Eval("Cantidad") %>' class="card-text" /></td>
+                                  <td><asp:Label ID="Total" runat="server" Text='<%# Eval("Total") %>' class="card-text" /></td>
+                                </tr> 
+                            </ItemTemplate>
+                        </asp:Repeater>             
+                      </tbody>
+                    </table>
+             </div>
+        </div>
+    </div>
+           
     
 
     <div class="center-block">
