@@ -5,10 +5,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-    <h1 class="text-center"><strong>Agregar Empleados</strong></h1>
+    <h1 class="text-center text-primary"><strong>Agregar Empleados</strong></h1>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                            <br /> <br />     
+                            <br />     
                 <div class="form-group">
                      <asp:TextBox ID="TB_nombres" runat="server" class="form-control" placeholder="nombres"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nombres" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -30,7 +30,7 @@
                             </asp:DropDownList>
                             <br />  
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
-                            <asp:Button ID="BTN_registrar_empleado" runat="server" Text="Registrar" class="btn btn-primary" ValidationGroup="Registro" OnClick="BTN_registrar_empleado_Click"/>
+                            <asp:Button ID="BTN_registrar_empleado" runat="server" Text="Registrar" class="btn btn-primary center-block" ValidationGroup="Registro" OnClick="BTN_registrar_empleado_Click"/>
                 </div>                        
              </div>                                   
        </div>       

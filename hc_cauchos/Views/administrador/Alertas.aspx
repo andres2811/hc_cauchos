@@ -12,7 +12,7 @@
    <asp:ObjectDataSource ID="ODS_Alertas" runat="server" SelectMethod="ConsultarAlertas" TypeName="DAOAdmin"></asp:ObjectDataSource>
 
    <link href="../../bootstrap/css/Alertas.css" rel="stylesheet" type="text/css" />
-    <h1 class="text-center">PRODUCTOS EN ESTADO CRITICO</h1>
+    <h1 class="text-center text-primary"><strong>PRODUCTOS EN ESTADO CRITICO</strong></h1>
 
         <asp:Repeater ID="RepeaterAlerta" runat="server" DataSourceID="ODS_Alertas" OnItemDataBound="RepeaterAlerta_ItemDataBound" OnItemCommand="RepeaterAlerta_ItemCommand"  >          
             <ItemTemplate>

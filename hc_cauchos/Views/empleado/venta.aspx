@@ -6,7 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-      <h1 class="text-center"><strong>VENTA</strong></h1>
+      <h1 class="text-center text-primary"><strong>VENTA</strong></h1>
 
     <asp:TextBox ID="TB_NomCliente" runat="server" CssClass="form-control-static" placeholder="Cedula Cliente A Buscar"></asp:TextBox>
     <asp:Button ID="BTN_BuscarClien" runat="server" Text="Buscar" class="btn btn-primary" OnClick="BTN_BuscarClien_Click"/>

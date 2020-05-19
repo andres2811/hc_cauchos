@@ -10,7 +10,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-       <h1 class="text-center"><strong>PEDIDOS PARA ENTREGAR</strong></h1>
+       <h1 class="text-center text-primary"><strong>PEDIDOS PARA ENTREGAR</strong></h1>
     <br />
 
         <asp:Repeater ID="R_pedido" runat="server" DataSourceID="ODS_entregas" OnItemCommand="R_pedido_ItemCommand"  >

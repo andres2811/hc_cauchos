@@ -3,13 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1 class="text-center"><strong>Mi cuenta</strong></h1>
+    <h1 class="text-center text-primary"><strong>Mi cuenta <br />
+        <small>Click en las llaves para modificar</small></strong></h1>
        <div align="center">
         <asp:Image ID="Image1" runat="server" ImageUrl="~/ima/configurar.png" align="center" />
     </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                            <br /> <br />     
+                            <br />  
                 <div class="form-group">
                     Nombre:
                     <asp:Label ID="LB_nombre" runat="server" class="form-control" ></asp:Label>

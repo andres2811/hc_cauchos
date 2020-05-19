@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-    <h1 class="text-center"><strong>Ver - Editar - Inhabilitar Empleados</strong></h1>
+    <h1 class="text-center text-primary"><strong>Ver - Editar - Inhabilitar Empleados</strong></h1>
     <br />
     <asp:TextBox ID="TB_Buscar" runat="server" CssClass="form-control-static" placeholder="Nombre Empleado A Buscar"></asp:TextBox>
     <asp:Button ID="BTN_buscarNombre" runat="server" Text="Buscar" CssClass="btn btn-primary" OnClick="BTN_buscarNombre_Click" />

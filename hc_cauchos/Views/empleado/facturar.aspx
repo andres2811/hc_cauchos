@@ -30,7 +30,7 @@
     </div>
   
     <br />
-    <h1 class="text-center"><strong>PRODUCTOS</strong></h1>
+    <h1 class="text-center text-primary"><strong>PRODUCTOS</strong></h1>
     <asp:ObjectDataSource ID="ODS_catalogo0" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="ODS_catalogoCategoria" runat="server" SelectMethod="ConsultarInventarioCategoria" TypeName="DAOUser">
         <SelectParameters>
@@ -102,12 +102,10 @@
         </div>  
     </div>
 
- 
-                
-
     <br />
     <asp:ObjectDataSource ID="ODS_catalogo" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
-    <div class="row ">      
+    <div class="row ">  
+        <br />
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo"  OnItemCommand="Repeater1_ItemCommand" >
         <ItemTemplate>            
             <div class="col-md-2 col-sm-6 col-xs-8 mb-3" >

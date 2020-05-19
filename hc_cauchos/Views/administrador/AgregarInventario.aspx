@@ -13,7 +13,7 @@
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-    <h1 class="text-center"><strong>Agregar Producto</strong></h1>
+    <h1 class="text-center text-primary"><strong>Agregar Producto</strong></h1>
          <div class="row">
                <div class="col-md-4 col-md-offset-4">
                    <div class="form-group">
@@ -29,18 +29,32 @@
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="TB_Precio" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
                        <asp:TextBox ID="TB_Minima" runat="server" CssClass="form-control" TextMode="Number" placeholder="Cantidad Minima" MaxLength="5"></asp:TextBox>
                        <br />
-                       <div class="row">
-                                 <asp:DropDownList ID="DDL_Marca" runat="server" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id"  Width="130px"></asp:DropDownList>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" InitialValue= "0"  ControlToValidate="DDL_Marca">*</asp:RequiredFieldValidator>
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <asp:DropDownList ID="DDL_Categoria" runat="server"  DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" Width="129px"></asp:DropDownList>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" InitialValue= "0" ControlToValidate="DDL_Categoria" ErrorMessage="*"></asp:RequiredFieldValidator>
+
+                  <div class="col-sm-12">
+                     <div class="form-inline justify-content-center">
+                        <div class="form-group">
+                            <asp:DropDownList ID="DDL_Marca" runat="server" class="form-control" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id"  Width="130px"></asp:DropDownList>
+                             <asp:DropDownList ID="DDL_Categoria" runat="server" class="form-control"  DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" Width="129px"></asp:DropDownList>
+                               <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" InitialValue= "0" ControlToValidate="DDL_Categoria" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        
+                        </div>
+                    </div>
+                  </div>  
+
+                  <div class="col-sm-12">
+                     <div class="form-inline justify-content-center">
+                        <div class="form-group">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" InitialValue= "0"  ControlToValidate="DDL_Marca">*</asp:RequiredFieldValidator>
+                         </div>
+                    </div>
+                  </div>  
                        
-                       </div>
+                        
+
                   <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
                        <br />
                        <asp:ObjectDataSource ID="ODS_Categoria" runat="server" SelectMethod="ColsultarCategoria" TypeName="DAOAdmin"></asp:ObjectDataSource>
-                       <asp:Button ID ="BTN_subir" runat="server" Text="Almacenar" cssClass =" btn btn-primary" OnClick="BTN_subir_Click"  />
+                       <asp:Button ID ="BTN_subir" runat="server" Text="Almacenar" class=" btn btn-primary center-block" OnClick="BTN_subir_Click"  />
                        <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
 	                        <strong>
 	                        <asp:Label ID="LblMensaje" runat="server" />
