@@ -4,7 +4,7 @@
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <h1 class="text-center"><strong>PEDIDOS PARA ALISTAR</strong></h1>
+    <h1 class="text-center text-primary"><strong>PEDIDOS PARA ALISTAR</strong></h1>
     <br />
 
         <asp:Repeater ID="R_pedido" runat="server" DataSourceID="ODS_pedidos" OnItemCommand="R_pedido_ItemCommand" >
@@ -34,7 +34,7 @@
     </asp:ObjectDataSource>
 
     <br />  
-    <h1 class="text-center"><strong>TABLA DE PRODUCTOS</strong></h1>
+    <h1 class="text-center text-primary"><strong>TABLA DE PRODUCTOS</strong></h1>
     <br />
 
     <div class="row">

@@ -13,7 +13,7 @@
 </script>
     
      <br />
-    <h1 class="text-center"><strong>Agregar Proveedor</strong></h1>
+    <h1 class="text-center text-primary"><strong>Agregar Proveedor</strong></h1>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                             <br /> <br />     
@@ -26,15 +26,11 @@
                     <asp:DropDownList ID="DDL_producto" runat="server" Class="form-control" DataSourceID="ODS_producto" DataTextField="Referencia" DataValueField="Id"></asp:DropDownList>        
                     <asp:ObjectDataSource ID="ODS_producto" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOAdmin"></asp:ObjectDataSource>
                     <br />
-                    <br />
                     <asp:TextBox ID="TB_precio" runat="server" class="form-control" placeholder="precio" MaxLength="5"></asp:TextBox>     
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TB_precio" ErrorMessage="*" ValidationGroup="a"></asp:RequiredFieldValidator>
                     <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Cantidad fuera del rango recuerde entre 1-99999" ControlToValidate="TB_precio" MaximumValue="999999" MinimumValue="1" Type="Integer" ValidationGroup="a"></asp:RangeValidator>
                     <br />
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                    <asp:Button ID="BTN_vincular" runat="server" Text="Vincular" class="btn btn-primary" ValidationGroup="a" OnClick="BTN_vincular_Click" />
+                    <asp:Button ID="BTN_vincular" runat="server" Text="Vincular" class="btn btn-primary center-block" ValidationGroup="a" OnClick="BTN_vincular_Click" />
                 </div>                        
              </div>                                   
        </div>       

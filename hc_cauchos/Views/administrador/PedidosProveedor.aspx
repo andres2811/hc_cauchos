@@ -4,15 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <br />
-      <br />
-    <h1 class="text-center"><strong>Historial De Pedidos Proveedor</strong></h1>
-    <div class="row">
-         <br />
-      <br />
-        <div class=" col-lg-12 col-md-offset-1">
-             <div style="overflow-x: auto;"> 
+    <h1 class="text-center text-primary"><strong>Historial De Pedidos Proveedor</strong></h1>
 
-                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Height="239px" Width="895px" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" PageSize="2">
+      <div class="row">
+        <div class=" col-lg-12 col-md-offset-0.5">
+             <div style="overflow-x: auto;">     
+                 <br />
+                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Height="239px" Width="100%" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" PageSize="2">
                      <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                      <Columns>
                          <asp:BoundField DataField="Nombre_proveedor" HeaderText="Nombre proveedor" SortExpression="Nombre_proveedor" />
@@ -27,16 +25,14 @@
                                  <asp:Label ID="LB_elementos" runat="server" Text='<%# Eval("Elementos") %>' Visible="False"></asp:Label>
                                  <br />
                                  <br />
-                                 <asp:GridView ID="GV_Elementos" runat="server">
+                                 <asp:GridView ID="GV_Elementos" runat="server" class="table-hover">
                                  </asp:GridView>
                                 
                              </ItemTemplate>
                          </asp:TemplateField>
                          <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                 </Columns>
-                
-
-                     
+                          
                      <EditRowStyle BackColor="#999999" />
                      <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                      <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

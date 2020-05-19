@@ -27,7 +27,7 @@
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
        
-          <h1 class="text-center"><strong>Catalogo Proveedor</strong></h1>
+          <h1 class="text-center text-primary"><strong>Catalogo Proveedor <br /> <small>Seleccione el proveedor</small></strong></h1>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     <div class="form-group">

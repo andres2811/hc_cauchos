@@ -4,13 +4,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         
-    <h1 class="text-center"><strong>Mision/Vision/Objetivo</strong></h1>
+    <h1 class="text-center text-primary"><strong>Mision/Vision/Objetivo <br />
+        <small>Modifique dando click en las llaves</small></strong></h1>
     <br />
         <div class="container">
             <div class="row">
                  <div class="col-4">
                      <div class="form-group">
-                         <h2>MISION</h2>
+                         <h2><strong>MISION</strong></h2>
                          <h3><asp:Label ID="LB_Mision" runat="server" Text="Label"></asp:Label></h3>   
                          <asp:ImageButton ID="IB_mision" runat="server" ImageUrl="~/Inventario/engranaje.png" OnClick="IB_mision_Click" style="height: 16px" />
                          <asp:TextBox ID="TB_EditMision" runat="server" TextMode="MultiLine" placeholder="Agrege la nueva MISION de la empresa"></asp:TextBox>
@@ -23,7 +24,7 @@
                  </div>
                  <div class="col-4">
                       <div class="form-group">
-                          <h2>VISION</h2>
+                          <h2><strong>VISION</strong></h2>
                           <h3><asp:Label ID="LB_Vision" runat="server" Text="Label"></asp:Label></h3>
                           <asp:ImageButton ID="IB_Vision" runat="server" ImageUrl="~/Inventario/engranaje.png" OnClick="IB_Vision_Click" />
                           <asp:TextBox ID="TB_EditVision" runat="server" TextMode="MultiLine" placeholder="Agrege la nueva VISION de la empresa"></asp:TextBox>
@@ -36,7 +37,7 @@
                  </div>
                  <div class="col-4">
                       <div class="form-group">
-                          <h2>OBJETIVO</h2>
+                          <h2><strong>OBJETIVO</strong></h2>
                           <h3><asp:Label ID="LB_Objetivo" runat="server" Text="Label"></asp:Label></h3>  
                           <asp:ImageButton ID="IB_Objetivo" runat="server" ImageUrl="~/Inventario/engranaje.png" OnClick="IB_Objetivo_Click" />
                           <asp:TextBox ID="TB_EditObjetivo" runat="server" TextMode="MultiLine" placeholder="Agrege la nueva VISION de la empresa"></asp:TextBox>
@@ -49,6 +50,5 @@
                  </div>              
             </div>
         </div>
-
 </asp:Content>
 

@@ -8,17 +8,12 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <h1 class="text-center text-primary"><strong>Editar - Proveedores </strong></h1>
     <br />
-    <h1 class="text-center"><strong>Editar - Proveedores </strong></h1>
-    <br />
-
-    <div class="col-md-12 col-md-offset-1">
-        <div style="overflow-x: auto;">  
-        <br />
-        <table class="auto-style1">
-            <tr>
-                <td>
-                    <asp:GridView ID="Gv_proveedor" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Provedor" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="Gv_proveedor_RowEditing">
+  <div class="row">
+        <div class=" col-lg-12 col-md-offset-0.5">
+             <div style="overflow-x: auto;"> 
+                  <asp:GridView ID="Gv_proveedor" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Provedor" ForeColor="#333333" GridLines="None" Width="100%" DataKeyNames="Id" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="Gv_proveedor_RowEditing">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:TemplateField HeaderText="Nombre" SortExpression="Nombre_pro">
@@ -69,10 +64,10 @@
                     <asp:Label ID="LB_aux" runat="server" Text="Label" Visible="False"></asp:Label>
                     <br />
                     <asp:ObjectDataSource ID="ODS_Provedor" runat="server" SelectMethod="ColsultarProveedor2" TypeName="DAOAdmin" DataObjectTypeName="EncapProveedor" UpdateMethod="ActualizarProveedor" DeleteMethod="EliminarProveedor"></asp:ObjectDataSource>
-                </td>
-            </tr>
-        </table>
-            </div>
-     </div>
+             </div>
+        </div>
+    </div>
+
+                   
 </asp:Content>
 
