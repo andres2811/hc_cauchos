@@ -11,6 +11,8 @@ public partial class Views_login_login : System.Web.UI.Page
     {
         PanelMensaje.Visible = false;
         PanelMensaje1.Visible = false;
+        BTN_no.Visible = false;
+        BTN_si.Visible = false;
     }
 
     protected void BTN_ingresar_Click(object sender, EventArgs e)
@@ -28,6 +30,7 @@ public partial class Views_login_login : System.Web.UI.Page
         if (ecUser == null)
         {
             MostrarMensaje($"Correo o Contraseña incorrecta");
+            return;
         }
       
         
@@ -39,7 +42,9 @@ public partial class Views_login_login : System.Web.UI.Page
         }
         if (mac != ecUser.Mac_ && ip != ecUser.Ip_)
         {        
-            MostrarMensaje1($"Por favor verificar sus sessiones abiertas para poder ingresar");
+            MostrarMensaje1($"Tiene sessiones abiertas ¿Desea cerrarlas?");
+            BTN_no.Visible = true;
+            BTN_si.Visible = true;
             return;
         }
         
@@ -86,6 +91,7 @@ public partial class Views_login_login : System.Web.UI.Page
             if (ecUser.Estado_id == 2)
             {
                 MostrarMensaje1($"Su cuenta se encuentra en estado de recuperacion");
+                return;
             }
             if (ecUser.Estado_id == 3)
             {
@@ -120,5 +126,22 @@ public partial class Views_login_login : System.Web.UI.Page
     protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
     {
         PanelMensaje1.Visible = false;
+    }
+
+    protected void BTN_si_Click(object sender, EventArgs e)
+    {
+        EncapUsuario usu = new EncapUsuario();
+        usu.Correo = TB_correo.Text;
+        BTN_si.Visible = false;
+        BTN_no.Visible = false;
+        new DAOUser().ActualizarSessiones(usu);
+        MostrarMensaje($"Se han cerrado las sessiones antiguas");
+        return;
+    }
+
+    protected void BTN_no_Click(object sender, EventArgs e)
+    {
+        BTN_si.Visible = false;
+        BTN_no.Visible = false;
     }
 }

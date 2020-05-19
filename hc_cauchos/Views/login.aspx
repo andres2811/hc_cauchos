@@ -288,6 +288,8 @@
                                 </div>  
                                  <div>                     
                                       <asp:Button ID="BTN_ingresar" runat="server" ValidationGroup="Login" Text="Ingresar" class="fadeIn fourth" OnClick="BTN_ingresar_Click"/>
+                                     <br />
+                                     
                                         <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
                                               <strong>
                                                   <asp:Label ID="LblMensaje" runat="server" />
@@ -303,6 +305,8 @@
                                               <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
                                         </asp:Panel>
                                  </div>
+                                <asp:Button ID="BTN_si" runat="server" Text="Si" OnClick="BTN_si_Click" Width="118px"/>
+                                 <asp:Button ID="BTN_no" runat="server" Text="No" OnClick="BTN_no_Click" Width="139px"/>
                            
                             <div id="formFooter">
                                 <asp:LinkButton ID="LButton_Recuperar" runat="server" OnClick="LButton_Recuperar_Click">Olvido Su Contraseña?</asp:LinkButton>

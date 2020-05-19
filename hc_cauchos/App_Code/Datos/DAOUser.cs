@@ -834,6 +834,34 @@ public class DAOUser
         }
     }
 
+    //METODO PARA HACER UPDATE DE IP Y MAC 
+    public void ActualizarSessiones(EncapUsuario User)
+    {
+        using (var db = new Mapeo())
+        {
+            var resultado = db.usuario.FirstOrDefault(x => x.Correo == User.Correo);
+            if (resultado != null)
+            {
+                /*resultado.User_id = User.User_id;
+                resultado.Nombre = User.Nombre;
+                resultado.Apellido = User.Apellido;
+                resultado.Correo = User.Correo;
+                resultado.Estado_id = User.Estado_id;
+                resultado.Fecha_nacimiento = User.Fecha_nacimiento;
+                resultado.Identificacion = User.Identificacion;
+                resultado.Tiempo_token = User.Tiempo_token;*/
+
+                resultado.Ip_ = null;
+                resultado.Mac_ = null;
+                resultado.Sesion = null;
+
+
+                db.SaveChanges();
+            }
+        }
+
+    }
+
 }
 
 

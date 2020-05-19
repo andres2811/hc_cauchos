@@ -3,35 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
     <style type="text/css">
-        .auto-style4 {
-            width: 190px;
-        }
-        .auto-style5 {
-            width: 210px;
-        }
-        .auto-style6 {
-            width: 10px;
-        }
-        .auto-style7 {
-            display: block;
-/*height:34px;*/padding: 6px 12px;
-/*font-size:14px*/;line-height: 1.42857143;
-            color: #555;
-            background-color: #fff;
-            background-image: none;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        }
+
         </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1 class="text-center text-primary"><strong>Mi Carrito</strong></h1>
+    <h1 class="text-center text-primary"><strong>Mi Carrito<br /><small>Listado de productos para compra</small></strong></h1>
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
@@ -84,55 +61,30 @@
             </div>
         </div>
     </div>
-    <table class="nav-justified">
-        <tr>
-            <td class="auto-style4">
-                <asp:ObjectDataSource ID="ODS_Municipio" runat="server" SelectMethod="ConsultarMunicipio" TypeName="DAOEmpleado">
-                </asp:ObjectDataSource>
-            </td>
-            <td class="auto-style5">
+          <asp:ObjectDataSource ID="ODS_Municipio" runat="server" SelectMethod="ConsultarMunicipio" TypeName="DAOEmpleado">
+                </asp:ObjectDataSource>  
+
+    <div class="col-sm-12">
+        <div class="form-inline text-block">
+            <div class="form-group">
                 <br />
-             
-                <asp:DropDownList ID="DDL_Lugar" CssClass="auto-style7" runat="server" AutoPostBack="True" DataSourceID="ODS_Municipio" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DDL_Departamento_SelectedIndexChanged" Width="245px">
-                </asp:DropDownList>
-               
-            
+                <br />
+                <asp:DropDownList ID="DDL_Lugar" class="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_Municipio" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DDL_Departamento_SelectedIndexChanged" Width="245px">
+                </asp:DropDownList>      
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" InitialValue="0" ControlToValidate="DDL_Lugar" ValidationGroup="dire"></asp:RequiredFieldValidator> 
-               
-            
-            </td>
-            <td class="auto-style6"> 
-               
-               
-                &nbsp;</td>
-            <td class="modal-sm">
-                 <br />
-                <asp:TextBox ID="TB_Direccion" runat="server" CssClass="form-control" placeholder="Dirreccion" Visible="False" Width="202px" MaxLength="30"></asp:TextBox>
+                <asp:TextBox ID="TB_Direccion" runat="server" Class="form-control" placeholder="Dirreccion" Visible="False" Width="202px" MaxLength="30"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TB_Direccion" ValidationGroup="dire"></asp:RequiredFieldValidator>
-            </td>
-            <td>&nbsp;</td>
+            </div>
+        </div>
+    </div>
+                
+   
            
-        </tr>
-        <tr>
-            <td class="auto-style4">
-                &nbsp;</td>
-            <td class="auto-style5">
-                &nbsp;</td>
-            <td class="auto-style6">
-                &nbsp;</td>
-            <td class="modal-sm">
-               </td>
-            
-        </tr>
-    </table>
-    <br />
-    <div aling="center">
-        <asp:ImageButton ID="BTN_Facturar" runat="server" ImageUrl="~/ima/business-and-finance(1).png" OnClick="BTN_Facturar_Click" ValidationGroup="dire" />
-            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/ima/compras.png" OnClick="ImageButton1_Click" />
+    <div class="inline text-center">
         <br />
-            <asp:Label ID="LB_facturar" runat="server" Text="Facturar"></asp:Label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="LB_mas" runat="server" Text="Mas Productos"></asp:Label>
+            <asp:Button ID="BTN_facturar1" runat="server" Text="Facturar" ValidationGroup="dire" OnClick="BTN_facturar1_Click" Class="btn btn-primary" />
+            <asp:Button ID="BTN_mas" runat="server" Text="Mas Productos" OnClick="BTN_mas_Click" Class="btn btn-primary" />
+        
     </div>
             
 
