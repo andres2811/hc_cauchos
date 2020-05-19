@@ -20,7 +20,7 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
         Session["userid"] = iduser;
         //numero de cantidad en el carrito 
         LB_cantidad.Text = new DAOUser().ObtenerCantidadxProductoCarritoxUser(iduser).ToString();
-
+        PanelMensaje1.Visible = false;
     }
 
     protected void BTNI_carritoAdd_Click(object sender, ImageClickEventArgs e)
@@ -42,8 +42,9 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
         {
             //obtengo los valores de los controles y verifico cantidad de pedir a existente
             if ( cantidadSolicitada > stock )
-            {          
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Cantidad no disponible.');</script>");
+            {
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Cantidad no disponible.');</script>");
+                MostrarMensaje1($"Cantidad no disponible");      
                 return;
             }
 
@@ -186,4 +187,15 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
     }
 
 
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
 }

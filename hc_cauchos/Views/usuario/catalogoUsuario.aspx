@@ -106,6 +106,18 @@
     </div>
     <br />
     <br />
+
+
+    <div style=" width:50%;" class="center-block text-center">
+        <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	    <strong>
+	    <asp:Label ID="LblMensaje1" runat="server" />
+	    </strong>
+	    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+        </asp:Panel>
+    </div>
+
+
     <div class="row ">      
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo" OnItemCommand="Repeater1_ItemCommand">
         <ItemTemplate>            

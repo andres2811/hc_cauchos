@@ -32,6 +32,18 @@
                     <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Inventario/engranaje.png" OnClick="ImageButton2_Click"  />
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_editarPass" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$" ValidationGroup="grupopass"></asp:RegularExpressionValidator>
+                    <div>
+                        <div class="text-center center-block" style=" width:50%;">
+
+                            <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	                            <strong>
+	                            <asp:Label ID="LblMensaje1" runat="server" />
+	                            </strong>
+	                            <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+                            </asp:Panel>
+
+                        </div>
+                    </div>
                 </div>    
             </div>
         </div>       

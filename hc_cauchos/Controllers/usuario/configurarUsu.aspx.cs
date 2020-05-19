@@ -32,6 +32,8 @@ public partial class Views_usuario_configurarUsu : System.Web.UI.Page
         LB_apellido.Text = usuario.Apellido;
         LB_correo.Text = usuario.Correo;
         LB_contraseña.Text = usuario.Clave;
+
+        PanelMensaje1.Visible = false;
     }
 
     protected void BTN_editarCorreo_Click(object sender, EventArgs e)
@@ -56,7 +58,8 @@ public partial class Views_usuario_configurarUsu : System.Web.UI.Page
         }
         else
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
+            MostrarMensaje1($"Debe ingresar productos antes de realizar una compra");
             TB_editCorreo.Text = "";
             return;
         }
@@ -98,5 +101,16 @@ public partial class Views_usuario_configurarUsu : System.Web.UI.Page
         TB_editarPass.Visible = true;
         BTN_editarPass.Visible = true;
         BTN_cancelar2.Visible = true;
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
     }
 }

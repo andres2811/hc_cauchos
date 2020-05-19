@@ -29,6 +29,10 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             DDL_Lugar.Visible = true;
             BTN_facturar1.Visible = true;
         }
+
+        PanelMensaje.Visible = false;
+        PanelMensaje1.Visible = false;
+        PanelMensaje2.Visible = false;
     }
     protected void ODS_Carrito_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
@@ -66,7 +70,9 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
         List<EncapCarrito> listCarritoC = new DAOUser().ObtenerCarritoxUsuario(((EncapUsuario)Session["Valido"]).User_id);
         if (listCarritoC.Count == 0)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Debe ingresar productos antes de realizar una compra');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Debe ingresar productos antes de realizar una compra');", true);
+            MostrarMensaje1($"Debe ingresar productos antes de realizar una compra");
+            return;
         }
         else
         {
@@ -103,8 +109,11 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             var time = new DAOUser().ObtenerTiempo(tiempo);
             int tiempoadmin =int.Parse (time.Valor);
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00"+ pedido_Id.ToString()+" asdasd ');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00"+ pedido_Id.ToString()+" asdasd ');", true);
+            MostrarMensaje2($"Se ha generado el pedido No. "+ pedido_Id.ToString()+"");
             Response.Redirect("Carrito.aspx");
+            return;
+            
         }
     }
 
@@ -131,7 +140,9 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
         List<EncapCarrito> listCarritoC = new DAOUser().ObtenerCarritoxUsuario(((EncapUsuario)Session["Valido"]).User_id);
         if (listCarritoC.Count == 0)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Debe ingresar productos antes de realizar una compra');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Debe ingresar productos antes de realizar una compra');", true);
+            MostrarMensaje1($"Debe ingresar productos antes de realizar una compra");
+            return;
         }
         else
         {
@@ -168,14 +179,50 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             var time = new DAOUser().ObtenerTiempo(tiempo);
             int tiempoadmin = int.Parse(time.Valor);
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00" + pedido_Id.ToString() + " asdasd ');", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00" + pedido_Id.ToString() + " asdasd ');", true);
+            MostrarMensaje2($"Se ha generado el pedido No. " + pedido_Id.ToString() + "");
             Response.Redirect("Carrito.aspx");
+            return;
         }
     }
 
     protected void BTN_mas_Click(object sender, EventArgs e)
     {
         Response.Redirect("catalogoUsuario.aspx");
+    }
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje.Visible = false;
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        PanelMensaje2.Visible = false;
+    }
+
+
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
+
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
     }
 }
  

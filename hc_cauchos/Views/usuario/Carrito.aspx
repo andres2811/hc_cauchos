@@ -83,8 +83,31 @@
     <div class="inline text-center">
         <br />
             <asp:Button ID="BTN_facturar1" runat="server" Text="Facturar" ValidationGroup="dire" OnClick="BTN_facturar1_Click" Class="btn btn-primary" />
-            <asp:Button ID="BTN_mas" runat="server" Text="Mas Productos" OnClick="BTN_mas_Click" Class="btn btn-primary" />
-        
+            <asp:Button ID="BTN_mas" runat="server" Text="Mas Productos" OnClick="BTN_mas_Click" Class="btn btn-primary" />     
+    </div>
+    <br />
+    <br />
+    <div class="text-center center-block" style=" width:50%;">
+        <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje1" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje2" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click" />
+        </asp:Panel>
     </div>
             
 

@@ -22,10 +22,9 @@
               <div class="card-body">
                   <h3  class="card-text">Realizado: <asp:Label ID="Label1" runat="server" Text='<%# Eval("Fecha_pedido") %>' class="card-text" /></h3>
                   <h3  class="card-text">Cliente: <asp:Label ID="Label2" runat="server" Text='<%# Eval("Usuario") %>' class="card-text" /></h3>
-                  <h3  class="card-text">Ciudad/departamento: <asp:Label ID="Label3" runat="server" Text='<%# Eval("Ciudad_dep") %> ' class="card-text" /></h3>
-                   <h3  class="card-text">Municipio: <asp:Label ID="Label4" runat="server" Text='<%# Eval("Municipio") %>' class="card-text" /></h3>
+                   <h3  class="card-text">Ciudad: <asp:Label ID="Label4" runat="server" Text='<%# Eval("Municipio") %>' class="card-text" /></h3>
                    <h3  class="card-text">Direccion: <asp:Label ID="Label5" runat="server" Text='<%# Eval("Direccion") %>' class="card-text" /></h3>
-                  <asp:Button ID="BTN_Detalles" runat="server" Text="Alistar" class="btn btn-primary" />
+                  <asp:Button ID="BTN_Detalles" runat="server" Text="Entregado" class="btn btn-primary" />
               </div>
             </div>          
         </ItemTemplate>
