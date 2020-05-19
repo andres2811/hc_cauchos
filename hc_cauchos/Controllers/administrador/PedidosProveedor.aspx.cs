@@ -31,10 +31,14 @@ public partial class Views_administrador_PedidosProveedor : System.Web.UI.Page
             //Deserealizo el Json y lo asigno al grid view
             var elementos = JsonConvert.DeserializeObject<List<producto>>(aux);
             DataTable dt = (DataTable)JsonConvert.DeserializeObject(aux, typeof(DataTable));
-
+            //remover la columna
+            dt.Columns.Remove("Id");
+            
             var gv = e.Row.FindControl("GV_Elementos") as GridView;
             gv.DataSource = dt;
             //
+            
+            
             gv.DataBind();
            
         }

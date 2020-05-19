@@ -27,7 +27,8 @@ public partial class Views_login_login : System.Web.UI.Page
         ecUser = new DAOAdmin().loginEntity(ecUser);
         if (ecUser == null)
         {
-            MostrarMensaje($"Correo o Contraseña incorrecta");
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Contraseña o Correo incorrecto por favor verifique');</script>");
+            return;
         }
       
         
