@@ -10,10 +10,22 @@
             width: 210px;
         }
         .auto-style6 {
-            width: 52px;
+            width: 10px;
         }
         .auto-style7 {
-            width: 54px;
+            display: block;
+/*height:34px;*/padding: 6px 12px;
+/*font-size:14px*/;line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         }
         </style>
 
@@ -76,43 +88,38 @@
         <tr>
             <td class="auto-style4">
                 <asp:ObjectDataSource ID="ODS_Municipio" runat="server" SelectMethod="ConsultarMunicipio" TypeName="DAOEmpleado">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="DDL_Departamento" Name="aux" PropertyName="SelectedValue" Type="Int32" />
-                    </SelectParameters>
                 </asp:ObjectDataSource>
             </td>
             <td class="auto-style5">
                 <br />
-                <asp:DropDownList ID="DDL_Departamento" CssClass="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_Departamento" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DDL_Departamento_SelectedIndexChanged" Visible="False">
+             
+                <asp:DropDownList ID="DDL_Lugar" CssClass="auto-style7" runat="server" AutoPostBack="True" DataSourceID="ODS_Municipio" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DDL_Departamento_SelectedIndexChanged" Width="245px">
                 </asp:DropDownList>
                
             
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" InitialValue="0" ControlToValidate="DDL_Departamento" ValidationGroup="dire"></asp:RequiredFieldValidator> 
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" InitialValue="0" ControlToValidate="DDL_Lugar" ValidationGroup="dire"></asp:RequiredFieldValidator> 
                
             
             </td>
             <td class="auto-style6"> 
                
                
-            </td>
+                &nbsp;</td>
             <td class="modal-sm">
-                 <asp:Label ID="Lb_municipio" runat="server" Text="Municipio " Visible="False"></asp:Label>
-                <asp:DropDownList ID="DDL_Municipio" CssClass="form-control" runat="server" DataSourceID="ODS_Municipio" DataTextField="Nombre" DataValueField="Id" Visible="False">
-                </asp:DropDownList>
+                 <br />
+                <asp:TextBox ID="TB_Direccion" runat="server" CssClass="form-control" placeholder="Dirreccion" Visible="False" Width="202px" MaxLength="30"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TB_Direccion" ValidationGroup="dire"></asp:RequiredFieldValidator>
             </td>
             <td>&nbsp;</td>
            
         </tr>
         <tr>
             <td class="auto-style4">
-                <asp:ObjectDataSource ID="ODS_Departamento" runat="server" SelectMethod="ConsultarDepartamento" TypeName="DAOEmpleado"></asp:ObjectDataSource>
-            </td>
+                &nbsp;</td>
             <td class="auto-style5">
                 &nbsp;</td>
             <td class="auto-style6">
-                <asp:TextBox ID="TB_Direccion" runat="server" CssClass="form-control" placeholder="Dirreccion" Visible="False" Width="202px" MaxLength="30"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TB_Direccion" ValidationGroup="dire"></asp:RequiredFieldValidator>
-            </td>
+                &nbsp;</td>
             <td class="modal-sm">
                </td>
             

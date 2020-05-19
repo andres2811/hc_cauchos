@@ -40,6 +40,11 @@ public partial class Views_registro : System.Web.UI.Page
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Debe ser mayor de edad para poderse registrar' );</script>");
                 return;
             }
+            if((actual - (int)User.Fecha_nacimiento.Year) > 80)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'No aceptamos edades mayores a 80' );</script>");
+                return;
+            }
 
             User.Identificacion = TB_identificacion.Text;
             User.Rol_id = 4;
