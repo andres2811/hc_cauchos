@@ -33,6 +33,14 @@ public partial class Views_registro : System.Web.UI.Page
             User.Correo = TB_correo.Text;
             User.Clave = TB_contraseña.Text;
             User.Fecha_nacimiento = DateTime.Parse(TB_fecha_nacimiento.Text);
+            
+            int actual = DateTime.Now.Year;
+            if ((actual - (int)User.Fecha_nacimiento.Year) < 18)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Debe ser mayor de edad para poderse registrar' );</script>");
+                return;
+            }
+
             User.Identificacion = TB_identificacion.Text;
             User.Rol_id = 4;
             User.Estado_id = 1;

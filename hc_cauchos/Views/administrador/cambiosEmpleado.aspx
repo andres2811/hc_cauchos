@@ -14,7 +14,7 @@
       <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
-            <asp:GridView ID="GV_empleados" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" CssClass="table table-responsive table-striped" GridLines="None" DataKeyNames="User_id" HorizontalAlign="Justify" Width="104%" OnRowDataBound="GridView1_RowDataBound" OnRowUpdating="GV_empleados_RowUpdating" AllowPaging="True" PageSize="5">
+            <asp:GridView ID="GV_empleados" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_mostrarEmpleados" ForeColor="#333333" CssClass="table table-responsive table-striped" GridLines="None" DataKeyNames="User_id" HorizontalAlign="Justify" Width="104%" OnRowDataBound="GridView1_RowDataBound" OnRowUpdating="GV_empleados_RowUpdating" AllowPaging="True" PageSize="5" OnRowEditing="GV_empleados_RowEditing">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:TemplateField HeaderText="Nombres" SortExpression="Nombre">
@@ -44,19 +44,13 @@
 
                     <asp:TemplateField HeaderText="Fecha nacimiento" SortExpression="Fecha_nacimiento">
                         <EditItemTemplate>
-                            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" SelectedDate='<%# Bind("Fecha_nacimiento") %>' Width="200px">
-                                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                                <NextPrevStyle VerticalAlign="Bottom" />
-                                <OtherMonthDayStyle ForeColor="#808080" />
-                                <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                                <SelectorStyle BackColor="#CCCCCC" />
-                                <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-                                <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                                <WeekendDayStyle BackColor="#FFFFCC" />
-                            </asp:Calendar>
+                            <asp:TextBox ID="TB_Nacimiento" runat="server" TextMode="Date" Text='<%# Bind("Fecha_nacimiento", "{0:d}") %>'  ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_Nacimiento" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <br />
+                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("Fecha_nacimiento", "{0:d}") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha_nacimiento") %>'></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha_nacimiento", "{0:d}") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
 
@@ -101,6 +95,7 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
+            <asp:Label ID="LB_aux" runat="server" Text="Label"></asp:Label>
         <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario"></asp:ObjectDataSource>
              <asp:ObjectDataSource ID="ODS_mostrarEmpleNombre" runat="server" SelectMethod="ObtenerEmpleadosNombre" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario">
                  <SelectParameters>
