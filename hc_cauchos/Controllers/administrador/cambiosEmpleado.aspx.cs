@@ -46,24 +46,15 @@ public partial class Views_administrador_cambiosEmpleado : System.Web.UI.Page
         
         EncapUsuario validarIdentificacion = new EncapUsuario();
 
-      
+     
         
-        DateTime aux = Convert.ToDateTime (fecha.Text);
+      
          
 
-        e.NewValues.Insert(2, "Rol_id", int.Parse(((DropDownList)row.FindControl("DDL_roles")).SelectedValue)); 
-        e.NewValues.Insert(4, "Estado_id", int.Parse(((DropDownList)row.FindControl("DDL_estados")).SelectedValue));
+        //e.NewValues.Insert(2, "Rol_id", int.Parse(((DropDownList)row.FindControl("DDL_roles")).SelectedValue)); 
+        //e.NewValues.Insert(4, "Estado_id", int.Parse(((DropDownList)row.FindControl("DDL_estados")).SelectedValue));
 
-        int actual = DateTime.Now.Year;
-        if ((actual - (int)aux.Year) < 18)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Recuerde que debe ser mayor de edad para poderse registrar' );</script>");
-            e.Cancel= true;
-        }
-        if (fecha.Text == "")
-        {
-            fecha.Text = LB_aux.Text; 
-        }
+       
 
 
 
@@ -90,8 +81,7 @@ public partial class Views_administrador_cambiosEmpleado : System.Web.UI.Page
         GridViewRow row = GV_empleados.Rows[e.NewEditIndex];
         var lb_fecha = row.FindControl("Label3") as Label;
         var tb_fecha = row.FindControl("TB_Nacimiento") as TextBox;
-        
-        LB_aux.Text =  lb_fecha.Text;
+      
         
     }
 }
