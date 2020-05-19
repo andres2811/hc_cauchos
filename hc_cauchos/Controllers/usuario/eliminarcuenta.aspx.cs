@@ -9,6 +9,12 @@ public partial class Views_usuario_eliminarcuenta : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
         BTN_si.Visible = false;
         BTN_no.Visible = false;
         LB_Seguro.Visible = false;

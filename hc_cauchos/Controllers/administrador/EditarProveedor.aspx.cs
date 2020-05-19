@@ -10,7 +10,12 @@ public partial class Views_administrador_EditarProveedor : System.Web.UI.Page
     private string nombre;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
     }
 
 

@@ -10,6 +10,12 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
   
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
         int idemple = ((EncapUsuario)Session["Valido"]).User_id;
         Session["empleid"] = idemple;
         R_pro.Visible = false;

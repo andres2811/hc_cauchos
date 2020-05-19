@@ -92,7 +92,7 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
-            <asp:Label ID="LB_aux" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="LB_aux" runat="server" Visible="False"></asp:Label>
         <asp:ObjectDataSource ID="ODS_mostrarEmpleados" runat="server" SelectMethod="ObtenerEmpleados" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario"></asp:ObjectDataSource>
              <asp:ObjectDataSource ID="ODS_mostrarEmpleNombre" runat="server" SelectMethod="ObtenerEmpleadosNombre" TypeName="DAOAdmin" DataObjectTypeName="EncapUsuario" UpdateMethod="ActualizarUsuario">
                  <SelectParameters>

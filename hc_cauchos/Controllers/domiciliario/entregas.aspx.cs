@@ -9,7 +9,12 @@ public partial class Views_domiciliario_entregas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
+        if (User.Sesion == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
         //obtengo el id del domiciliario y lo almaceno en una session
         int iddomi = ((EncapUsuario)Session["Valido"]).User_id;
         Session["domiid"] = iddomi;
