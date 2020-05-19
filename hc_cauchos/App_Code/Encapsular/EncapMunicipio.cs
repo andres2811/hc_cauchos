@@ -23,6 +23,5 @@ public class EncapMunicipio
     public int Id { get => id; set => id = value; }
     [Column("nombre")]
     public string Nombre { get => nombre; set => nombre = value; }
-    [Column("departamento_id")]
-    public int Id_de { get => id_de; set => id_de = value; }
+    
 }

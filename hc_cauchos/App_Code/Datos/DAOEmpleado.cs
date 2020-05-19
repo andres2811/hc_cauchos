@@ -277,11 +277,11 @@ public class DAOEmpleado
             return db.ciudades_departamentso.OrderBy(x => x.Id).ToList();
         }
     }
-    public List<EncapMunicipio> ConsultarMunicipio(int aux)
+    public List<EncapMunicipio> ConsultarMunicipio()
     {
         using (var db = new Mapeo())
         {
-            return db.municipios.Where(x=> x.Id_de == aux ).OrderBy(x=> x.Id).ToList();
+            return db.municipios.OrderBy(x=> x.Id).ToList();
         }
     }
     //OBTENGO CANTIDAD DE PRODUCTOS DE USUARIO CARRITO

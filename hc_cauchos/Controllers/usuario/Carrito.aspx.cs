@@ -23,11 +23,11 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
         if (verificar1 != null) {
             BTN_Facturar.Visible = false;
             LB_facturar.Visible = false;
-            DDL_Departamento.Visible = false;
+            DDL_Lugar.Visible = false;
         }
         else
         {
-            DDL_Departamento.Visible = true;
+            DDL_Lugar.Visible = true;
             BTN_Facturar.Visible = true;
             LB_facturar.Visible = true;
         }
@@ -85,8 +85,8 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             pedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
             pedido.Atendido_id = 5;
             //Campos de Direccion
-            pedido.Ciu_dep_id = DDL_Departamento.SelectedIndex;
-            pedido.Municipio_id = DDL_Municipio.SelectedIndex;
+            pedido.Ciu_dep_id = DDL_Lugar.SelectedIndex;
+            //pedido.Municipio_id = DDL_Municipio.SelectedIndex;
             pedido.Direccion = TB_Direccion.Text;
             List<EncapCarrito> listCarrito = new DAOUser().ObtenerCarritoxUsuario(pedido.User_id);
             pedido.Total = listCarrito.Sum(x => x.Precio * x.Cantidad).Value;
@@ -122,20 +122,7 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
 
         var db = new Mapeo();
 
-        var consulta = (from x in db.municipios.Where(x => x.Id_de == DDL_Departamento.SelectedIndex )select x.Id).Count();
-        if (DDL_Departamento.SelectedIndex != 0 &&  consulta != 0 ) {
-            Lb_municipio.Visible = true;
-            DDL_Municipio.Visible = true;
             TB_Direccion.Visible = true;
-        }
-        else
-        {
-            Lb_municipio.Visible = false;
-            DDL_Municipio.Visible = false;
-            TB_Direccion.Visible = false;
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('No hay municipios vinculados para este departamento ' );</script>");
-            return;
-        }
        
     }
 }
