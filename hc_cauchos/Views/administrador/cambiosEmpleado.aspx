@@ -44,10 +44,7 @@
 
                     <asp:TemplateField HeaderText="Fecha nacimiento" SortExpression="Fecha_nacimiento">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TB_Nacimiento" runat="server" TextMode="Date" Text='<%# Bind("Fecha_nacimiento", "{0:d}") %>'  ></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_Nacimiento" ErrorMessage="*"></asp:RequiredFieldValidator>
-                            <br />
-                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("Fecha_nacimiento", "{0:d}") %>'></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("Fecha_nacimiento", "{0:d}") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha_nacimiento", "{0:d}") %>'></asp:Label>
@@ -60,7 +57,7 @@
 
                     <asp:TemplateField HeaderText="Rol" SortExpression="RolNombre">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DDL_roles" runat="server" DataSourceID="ODS_obtenerRoles" DataTextField="Nombre" DataValueField="Id">
+                            <asp:DropDownList ID="DDL_roles" runat="server" DataSourceID="ODS_obtenerRoles" DataTextField="Nombre" DataValueField="Id" SelectedValue='<%# Bind("Rol_id") %>'>
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_obtenerRoles" runat="server" SelectMethod="ObtenerRoles" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>
@@ -72,7 +69,7 @@
 
                     <asp:TemplateField HeaderText="Estado" SortExpression="EstadoNombre">
                         <EditItemTemplate>
-                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id">
+                            <asp:DropDownList ID="DDL_estados" runat="server" DataSourceID="ODS_obtenerEstados" DataTextField="Nombre" DataValueField="Id" SelectedValue='<%# Bind("Estado_id") %>'>
                             </asp:DropDownList>
                             <asp:ObjectDataSource ID="ODS_obtenerEstados" runat="server" SelectMethod="ObtenerEstados" TypeName="DAOAdmin"></asp:ObjectDataSource>
                         </EditItemTemplate>

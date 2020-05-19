@@ -38,6 +38,13 @@ public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
             Emple.Correo = TB_correo.Text;
             Emple.Clave = TB_contraseña.Text;
             Emple.Fecha_nacimiento = DateTime.Parse(TB_fecha_nacimiento.Text);
+
+            int actual = DateTime.Now.Year;
+            if ((actual - (int)Emple.Fecha_nacimiento.Year) < 18)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Debe ser mayor de edad para poderse registrar' );</script>");
+                return;
+            }
             Emple.Identificacion = TB_identificacion.Text;
             Emple.Rol_id = int.Parse(DDL_tipo_empleado.SelectedValue);
             Emple.Estado_id = 1;
