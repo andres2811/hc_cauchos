@@ -19,10 +19,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1 class="text-center"><strong>Mi Carrito</strong></h1>
-    <div align="center">
-        <asp:Image ID="Image1" runat="server" ImageUrl="~/ima/icon.png" align="center" />
-    </div>
+    <h1 class="text-center text-primary"><strong>Mi Carrito</strong></h1>
     <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;">  
@@ -41,7 +38,7 @@
                          <asp:TemplateField HeaderText="Cantidad Pedida" SortExpression="Cantidad">
                              <EditItemTemplate>
                                  <asp:TextBox ID="TB_Cantidad" runat="server" Text='<%# Bind("Cantidad") %>' TextMode="Number"></asp:TextBox>
-                                 <asp:RangeValidator ID="RV_cantidad" runat="server" ErrorMessage="valor invalido" ControlToValidate="TB_Cantidad" MaximumValue="1000" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                                 <asp:RangeValidator ID="RV_cantidad" runat="server" ErrorMessage="valor invalido" ControlToValidate="TB_Cantidad" MaximumValue='<%# Bind("Cant_Actual") %>' MinimumValue="1" Type="Integer"></asp:RangeValidator>
                              </EditItemTemplate>
                              <ItemTemplate>
                                  <asp:Label ID="LB_Cantidad" runat="server" Text='<%# Bind("Cantidad") %>'></asp:Label>
@@ -62,7 +59,11 @@
                      <SortedAscendingHeaderStyle BackColor="#506C8C" />
                      <SortedDescendingCellStyle BackColor="#FFFDF8" />
                      <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                     <EmptyDataTemplate>
+                         <h1 class="text-center text-danger">no hay datos para mostrar</h1>
+                     </EmptyDataTemplate>
                  </asp:GridView>
+                 
                  <asp:ObjectDataSource ID="ODS_carrito" runat="server" DataObjectTypeName="EncapCarrito" SelectMethod="ObtenerCarritoxUsuario" TypeName="DAOUser" UpdateMethod="ActualizarCarritoFactura" DeleteMethod="EliminarItemCarrito">
                      <SelectParameters>
                          <asp:SessionParameter Name="usu" SessionField="userid" Type="Int32" />

@@ -6,11 +6,12 @@
             background:black;
             color:white;
             border-color:red;
+            text-shadow:0px 0px 2px red;
         }
-        #productos h4:hover{
-            color:red;
-            font-size:30px;
+        #titu{
+            text-shadow:0px 0px 1px black;
         }
+
         #Image1:hover{
             width:60%;
 
@@ -25,7 +26,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:ObjectDataSource ID="ODS_catalogo" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
     <br />
-    <h1 class="text-center text-danger"><strong>Catalogo</strong><br /><small>nuestros productos</small></h1>
+    <h1 id="titu" class="text-center text-danger"><strong>Catalogo</strong><br /><small>nuestros productos</small></h1>
     <asp:ObjectDataSource ID="ODS_catalogoCategoria" runat="server" SelectMethod="ConsultarInventarioCategoria" TypeName="DAOUser">
         <SelectParameters>
             <asp:ControlParameter ControlID="DD_Categoria" Name="categ" PropertyName="SelectedValue" Type="Int32" />
@@ -70,19 +71,15 @@
     <asp:ObjectDataSource ID="ODS_Marca" runat="server" SelectMethod="ColsultarMarca" TypeName="DAOAdmin"></asp:ObjectDataSource>
     <br />
 
-    <table class="nav-justified">
-        <tr>
-            <td class="auto-style1"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td >
+    <div class="col-sm-12">
+        <div class="form-inline justify-content-center">
+            <div class="form-group">
                 <asp:DropDownList ID="DD_Categoria" runat="server" class="form-control" DataSourceID="ODS_Categoria" DataTextField="Categoria" DataValueField="Id" Width="234px" >
                 </asp:DropDownList>
-            </td>
-            <td>
+          
                 <asp:DropDownList ID="DD_Marca" runat="server" Class="form-control" DataSourceID="ODS_Marca" DataTextField="Marca" DataValueField="Id" Width="234px" >
                 </asp:DropDownList>
-            </td>
-
-            <td>
+      
                 <asp:DropDownList ID="DDL_Precio" runat="server" Class="form-control" Width="234px">
                 <asp:ListItem Value="0 , 0">Ordenar Precio</asp:ListItem>
                 <asp:ListItem Value="0 , 10000">Menores a 10000</asp:ListItem>
@@ -92,12 +89,13 @@
                 <asp:ListItem Value="200000 , 500000">200000 - 500000</asp:ListItem>
                 <asp:ListItem Value="500000 , 6000000">Mayores a 500000</asp:ListItem>
                 </asp:DropDownList>
-            </td>
-            <td> <asp:Button ID="Btn_Buscar" runat="server" Class="btn btn-dropbox" Text="Buscar" OnClick="Btn_Buscar_Click" BorderColor="Gray" /> </td>
-            <td> <asp:Button ID="Btn_Todos" runat="server" Class="btn btn-dropbox" Text="Todos" OnClick="Btn_Todos_Click" BorderColor="Gray" /> </td>
-        </tr>
-    </table>
-    <br />
+          
+                <asp:Button ID="Btn_Buscar" runat="server" Class="btn btn-outline-danger" Text="Buscar" OnClick="Btn_Buscar_Click" BorderColor="Gray" />
+                <asp:Button ID="Btn_Todos" runat="server" Class="btn btn-outline-danger" Text="Todos" OnClick="Btn_Todos_Click" BorderColor="Gray" /> 
+            </div>
+        </div>
+    </div>
+
     <br />
     <br />
     <div class="row ">      

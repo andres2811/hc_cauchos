@@ -29,6 +29,10 @@ public class EncapPedido
     private int municipio_id;
     private Nullable<DateTime> fecha_pedido_fin;
 
+    private string ciudad_dep;
+    private string municipio;
+
+
 
 
     [Key]
@@ -64,4 +68,8 @@ public class EncapPedido
     public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
     [Column("fecha_pedido_fin")]
     public Nullable<DateTime> Fecha_pedido_fin { get => fecha_pedido_fin; set => fecha_pedido_fin = value; }
+    [NotMapped]
+    public string Ciudad_dep { get => ciudad_dep; set => ciudad_dep = value; }
+    [NotMapped]
+    public string Municipio { get => municipio; set => municipio = value; }
 }

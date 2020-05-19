@@ -34,7 +34,8 @@
         <!-- Navigation -->
           <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-              <h2 id="titulo" class="navbar-header text-white" href="home.aspx">HC CAUCHOS</h2>    
+              <h2 id="titulo" class="navbar-header text-white" href="home.aspx">
+                  <img src="../ima/cauchosicono.png" alt="Alternate Text" width="8%" height="6%" /> HC CAUCHOS</h2>    
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>

@@ -24,13 +24,17 @@ public class DAODomiciliario
                     join usu in db.usuario on pedi.User_id equals usu.User_id
                     join emple in db.usuario on pedi.Atendido_id equals emple.User_id
                     join domi in db.usuario on pedi.Domiciliario_id equals domi.User_id
+                    join ciudad_dep in db.ciudades_departamentso on pedi.Ciu_dep_id equals ciudad_dep.Id
+                    join municipio in db.municipios on pedi.Municipio_id equals municipio.Id
 
                     select new
                     {
                         pedi,
                         usu,
                         emple,
-                        domi
+                        domi,
+                        municipio,
+                        ciudad_dep
 
                     }).ToList().Select(m => new EncapPedido
                     {
@@ -48,7 +52,9 @@ public class DAODomiciliario
                         Direccion=m.pedi.Direccion,
                         Ciu_dep_id=m.pedi.Ciu_dep_id,
                         Municipio_id=m.pedi.Municipio_id,
-                        Fecha_pedido_fin=m.pedi.Fecha_pedido_fin
+                        Fecha_pedido_fin=m.pedi.Fecha_pedido_fin,
+                        Ciudad_dep=m.ciudad_dep.Nombre,
+                        Municipio=m.municipio.Nombre
 
 
                     }).ToList();

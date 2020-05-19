@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-    <h1 class="text-center">ELIMINAR MI CUENTA</h1>
+    <h1 class="text-center text-primary"><strong>ELIMINAR MI CUENTA</strong></h1>
     <br />
     <asp:ImageButton ID="IB_eliminar" runat="server" ImageUrl="~/ima/perfil.png" class="center-block" OnClick="IB_eliminar_Click" />
     <asp:Label ID="LB_Seguro" runat="server" Text="Label"><h3 class="text-center">¿esta seguro de eliminar por completo su cuenta?</h3></asp:Label> 

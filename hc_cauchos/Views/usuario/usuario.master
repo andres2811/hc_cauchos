@@ -152,12 +152,17 @@
               <a href="Carrito.aspx">
                 <i class="fa fa-shopping-cart "></i> <span>Carrito</span>
               </a>
-            </li>
-            <li>
+            </li>            
+              <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i> <span>Inventario</span> <small class="label pull-right bg-green"></small>
+                <i class="fa fa-files-o"></i> <span>Pedidos</span><i class="fa fa-angle-left pull-right"></i>
               </a>
-            </li>                        
+              <ul class="treeview-menu">
+                <li><a href="pedidos_estados.aspx"><i class="fa fa-circle-o"></i> Pedidos activos</a></li>
+                <li><a href="pedidos_finalizados.aspx"><i class="fa fa-circle-o"></i> Pedidos finalizados</a></li>
+              </ul>
+            </li>
+
           </ul>
         </section>
         <!-- SIDEBAR -->
