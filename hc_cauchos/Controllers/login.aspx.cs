@@ -9,6 +9,27 @@ public partial class Views_login_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
+        if (User != null)
+        {
+            switch (User.Rol_id)
+            {
+                case 1:
+                    Response.Redirect("administrador/index_admin.aspx");
+                    break;
+                case 2:
+                    Response.Redirect("empleado/index_empleado.aspx");
+                    break;
+                case 3:
+                    Response.Redirect("domiciliario/index_domiciliario.aspx");
+                    break;
+                case 4:
+                    Response.Redirect("usuario/index_usuario.aspx");
+                    break;
+
+            }
+        }
         PanelMensaje.Visible = false;
         PanelMensaje1.Visible = false;
         BTN_no.Visible = false;
@@ -21,6 +42,7 @@ public partial class Views_login_login : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         EncapUsuario ecUser = new EncapUsuario();
         ecUser.Correo = TB_correo.Text;
+        Session["Correo"] = TB_correo.Text;
         ecUser.Clave = TB_contraseña.Text;
         //Validacion de la iP y la mac
         string ip = new MAC_IP().ip();

@@ -11,12 +11,15 @@ public partial class Views_administrador_configurar : System.Web.UI.Page
     {
 
         EncapUsuario User = new EncapUsuario();
-        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
-        if (User.Sesion == null)
+        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
+        if (User == null)
         {
             Response.Redirect("../home.aspx");
-        } 
-
+        }
+        if (User.Rol_id != 1)
+        {
+            Response.Redirect("../home.aspx");
+        }
         //inicio componentes de edit componentes como invisibles
         TB_editCorreo.Visible = false;
         BTN_editarCorreo.Visible = false;
