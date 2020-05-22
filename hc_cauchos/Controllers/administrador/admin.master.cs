@@ -38,11 +38,12 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
         User.Mac_ = null;
         User.Sesion = null;
         new DAOAdmin().ActualizarUsuario(User);
-        Response.Redirect("../home.aspx");
+  
         Session["Valido"] = -1;
         Session.Abandon();
         Session.RemoveAll();
-        
+        Response.Redirect("../home.aspx");
+
 
     }
 }

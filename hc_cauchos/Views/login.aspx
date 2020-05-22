@@ -270,9 +270,7 @@
 
             <div class="col-2">
             </div>
-
-            <div class="col-8"> 
-
+            <div class="col-8">
                     <div class="wrapper fadeInDown">
                         <div id="formContent">
                             <div class="fadeIn first">

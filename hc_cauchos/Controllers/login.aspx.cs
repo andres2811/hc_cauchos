@@ -48,8 +48,6 @@ public partial class Views_login_login : System.Web.UI.Page
             return;
         }
         
-
-
             if (ecUser.Estado_id == 1 || ecUser.Estado_id == 4)
             {
 
