@@ -9,15 +9,9 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //VALIDACION PARA SABER SI LA SESSION EXISTE PONER EN TODOS LOA PAGE LOAD 
-        if (Session["Valido"] != null && ((EncapUsuario)Session["Valido"]).Rol_id == 1)
-        {
-
-        }
-        else
-        {
-            Response.Redirect("../login.aspx");
-        }
+        //VALIDACION PARA SABER SI LA SESSION EXISTE PONER EN TODOS LOA PAGE LOAD
+        
+       
         //obtengo nombre de la sesion y pongo en html
         L_nombreAdmin.Text =((EncapUsuario)Session["Valido"]).Nombre;
         L_nombreAdmin0.Text= ((EncapUsuario)Session["Valido"]).Nombre;
@@ -37,6 +31,7 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
         User.Ip_ = null;
         User.Mac_ = null;
         User.Sesion = null;
+        Session["Correo"] = null;
         new DAOAdmin().ActualizarUsuario(User);
   
         Session["Valido"] = -1;

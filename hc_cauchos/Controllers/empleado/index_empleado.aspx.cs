@@ -9,13 +9,15 @@ public partial class Views_empleado_index_empleado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Valido"] != null && ((EncapUsuario)Session["Valido"]).Rol_id == 2)
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
+        if (User == null)
         {
-
+            Response.Redirect("../home.aspx");
         }
-        else
+        if (User.Rol_id != 2)
         {
-            Response.Redirect("../login.aspx");
+            Response.Redirect("../home.aspx");
         }
     }
 }

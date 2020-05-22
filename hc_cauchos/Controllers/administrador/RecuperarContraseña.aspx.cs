@@ -12,7 +12,7 @@ public partial class Views_administrador_RecuperarContraseña : System.Web.UI.Pa
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
 

@@ -16,8 +16,12 @@ public partial class Views_administrador_ConsultarInventario : System.Web.UI.Pag
     protected void Page_Load(object sender, EventArgs e)
     {
         EncapUsuario User = new EncapUsuario();
-        User = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
-        if (User.Sesion == null)
+        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
+        if (User == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
+        if (User.Rol_id != 1)
         {
             Response.Redirect("../home.aspx");
         }

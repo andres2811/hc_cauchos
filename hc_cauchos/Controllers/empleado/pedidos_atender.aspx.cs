@@ -10,12 +10,16 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
   
     protected void Page_Load(object sender, EventArgs e)
     {
-        int idemple = ((EncapUsuario)Session["Valido"]).User_id;
-        Session["empleid"] = idemple;
-        R_pro.Visible = false;
-        BTN_confirmar.Visible = false;
-        TB_novedad.Visible = false;
-
+        EncapUsuario User = new EncapUsuario();
+        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
+        if (User == null)
+        {
+            Response.Redirect("../home.aspx");
+        }
+        if (User.Rol_id != 2)
+        {
+            Response.Redirect("../home.aspx");
+        }
     }
 
     protected void R_pedido_ItemCommand(object source, RepeaterCommandEventArgs e)
