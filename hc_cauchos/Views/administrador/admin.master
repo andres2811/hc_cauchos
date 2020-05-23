@@ -173,9 +173,10 @@
                 <span class="fa fa-angle-left pull-right"></span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                <li><a href="../reportes/ReporteInventario.aspx"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+                <li><a href="../reportes/ReporteProveedor.aspx"><i class="fa fa-circle-o"></i> Boxed</a></li>
+                <li><a href="../reportes/ReporteEmpleado.aspx"><i class="fa fa-circle-o"></i> Fixed</a></li>
+                <li><a href="../reportes/ReporteMesAMes.aspx"><i class="fa fa-circle-o"></i> Fixed</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
               </ul>
             </li>

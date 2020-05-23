@@ -1411,4 +1411,43 @@ public class DAOAdmin
         }
 
     }
+
+    public List<EncapPedido> ConsultarVentasMesAMes(int ano, int mes)
+    {
+        string Query = "";
+      
+            Query = "SELECT date_part('year', pp.fecha_pedido) as año, date_part('month'::text, pp.fecha_pedido)"+
+                        "as mes, sum(pp.total) as total_mes, Count(*) as Facturas" +
+                        "FROM pedidos.pedidos pp" +
+                        "WHERE pp.estado_pedido = 6" +
+                        " GROUP BY date_part('year', pp.fecha_pedido), date_part('month'::text, pp.fecha_pedido)";
+        
+        using (var db = new Mapeo())
+        {
+
+            return (from uu in db.pedidos.SqlQuery(Query)
+
+                    join usuario in db.usuario on uu.User_id equals usuario.User_id
+                  
+                    select new
+                    {
+                        uu
+                       
+                    }).ToList().Select(m => new EncapPedido
+                    {
+
+                        Id = m.uu.Id,
+                       
+                        Atendido_id = m.uu.Atendido_id,
+                        Domiciliario_id = m.uu.Domiciliario_id,
+                        Fecha_pedido = m.uu.Fecha_pedido,
+                        Estado_pedido = m.uu.Estado_pedido,
+                        Total = m.uu.Total,
+                      
+
+                    }
+                      ).ToList();
+        }
+
     }
+}

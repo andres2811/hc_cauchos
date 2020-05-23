@@ -42,7 +42,7 @@ public partial class Views_login_login : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         EncapUsuario ecUser = new EncapUsuario();
         ecUser.Correo = TB_correo.Text;
-        Session["Correo"] = TB_correo.Text;
+       
         ecUser.Clave = TB_contraseña.Text;
         //Validacion de la iP y la mac
         string ip = new MAC_IP().ip();
@@ -51,8 +51,13 @@ public partial class Views_login_login : System.Web.UI.Page
         ecUser = new DAOAdmin().loginEntity(ecUser);
         if (ecUser == null)
         {
+
             MostrarMensaje($"Correo o Contraseña incorrecta");
             return;
+        }
+        else
+        {
+            Session["Correo"] = TB_correo.Text;
         }
       
         
