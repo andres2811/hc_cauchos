@@ -42,11 +42,12 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
         User.Sesion = null;
         Session["Correo"] = null;
         new DAOAdmin().ActualizarUsuario(User);
-        Response.Redirect("../home.aspx");
+  
         Session["Valido"] = -1;
         Session.Abandon();
         Session.RemoveAll();
-        
+        Response.Redirect("../home.aspx");
+
 
     }
 }

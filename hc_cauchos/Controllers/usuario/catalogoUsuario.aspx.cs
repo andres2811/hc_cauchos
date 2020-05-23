@@ -39,6 +39,7 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
         //se obtiene el item del inventario    
         int precio = int.Parse(((Label)e.Item.FindControl("PrecioLabel")).Text);
         int stock = int.Parse(((Label)e.Item.FindControl("Ca_actualLabel")).Text);
+
         int cantidadSolicitada = int.Parse(((TextBox)e.Item.FindControl("TB_cantidad")).Text);
         int cantidadDisponible = new DAOUser().ObtenerCantidadxProductoCarrito(int.Parse(e.CommandArgument.ToString()));
         //primero buscar el control y validar que sea diferente de NULL 
@@ -201,5 +202,17 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
     {
         LblMensaje1.Text = mensaje;
         PanelMensaje1.Visible = true;
+    }
+
+    protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+      
+        int stock = int.Parse(((Label)e.Item.FindControl("Ca_actualLabel")).Text);
+        var cantidad = (TextBox)e.Item.FindControl("TB_cantidad");
+
+        if (stock <= 0)
+        {
+            cantidad.Enabled = false;
+        }
     }
 }
