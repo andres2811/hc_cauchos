@@ -54,7 +54,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Mes" msprop:Generator_ColumnVarNameInTable="columnMes" msprop:Generator_ColumnPropNameInRow="Mes" msprop:Generator_ColumnPropNameInTable="MesColumn" msprop:Generator_UserColumnName="Mes" type="xs:int" minOccurs="0" />
-              <xs:element name="Ano" msprop:Generator_ColumnVarNameInTable="columnAno" msprop:Generator_ColumnPropNameInRow="Ano" msprop:Generator_ColumnPropNameInTable="AnoColumn" msprop:Generator_UserColumnName="Ano" type="xs:int" minOccurs="0" />
+              <xs:element name="Ano" msprop:Generator_ColumnVarNameInTable="columnAno" msprop:Generator_ColumnPropNameInRow="Ano" msprop:Generator_ColumnPropNameInTable="AnoColumn" msprop:Generator_UserColumnName="Ano" type="xs:string" minOccurs="0" />
               <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
               <xs:element name="Facturas" msprop:Generator_ColumnVarNameInTable="columnFacturas" msprop:Generator_ColumnPropNameInRow="Facturas" msprop:Generator_ColumnPropNameInTable="FacturasColumn" msprop:Generator_UserColumnName="Facturas" type="xs:int" minOccurs="0" />
             </xs:sequence>

@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <CR:CrystalReportViewer ID="CRV_Proveedor" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="1202px" ReportSourceID="CRS_Proveedor" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="1104px" />
+    <CR:CrystalReportViewer ID="CRV_Proveedor" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="1202px" ReportSourceID="CRS_Proveedor" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="1104px" PageZoomFactor="125" ToolPanelView="None" />
     <CR:CrystalReportSource ID="CRS_Proveedor" runat="server">
         <Report FileName="Z:\hc_cauchos\hc_cauchos\Reportes\ReportePedidoProveedor.rpt">
         </Report>

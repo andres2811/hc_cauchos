@@ -13,6 +13,7 @@ public partial class Views_reportes_ReporteEmpleado : System.Web.UI.Page
         //Asignamos a CRS un CRS Que Esta aputando a un reporte En Reportes
         CRS_Empleado.ReportDocument.SetDataSource(informacionReporte());
         CRV_Empleado.ReportSource = CRS_Empleado;
+       
     }
     protected DataSet informacionReporte()
     {
