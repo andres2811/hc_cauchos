@@ -23,7 +23,7 @@
               <div class="card-body">
 
                   <h4  class="card-text"><strong>Realizado el dia: </strong><asp:Label ID="Label1" runat="server" Text='<%# Eval("Fecha_pedido") %>' class="card-text" /></h4>
-                  <h4  class="card-text"><strong>Lugar de entrega: </strong><asp:Label ID="Label9" runat="server" Text='<%# Eval("Municipio") %>' class="card-text" /> - <asp:Label ID="Label3" runat="server" Text='<%# Eval("Ciudad_dep") %> ' class="card-text" /></h4>
+                  <h4  class="card-text"><strong>Lugar de entrega: <asp:Label ID="Label3" runat="server" Text='<%# Eval("Ciudad_dep") %> ' class="card-text" /></h4>
                   <h4  class="card-text"><strong>Direccion: </strong><asp:Label ID="Label5" runat="server" Text='<%# Eval("Direccion") %>' class="card-text" /></h4>  
                   <h4  class="card-text"><strong>Estado: </strong><asp:Label ID="Label6" runat="server" Text='<%# Eval("Estado") %>' class="card-text" /></h4>
                   <asp:Button ID="BTN_factura"  class="btn btn-primary center-block" runat="server" Text="Ver factura" />
@@ -41,6 +41,10 @@
             <asp:SessionParameter Name="usu" SessionField="clienid" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <br />
+    <br />
+    <br />
+    <br />
     <br />
     <br />
     <br />
