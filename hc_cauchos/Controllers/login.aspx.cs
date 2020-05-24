@@ -38,6 +38,7 @@ public partial class Views_login_login : System.Web.UI.Page
 
     protected void BTN_ingresar_Click(object sender, EventArgs e)
     {
+        
         //creacion objeto tipo session IVAN CORREGIR
         ClientScriptManager cm = this.ClientScript;
         EncapUsuario ecUser = new EncapUsuario();
@@ -61,7 +62,7 @@ public partial class Views_login_login : System.Web.UI.Page
         }
       
         
-        if (ecUser.Ip_ == null && ecUser.Mac_ == null)
+        /*if (ecUser.Ip_ == null && ecUser.Mac_ == null)
         {
             ecUser.Ip_ = ip;
             ecUser.Mac_ = mac;
@@ -72,18 +73,21 @@ public partial class Views_login_login : System.Web.UI.Page
             MostrarMensaje1($"Tiene sessiones abiertas ¿Desea cerrarlas?");
             BTN_no.Visible = true;
             BTN_si.Visible = true;
+            Response.Redirect("home.aspx");
             return;
-        }
+            
+        }*/
         
             if (ecUser.Estado_id == 1 || ecUser.Estado_id == 4)
             {
 
+                Session["Correo"] = TB_correo.Text;
                 Session["Aux"] = "";
                 Session["Cont"] = 0;
-                
-            
+           
 
-                 Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
+
+                Session["Nombre"] = ecUser.Nombre + " " + ecUser.Apellido;
 
                 
 

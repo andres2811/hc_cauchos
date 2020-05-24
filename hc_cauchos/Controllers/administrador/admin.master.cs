@@ -12,7 +12,7 @@ public partial class Views_administrador_admin : System.Web.UI.MasterPage
         //VALIDACION PARA SABER SI LA SESSION EXISTE PONER EN TODOS LOA PAGE LOAD
         EncapUsuario User = new EncapUsuario();
         User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
-        if (User == null)
+        if (User == null || Session["Valido"] == null)
         {
             Response.Redirect("../home.aspx");
         }

@@ -135,10 +135,10 @@
                 <span class="fa fa-angle-left pull-right"></span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../reportes/ReporteInventario.aspx"><i class="fa fa-circle-o"></i> Reporte Inventario</a></li>
-                <li><a href="../reportes/ReporteProveedor.aspx"><i class="fa fa-circle-o"></i> Reporte Pedido Proveedores</a></li>
-                <li><a href="../reportes/ReporteEmpleado.aspx"><i class="fa fa-circle-o"></i> Reporte Venta de Empleados</a></li>
-                <li><a href="../reportes/ReporteMesAMes.aspx"><i class="fa fa-circle-o"></i> Reporte Ventas Mes a Mes</a></li>
+                <li><a href="ReporteInventario.aspx"><i class="fa fa-circle-o"></i> Reporte Inventario</a></li>
+                <li><a href="ReporteProveedor.aspx"><i class="fa fa-circle-o"></i> Reporte Pedido Proveedores</a></li>
+                <li><a href="ReporteEmpleado.aspx"><i class="fa fa-circle-o"></i> Reporte Venta de Empleados</a></li>
+                <li><a href="ReporteMesAMes.aspx"><i class="fa fa-circle-o"></i> Reporte Ventas Mes a Mes</a></li>
                 
               </ul>
             </li>

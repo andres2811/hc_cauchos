@@ -10,8 +10,8 @@ public partial class Views_usuario_usuario : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         EncapUsuario User = new EncapUsuario();
-        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
-        if (User == null)
+        User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"] );
+        if (User == null || Session["Valido"] == null)
         {
             Response.Redirect("../home.aspx");
         }
