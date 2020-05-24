@@ -60,6 +60,18 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="FacturaVentanilla" msprop:Generator_TableClassName="FacturaVentanillaDataTable" msprop:Generator_TableVarName="tableFacturaVentanilla" msprop:Generator_RowChangedName="FacturaVentanillaRowChanged" msprop:Generator_TablePropName="FacturaVentanilla" msprop:Generator_RowDeletingName="FacturaVentanillaRowDeleting" msprop:Generator_RowChangingName="FacturaVentanillaRowChanging" msprop:Generator_RowEvHandlerName="FacturaVentanillaRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturaVentanillaRowDeleted" msprop:Generator_RowClassName="FacturaVentanillaRow" msprop:Generator_UserTableName="FacturaVentanilla" msprop:Generator_RowEvArgName="FacturaVentanillaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_UserColumnName="Producto" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:int" minOccurs="0" />
+              <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:double" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_UserColumnName="Referencia" type="xs:string" minOccurs="0" />
+              <xs:element name="Id_Pedido" msprop:Generator_ColumnVarNameInTable="columnId_Pedido" msprop:Generator_ColumnPropNameInRow="Id_Pedido" msprop:Generator_ColumnPropNameInTable="Id_PedidoColumn" msprop:Generator_UserColumnName="Id_Pedido" type="xs:unsignedInt" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

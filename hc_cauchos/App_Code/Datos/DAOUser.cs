@@ -861,10 +861,37 @@ public class DAOUser
         }
 
     }
+    //METODO PARA OBTENER LOS PRODUCTOS DEL PEDIDO
+    public List<EncapProducto_pedido> ConsultarProductosPedido(int id_ped)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.productos where uu.Pedido_id == id_ped
+                    join iven in db.inventario on uu.Producto_id equals iven.Id
+
+                    select new
+                    {
+                        uu,
+                        iven
+                        
+
+                    }).ToList().Select(m => new EncapProducto_pedido
+                    {
+                        Id = m.uu.Id,
+                        Pedido_id = m.uu.Pedido_id,
+                        Producto_id = m.uu.Producto_id,
+                        Cantidad = m.uu.Cantidad,
+                        Precio = m.uu.Precio,
+                        Total = m.uu.Total,
+                        Nombre_producto = m.iven.Titulo,
+                        Referencia = m.iven.Referencia
+                       
+
+                    }).ToList();
+        }
+    }
+
 
 }
-
-
-
 
 
