@@ -27,6 +27,11 @@ public partial class Views_empleado_configurarEmple : System.Web.UI.Page
         BTN_cancelar.Visible = false;
         BTN_cancelar2.Visible = false;
 
+        PanelMensaje.Visible = false;
+        PanelMensaje1.Visible = false;
+        PanelMensaje2.Visible = false;
+
+
 
         //creo objeto de encap usuario 
         EncapUsuario usuario = new EncapUsuario();
@@ -61,7 +66,8 @@ public partial class Views_empleado_configurarEmple : System.Web.UI.Page
         }
         else
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
+            MostrarMensaje1($"El correo ya se encuentra registrado");
             TB_editCorreo.Text = "";
             return;
         }
@@ -89,7 +95,9 @@ public partial class Views_empleado_configurarEmple : System.Web.UI.Page
         nuevo = new DAOAdmin().UsuarioActivo((string)Session["Nombre"]);
         nuevo.Clave = TB_editarPass.Text;
         new DAOAdmin().ActualizarUsuario(nuevo);
+        MostrarMensaje2($"Contraseña cambiada con exito!!");
         TB_editarPass.Text = "";
+        return;
     }
 
     protected void BTN_cancelar2_Click(object sender, EventArgs e)
@@ -103,5 +111,38 @@ public partial class Views_empleado_configurarEmple : System.Web.UI.Page
         TB_editarPass.Visible = true;
         BTN_editarPass.Visible = true;
         BTN_cancelar2.Visible = true;
+    }
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje.Visible = false;
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        PanelMensaje2.Visible = false;
+    }
+
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
+
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
     }
 }

@@ -9,6 +9,9 @@ public partial class Views_registro : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        PanelMensaje.Visible = false;
+        PanelMensaje1.Visible = false;
+        PanelMensaje2.Visible = false;
 
     }
 
@@ -37,12 +40,16 @@ public partial class Views_registro : System.Web.UI.Page
             int actual = DateTime.Now.Year;
             if ((actual - (int)User.Fecha_nacimiento.Year) < 18)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Debe ser mayor de edad para poderse registrar' );</script>");
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'Debe ser mayor de edad para poderse registrar' );</script>");
+                //return;
+                MostrarMensaje1($"Para registrarse debe ser mayor de edad");
                 return;
             }
             if((actual - (int)User.Fecha_nacimiento.Year) > 80)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'No aceptamos edades mayores a 80' );</script>");
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'No aceptamos edades mayores a 80' );</script>");
+                //return;
+                MostrarMensaje1($"No aceptamos personas mayores de 80 años");
                 return;
             }
 
@@ -51,7 +58,8 @@ public partial class Views_registro : System.Web.UI.Page
             User.Estado_id = 1;
             //apunto a metodo de insert 
             new DAOUser().InsertarUsuario(User);
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El usuario se ha registrado satisfactoriamente' );</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El usuario se ha registrado satisfactoriamente' );</script>");
+            MostrarMensaje2($"El usuario se ha registrado satisfactoriamente");
             TB_nombres.Text = "";
             TB_apellidos.Text = "";
             TB_correo.Text = "";
@@ -63,13 +71,53 @@ public partial class Views_registro : System.Web.UI.Page
         }
         if(verificarCorreo != null)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'El correo ya se encuentra registrado' );</script>");
+            //return;
+            MostrarMensaje($"El correo ya se encuentra registrado");
             return;
         }
         if(verificarIdentificacion != null)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'La identificacion ya se encuentra registrada' );</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ( 'La identificacion ya se encuentra registrada' );</script>");
+            //return;
+            MostrarMensaje($"La identificacion ya se encuentra registrada");
             return;
         }
+    }
+
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
+
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
+    }
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+
+        PanelMensaje.Visible = false;
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+
+        PanelMensaje1.Visible = false;
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+
+        PanelMensaje2.Visible = false;
     }
 }

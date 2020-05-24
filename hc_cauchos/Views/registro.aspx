@@ -305,6 +305,29 @@
                                 <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Cedula invalida" ControlToValidate="TB_identificacion" MaximumValue="1999999999" MinimumValue="10000000" ValidationGroup="Registro" Type="Double" ForeColor="Red"></asp:RangeValidator>
                                 <br />                               
                                 <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="fadeIn fourth" OnClick="BTN_registrar_Click" ValidationGroup="Registro"/> 
+                                
+                                <div style="" class="center-block text-center">
+                                    <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+	                                    <strong>
+	                                    <asp:Label ID="LblMensaje" runat="server" />
+	                                    </strong>
+	                                    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+                                    </asp:Panel>
+
+                                    <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	                                    <strong>
+	                                    <asp:Label ID="LblMensaje1" runat="server" />
+	                                    </strong>
+	                                    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+                                    </asp:Panel>
+
+                                    <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	                                    <strong>
+	                                    <asp:Label ID="LblMensaje2" runat="server" />
+	                                    </strong>
+	                                    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click" />
+                                    </asp:Panel>
+                                </div>                           
                             </div>      
                         </div>
                     </div>

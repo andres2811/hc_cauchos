@@ -32,7 +32,30 @@
                     <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Inventario/engranaje.png" OnClick="ImageButton2_Click"/>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Se requiere entre 8 - 16 caracteres tanto letras,numeros,mayusculas y minusculas" ControlToValidate="TB_editarPass" ValidationExpression="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" ValidationGroup="grupopass"></asp:RegularExpressionValidator>
-                </div>    
+                </div>   
+                <div>                 
+                    <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+	                    <strong>
+	                    <asp:Label ID="LblMensaje" runat="server" />
+	                    </strong>
+	                    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+                    </asp:Panel>
+
+                    <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	                    <strong>
+	                    <asp:Label ID="LblMensaje1" runat="server" />
+	                    </strong>
+	                    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+                    </asp:Panel>
+
+                    <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	                    <strong>
+	                    <asp:Label ID="LblMensaje2" runat="server" />
+	                    </strong>
+	                    <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click" />
+                    </asp:Panel>
+                </div>
+
             </div>
         </div>       
 </asp:Content>

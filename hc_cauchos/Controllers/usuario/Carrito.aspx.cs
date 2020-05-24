@@ -184,8 +184,8 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             int tiempoadmin = int.Parse(time.Valor);
 
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00" + pedido_Id.ToString() + " asdasd ');", true);
-            MostrarMensaje2($"Se ha generado el pedido No. " + pedido_Id.ToString() + "");
-            Response.Redirect("Carrito.aspx");
+            //Response.Redirect("Carrito.aspx");
+            MostrarMensaje2($"Se ha generado el pedido No. " + pedido_Id.ToString() + "");     
             return;
         }
     }

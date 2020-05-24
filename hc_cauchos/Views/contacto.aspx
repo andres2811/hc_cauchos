@@ -81,7 +81,7 @@
               <br />
               <br />
               <div align="center">
-                  <img class=" rounded mx-auto d-block" src="../ima/porusted.png" alt="Alternate Text" />
+                  <img class=" img-thumbnail mx-auto d-block" src="../ima/porusted.png" alt="Alternate Text" />
               </div>
               <hr />
               <br />
