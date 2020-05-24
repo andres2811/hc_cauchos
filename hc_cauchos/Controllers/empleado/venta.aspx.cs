@@ -70,6 +70,7 @@ public partial class Views_empleado_venta : System.Web.UI.Page
                 pedido.Total = listCarrito.Sum(x => x.Precio * x.Cantidad).Value;
                 int pedido_Id = new DAOUser().InsertarPedido(pedido);
 
+                Session["pedido_Id"] = pedido_Id;
                 //agrego a carrito el pedido
                 EncapCarrito id_pedido = new EncapCarrito();
                 id_pedido.User_id = int.Parse(TB_Iduser.Text);
@@ -89,6 +90,8 @@ public partial class Views_empleado_venta : System.Web.UI.Page
                     producto.Total = product.Total;
                     new DAOEmpleado().InsertarProductos(producto);
 
+
+
                     //descuento la cantidad del producto en el inventario
                     EncapInventario descontar = new EncapInventario();
                     descontar.Id = product.Producto_id;
@@ -101,7 +104,7 @@ public partial class Views_empleado_venta : System.Web.UI.Page
                 int id_user = ((EncapUsuario)Session["Valido"]).User_id;
                 new DAOEmpleado().limpiarCarrito(id_user);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se genero el pedido No.00" + pedido_Id.ToString() + "');", true);
-                
+                Response.Redirect("FacturaVentanilla.aspx");
             }
 
         }
@@ -118,4 +121,6 @@ public partial class Views_empleado_venta : System.Web.UI.Page
         pedido.Id = first;
         new DAOUser().ActualizarValorpedido(pedido);
     }
+
+    
 }
