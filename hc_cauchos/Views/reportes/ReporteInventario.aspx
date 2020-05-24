@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <CR:CrystalReportViewer ID="CRV_Inventario" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="1202px" ReportSourceID="CRS_Inventario" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="1104px" OnInit="CRV_Inventario_Init" PageZoomFactor="125" ToolPanelView="None" />
 <CR:CrystalReportSource ID="CRS_Inventario" runat="server">
-    <Report FileName="Z:\hc_cauchos\hc_cauchos\Reportes\ReporteInventario.rpt">
+    <Report FileName="~\Reportes\ReporteInventario.rpt">
     </Report>
 </CR:CrystalReportSource>
 </asp:Content>
