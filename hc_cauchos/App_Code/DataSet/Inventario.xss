@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:PedidoProveedor" ZOrder="4" X="376" Y="140" Height="150" Width="166" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="25" SplitterPosition="146" />
     <Shape ID="DesignTable:VentaEmpleado" ZOrder="3" X="558" Y="148" Height="110" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="106" />
     <Shape ID="DesignTable:VentaMes" ZOrder="2" X="728" Y="150" Height="110" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="106" />
-    <Shape ID="DesignTable:FacturaVentanilla" ZOrder="1" X="900" Y="151" Height="150" Width="167" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="146" />
+    <Shape ID="DesignTable:FacturaVentanilla" ZOrder="1" X="900" Y="151" Height="170" Width="167" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="166" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

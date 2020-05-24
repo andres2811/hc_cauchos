@@ -84,7 +84,7 @@
                  <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th scope="col">#</th>
+                              
                               <th scope="col"><h3>Referencia</h3></th>
                               <th scope="col"><h3>Nombre</h3></th>
                               <th scope="col"><h3>Precio</h3></th>
@@ -96,7 +96,7 @@
                               <asp:Repeater ID="Repeater1" runat="server"  OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound"  >
                                   <ItemTemplate>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        
                                         <td><asp:Label ID="Lb_Referencia"  class="" runat="server" Text='<%# Eval("Referencia") %>' ></asp:Label></td>
                                         <asp:Label ID="LB_id_producto" runat="server" Text='<%# Eval("Producto_id") %>' Visible="False"></asp:Label>
                                         <td><asp:Label ID="Lb_Nombre"  class="" runat="server" Text='<%# Eval("Nombre_producto") %>' ></asp:Label></td>

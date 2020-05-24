@@ -27,6 +27,7 @@ public partial class Views_empleado_FacturaVentanilla : System.Web.UI.Page
         DataTable datos = informe.FacturaVentanilla;//del data set tome el datatable inventario
         DataRow fila;
 
+        double aux = 0;
         foreach (EncapProducto_pedido registro in list)
         {
             fila = datos.NewRow();
@@ -37,6 +38,8 @@ public partial class Views_empleado_FacturaVentanilla : System.Web.UI.Page
             fila["Cantidad"] = registro.Cantidad;
             fila["Total"] = registro.Total;
             fila["Id_Pedido"] = (int)Session["pedido_Id"];
+            aux = aux + registro.Total;
+            fila["Total_fin"] = aux;
             datos.Rows.Add(fila);
         }
 
