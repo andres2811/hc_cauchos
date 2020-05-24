@@ -13,7 +13,7 @@
     <br />
     <h1 class="text-center text-primary"><strong>PEDIDOS FINALIZADOS <br />
         <small>la lista se reiniciara mensualmente</small></strong></h1>
-    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_pedidos_fin">
+    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_pedidos_fin" OnItemCommand="Repeater1_ItemCommand">
         <ItemTemplate>
             <div id="carta" class="card text-center bg-primary fa-border border-dark mb-5 col-sm-6">
               <div class="card-header">

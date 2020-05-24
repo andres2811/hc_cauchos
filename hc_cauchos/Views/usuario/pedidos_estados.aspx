@@ -14,7 +14,7 @@
     <h1 class="text-center text-primary"><strong>PEDIDOS ACTIVOS</strong></h1>
     <br />
 
-    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OBS_pedidos_activos">
+    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OBS_pedidos_activos" OnItemCommand="Repeater1_ItemCommand">
         <ItemTemplate>  
             <div id="carta" class="card text-center bg-primary fa-border border-dark mb-5 col-sm-6">
               <div class="card-header">
