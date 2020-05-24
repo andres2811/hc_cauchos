@@ -291,7 +291,7 @@
                                 <br />
                                 <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Contraseña diferente" ControlToCompare="TB_confirmar_contra" ControlToValidate="TB_contraseña" ValidationGroup="Registro"></asp:CompareValidator>
                                 <br />
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña requiere entre 8 - 10 caracteres tanto letras y numeros" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=^[a-zA-Z0-9]+$ ).*$" ValidationGroup="Registro"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_contraseña" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
                                 <asp:Button ID="BTN_registrar" runat="server" Text="Registrar" class="fadeIn fourth" OnClick="BTN_registrar_Click" ValidationGroup="Registro"/> 
                             </div>      
                         </div>
