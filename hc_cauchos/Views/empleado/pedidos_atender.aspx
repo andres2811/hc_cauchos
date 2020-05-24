@@ -88,7 +88,7 @@
     
 <asp:ObjectDataSource ID="ODS_pedidos" runat="server" SelectMethod="ObtenerPedidos" TypeName="DAOEmpleado">
     <SelectParameters>
-        <asp:SessionParameter Name="user" SessionField="empleid" Type="Int32" />
+        <asp:SessionParameter Name="user" SessionField="empleid" Type="Int32" DefaultValue="" />
     </SelectParameters>
 </asp:ObjectDataSource>
 </asp:Content>

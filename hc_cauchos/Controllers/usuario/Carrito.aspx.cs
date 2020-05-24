@@ -91,7 +91,7 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             EncapPedido pedido = new EncapPedido();
             pedido.Fecha_pedido = DateTime.Now;
             pedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
-            pedido.Atendido_id = 5;
+            //pedido.Atendido_id = 5;
             //Campos de Direccion
             pedido.Ciu_dep_id = DDL_Lugar.SelectedIndex;
             //pedido.Municipio_id = DDL_Municipio.SelectedIndex;
@@ -161,7 +161,7 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
             EncapPedido pedido = new EncapPedido();
             pedido.Fecha_pedido = DateTime.Now;
             pedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
-            pedido.Atendido_id = 5;
+            //pedido.Atendido_id = 5;
             //Campos de Direccion
             pedido.Ciu_dep_id = DDL_Lugar.SelectedIndex;
             //pedido.Municipio_id = DDL_Municipio.SelectedIndex;

@@ -7,9 +7,10 @@ using System.Web.UI.WebControls;
 
 public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
 {
-  
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
         EncapUsuario User = new EncapUsuario();
         User = new DAOAdmin().UsuarioActivo2((string)Session["Correo"]);
         if (User == null)
@@ -20,6 +21,12 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
         {
             Response.Redirect("../home.aspx");
         }
+
+        int idemple = ((EncapUsuario)Session["Valido"]).User_id;
+        Session["empleid"] = idemple;
+        R_pro.Visible = false;
+        BTN_confirmar.Visible = false;
+        TB_novedad.Visible = false;
     }
 
     protected void R_pedido_ItemCommand(object source, RepeaterCommandEventArgs e)

@@ -58,6 +58,8 @@ public class EncapPedido
     public string Direccion { get => direccion; set => direccion = value; }
     [Column("municipio_id")]
     public int Municipio_id { get => municipio_id; set => municipio_id = value; }
+    [Column("fecha_pedido_fin")]
+    public Nullable<DateTime> Fecha_pedido_fin { get => fecha_pedido_fin; set => fecha_pedido_fin = value; }
     [NotMapped]
     public string Usuario { get => usuario; set => usuario = value; }
     [NotMapped]
@@ -66,8 +68,6 @@ public class EncapPedido
     public string Empleado { get => empleado; set => empleado = value; }
     [NotMapped]
     public string Domiciliaro { get => domiciliaro; set => domiciliaro = value; }
-    [Column("fecha_pedido_fin")]
-    public Nullable<DateTime> Fecha_pedido_fin { get => fecha_pedido_fin; set => fecha_pedido_fin = value; }
     [NotMapped]
     public string Ciudad_dep { get => ciudad_dep; set => ciudad_dep = value; }
     [NotMapped]
