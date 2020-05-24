@@ -172,4 +172,15 @@ public partial class Views_empleado_facturar : System.Web.UI.Page
         DD_Marca.SelectedIndex = 0;
         DD_Categoria.SelectedIndex = 0;
     }
+
+    protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        int stock = int.Parse(((Label)e.Item.FindControl("Ca_actualLabel")).Text);
+        var cantidad = (TextBox)e.Item.FindControl("TB_cantidad");
+
+        if (stock <= 0)
+        {
+            cantidad.Enabled = false;
+        }
+    }
 }

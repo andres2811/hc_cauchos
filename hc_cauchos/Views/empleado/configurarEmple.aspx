@@ -31,7 +31,7 @@
                     <asp:Button ID="BTN_cancelar2" runat="server" Text="Cancelar" Class="btn btn-primary" OnClick="BTN_cancelar2_Click" />
                     <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Inventario/engranaje.png" OnClick="ImageButton2_Click"/>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="la contraseña debe tener entre 8 - 10 caracteres tanto letra, numeros y caracteres especiales" ControlToValidate="TB_editarPass" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{':;'?/>.<,])(?!.*\s).*$" ValidationGroup="grupopass"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Se requiere entre 8 - 16 caracteres tanto letras,numeros,mayusculas y minusculas" ControlToValidate="TB_editarPass" ValidationExpression="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" ValidationGroup="grupopass"></asp:RegularExpressionValidator>
                 </div>    
             </div>
         </div>       

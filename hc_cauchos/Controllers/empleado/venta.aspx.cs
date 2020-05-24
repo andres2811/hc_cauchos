@@ -65,7 +65,7 @@ public partial class Views_empleado_venta : System.Web.UI.Page
                 pedido.Fecha_pedido = DateTime.Now;
                 pedido.User_id = int.Parse(TB_Iduser.Text);
                 pedido.Atendido_id = ((EncapUsuario)Session["Valido"]).User_id;
-                pedido.Estado_pedido = 4;
+                pedido.Estado_pedido = 6;
                 List<EncapCarrito> listCarrito = new DAOUser().ObtenerCarritoxUsuario(pedido.Atendido_id);
                 pedido.Total = listCarrito.Sum(x => x.Precio * x.Cantidad).Value;
                 int pedido_Id = new DAOUser().InsertarPedido(pedido);

@@ -106,7 +106,7 @@
     <asp:ObjectDataSource ID="ODS_catalogo" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
     <div class="row ">  
         <br />
-    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo"  OnItemCommand="Repeater1_ItemCommand" >
+    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ODS_catalogo"  OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound" >
         <ItemTemplate>            
             <div class="col-md-2 col-sm-6 col-xs-8 mb-3" >
                  <div class="card shadow text-block" style=" width:165px; height:510px;" id="productos">  
@@ -133,7 +133,7 @@
                                 <strong>Cantidad:</strong>
                                 <asp:TextBox ID="TB_cantidad" runat="server" TextMode="Number" Class="card-text" Width="25%" CssClass="text-black" MaxLength="4"></asp:TextBox>                         
                                 <asp:RequiredFieldValidator ID="RFV_cantidad" runat="server" ErrorMessage="*" ControlToValidate="TB_cantidad" EnableClientScript="True" ValidationGroup='<%# Eval("Id") %>'></asp:RequiredFieldValidator>&nbsp;&nbsp;
-                                <asp:RangeValidator ID="RV_cantidad" runat="server" ErrorMessage="valor invalido" ControlToValidate="TB_cantidad" MaximumValue="1000" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                                <asp:RangeValidator ID="RV_cantidad" runat="server" ErrorMessage="valor invalido" ControlToValidate="TB_cantidad" MaximumValue="1000" MinimumValue="1" Type="Integer" ValidationGroup='<%# Eval("Id") %>'></asp:RangeValidator>
                  
                                 <asp:ImageButton class="center-block bottom-left" ID="BTNI_carritoAdd" runat="server" ImageUrl="~/ima/newproduct.png" CommandArgument='<%# Eval("Id") %>' ValidationGroup='<%# Eval("Id") %>' />
                                 

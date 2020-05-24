@@ -36,7 +36,7 @@ public partial class Views_reportes_ReporteMesAMes : System.Web.UI.Page
         //------------------------------------------------------------
         //SQL agrupo mes a mes las ventas
         string SQl = @"SELECT date_part('year', pp.fecha_pedido) as año, date_part('month'::text, pp.fecha_pedido) as mes, sum(pp.total) as total_mes, Count(*) as Facturas FROM pedidos.pedidos pp WHERE pp.estado_pedido = 6 GROUP BY date_part('year', pp.fecha_pedido), date_part('month'::text, pp.fecha_pedido)";
-        var con = new NpgsqlConnection("Host= localhost; Database=hc_cauchos; UserId=postgres; Password=12345; Port= 5432;");
+        var con = new NpgsqlConnection("Host= localhost; Database=hc_cauchos; UserId=postgres; Password=admin; Port= 5432;");
         //Creamos la conexiom
 
         using (var command = new NpgsqlCommand(SQl , con))
