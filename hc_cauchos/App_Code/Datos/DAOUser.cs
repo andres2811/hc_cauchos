@@ -753,16 +753,16 @@ public class DAOUser
         using (var db = new Mapeo())
         {
             return (from pedido in db.pedidos.Where(x => x.User_id == usu && x.Estado_pedido != 6 )
-                    join atendido in db.usuario on pedido.Atendido_id equals atendido.User_id
-                    join domiciliario in db.usuario on pedido.Domiciliario_id equals domiciliario.User_id
+                    //join atendido in db.usuario on pedido.Atendido_id equals atendido.User_id
+                    //join domiciliario in db.usuario on pedido.Domiciliario_id equals domiciliario.User_id
                     join estado in db.estado_pedido on pedido.Estado_pedido equals estado.Id
                     join ciudad_dep in db.ciudades_departamentso on pedido.Ciu_dep_id equals ciudad_dep.Id
                     join municipio in db.municipios on pedido.Municipio_id equals municipio.Id
                     select new
                     {
                         pedido,
-                        atendido,
-                        domiciliario,
+                        //atendido,
+                        //domiciliario,
                         estado,
                         ciudad_dep,
                         municipio
@@ -773,9 +773,9 @@ public class DAOUser
                        Fecha_pedido=m.pedido.Fecha_pedido,
                        User_id =m.pedido.User_id,
                        Atendido_id=m.pedido.Atendido_id,
-                       Empleado=m.atendido.Nombre,
+                       //Empleado=m.atendido.Nombre,
                        Domiciliario_id=m.pedido.Domiciliario_id,
-                       Domiciliaro=m.domiciliario.Nombre,
+                       //Domiciliaro=m.domiciliario.Nombre,
                        Estado_pedido =m.pedido.Estado_pedido,
                        Estado=m.estado.Estado,
                        Total=m.pedido.Total,

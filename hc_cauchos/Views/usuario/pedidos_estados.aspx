@@ -26,8 +26,7 @@
                   <h4  class="card-text"><strong>Lugar de entrega: </strong><asp:Label ID="Label9" runat="server" Text='<%# Eval("Municipio") %>' class="card-text" /> - <asp:Label ID="Label3" runat="server" Text='<%# Eval("Ciudad_dep") %> ' class="card-text" /></h4>
                   <h4  class="card-text"><strong>Direccion: </strong><asp:Label ID="Label5" runat="server" Text='<%# Eval("Direccion") %>' class="card-text" /></h4>  
                   <h4  class="card-text"><strong>Estado: </strong><asp:Label ID="Label6" runat="server" Text='<%# Eval("Estado") %>' class="card-text" /></h4>
-                  <h4  class="card-text"><strong>Empleados: </strong>EMPLEADO(<strong><asp:Label ID="Label8" runat="server" Text='<%# Eval("Empleado") %>' class="card-text" /></strong>) DOMICILIARIO(<strong><asp:Label ID="Label7" runat="server" Text='<%# Eval("Domiciliaro") %>' class="card-text" /></strong>)</h4>
-                  <h4  class="card-text"><strong>Fecha de entrega: </strong><asp:Label ID="Label2" runat="server" Text='<%# Eval("Fecha_pedido_fin") %>' class="card-text" /></h4>
+                  <asp:Button ID="BTN_factura"  class="btn btn-primary center-block" runat="server" Text="Ver factura" />
               </div>
             </div>          
         </ItemTemplate>

@@ -28,6 +28,7 @@
                   <h4  class="card-text"><strong>Empleados: </strong>EMPLEADO(<asp:Label ID="Label8" runat="server" Text='<%# Eval("Empleado") %>' class="card-text" />) DOMICILIARIO(<asp:Label ID="Label7" runat="server" Text='<%# Eval("Domiciliaro") %>' class="card-text" />)</h4>
                   <h4  class="card-text"><strong>Fecha de entrega: </strong><asp:Label ID="Label2" runat="server" Text='<%# Eval("Fecha_pedido_fin") %>' class="card-text" /></h4>
                   <h4  class="card-text"><strong>Novedad: </strong><asp:Label ID="Label4" runat="server" Text='<%# Eval("Novedad") %>' class="card-text" /></h4>
+                  <asp:Button ID="BTN_factura"  class="btn btn-primary center-block" runat="server" Text="Ver factura" />
               </div>
             </div> 
         </ItemTemplate>

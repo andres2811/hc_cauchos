@@ -71,6 +71,7 @@ public partial class Views_empleado_venta : System.Web.UI.Page
                 int pedido_Id = new DAOUser().InsertarPedido(pedido);
 
                 Session["pedido_Id"] = pedido_Id;
+
                 //agrego a carrito el pedido
                 EncapCarrito id_pedido = new EncapCarrito();
                 id_pedido.User_id = int.Parse(TB_Iduser.Text);
@@ -83,7 +84,7 @@ public partial class Views_empleado_venta : System.Web.UI.Page
                 {
                     //inserto los productos en productos del pedido
                     EncapProducto_pedido producto = new EncapProducto_pedido();
-                    producto.Pedido_id = product.Id_pedido;
+                    producto.Pedido_id = id_pedido.Id_pedido;
                     producto.Producto_id = product.Producto_id;
                     producto.Cantidad = product.Cantidad.Value;
                     producto.Precio = product.Precio;
