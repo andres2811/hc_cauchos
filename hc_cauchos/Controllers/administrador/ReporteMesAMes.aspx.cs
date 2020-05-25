@@ -41,12 +41,12 @@ public partial class Views_reportes_ReporteMesAMes : System.Web.UI.Page
 
        
         DataRow fila;
-
+        
 
         //------------------------------------------------------------
         //SQL agrupo mes a mes las ventas
-        string SQl = @"SELECT date_part('year', pp.fecha_pedido) as año, date_part('month'::text, pp.fecha_pedido) as mes, sum(pp.total) as total_mes, Count(*) as Facturas FROM pedidos.pedidos pp WHERE pp.estado_pedido = 6 GROUP BY date_part('year', pp.fecha_pedido), date_part('month'::text, pp.fecha_pedido)";
-        var con = new NpgsqlConnection("Host= localhost; Database=hc_cauchos; UserId=postgres; Password=admin; Port= 5432;");
+        /*string SQl = @"SELECT date_part('year', pp.fecha_pedido) as año, date_part('month'::text, pp.fecha_pedido) as mes, sum(pp.total) as total_mes, Count(*) as Facturas FROM pedidos.pedidos pp WHERE pp.estado_pedido = 6 GROUP BY date_part('year', pp.fecha_pedido), date_part('month'::text, pp.fecha_pedido)";
+        var con = new NpgsqlConnection("Host= localhost; Database=hc_cauchos; UserId=postgres; Password=12345; Port= 5432;");
         //Creamos la conexiom
 
         using (var command = new NpgsqlCommand(SQl , con))
@@ -65,13 +65,28 @@ public partial class Views_reportes_ReporteMesAMes : System.Web.UI.Page
                     datos.Rows.Add(fila);
                 }
             }
+        }*/
+
+
+
+        //Prueba Por entity
+
+        List<EncapVenta> listVentas = new DAOUser().ConsultarVentasMesAMes();
+
+        DataTable datos2 = informe.VentaMes;//del data set tome el datatable inventario
+        DataRow fila2;
+
+        foreach (EncapVenta registro in listVentas)
+        {
+            fila2 = datos2.NewRow();
+            fila2["Mes"] = registro.Mes;
+            fila2["Ano"] = registro.Ano;
+
+            fila2["total"] = registro.Total;
+            fila2["Facturas"] = registro.Facturas;
+           
+            datos2.Rows.Add(fila2);
         }
-    
-
-        
-
-
-
 
 
         return informe;
