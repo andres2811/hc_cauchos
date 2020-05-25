@@ -89,6 +89,8 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
                     carrito.Total = precio * cantidadSolicitada;
                     carrito.Estadocar = 1;
                     carrito.Id_pedido = verificar1.Id_pedido;
+                    carrito.Session = Session["Nombre"].ToString();
+                    carrito.Last_modify = DateTime.Now;
                     new DAOUser().InsertarCarrito(carrito);
                 }
 
@@ -112,6 +114,8 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
                     carrito.Fecha = DateTime.Now;
                     carrito.Precio = precio;
                     carrito.Total = precio * cantidadSolicitada;
+                    carrito.Last_modify = DateTime.Now;
+                    carrito.Session = Session["Nombre"].ToString();
                     new DAOUser().ActualizarCarritoItems(carrito);
                 }
                 else
@@ -125,6 +129,9 @@ public partial class Views_usuario_catalogoUsuario : System.Web.UI.Page
                     carrito.Precio = precio;
                     carrito.Total = precio * cantidadSolicitada;
                     carrito.Estadocar = 1;
+                    carrito.Session = Session["Nombre"].ToString();
+                    carrito.Last_modify = DateTime.Now;
+                    
                     new DAOUser().InsertarCarrito(carrito);
                 }
 

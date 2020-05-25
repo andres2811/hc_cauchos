@@ -100,7 +100,8 @@ public class DAOUser
                 resultado.Fecha = resultado.Fecha;
                 resultado.Precio = resultado.Precio;
                 resultado.Total = resultado.Total + (carrito.Cantidad * resultado.Precio).Value;
-
+                resultado.Session = resultado.Session;
+                resultado.Last_modify = DateTime.Now;
                 db.SaveChanges();
             }
         }
@@ -309,7 +310,7 @@ public class DAOUser
             carritoedit.Precio = carrito.Precio;
             carritoedit.Cant_Actual = (carritoedit.Cant_Actual - carritoedit.Cantidad).Value;
             carritoedit.Total = (carritoedit.Cantidad * carritoedit.Precio).Value ;
-
+            
             db.SaveChanges();
         }
     }

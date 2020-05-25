@@ -25,7 +25,8 @@ public class EncapInventario
     private int id_estado;
     private string nombre_marca;
     private string nombre_categoria;
-    
+    private string session;
+    private Nullable<DateTime> last_modify;
     private string estado;
 
     [Key]
@@ -55,6 +56,8 @@ public class EncapInventario
     public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
     [NotMapped]
     public string Estado { get => estado; set => estado = value; }
-    
-
+    [Column("session")]
+    public string Session { get => session; set => session = value; }
+    [Column("last_modify")]
+    public DateTime? Last_modify { get => last_modify; set => last_modify = value; }
 }

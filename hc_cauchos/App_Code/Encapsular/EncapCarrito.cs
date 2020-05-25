@@ -23,7 +23,9 @@ public class EncapCarrito
     private string nom_producto;
     private int cant_Actual;
     private int id_pedido;
-   
+    private string session;
+    private Nullable<DateTime> last_modify;
+
     [Key]
     [Column("id_carrito")]
     public int Id_Carrito { get => id_Carrito; set => id_Carrito = value; }
@@ -50,5 +52,9 @@ public class EncapCarrito
     public string Nom_producto { get => nom_producto; set => nom_producto = value; }
     [NotMapped]
     public int Cant_Actual { get => cant_Actual; set => cant_Actual = value; }
-    
+    [Column("session")]
+    public string Session { get => session; set => session = value; }
+    [Column("last_modify")]
+    public DateTime? Last_modify { get => last_modify; set => last_modify = value; }
+
 }
