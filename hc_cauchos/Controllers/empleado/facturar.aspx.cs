@@ -25,6 +25,9 @@ public partial class Views_empleado_facturar : System.Web.UI.Page
         //numero de cantidad en el carrito 
         LB_cantidad.Text = new DAOEmpleado().ObtenerCantidadxProductoCarritoxEmple(iduser).ToString();
 
+        PanelMensaje.Visible = false;
+        PanelMensaje1.Visible = false;
+        PanelMensaje2.Visible = false;
     }
 
 
@@ -42,8 +45,10 @@ public partial class Views_empleado_facturar : System.Web.UI.Page
             //obtengo los valores de los controles y verifico cantidad de pedir a existente
             if (cantidadSolicitada > stock)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Cantidad no disponible.');</script>");
+                MostrarMensaje1($"Cantidad no disponible");
                 return;
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Cantidad no disponible.');</script>");
+                //return;
             }
 
             EncapCarrito verificarPedido = new EncapCarrito();
@@ -123,9 +128,11 @@ public partial class Views_empleado_facturar : System.Web.UI.Page
 
             }
 
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Producto agregado a carrito');</script>");
+
+
             Response.Redirect("facturar.aspx");
-            return;
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('Producto agregado a carrito');</script>");
+            //return;
         }
     }
 
@@ -182,5 +189,38 @@ public partial class Views_empleado_facturar : System.Web.UI.Page
         {
             cantidad.Enabled = false;
         }
+    }
+
+    protected void B_cerrar_mensaje1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje.Visible = false;
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        PanelMensaje1.Visible = false;
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        PanelMensaje2.Visible = false;
+    }
+
+    private void MostrarMensaje(string mensaje)
+    {
+        LblMensaje.Text = mensaje;
+        PanelMensaje.Visible = true;
+    }
+
+    private void MostrarMensaje1(string mensaje)
+    {
+        LblMensaje1.Text = mensaje;
+        PanelMensaje1.Visible = true;
+    }
+
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
     }
 }

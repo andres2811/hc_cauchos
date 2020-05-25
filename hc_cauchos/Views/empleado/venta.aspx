@@ -49,9 +49,33 @@
             <asp:ControlParameter ControlID="TB_NomCliente" Name="cedula" PropertyName="Text" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <br />
+    <div class="text-center center-block" style=" width:50%;">
+        <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje1" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje2" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click" />
+        </asp:Panel>
+    </div>
+    <br />
     <hr/>
     <h1 class="text-center"><strong>PRODUCTOS FACTURADOS</strong></h1>
-    <asp:TextBox ID="TB_Iduser" runat="server" placeholder="Agrege el ID del usuario" CssClass="form-control-static"></asp:TextBox>
+    <asp:TextBox ID="TB_Iduser" runat="server" placeholder="Agrege el identificador del usuario" CssClass="form-control-static"></asp:TextBox>
     <br />
      <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
