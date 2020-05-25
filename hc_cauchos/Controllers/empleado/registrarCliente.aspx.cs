@@ -45,6 +45,8 @@ public partial class Views_empleado_registrarCliente : System.Web.UI.Page
             clien.Identificacion = TB_identificacion.Text;
             clien.Rol_id = 4;
             clien.Estado_id = 2;
+            clien.Last_modify = DateTime.Now;
+            clien.Sesion = Session["Nombre"].ToString();
 
             //apunto a metodo de insert 
             new DAOEmpleado().InsertarCliente(clien);
