@@ -33,7 +33,7 @@ public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
         verificarIdentificacion.Identificacion = TB_identificacion.Text;
         verificarIdentificacion = new DAOUser().verificarIdentificacion(verificarIdentificacion);
 
-        if (verificar == null && verificarIdentificacion==null)
+        if (verificar == null && verificarIdentificacion == null)
         {
             //traigo valores de los texbox
             EncapUsuario Emple = new EncapUsuario();
@@ -42,6 +42,8 @@ public partial class Views_administrador_insertarEmpleado : System.Web.UI.Page
             Emple.Correo = TB_correo.Text;
             Emple.Clave = TB_contraseña.Text;
             Emple.Fecha_nacimiento = DateTime.Parse(TB_fecha_nacimiento.Text);
+            Emple.Last_modify = DateTime.Now;
+            Emple.Sesion = Session["Nombre"].ToString();
 
             int actual = DateTime.Now.Year;
             if ((actual - (int)Emple.Fecha_nacimiento.Year) < 18)

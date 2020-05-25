@@ -13,7 +13,7 @@
   <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
              <div style="overflow-x: auto;"> 
-                  <asp:GridView ID="Gv_proveedor" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Provedor" ForeColor="#333333" GridLines="None" Width="100%" DataKeyNames="Id" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="Gv_proveedor_RowEditing">
+                  <asp:GridView ID="Gv_proveedor" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODS_Provedor" ForeColor="#333333" GridLines="None" Width="100%" DataKeyNames="Id" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="Gv_proveedor_RowEditing" AllowPaging="True" PageSize="5">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:TemplateField HeaderText="Nombre" SortExpression="Nombre_pro">

@@ -245,7 +245,8 @@ public class DAOAdmin
             encapUsuario.Rol_id = empleado.Rol_id;
             encapUsuario.Estado_id = empleado.Estado_id;
             encapUsuario.Fecha_nacimiento = empleado.Fecha_nacimiento;
-
+            encapUsuario.Last_modify = DateTime.Now;
+            encapUsuario.Sesion = empleado.Sesion;
             db.usuario.Attach(encapUsuario);
             var entry = db.Entry(encapUsuario);
             entry.State = EntityState.Modified;
@@ -329,7 +330,8 @@ public class DAOAdmin
                 resultado.Id_marca = invent.Id_marca;
                 resultado.Id_estado = invent.Id_estado;
                 resultado.Id_categoria = invent.Id_categoria;
-
+                resultado.Last_modify = DateTime.Now;
+                resultado.Session = invent.Session;
                 db.SaveChanges();
             }
         }
@@ -695,7 +697,7 @@ public class DAOAdmin
         }
     }
     //METODO ACTUALIZAR Proveedor
-    public void ActualizarProveedor(EncapProveedor proveedor)
+    public void ActualizarProveedor(EncapProveedor proveedor )
     {
         using (var db = new Mapeo())
         {
@@ -708,7 +710,7 @@ public class DAOAdmin
                 resultado.Tiempo_envio = proveedor.Tiempo_envio;
                 resultado.Nid = proveedor.Nid;
                 resultado.Session = proveedor.Session;
-                resultado.Last_modify = proveedor.Last_modify;
+                resultado.Last_modify = DateTime.Now;
 
 
                 db.SaveChanges();

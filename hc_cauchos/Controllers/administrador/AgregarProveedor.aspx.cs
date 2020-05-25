@@ -41,6 +41,7 @@ public partial class Views_administrador_AgregarProveedor : System.Web.UI.Page
         if(consulta == 1)
         {
             MostrarMensaje1($"Proveedor existente");
+            return;
             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert ('proveedor Existente' );</script>");
 
         }

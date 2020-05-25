@@ -108,7 +108,8 @@ public partial class Views_administrador_AgregarInventario : System.Web.UI.Page
                 invent.Id_categoria = int.Parse(DDL_Categoria.Text);
                 invent.Id_estado = 1;
                 invent.Ca_actual = 0;
-         
+                invent.Last_modify = DateTime.Now;
+                invent.Session = Session["Nombre"].ToString();
 
                 new DAOAdmin().InsertarItem(invent);
 
