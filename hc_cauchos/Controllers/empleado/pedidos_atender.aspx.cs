@@ -27,6 +27,8 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
         R_pro.Visible = false;
         BTN_confirmar.Visible = false;
         TB_novedad.Visible = false;
+        PanelMensaje2.Visible = false;
+
     }
 
     protected void R_pedido_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -40,10 +42,11 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
         estado2.Id = id_pedido;
         estado2.Estado_pedido = 2;
         new DAOEmpleado().ActualizarEstadoPedido2(estado2);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se ha comenzado el alistamiento del pedido No.00" + id_pedido.ToString() + "');", true);
+        //ScriptManager.RegisterStartupScript(this, this.GetType(), "myAlert", "alert('Se ha comenzado el alistamiento del pedido No.00" + id_pedido.ToString() + "');", true);
+        MostrarMensaje2($"Se ha comenzado el alistamiento del pedido No.00"+id_pedido.ToString()+"");
         BTN_confirmar.Visible = true;
         TB_novedad.Visible = true;
-
+        return;
 
     }
 
@@ -66,5 +69,16 @@ public partial class Views_empleado_pedidos_atender : System.Web.UI.Page
 
     }
 
-    
+
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        PanelMensaje2.Visible = false;
+    }
+
+    private void MostrarMensaje2(string mensaje)
+    {
+        LblMensaje2.Text = mensaje;
+        PanelMensaje2.Visible = true;
+    }
 }

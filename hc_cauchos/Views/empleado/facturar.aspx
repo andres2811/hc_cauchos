@@ -30,7 +30,8 @@
     </div>
   
     <br />
-    <h1 class="text-center text-primary"><strong>PRODUCTOS</strong></h1>
+    <h1 class="text-center text-primary"><strong>PRODUCTOS <br />
+        <small>Agrega tus productos y cantidades</small></strong></h1>
     <asp:ObjectDataSource ID="ODS_catalogo0" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="ODS_catalogoCategoria" runat="server" SelectMethod="ConsultarInventarioCategoria" TypeName="DAOUser">
         <SelectParameters>
@@ -101,8 +102,30 @@
             </div>
         </div>  
     </div>
-
     <br />
+    <br />
+    <div class="text-center center-block" style=" width:50%;">
+        <asp:Panel runat="server" ID="PanelMensaje" Visible="false" CssClass="alert alert-danger shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="B_cerrar_mensaje1" OnClick="B_cerrar_mensaje1_Click" />
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="PanelMensaje1" Visible="false" CssClass="alert alert-warning shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje1" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton1" OnClick="LinkButton1_Click" />
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje2" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click" />
+        </asp:Panel>
+    </div>
     <asp:ObjectDataSource ID="ODS_catalogo" runat="server" SelectMethod="ConsultarInventario" TypeName="DAOUser"></asp:ObjectDataSource>
     <div class="row ">  
         <br />

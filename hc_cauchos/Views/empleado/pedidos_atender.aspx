@@ -33,6 +33,15 @@
         </SelectParameters>
     </asp:ObjectDataSource>
 
+    <div class="text-center center-block" style=" width:50%;">
+        <asp:Panel runat="server" ID="PanelMensaje2" Visible="false" CssClass="alert alert-success shadow" role="alert">
+	        <strong>
+	        <asp:Label ID="LblMensaje2" runat="server" />
+	        </strong>
+	        <asp:LinkButton Text="<span aria-hidden='true'>&times;</span>" runat="server" CssClass="close" ID="LinkButton2" OnClick="LinkButton2_Click"/>
+        </asp:Panel>
+    </div>
+
     <br />  
     <h1 class="text-center text-primary"><strong>TABLA DE PRODUCTOS</strong></h1>
     <br />
