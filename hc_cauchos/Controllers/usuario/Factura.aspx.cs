@@ -36,7 +36,9 @@ public partial class Views_usuario_Factura : System.Web.UI.Page
 
         DataTable datos = informe.FacturaVentanilla;//del data set tome el datatable inventario
         DataRow fila;
-
+        Mapeo db = new Mapeo();
+        string Dirrecion = new DAOUser().ConsultarDirrecion((int)Session["Id_fac"]); 
+        string Cliente = new DAOUser().ConsultarUsuarioPedido((int)Session["Id_fac"]);
         double aux = 0;
         foreach (EncapProducto_pedido registro in list)
         {
@@ -50,6 +52,8 @@ public partial class Views_usuario_Factura : System.Web.UI.Page
             fila["Id_Pedido"] = (int)Session["Id_fac"];
             aux = aux + registro.Total;
             fila["Total_fin"] = aux;
+            fila["Dirreccion"] = Dirrecion;
+            fila["Cliente"] = Cliente;
             datos.Rows.Add(fila);
         }
 

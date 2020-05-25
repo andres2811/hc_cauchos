@@ -890,7 +890,73 @@ public class DAOUser
                     }).ToList();
         }
     }
+    //METODO QUE ME CONSULTA LAS VENTAS MES A MES
+    public List<EncapVenta> ConsultarVentasMesAMes()
+    {
+        using (var db = new Mapeo())
+        {
+            return (from uu in db.pedidos where uu.Estado_pedido == 6 group uu by uu.Fecha_pedido.Month into g 
+                    let total = g.Sum(x => x.Total)
+                    let facturas = g.Count()
+                    let ano = (from a in db.pedidos where a.Estado_pedido == 6 && g.Key == a.Fecha_pedido.Month select a.Fecha_pedido.Year ).FirstOrDefault()
 
+
+
+                    select new
+                    {
+                        fecha = g.Key,
+                        ano,
+                        total,
+                        facturas,
+                        
+                        
+                        
+
+                    }).ToList().Select(m => new EncapVenta
+                    {
+                        Ano = m.ano,
+                        Mes = m.fecha,
+                        Total = m.total,
+                        Facturas = m.facturas
+
+                    }).ToList();
+        }
+    }
+    //Agrgar al otro proyecto
+    public string ConsultarUsuarioPedido(int id_pedido)
+    {
+        using (var db = new Mapeo())
+        {
+            string nombre = (from x in db.pedidos
+                             where x.Id == id_pedido
+                             join use in db.usuario on x.User_id equals use.User_id
+                             select new
+                             {
+                                 use,
+
+
+                             }).FirstOrDefault().use.Nombre;
+            return nombre;
+        }
+
+    }
+    public string ConsultarDirrecion(int id_pedido)
+    {
+        using (var db = new Mapeo())
+        {
+            string dire = (from x in db.pedidos
+                           where x.Id == id_pedido
+
+                           select new
+                           {
+                               x.Direccion
+
+
+                           }).FirstOrDefault().Direccion;
+            return dire;
+        }
+
+    }
 
 }
 
