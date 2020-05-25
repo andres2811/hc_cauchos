@@ -78,18 +78,19 @@
        </div>
 
 
-  <div class="row">
+
+    <div class="row">
         <div class=" col-lg-12 col-md-offset-0.5">
-             <div style="overflow-x: auto;"> 
-                 <table class="table table-striped">
+             <div style="overflow-x:auto; width:100%;">  
+                 <table class="table table-responsive">
                           <thead>
                             <tr>
-                              
                               <th scope="col"><h3>Referencia</h3></th>
                               <th scope="col"><h3>Nombre</h3></th>
                               <th scope="col"><h3>Precio</h3></th>
                               <th scope="col"><h3>Cantidad</h3></th>
                               <th scope="col"><h3>Agregar</h3></th>
+                              <th scope="col"><h3>Precio Total</h3></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -102,18 +103,23 @@
                                         <td><asp:Label ID="Lb_Nombre"  class="" runat="server" Text='<%# Eval("Nombre_producto") %>' ></asp:Label></td>
                                         <td><asp:Label ID="Lb_Precio" Class="" runat="server"  Text='<%# Eval("Precio") %>' Width="100%" ></asp:Label></td>
                                         <td><asp:TextBox ID="TB_Cantidad" class="form-control" runat="server" placeholder="Cantidad" Width="100px" MaxLength="3"  TextMode="Number"></asp:TextBox> </td>
-                                        <td><asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Cantidad no valida" MaximumValue='999' MinimumValue="1" ControlToValidate="TB_Cantidad" ValidationGroup="a" Type="Integer"></asp:RangeValidator></td>
                                         <td><asp:Button ID="Btn_Agregar" Class="btn btn-success" runat="server" Text="Agregar"  UseSubmitBehavior="False" ValidationGroup="a" /></td>
                                         <td><asp:Label ID="LB_Total_Producto" Class="form-control" runat="server"  Text='Precio' Width="100%" ></asp:Label></td>
                                         <asp:Label ID="Lb_aux" runat="server" Text="" Visible="false"></asp:Label>
                                     </tr> 
+                                    <tr>
+                                          <td><asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Cantidad no valida" MaximumValue='999' MinimumValue="1" ControlToValidate="TB_Cantidad" ValidationGroup="a" Type="Integer"></asp:RangeValidator></td>
+                                    </tr>
                                 </ItemTemplate>
+                                  <FooterTemplate>
+
+                                  </FooterTemplate>
                             </asp:Repeater>             
                           </tbody>
                         </table>        
-             </div>
+                </div>
+            </div>
         </div>
-  </div>    
 
     <div class="row">
         <div class="col-md-0.1 col-md-offset-6">
