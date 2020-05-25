@@ -63,7 +63,7 @@
                     <asp:BoundField DataField="Usuario" HeaderText="Usuario" SortExpression="Usuario" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                     <asp:BoundField DataField="Empleado" HeaderText="Empleado" SortExpression="Empleado" />
-                    <asp:BoundField DataField="Domiciliaro" HeaderText="Domiciliaro" SortExpression="Domiciliaro" />
+                    
                     <asp:TemplateField HeaderText="Elementos" SortExpression="Id">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Id") %>'></asp:TextBox>

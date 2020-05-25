@@ -1298,14 +1298,14 @@ public class DAOAdmin
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
-                    join domi in db.usuario on uu.Domiciliario_id equals domi.User_id
+                    //join domi in db.usuario on uu.Domiciliario_id equals domi.User_id
                                         select new
                     {
                         uu,
                         usuario,
                         estado,
                         empleado,
-                        domi
+                        //domi
 
                     }).ToList().Select(m => new EncapPedido
                     {
@@ -1317,7 +1317,7 @@ public class DAOAdmin
                         Fecha_pedido = m.uu.Fecha_pedido,
                         Estado_pedido = m.uu.Estado_pedido,
                         Total = m.uu.Total,
-                        Domiciliaro = m.domi.Nombre,
+                        //Domiciliaro = m.domi.Nombre,
                         Usuario = m.usuario.Nombre,
                         Estado = m.estado.Estado,
                         Empleado = m.empleado.Nombre,
@@ -1339,14 +1339,15 @@ public class DAOAdmin
                     join usuario in db.usuario on uu.User_id equals usuario.User_id
                     join empleado in db.usuario on uu.Atendido_id equals empleado.User_id
                     join estado in db.estado_pedido on uu.Estado_pedido equals estado.Id
-                    join domi in db.usuario on uu.Domiciliario_id equals domi.User_id
+                    
+                    //join domi in db.usuario on uu.Domiciliario_id equals domi.User_id
                     select new
                     {
                         uu,
                         usuario,
                         estado,
                         empleado,
-                        domi
+                        //domi
 
 
                     }).ToList().Select(m => new EncapPedido
@@ -1359,7 +1360,8 @@ public class DAOAdmin
                         Fecha_pedido = m.uu.Fecha_pedido,
                         Estado_pedido = m.uu.Estado_pedido,
                         Total = m.uu.Total,
-                        Domiciliaro = m.domi.Nombre,
+                        
+                        //Domiciliaro = m.domi.Nombre,
                         Usuario = m.usuario.Nombre,
                         Estado = m.estado.Estado,
                         Empleado = m.empleado.Nombre,
