@@ -281,7 +281,7 @@
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Login" ControlToValidate="TB_correo" ErrorMessage="*"></asp:RequiredFieldValidator>
                                      <br />
                                     <br />
-                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center rounded-pill" placeholder="Contraseña" TextMode="Password" Width="85%" MaxLength="10"></asp:TextBox>                    
+                                     <asp:TextBox ID="TB_contraseña" runat="server"  class="form-control d-inline text-center rounded-pill" placeholder="Contraseña" TextMode="Password" Width="85%" MaxLength="16"></asp:TextBox>                    
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Login" ControlToValidate="TB_contraseña" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 </div>  
                                  <div>                     

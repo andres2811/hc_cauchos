@@ -274,12 +274,12 @@
                                  <asp:TextBox ID="TB_nombres" runat="server" class="form-control rounded-pill" placeholder="nombres" MaxLength="23" ValidationGroup="Registro"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Registro" ControlToValidate="TB_nombres" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <br />
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Solo se permiten letras y minimo 3" ControlToValidate="TB_nombres" ValidationExpression="[a-zA-Z ]{3,35}"  ValidationGroup="Registro" Font-Underline="True" ForeColor="Red"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Solo se permiten letras y minimo 3" ControlToValidate="TB_nombres" ValidationExpression="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"  ValidationGroup="Registro" Font-Underline="True" ForeColor="Red"></asp:RegularExpressionValidator>
 
                                 <asp:TextBox ID="TB_apellidos" runat="server" class="form-control rounded-pill" placeholder="apellido" MaxLength="30" ValidationGroup="Registro"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Registro" ControlToValidate="TB_apellidos" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <br />
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Solo se permiten letras y minimo 3" ControlToValidate="TB_apellidos" ValidationExpression="[a-zA-Z ]{3,35}"  ValidationGroup="Registro" Font-Underline="True" ForeColor="Red"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Solo se permiten letras y minimo 3" ControlToValidate="TB_apellidos" ValidationExpression="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"  ValidationGroup="Registro" Font-Underline="True" ForeColor="Red"></asp:RegularExpressionValidator>
 
                                 <asp:TextBox ID="TB_correo" runat="server" class="form-control d-inline text-center rounded-pill" placeholder="correo"  TextMode="Email" Width="85%" ValidationGroup="Registro" ></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Registro" ControlToValidate="TB_correo" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>

@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12">
+    <div class="">
         <div class="form-inline text-center">
             <div class="form-group">
                 <asp:RadioButtonList ID="RBL" runat="server" CssClass="form-group" AutoPostBack="True" OnSelectedIndexChanged="RBL_SelectedIndexChanged" Width="227px">

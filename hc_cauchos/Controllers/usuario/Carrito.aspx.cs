@@ -61,9 +61,13 @@ public partial class Views_usuario_Carrito : System.Web.UI.Page
         pedido.User_id = ((EncapUsuario)Session["Valido"]).User_id;
         List<EncapCarrito> listCarrito2 = new DAOUser().ObtenerCarritoxUsuario(pedido.User_id);
         int first = listCarrito2[0].Id_pedido;
-        pedido.Total = listCarrito2.Sum(x => x.Precio * x.Cantidad).Value;
-        pedido.Id = first;
-        new DAOUser().ActualizarValorpedido(pedido);
+        if(first != 0)
+        {
+            pedido.Total = listCarrito2.Sum(x => x.Precio * x.Cantidad).Value;
+            pedido.Id = first;
+            new DAOUser().ActualizarValorpedido(pedido);
+        }
+        
 
     }
 

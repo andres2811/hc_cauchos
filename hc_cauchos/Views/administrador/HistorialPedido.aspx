@@ -18,7 +18,7 @@
     <h1 class="text-center"><strong>Historial De Pedidos</strong></h1>
       <br />
 
-    <div class="col-sm-11">
+    <div class="">
         <div class="form-inline text-center">
             <div class="form-group">
                 <asp:DropDownList  ID="DDL_Estado" runat="server"  AutoPostBack="True" CssClass="form-control" DataSourceID="ODS_Estados" DataTextField="Estado" DataValueField="Id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">

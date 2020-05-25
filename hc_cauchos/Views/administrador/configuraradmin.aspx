@@ -27,7 +27,7 @@
                     <br />
                     Contraseña:
                     <asp:Label ID="LB_contraseña" runat="server" Text="Label" class="form-control"></asp:Label>
-                    <asp:TextBox ID="TB_editarPass" runat="server" class="form-control" ValidationGroup="grupopass" placeholder="Ingrese la nueva contraseña"></asp:TextBox>
+                    <asp:TextBox ID="TB_editarPass" runat="server" class="form-control" ValidationGroup="grupopass" MaxLength="16" placeholder="Ingrese la nueva contraseña"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="TB_editarPass" ValidationGroup="grupopass"></asp:RequiredFieldValidator>
                     <asp:Button ID="BTN_editarPass" runat="server" Text="Cambiar" class="btn btn-primary" OnClick="BTN_editarPass_Click" ValidationGroup="grupopass"/>
                     <asp:Button ID="BTN_cancelar2" runat="server" Text="Cancelar" Class="btn btn-primary" OnClick="BTN_cancelar2_Click" />
