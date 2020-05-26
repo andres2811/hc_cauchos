@@ -82,6 +82,8 @@
     <div class="center-block">
         <asp:TextBox ID="TB_novedad" runat="server" TextMode="MultiLine"  class="form-group" placeholder="Ingrese novedades del pedido" Width="37%"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="TB_novedad" ValidationGroup="novedad"></asp:RequiredFieldValidator>
+        <br />
+         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo de admiten letras y numeros" ControlToValidate="TB_novedad" ValidationExpression="^[0-9a-zA-Z]+$" ForeColor="Red" Font-Size=""></asp:RegularExpressionValidator>
         &nbsp;<br />
         <asp:Button ID="BTN_confirmar" runat="server" Text="Confirmar Alistamiento" class="btn btn-primary" ValidationGroup="novedad" OnClick="BTN_confirmar_Click" /> 
         <br />

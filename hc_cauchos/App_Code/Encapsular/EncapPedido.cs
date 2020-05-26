@@ -35,6 +35,7 @@ public class EncapPedido
 
 
 
+
     [Key]
     [Column("id")]
     public int Id { get => id; set => id = value; }
@@ -72,4 +73,5 @@ public class EncapPedido
     public string Ciudad_dep { get => ciudad_dep; set => ciudad_dep = value; }
     [NotMapped]
     public string Municipio { get => municipio; set => municipio = value; }
+
 }

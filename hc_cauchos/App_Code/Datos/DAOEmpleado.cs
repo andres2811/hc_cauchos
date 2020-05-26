@@ -160,7 +160,7 @@ public class DAOEmpleado
     {
         using (var db = new Mapeo())
         
-            return (from pedi in db.pedidos.Where(x=>x.Atendido_id== user && x.Estado_pedido == 1)
+            return (from pedi in db.pedidos.Where(x=>x.Atendido_id== user && x.Estado_pedido == 2)
                     join usu in db.usuario on pedi.User_id equals usu.User_id 
                     //join emple in db.usuario  on pedi.Atendido_id  equals emple.User_id
                  
@@ -293,7 +293,7 @@ public class DAOEmpleado
     {
         using (var db = new Mapeo())
         {
-            return db.pedidos.Where(x => x.Atendido_id == user_id && x.Estado_pedido==1).Count();
+            return db.pedidos.Where(x => x.Atendido_id == user_id && x.Estado_pedido==2).Count();
         }
     }
 }
