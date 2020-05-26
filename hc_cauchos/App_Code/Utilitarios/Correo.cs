@@ -36,11 +36,12 @@ public class Correo
             //Aquí ponemos el asunto del correo
             mail.Subject = "Recuperación Contraseña";
             //Aquí ponemos el mensaje que incluirá el correo
-            string likserv = "proyectosisw12020.tk/CauchosHC/Views/administrador/ActualizarContraseña.aspx?";
+            string likserv = "proyectosisw12020.tk/CauchosHC/Views/administrador/ActualizarContraseña.aspx?" + userToken;
+            string linkLocal = "http://localhost:57160/Views/administrador/ActualizarContraseña.aspx?"+ userToken;
+            //mail.Body = "Para recuperar su cuenta ingrese al siguiente link  :<a href = "+ linkLocal +"   > </a> ";
 
-            mail.Body = "Para recuperar su cuenta ingrese al siguiente link  :<a href ='http://localhost:57160/Views/administrador/ActualizarContraseña.aspx? "+  userToken + "' > Actualizar </a> ";
-
-           mail.To.Add(correoDestino);
+            mail.Body = "Para recuperar su cuenta ingrese al siguiente link: "+ likserv ;
+            mail.To.Add(correoDestino);
             //Si queremos enviar archivos adjuntos tenemos que especificar la ruta en donde se encuentran
             //mail.Attachments.Add(new Attachment(@"C:\Documentos\carta.docx"));
             mail.IsBodyHtml = true;
